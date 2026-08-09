@@ -10,6 +10,11 @@ export function buildMetadata(overrides: Partial<Metadata> = {}): Metadata {
     title,
     description,
     metadataBase: new URL(siteConfig.url),
+    icons: {
+      icon: "/icons/favicon.png",
+      shortcut: "/icons/favicon.png",
+      apple: "/icons/favicon.png",
+    },
     keywords: [
       "flight booking Bangladesh",
       "cheap air tickets Dhaka",

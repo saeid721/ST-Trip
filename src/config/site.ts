@@ -17,9 +17,9 @@ export const siteConfig = {
   themeColor: "#0b4f6c",
   founded: 2016,
   contact: {
-    supportPhone: "+880 9678 000000",
-    supportPhoneDisplay: "09678 000000",
-    whatsapp: "+8801700000000",
+    supportPhone: "+880 1757-769498",
+    supportPhoneDisplay: "+880 1834-163689",
+    whatsapp: "+8801757-769498",
     email: "support@sttrip.com.bd",
     messenger: "m.me/sttripbd",
   },
@@ -39,23 +39,23 @@ export const siteConfig = {
   offices: [
     {
       name: "Head Office — Dhaka",
-      address: "Level 7, Aviation Tower, Road 11, Banani, Dhaka-1213, Bangladesh",
-      phone: "+88 017 0000 0001",
+      address: "Level-2, 25/2 Lake Circus Road, Kalabagan, Dhanmondi, Dhaka 1205, Bangladesh",
+      phone: "+880 1757-769498",
     },
     {
       name: "Chattogram Office",
       address: "GEC Circle, 2nd Floor, Chattogram, Bangladesh",
-      phone: "+88 017 0000 0002",
+      phone: "+880 1757-769498",
     },
     {
       name: "Sylhet Office",
       address: "Jail Road, Sylhet Sadar, Sylhet, Bangladesh",
-      phone: "+88 017 0000 0003",
+      phone: "+880 1757-769498",
     },
     {
       name: "Cox's Bazar Office",
       address: "Main Road, Cox's Bazar Sadar, Cox's Bazar, Bangladesh",
-      phone: "+88 017 0000 0004",
+      phone: "+880 1757-769498",
     },
   ],
 } as const;

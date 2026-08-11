@@ -51,7 +51,15 @@ export function TopDestinationsSection({
         >
           <div className="relative flex h-[380px] sm:h-[450px] w-full items-center justify-center [perspective:1200px]">
             {destinations.map((dest, i) => {
-              const offset = i - activeIndex;
+              const length = destinations.length;
+              let offset = i - activeIndex;
+              // Wrap the offset around the array so cards near the start/end
+              // of the list still get a symmetric left/right neighbor set.
+              // Without this, activeIndex values near 0 or length-1 show one
+              // card on one side and two on the other — exactly the
+              // left/right imbalance visible in the screenshot.
+              if (offset > length / 2) offset -= length;
+              if (offset < -length / 2) offset += length;
               const absOffset = Math.abs(offset);
 
               // 3D Perspective calculations
@@ -68,25 +76,25 @@ export function TopDestinationsSection({
                 filter = "brightness(100%)";
               } else if (offset === -1) {
                 // Immediate Left
-                transform = "translateX(-65%) scale(0.9) rotateY(22deg)";
+                transform = "translateX(-78%) scale(0.9) rotateY(22deg)";
                 zIndex = 20;
                 opacity = 0.9;
                 filter = "brightness(85%)";
               } else if (offset === -2) {
                 // Far Left
-                transform = "translateX(-120%) scale(0.76) rotateY(40deg)";
+                transform = "translateX(-148%) scale(0.76) rotateY(40deg)";
                 zIndex = 10;
                 opacity = 0.65;
                 filter = "brightness(70%)";
               } else if (offset === 1) {
                 // Immediate Right
-                transform = "translateX(65%) scale(0.9) rotateY(-22deg)";
+                transform = "translateX(78%) scale(0.9) rotateY(-22deg)";
                 zIndex = 20;
                 opacity = 0.9;
                 filter = "brightness(85%)";
               } else if (offset === 2) {
                 // Far Right
-                transform = "translateX(120%) scale(0.76) rotateY(-40deg)";
+                transform = "translateX(148%) scale(0.76) rotateY(-40deg)";
                 zIndex = 10;
                 opacity = 0.65;
                 filter = "brightness(70%)";
@@ -162,20 +170,29 @@ export function TopDestinationsSection({
             </button>
           </div>
 
-          {/* Dots Pagination */}
+          {/* Dots Pagination - shows only a 3-dot sliding window centered on active */}
           <div className="mt-6 flex items-center justify-center gap-2.5">
-            {destinations.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveIndex(idx)}
-                aria-label={`Go to slide ${idx + 1}`}
-                className={`transition-all duration-300 ${
-                  idx === activeIndex
-                    ? "h-3 w-3 rounded-full bg-blue-600 ring-4 ring-blue-500/20 scale-110"
-                    : "h-2.5 w-2.5 rounded-full bg-blue-200 hover:bg-blue-300"
-                }`}
-              />
-            ))}
+            {destinations.map((_, idx) => {
+              const length = destinations.length;
+              let diff = idx - activeIndex;
+              if (diff > length / 2) diff -= length;
+              if (diff < -length / 2) diff += length;
+              const visible = Math.abs(diff) <= 1;
+
+              if (!visible) return null;
+
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setActiveIndex(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`transition-all duration-300 ${idx === activeIndex
+                      ? "h-3 w-3 rounded-full bg-blue-600 ring-4 ring-blue-500/20 scale-110"
+                      : "h-2.5 w-2.5 rounded-full bg-blue-200 hover:bg-blue-300"
+                    }`}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

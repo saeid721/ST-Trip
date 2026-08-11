@@ -7,6 +7,8 @@ import { primaryNav } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 
+import Image from "next/image";
+
 interface MobileNavProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -20,11 +22,19 @@ export function MobileNav({ open, onOpenChange }: MobileNavProps) {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-[60] bg-black/40 data-[state=open]:animate-in data-[state=open]:fade-in" />
-        <Dialog.Content className="fixed inset-y-0 right-0 z-[61] flex w-[85vw] max-w-sm flex-col bg-white p-6 shadow-xl focus:outline-none">
+        <Dialog.Overlay className="fixed inset-0 z-[60] bg-black/40 data-[state=open]:animate-fade-in" />
+        <Dialog.Content className="fixed inset-y-0 right-0 z-[61] flex w-[85vw] max-w-sm flex-col bg-white p-6 shadow-xl focus:outline-none data-[state=open]:animate-[slide-in-right_260ms_var(--ease-out-soft)_both] data-[state=closed]:animate-[slide-out-right_200ms_var(--ease-out-soft)_both]">
           <div className="flex items-center justify-between">
-            <Dialog.Title className="font-heading text-lg font-semibold text-primary-700">
-              {siteConfig.name}
+            <Dialog.Title asChild>
+              <Link href="/" onClick={() => onOpenChange(false)}>
+                <Image
+                  src="/images/logo.png"
+                  alt={siteConfig.name}
+                  width={160}
+                  height={48}
+                  className="h-11 w-auto object-contain"
+                />
+              </Link>
             </Dialog.Title>
             <Dialog.Close asChild>
               <button

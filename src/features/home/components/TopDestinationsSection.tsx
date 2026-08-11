@@ -1,36 +1,182 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ContentCard } from "@/components/ui/ContentCard";
 import type { Destination } from "@/features/home/types";
 
-export function TopDestinationsSection({ destinations }: { destinations: Destination[] }) {
+export function TopDestinationsSection({
+  destinations,
+}: {
+  destinations: Destination[];
+}) {
+  const [activeIndex, setActiveIndex] = useState(2);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Auto-slide functionality every 3.5 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % destinations.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [isPaused, destinations.length]);
+
+  const prevSlide = () => {
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : destinations.length - 1));
+  };
+
+  const nextSlide = () => {
+    setActiveIndex((prev) => (prev < destinations.length - 1 ? prev + 1 : 0));
+  };
+
   return (
-    <section aria-labelledby="top-destinations-heading" className="py-14 sm:py-20">
+    <section aria-labelledby="top-destinations-heading" className="py-14 sm:py-20 overflow-hidden">
       <div className="container-app">
+        {/* Section Heading aligned cleanly with Logo & App Grid */}
         <SectionHeading
           id="top-destinations-heading"
           eyebrow="Where to next"
           title="Top Destinations"
-          description="From iconic landmarks to hidden gems — explore places that make every journey memorable."
+          description="Explore Bangladesh's most popular getaway destinations."
         />
-        <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
-          {destinations.map((destination, i) => (
-            <div
-              key={destination.id}
-              className="lg:[&:nth-child(2n)]:translate-y-4"
-              style={{ transition: "transform 300ms var(--ease-out-soft)" }}
+
+        {/* 3D Coverflow Carousel Container with Auto-play Pause on Hover */}
+        <div
+          className="relative mt-8 flex flex-col items-center select-none"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="relative flex h-[380px] sm:h-[450px] w-full items-center justify-center [perspective:1200px]">
+            {destinations.map((dest, i) => {
+              const offset = i - activeIndex;
+              const absOffset = Math.abs(offset);
+
+              // 3D Perspective calculations
+              let transform = "";
+              let zIndex = 0;
+              let opacity = 0;
+              let filter = "brightness(100%)";
+
+              if (offset === 0) {
+                // Active Center Card
+                transform = "translateX(0%) scale(1.05) rotateY(0deg)";
+                zIndex = 30;
+                opacity = 1;
+                filter = "brightness(100%)";
+              } else if (offset === -1) {
+                // Immediate Left
+                transform = "translateX(-65%) scale(0.9) rotateY(22deg)";
+                zIndex = 20;
+                opacity = 0.9;
+                filter = "brightness(85%)";
+              } else if (offset === -2) {
+                // Far Left
+                transform = "translateX(-120%) scale(0.76) rotateY(40deg)";
+                zIndex = 10;
+                opacity = 0.65;
+                filter = "brightness(70%)";
+              } else if (offset === 1) {
+                // Immediate Right
+                transform = "translateX(65%) scale(0.9) rotateY(-22deg)";
+                zIndex = 20;
+                opacity = 0.9;
+                filter = "brightness(85%)";
+              } else if (offset === 2) {
+                // Far Right
+                transform = "translateX(120%) scale(0.76) rotateY(-40deg)";
+                zIndex = 10;
+                opacity = 0.65;
+                filter = "brightness(70%)";
+              } else {
+                // Hidden outer cards
+                transform = offset < 0 ? "translateX(-160%) scale(0.6) rotateY(50deg)" : "translateX(160%) scale(0.6) rotateY(-50deg)";
+                zIndex = 0;
+                opacity = 0;
+                filter = "brightness(50%)";
+              }
+
+              return (
+                <div
+                  key={dest.id}
+                  onClick={() => setActiveIndex(i)}
+                  className="absolute cursor-pointer transition-all duration-500 ease-out will-change-transform"
+                  style={{
+                    transform,
+                    zIndex,
+                    opacity,
+                    filter,
+                    pointerEvents: absOffset > 2 ? "none" : "auto",
+                  }}
+                >
+                  <div className="group relative h-[320px] w-[220px] sm:h-[400px] sm:w-[270px] overflow-hidden rounded-3xl border border-slate-200/50 bg-slate-900 shadow-2xl transition-all duration-300 group-hover:shadow-3xl">
+                    <Image
+                      src={dest.image}
+                      alt={dest.city}
+                      fill
+                      sizes="(max-width: 640px) 220px, 270px"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      priority={i === 2}
+                    />
+
+                    {/* Dark gradient overlay for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
+
+                    {/* Destination Name & Hotel Count overlay */}
+                    <div className="absolute bottom-6 left-6 right-6 text-left">
+                      <h3 className="font-heading text-xl sm:text-2xl font-bold text-white tracking-tight drop-shadow-md">
+                        {dest.city}
+                      </h3>
+                      <p className="mt-1 text-xs sm:text-sm font-medium text-slate-200/90 drop-shadow">
+                        {dest.hotelsAvailable} Hotels Available
+                      </p>
+                    </div>
+
+                    {/* Hover Link Overlay */}
+                    <Link
+                      href={dest.href}
+                      className="absolute inset-0 z-10"
+                      aria-label={`View ${dest.city} hotels`}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              aria-label="Previous destination"
+              className="absolute left-0 sm:left-4 z-40 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-slate-800 shadow-md backdrop-blur transition-all hover:bg-white hover:scale-110 active:scale-95"
             >
-              <ContentCard
-                href={destination.href}
-                image={destination.image}
-                imageAlt={`${destination.city}, ${destination.country}`}
-                title={destination.city}
-                subtitle={destination.country}
-                badge={`${destination.hotelsAvailable} hotels`}
-                aspect="portrait"
-                priority={i === 0}
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              onClick={nextSlide}
+              aria-label="Next destination"
+              className="absolute right-0 sm:right-4 z-40 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-slate-800 shadow-md backdrop-blur transition-all hover:bg-white hover:scale-110 active:scale-95"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Dots Pagination */}
+          <div className="mt-6 flex items-center justify-center gap-2.5">
+            {destinations.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={`transition-all duration-300 ${
+                  idx === activeIndex
+                    ? "h-3 w-3 rounded-full bg-blue-600 ring-4 ring-blue-500/20 scale-110"
+                    : "h-2.5 w-2.5 rounded-full bg-blue-200 hover:bg-blue-300"
+                }`}
               />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

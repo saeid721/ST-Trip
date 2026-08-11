@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Star, Apple, Smartphone } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { WorldMapFlights } from "@/features/home/components/WorldMapFlights";
 
 export function AppDownloadSection() {
   return (
@@ -28,11 +28,11 @@ export function AppDownloadSection() {
 
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-1 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 shadow-sm">
-              <Star className="h-3.5 w-3.5 fill-accent-500 text-accent-500" aria-hidden />
+              <Star className="h-3.5 w-3.5 fill-warning text-warning" aria-hidden />
               {siteConfig.apps.iosRating} App Store
             </div>
             <div className="flex items-center gap-1 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 text-xs font-semibold text-neutral-700 shadow-sm">
-              <Star className="h-3.5 w-3.5 fill-accent-500 text-accent-500" aria-hidden />
+              <Star className="h-3.5 w-3.5 fill-warning text-warning" aria-hidden />
               {siteConfig.apps.androidRating} Google Play
             </div>
           </div>
@@ -71,15 +71,7 @@ export function AppDownloadSection() {
           </div>
         </div>
 
-        <div className="relative mx-auto aspect-[4/3] w-full max-w-md">
-          <Image
-            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&q=80"
-            alt="ST Trip travel app shown on a smartphone screen"
-            fill
-            sizes="(max-width: 1024px) 90vw, 480px"
-            className="rounded-2xl object-cover shadow-lg"
-          />
-        </div>
+        <WorldMapFlights />
       </div>
     </section>
   );

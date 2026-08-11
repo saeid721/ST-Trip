@@ -48,7 +48,8 @@ export function ContentCard({
       href={href}
       className={cn(
         "group block overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm",
-        "transition-shadow duration-250 hover:shadow-lg focus-visible:shadow-lg",
+        "transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)]",
+        "hover:-translate-y-1 hover:border-neutral-300 hover:shadow-lg focus-visible:-translate-y-1 focus-visible:shadow-lg",
         className,
       )}
     >
@@ -78,7 +79,7 @@ export function ContentCard({
         {subtitle && <p className="mt-1 text-sm text-neutral-500">{subtitle}</p>}
         {typeof rating === "number" && (
           <div className="mt-2 flex items-center gap-1 text-sm text-neutral-600">
-            <Star className="h-4 w-4 fill-accent-500 text-accent-500" aria-hidden />
+            <Star className="h-4 w-4 fill-warning text-warning" aria-hidden />
             <span className="font-medium text-neutral-800">{rating.toFixed(1)}</span>
             {reviewCount !== undefined && (
               <span className="text-neutral-400">({reviewCount} reviews)</span>

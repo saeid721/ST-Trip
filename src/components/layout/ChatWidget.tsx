@@ -59,7 +59,7 @@ export function ChatWidget() {
       </AnimatePresence>
 
       <Button
-        variant="accent"
+        variant="primary"
         size="icon"
         aria-label={open ? "Close support chat" : "Open support chat"}
         aria-expanded={open}

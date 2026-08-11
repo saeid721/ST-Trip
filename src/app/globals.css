@@ -39,6 +39,13 @@
   --color-neutral-900: var(--color-neutral-900);
   --color-neutral-950: var(--color-neutral-950);
 
+  /* Semantic — meaning is never carried by color alone (see globals.css
+     base layer / each usage site for the paired icon/label). */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+  --color-info: var(--color-info);
+
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
@@ -56,6 +63,17 @@
   --font-body: var(--font-inter), var(--font-noto-bengali), sans-serif;
 
   --container-content: var(--container-max);
+
+  /* ---- Breakpoints — replaces Tailwind's default scale with the exact
+     device widths this project targets. `xs`/`xl2` etc. become available
+     as xs:/base-mobile:/tablet:/desktop:/wide:/xwide:/uhd: variants. ---- */
+  --breakpoint-xs: 360px;    /* small phones */
+  --breakpoint-sm: 390px;    /* standard phones (iPhone, most Android) */
+  --breakpoint-md: 768px;    /* tablets */
+  --breakpoint-lg: 1024px;   /* small laptops / landscape tablets */
+  --breakpoint-xl: 1280px;   /* desktop */
+  --breakpoint-2xl: 1440px;  /* large desktop */
+  --breakpoint-3xl: 1920px;  /* wide / external monitors */
 }
 
 @layer base {
@@ -98,6 +116,65 @@
 }
 
 @layer utilities {
+  /* ---- Motion primitives — every "premium" micro-animation in the app
+     (tab content switch, dropdown/dialog open, popover) draws from this
+     single easing curve so motion feels like one consistent material,
+     not a different animation library per component. ---- */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes slide-out-right {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 200ms var(--ease-out-soft) both;
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 260ms var(--ease-out-soft) both;
+  }
+  .animate-scale-in {
+    animation: scale-in 200ms var(--ease-out-soft) both;
+  }
+
   .skip-link {
     position: absolute;
     left: -9999px;

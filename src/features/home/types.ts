@@ -44,6 +44,26 @@ export interface Destination {
   href: string;
 }
 
+export interface TrendingDestination {
+  id: string;
+  city: string;
+  /** Flag emoji, e.g. "🇧🇩" — rendered next to the city name. */
+  countryFlag: string;
+  image: string;
+  href: string;
+  /** Marks the two large bento cells (top row); the rest render smaller. */
+  featured?: boolean;
+}
+
+export interface HolidayPackage {
+  id: string;
+  city: string;
+  priceFrom: number;
+  image: string;
+  href: string;
+}
+
+
 export interface Airline {
   id: string;
   name: string;

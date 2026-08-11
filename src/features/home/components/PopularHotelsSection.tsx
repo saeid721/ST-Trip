@@ -1,5 +1,6 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContentCard } from "@/components/ui/ContentCard";
+import { Reveal } from "@/components/ui/Reveal";
 import { formatCurrency } from "@/lib/utils";
 import type { HotelListing } from "@/features/home/types";
 
@@ -16,17 +17,18 @@ export function PopularHotelsSection({ hotels }: { hotels: HotelListing[] }) {
         />
         <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
           {hotels.map((hotel, i) => (
-            <ContentCard
-              key={hotel.id}
-              href={hotel.href}
-              image={hotel.image}
-              imageAlt={`${hotel.name}, ${hotel.location}`}
-              title={hotel.name}
-              subtitle={`From ${formatCurrency(hotel.priceFrom)}/night`}
-              rating={hotel.rating}
-              reviewCount={hotel.reviewCount}
-              priority={i === 0}
-            />
+            <Reveal key={hotel.id} delay={i * 0.06}>
+              <ContentCard
+                href={hotel.href}
+                image={hotel.image}
+                imageAlt={`${hotel.name}, ${hotel.location}`}
+                title={hotel.name}
+                subtitle={`From ${formatCurrency(hotel.priceFrom)}/night`}
+                rating={hotel.rating}
+                reviewCount={hotel.reviewCount}
+                priority={i === 0}
+              />
+            </Reveal>
           ))}
         </div>
       </div>

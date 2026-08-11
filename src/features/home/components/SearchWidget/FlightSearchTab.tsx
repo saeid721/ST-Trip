@@ -55,7 +55,7 @@ export function FlightSearchTab() {
               value={option.value}
               checked={values.tripType === option.value}
               onChange={() => setTripType(option.value)}
-              className="h-4 w-4 accent-primary-700"
+              className="h-4 w-4 accent-primary-600"
             />
             {option.label}
           </label>
@@ -157,7 +157,7 @@ export function FlightSearchTab() {
         </div>
       </div>
 
-      <Button type="submit" variant="accent" size="lg" className="w-full gap-2 sm:w-auto">
+      <Button type="submit" variant="primary" size="lg" className="w-full gap-2 sm:w-auto">
         <Search className="h-4 w-4" aria-hidden />
         Search Flights
       </Button>

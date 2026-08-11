@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { cn } from "@/lib/utils";
 
+import Image from "next/image";
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -29,15 +31,15 @@ export function Header() {
       style={{ height: "var(--header-height)" }}
     >
       <div className="container-app flex h-full items-center justify-between">
-        <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.name} home`}>
-          <span
-            className={cn(
-              "font-heading text-2xl font-bold transition-colors",
-              scrolled ? "text-primary-700" : "text-white",
-            )}
-          >
-            {siteConfig.name}
-          </span>
+        <Link href="/" className="flex items-center py-1" aria-label={`${siteConfig.name} home`}>
+          <Image
+            src="/images/logo.png"
+            alt={siteConfig.name}
+            width={200}
+            height={60}
+            className="h-12 sm:h-14 w-auto max-h-[58px] object-contain drop-shadow-sm"
+            priority
+          />
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">

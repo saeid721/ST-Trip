@@ -1,69 +1,98 @@
 /**
  * Design tokens — single source of truth for the visual system.
- * Kept as CSS variables (not just Tailwind config) so a future dark theme
- * or white-label re-skin is a variable swap, not a rewrite.
+ * Kept as CSS variables (not just Tailwind config) so a future re-theme
+ * (brand color change, dark mode) is a variable swap here, not a hunt
+ * through component files.
  *
- * Brand identity:
- *  - Primary: deep teal-blue — distinct from the generic navy used by
- *    ShareTrip/GoZayaan/BuyAirTicket, still reads as "trustworthy travel brand".
- *  - Accent: warm amber/coral for CTAs — high contrast against the teal.
+ * ============================================================
+ * BRAND IDENTITY — psychology-driven blue system
+ * ============================================================
+ * Primary Blue  (#2563EB) = ACTION.   CTAs, links, active/selected states.
+ * Primary Hover (#1D4ED8) = the same action, one step deeper on interaction.
+ * Primary Dark  (#1E40AF) = pressed/active state — max commitment feedback.
+ * Primary Light (#DBEAFE) = light blue tint for badges/selected chips.
+ * Primary Soft  (#EFF6FF) = feature backgrounds, search areas, filter
+ *                           panels — reduces cognitive load, not decoration.
+ * Deep Navy     (#0F172A) = TRUST + AUTHORITY. Headings, nav text, premium
+ *                           surfaces (footer, dark sections). NOT a CTA color.
+ * Navy Surface  (#1E293B) = secondary dark surface, one step lighter than
+ *                           Deep Navy — dark-panel elevation.
+ * Sky Accent    (#0EA5E9) = EXPLORATION + ENERGY. Decorative/informational
+ *                           accents only — badges, ratings-adjacent chips,
+ *                           small highlights. Never a competing CTA color.
+ * Sky Light     (#E0F2FE) = soft sky tint for subtle informational fills.
+ *
+ * Ratio discipline: ~70% neutral/white/background, ~20% navy/slate
+ * typography, ~10% blue (brand + sky accent combined). Primary Blue is
+ * reserved for the handful of elements that should visually win the eye —
+ * if everything is blue, nothing reads as "the action."
  */
 
 :root {
-  /* ---- Brand ---- */
-  --color-primary-50: #eef7f9;
-  --color-primary-100: #d3ebf0;
-  --color-primary-200: #a8d6e1;
-  --color-primary-300: #74bccd;
-  --color-primary-400: #3f9db4;
-  --color-primary-500: #157d99;
-  --color-primary-600: #0f6580;
-  --color-primary-700: #0b4f6c; /* core brand */
-  --color-primary-800: #0a3f57;
-  --color-primary-900: #08303f;
+  /* ---- Primary Blue scale (anchor: 600 = #2563EB, the exact brand blue) --
+     50/100 = Primary Soft / Primary Light per spec. 600/700/800 = the
+     Primary/Hover/Dark CTA triplet per spec, exactly. */
+  --color-primary-50: #eff6ff; /* "Primary Soft" — search areas, filter panels */
+  --color-primary-100: #dbeafe; /* "Primary Light" — badges, selected chips */
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb; /* "Primary Blue" — the one CTA color */
+  --color-primary-700: #1d4ed8; /* "Primary Hover" */
+  --color-primary-800: #1e40af; /* "Primary Dark" — active/pressed */
+  --color-primary-900: #1e3a8a;
 
-  --color-accent-50: #fff5ec;
-  --color-accent-100: #ffe6cf;
-  --color-accent-200: #ffc998;
-  --color-accent-300: #ffa860;
-  --color-accent-400: #ff8c4a;
-  --color-accent-500: #ff7a45; /* core accent */
-  --color-accent-600: #f5641f;
-  --color-accent-700: #d54e12;
-  --color-accent-800: #ab3f11;
-  --color-accent-900: #8a3512;
+  /* ---- Sky accent scale (anchor: 500 = #0EA5E9) — decorative/informational
+     only. Never used for primary CTA fills; see Button.tsx "accent" variant,
+     which intentionally renders as a soft outline, not a competing solid. */
+  --color-accent-50: #f0f9ff;
+  --color-accent-100: #e0f2fe; /* "Sky Light" */
+  --color-accent-200: #bae6fd;
+  --color-accent-300: #7dd3fc;
+  --color-accent-400: #38bdf8;
+  --color-accent-500: #0ea5e9; /* "Sky Accent" */
+  --color-accent-600: #0284c7;
+  --color-accent-700: #0369a1;
+  --color-accent-800: #075985;
+  --color-accent-900: #0c4a6e;
 
-  /* ---- Neutrals (slate-based) ---- */
+  /* ---- Neutrals — slate scale. Deep Navy (#0F172A) = neutral-900 exactly;
+     Navy Surface (#1E293B) = neutral-800 exactly. Page Background (#F8FAFC)
+     = neutral-50 exactly. Body text uses neutral-600/700, never pure black
+     and never neutral-900 for long-form copy (too heavy at paragraph size). */
   --color-neutral-0: #ffffff;
-  --color-neutral-50: #f8fafc;
+  --color-neutral-50: #f8fafc; /* Page Background */
   --color-neutral-100: #f1f5f9;
-  --color-neutral-200: #e2e8f0;
+  --color-neutral-200: #e2e8f0; /* Border */
   --color-neutral-300: #cbd5e1;
   --color-neutral-400: #94a3b8;
-  --color-neutral-500: #64748b;
-  --color-neutral-600: #475569;
+  --color-neutral-500: #64748b; /* Muted Text */
+  --color-neutral-600: #475569; /* Secondary Text */
   --color-neutral-700: #334155;
-  --color-neutral-800: #1e293b;
-  --color-neutral-900: #0f172a;
+  --color-neutral-800: #1e293b; /* Navy Surface */
+  --color-neutral-900: #0f172a; /* Deep Navy / Primary Text */
   --color-neutral-950: #020617;
 
-  /* ---- Semantic ---- */
+  /* ---- Semantic — meaning is never carried by color alone anywhere in the
+     app; these always pair with an icon, label, or border-weight change. ---- */
   --color-success: #16a34a;
   --color-warning: #f59e0b;
   --color-danger: #dc2626;
-  --color-info: var(--color-primary-500);
+  --color-info: var(--color-accent-500); /* Sky — informational, not action */
 
   /* ---- Surface / text roles (dark-mode ready) ---- */
   --surface-app: var(--color-neutral-0);
   --surface-muted: var(--color-neutral-50);
   --surface-raised: var(--color-neutral-0);
-  --surface-inverse: var(--color-primary-800);
+  --surface-inverse: var(--color-neutral-900); /* Deep Navy, not blue */
 
   --text-primary: var(--color-neutral-900);
   --text-secondary: var(--color-neutral-600);
-  --text-muted: var(--color-neutral-400);
+  --text-muted: var(--color-neutral-500);
   --text-on-brand: var(--color-neutral-0);
-  --text-link: var(--color-primary-600);
+  --text-link: var(--color-primary-700); /* darker than button-fill 600 for
+                                             safer small-text contrast on white */
 
   --border-default: var(--color-neutral-200);
   --border-strong: var(--color-neutral-300);
@@ -76,12 +105,12 @@
   --radius-2xl: 28px;
   --radius-full: 999px;
 
-  /* ---- Elevation (soft, layered) ---- */
+  /* ---- Elevation (soft, layered — never stacked/excessive) ---- */
   --shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
   --shadow-md: 0 4px 12px -2px rgb(15 23 42 / 0.08), 0 2px 4px -2px rgb(15 23 42 / 0.04);
   --shadow-lg: 0 12px 24px -8px rgb(15 23 42 / 0.12), 0 4px 8px -4px rgb(15 23 42 / 0.06);
   --shadow-xl: 0 24px 48px -12px rgb(15 23 42 / 0.18), 0 8px 16px -8px rgb(15 23 42 / 0.08);
-  --shadow-floating: 0 20px 40px -8px rgb(11 79 108 / 0.25);
+  --shadow-floating: 0 20px 40px -8px rgb(37 99 235 / 0.18);
 
   /* ---- Motion ---- */
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
@@ -91,7 +120,12 @@
 
   /* ---- Layout ---- */
   --header-height: 76px;
+  --header-height-mobile: 64px;
   --container-max: 1280px;
+
+  /* ---- Touch targets (mobile-first, WCAG 2.5.5 AAA = 44px min) ---- */
+  --tap-target-min: 44px;
+  --tap-target-comfortable: 48px;
 }
 
 /* Dark theme scaffold — flip on <html data-theme="dark"> once dark mode ships. */
@@ -99,7 +133,7 @@
   --surface-app: var(--color-neutral-950);
   --surface-muted: var(--color-neutral-900);
   --surface-raised: var(--color-neutral-800);
-  --surface-inverse: var(--color-primary-900);
+  --surface-inverse: var(--color-neutral-950);
 
   --text-primary: var(--color-neutral-50);
   --text-secondary: var(--color-neutral-300);

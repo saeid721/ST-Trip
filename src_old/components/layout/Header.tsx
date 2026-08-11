@@ -1,0 +1,98 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Phone, User, Menu } from "lucide-react";
+import { primaryNav } from "@/config/navigation";
+import { siteConfig } from "@/config/site";
+import { Button } from "@/components/ui/Button";
+import { MobileNav } from "@/components/layout/MobileNav";
+import { cn } from "@/lib/utils";
+
+export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-250",
+        scrolled ? "bg-white shadow-sm" : "bg-transparent",
+      )}
+      style={{ height: "var(--header-height)" }}
+    >
+      <div className="container-app flex h-full items-center justify-between">
+        <Link href="/" className="flex items-center gap-2" aria-label={`${siteConfig.name} home`}>
+          <span
+            className={cn(
+              "font-heading text-2xl font-bold transition-colors",
+              scrolled ? "text-primary-700" : "text-white",
+            )}
+          >
+            {siteConfig.name}
+          </span>
+        </Link>
+
+        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
+          {primaryNav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "text-sm font-medium transition-colors",
+                scrolled
+                  ? "text-neutral-700 hover:text-primary-700"
+                  : "text-white/90 hover:text-white",
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-4 lg:flex">
+          <a
+            href={`tel:${siteConfig.contact.supportPhone}`}
+            className={cn(
+              "flex items-center gap-1.5 text-sm font-medium transition-colors",
+              scrolled ? "text-neutral-700" : "text-white/90",
+            )}
+          >
+            <Phone className="h-4 w-4" aria-hidden />
+            {siteConfig.contact.supportPhoneDisplay}
+          </a>
+          <Button
+            variant={scrolled ? "primary" : "inverse"}
+            size="sm"
+            className="gap-1.5"
+          >
+            <User className="h-4 w-4" aria-hidden />
+            Login / Sign Up
+          </Button>
+        </div>
+
+        <button
+          type="button"
+          aria-label="Open menu"
+          aria-expanded={mobileNavOpen}
+          onClick={() => setMobileNavOpen(true)}
+          className={cn(
+            "flex h-11 w-11 items-center justify-center rounded-lg lg:hidden",
+            scrolled ? "text-neutral-800" : "text-white",
+          )}
+        >
+          <Menu className="h-6 w-6" aria-hidden />
+        </button>
+      </div>
+
+      <MobileNav open={mobileNavOpen} onOpenChange={setMobileNavOpen} />
+    </header>
+  );
+}

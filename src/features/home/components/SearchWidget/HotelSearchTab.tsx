@@ -112,7 +112,7 @@ export function HotelSearchTab() {
           </div>
         </div>
 
-        <Button type="submit" variant="accent" size="lg" className="gap-2">
+        <Button type="submit" variant="primary" size="lg" className="gap-2">
           <Search className="h-4 w-4" aria-hidden />
           Search Hotels
         </Button>

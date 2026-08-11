@@ -36,7 +36,7 @@ export function StatsCounterSection({ stats }: { stats: StatItem[] }) {
   return (
     <section
       aria-labelledby="stats-heading"
-      className="relative overflow-hidden bg-primary-800 py-16 text-white sm:py-20"
+      className="relative overflow-hidden bg-neutral-900 py-16 text-white sm:py-20"
     >
       {/* Decorative world-map pattern, purely presentational */}
       <div
@@ -52,7 +52,7 @@ export function StatsCounterSection({ stats }: { stats: StatItem[] }) {
         <h2 id="stats-heading" className="font-heading text-2xl font-bold sm:text-3xl">
           Your Journey, Our Expertise
         </h2>
-        <p className="mx-auto mt-2 max-w-md text-sm text-primary-200">
+        <p className="mx-auto mt-2 max-w-md text-sm text-neutral-300">
           Discover the difference — trusted by travellers across Bangladesh.
         </p>
 
@@ -68,7 +68,7 @@ export function StatsCounterSection({ stats }: { stats: StatItem[] }) {
               <p className="font-heading text-4xl font-bold text-accent-300">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
-              <p className="mt-2 text-sm font-medium text-primary-100">{stat.label}</p>
+              <p className="mt-2 text-sm font-medium text-neutral-200">{stat.label}</p>
             </motion.div>
           ))}
         </div>

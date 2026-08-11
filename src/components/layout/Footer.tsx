@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Facebook, Instagram, Twitter, Youtube, Linkedin, Mail, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
@@ -23,11 +24,19 @@ const paymentMethods = [
 
 export function Footer() {
   return (
-    <footer className="bg-primary-900 text-primary-100">
+    <footer className="bg-neutral-900 text-neutral-300">
       <div className="container-app grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-6">
         <div className="sm:col-span-2 lg:col-span-2">
-          <span className="font-heading text-2xl font-bold text-white">{siteConfig.name}</span>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-primary-200">
+          <Link href="/" aria-label={`${siteConfig.name} home`}>
+            <Image
+              src="/images/logo.png"
+              alt={siteConfig.name}
+              width={200}
+              height={60}
+              className="h-14 w-auto object-contain brightness-110 drop-shadow-sm"
+            />
+          </Link>
+          <p className="mt-3 max-w-xs text-sm leading-relaxed text-neutral-300">
             {siteConfig.description}
           </p>
           <div className="mt-5 flex gap-3">
@@ -54,7 +63,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-primary-200 transition-colors hover:text-white"
+                    className="text-sm text-neutral-300 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -66,7 +75,7 @@ export function Footer() {
 
         <div>
           <h3 className="font-heading text-sm font-semibold text-white">Contact</h3>
-          <ul className="mt-4 space-y-2.5 text-sm text-primary-200">
+          <ul className="mt-4 space-y-2.5 text-sm text-neutral-300">
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 shrink-0" aria-hidden />
               <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white">
@@ -88,8 +97,8 @@ export function Footer() {
           {siteConfig.offices.map((office) => (
             <div key={office.name}>
               <h4 className="text-sm font-semibold text-white">{office.name}</h4>
-              <p className="mt-1.5 text-xs leading-relaxed text-primary-300">{office.address}</p>
-              <p className="mt-1 text-xs text-primary-300">{office.phone}</p>
+              <p className="mt-1.5 text-xs leading-relaxed text-neutral-400">{office.address}</p>
+              <p className="mt-1 text-xs text-neutral-400">{office.phone}</p>
             </div>
           ))}
         </div>
@@ -97,14 +106,14 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-app flex flex-col items-center justify-between gap-4 py-6 sm:flex-row">
-          <p className="text-xs text-primary-300">
+          <p className="text-xs text-neutral-400">
             © 2016–{new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <ul className="flex flex-wrap items-center gap-2" aria-label="Accepted payment methods">
             {paymentMethods.map((method) => (
               <li
                 key={method}
-                className="rounded-md bg-white/10 px-2.5 py-1 text-[11px] font-medium text-primary-100"
+                className="rounded-md bg-white/10 px-2.5 py-1 text-[11px] font-medium text-neutral-200"
               >
                 {method}
               </li>

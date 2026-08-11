@@ -6,9 +6,11 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { HeroSection } from "@/features/home/components/HeroSection";
 import { TrustBadgesBar } from "@/features/home/components/TrustBadgesBar";
 import { PromoBannerCarousel } from "@/features/home/components/PromoBannerCarousel";
+import { TrendingDestinationsSection } from "@/features/home/components/TrendingDestinationsSection";
 import { HowItWorksSection } from "@/features/home/components/HowItWorksSection";
 import { HotDealsSection } from "@/features/home/components/HotDealsSection";
 import { PopularHotelsSection } from "@/features/home/components/PopularHotelsSection";
+import { PopularHolidayPackagesSection } from "@/features/home/components/PopularHolidayPackagesSection";
 import { TopDestinationsSection } from "@/features/home/components/TopDestinationsSection";
 import { TopAirlinesGrid } from "@/features/home/components/TopAirlinesGrid";
 import { PopularRoutesSection } from "@/features/home/components/PopularRoutesSection";
@@ -18,9 +20,11 @@ import { PartnerCtaBanner } from "@/features/home/components/PartnerCtaBanner";
 import {
   trustBadges,
   promoBanners,
+  trendingDestinations,
   helpTiles,
   hotDeals,
   popularHotels,
+  holidayPackages,
   topDestinations,
   topAirlines,
   popularRoutes,
@@ -79,9 +83,11 @@ export default function HomePage() {
       <HeroSection />
       <TrustBadgesBar items={trustBadges} />
       <PromoBannerCarousel banners={promoBanners} />
+      <TrendingDestinationsSection destinations={trendingDestinations} />
       <HowItWorksSection tiles={helpTiles} />
       <HotDealsSection deals={hotDeals} />
       <PopularHotelsSection hotels={popularHotels} />
+      <PopularHolidayPackagesSection packages={holidayPackages} />
       <TopDestinationsSection destinations={topDestinations} />
       <TopAirlinesGrid airlines={topAirlines} />
       <PopularRoutesSection routes={popularRoutes} />

@@ -17,7 +17,7 @@ export function PartnerCtaBanner() {
           </div>
           <Link
             href="/partner"
-            className="inline-flex h-[52px] items-center gap-2 whitespace-nowrap rounded-lg bg-accent-500 px-7 text-base font-medium text-white shadow-md transition-colors hover:bg-accent-600"
+            className="inline-flex h-[52px] items-center gap-2 whitespace-nowrap rounded-lg bg-white px-7 text-base font-semibold text-primary-600 shadow-md transition-colors hover:bg-neutral-50"
           >
             Become a Partner
             <ArrowRight className="h-4 w-4" aria-hidden />

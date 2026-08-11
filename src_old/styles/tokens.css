@@ -1,0 +1,110 @@
+/**
+ * Design tokens — single source of truth for the visual system.
+ * Kept as CSS variables (not just Tailwind config) so a future dark theme
+ * or white-label re-skin is a variable swap, not a rewrite.
+ *
+ * Brand identity:
+ *  - Primary: deep teal-blue — distinct from the generic navy used by
+ *    ShareTrip/GoZayaan/BuyAirTicket, still reads as "trustworthy travel brand".
+ *  - Accent: warm amber/coral for CTAs — high contrast against the teal.
+ */
+
+:root {
+  /* ---- Brand ---- */
+  --color-primary-50: #eef7f9;
+  --color-primary-100: #d3ebf0;
+  --color-primary-200: #a8d6e1;
+  --color-primary-300: #74bccd;
+  --color-primary-400: #3f9db4;
+  --color-primary-500: #157d99;
+  --color-primary-600: #0f6580;
+  --color-primary-700: #0b4f6c; /* core brand */
+  --color-primary-800: #0a3f57;
+  --color-primary-900: #08303f;
+
+  --color-accent-50: #fff5ec;
+  --color-accent-100: #ffe6cf;
+  --color-accent-200: #ffc998;
+  --color-accent-300: #ffa860;
+  --color-accent-400: #ff8c4a;
+  --color-accent-500: #ff7a45; /* core accent */
+  --color-accent-600: #f5641f;
+  --color-accent-700: #d54e12;
+  --color-accent-800: #ab3f11;
+  --color-accent-900: #8a3512;
+
+  /* ---- Neutrals (slate-based) ---- */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+  --color-neutral-950: #020617;
+
+  /* ---- Semantic ---- */
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-danger: #dc2626;
+  --color-info: var(--color-primary-500);
+
+  /* ---- Surface / text roles (dark-mode ready) ---- */
+  --surface-app: var(--color-neutral-0);
+  --surface-muted: var(--color-neutral-50);
+  --surface-raised: var(--color-neutral-0);
+  --surface-inverse: var(--color-primary-800);
+
+  --text-primary: var(--color-neutral-900);
+  --text-secondary: var(--color-neutral-600);
+  --text-muted: var(--color-neutral-400);
+  --text-on-brand: var(--color-neutral-0);
+  --text-link: var(--color-primary-600);
+
+  --border-default: var(--color-neutral-200);
+  --border-strong: var(--color-neutral-300);
+
+  /* ---- Radius scale ---- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --radius-full: 999px;
+
+  /* ---- Elevation (soft, layered) ---- */
+  --shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+  --shadow-md: 0 4px 12px -2px rgb(15 23 42 / 0.08), 0 2px 4px -2px rgb(15 23 42 / 0.04);
+  --shadow-lg: 0 12px 24px -8px rgb(15 23 42 / 0.12), 0 4px 8px -4px rgb(15 23 42 / 0.06);
+  --shadow-xl: 0 24px 48px -12px rgb(15 23 42 / 0.18), 0 8px 16px -8px rgb(15 23 42 / 0.08);
+  --shadow-floating: 0 20px 40px -8px rgb(11 79 108 / 0.25);
+
+  /* ---- Motion ---- */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+
+  /* ---- Layout ---- */
+  --header-height: 76px;
+  --container-max: 1280px;
+}
+
+/* Dark theme scaffold — flip on <html data-theme="dark"> once dark mode ships. */
+[data-theme="dark"] {
+  --surface-app: var(--color-neutral-950);
+  --surface-muted: var(--color-neutral-900);
+  --surface-raised: var(--color-neutral-800);
+  --surface-inverse: var(--color-primary-900);
+
+  --text-primary: var(--color-neutral-50);
+  --text-secondary: var(--color-neutral-300);
+  --text-muted: var(--color-neutral-500);
+
+  --border-default: var(--color-neutral-700);
+  --border-strong: var(--color-neutral-600);
+}

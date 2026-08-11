@@ -6,6 +6,18 @@ import { cn } from "@/lib/utils";
 import type { TrendingDestination } from "@/features/home/types";
 
 /**
+ * Converts a flag emoji (e.g. "🇲🇾") into a Twemoji SVG URL, since flag
+ * emoji don't render on Windows/many Linux browsers — this keeps the
+ * flag visually consistent across all platforms.
+ */
+function getTwemojiUrl(flagEmoji: string): string {
+  const codepoints = Array.from(flagEmoji)
+    .map((char) => char.codePointAt(0)!.toString(16))
+    .join("-");
+  return `https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/${codepoints}.svg`;
+}
+
+/**
  * Server-rendered bento grid. Featured cards (row 1) span 3 of 6 columns
  * each on desktop; the rest split 2 columns each — no client JS needed,
  * this is pure layout + Reveal's scroll-entrance.
@@ -81,9 +93,14 @@ function TrendingCard({
         <span className="font-heading text-xl font-bold text-white drop-shadow-sm">
           {destination.city}
         </span>
-        <span className="text-lg" aria-hidden>
-          {destination.countryFlag}
-        </span>
+        <img
+          src={getTwemojiUrl(destination.countryFlag)}
+          alt=""
+          aria-hidden
+          width={20}
+          height={14}
+          className="h-3.5 w-5 rounded-[2px] object-cover shadow-sm"
+        />
       </div>
     </Link>
   );

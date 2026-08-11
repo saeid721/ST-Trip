@@ -13,13 +13,16 @@ const socialIcons = [
 ];
 
 const paymentMethods = [
-  "Visa",
-  "Mastercard",
-  "Amex",
-  "bKash",
-  "Nagad",
-  "Rocket",
-  "Upay",
+  { name: "Visa", icon: "/icons/visa.png" },
+  { name: "Mastercard", icon: "/icons/mastercard.png" },
+  { name: "American Express", icon: "/icons/american-express.png" },
+  { name: "bKash", icon: "/icons/bkash.png" },
+  { name: "Nagad", icon: "/icons/nogod.png" },
+  { name: "Rocket", icon: "/icons/rocket.png" },
+  { name: "DBBL", icon: "/icons/dbbl.png" },
+  { name: "SSLCommerz", icon: "/icons/sslcommerz.png" },
+  { name: "BRAC Bank", icon: "/icons/brac-bank.png" },
+  { name: "City Bank", icon: "/icons/citybank.png" },
 ];
 
 export function Footer() {
@@ -112,10 +115,17 @@ export function Footer() {
           <ul className="flex flex-wrap items-center gap-2" aria-label="Accepted payment methods">
             {paymentMethods.map((method) => (
               <li
-                key={method}
-                className="rounded-md bg-white/10 px-2.5 py-1 text-[11px] font-medium text-neutral-200"
+                key={method.name}
+                className="flex h-6 items-center justify-center rounded-md bg-white px-1 py-1 shadow-sm"
+                title={method.name}
               >
-                {method}
+                <Image
+                  src={method.icon}
+                  alt={method.name}
+                  width={48}
+                  height={28}
+                  className="h-5 w-auto max-w-[36px] object-contain"
+                />
               </li>
             ))}
           </ul>

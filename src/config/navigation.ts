@@ -1,15 +1,28 @@
 export type NavLink = {
   label: string;
   href: string;
+  children?: NavLink[];
 };
 
 export const primaryNav: NavLink[] = [
-  { label: "Flights", href: "/flights" },
-  { label: "Hotels", href: "/hotels" },
-  { label: "Tours", href: "/tours" },
-  { label: "Visa", href: "/visa" },
-  { label: "Offers", href: "/offers" },
-  { label: "Blog", href: "/blog" },
+  { label: "Home", href: "/" },
+  { label: "Umrah Packages", href: "/umrah-packages" },
+  { label: "Hajj Packages", href: "/hajj-packages" },
+  { label: "Tour Packages", href: "/tour-packages" },
+  {
+    label: "Others",
+    href: "/others",
+    children: [
+      { label: "About", href: "/about" },
+      { label: "Promotions", href: "/promotions" },
+      { label: "Why STTrip?", href: "/why-sttrip" },
+      { label: "Travel Guide", href: "/travel-guide" },
+      { label: "Blog", href: "/blog" },
+      { label: "News", href: "/news" },
+      { label: "FAQ & Support", href: "/help/faq" },
+      { label: "Business Class", href: "/business-class" },
+    ],
+  },
 ];
 
 export const footerNav: { title: string; links: NavLink[] }[] = [

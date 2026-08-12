@@ -49,14 +49,34 @@ export function MobileNav({ open, onOpenChange }: MobileNavProps) {
 
           <nav aria-label="Mobile" className="mt-8 flex flex-col gap-1">
             {primaryNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => onOpenChange(false)}
-                className="rounded-lg px-3 py-3 text-base font-medium text-neutral-800 hover:bg-neutral-50"
-              >
-                {item.label}
-              </Link>
+              item.children ? (
+                <div key={item.href} className="rounded-3xl border border-neutral-200 bg-neutral-50 p-3">
+                  <div className="px-3 py-3 text-base font-semibold text-neutral-900">
+                    {item.label}
+                  </div>
+                  <div className="mt-1 flex flex-col gap-1">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        onClick={() => onOpenChange(false)}
+                        className="rounded-lg px-3 py-3 text-base font-medium text-neutral-800 hover:bg-neutral-100"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => onOpenChange(false)}
+                  className="rounded-lg px-3 py-3 text-base font-medium text-neutral-800 hover:bg-neutral-50"
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
           </nav>
 

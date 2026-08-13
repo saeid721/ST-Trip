@@ -28,6 +28,28 @@ export interface TravelGuideItem {
   href: string;
 }
 
+export interface GuideSection {
+  heading: string;
+  content: string;
+}
+
+export interface TravelGuideDetail {
+  slug: string;
+  title: string;
+  subtitle: string;
+  heroImage: string;
+  gallery?: string[];
+  region: string;
+  readTime: string;
+  author: string;
+  publishedAt: string;
+  bestTimeToVisit?: string;
+  intro: string;
+  sections: GuideSection[];
+  tips: string[];
+  faqs?: { question: string; answer: string }[];
+}
+
 export interface BlogCategory {
   value: string;
   label: string;

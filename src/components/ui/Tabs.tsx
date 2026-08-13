@@ -68,7 +68,7 @@ export function TabsList({ className, children, ...props }: RadixTabs.TabsListPr
     <RadixTabs.List
       ref={containerRef}
       className={cn(
-        "relative inline-flex items-center gap-1 rounded-2xl bg-primary-50 p-1 sm:rounded-full",
+        "relative inline-flex items-center gap-1 rounded-2xl bg-primary-50 p-1 md:rounded-full",
         className,
       )}
       {...props}
@@ -91,7 +91,7 @@ export function TabsTrigger({ className, ...props }: RadixTabs.TabsTriggerProps)
   return (
     <RadixTabs.Trigger
       className={cn(
-        "relative z-10 flex h-14 w-16 flex-col items-center justify-center gap-1 rounded-xl px-1 text-[11px] font-medium text-neutral-600 sm:h-11 sm:w-auto sm:flex-row sm:gap-1.5 sm:rounded-full sm:px-4 sm:text-sm",
+        "relative z-10 flex h-14 w-16 flex-col items-center justify-center gap-1 rounded-xl px-1 text-[11px] font-medium text-neutral-600 md:h-11 md:w-auto md:flex-row md:gap-1.5 md:rounded-full md:px-4 md:text-sm",
         "transition-colors duration-150 hover:text-primary-700",
         "data-[state=active]:text-primary-700",
         className,

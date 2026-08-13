@@ -28,10 +28,10 @@ export function SearchWidget() {
   return (
     <div className="rounded-2xl border border-neutral-100 bg-white p-4 shadow-floating sm:p-6">
       <Tabs defaultValue="flights">
-        <TabsList className="mb-5 w-full justify-start gap-0.5 overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:w-fit sm:gap-1 sm:overflow-visible">
+        <TabsList className="mb-5 w-full justify-start gap-0.5 overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:w-fit md:gap-1 md:overflow-visible">
           {tabs.map(({ value, label, icon: Icon }) => (
             <TabsTrigger key={value} value={value} className="shrink-0 snap-start">
-              <Icon className="h-5 w-5 sm:h-4 sm:w-4" aria-hidden />
+              <Icon className="h-5 w-5 md:h-4 md:w-4" aria-hidden />
               <span className="leading-tight">{label}</span>
             </TabsTrigger>
           ))}

@@ -7,7 +7,6 @@ import { primaryNav } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { LoginModal } from "@/components/layout/LoginModal";
-import { MobileTabBar } from "@/components/layout/MobileTabBar";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { cn } from "@/lib/utils";
 

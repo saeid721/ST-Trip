@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Kaaba, BookOpen, Globe, LogIn } from "lucide-react";
+import { Home, Heart, Star, Globe, LogIn } from "lucide-react";
 import { useCallback, useState } from "react";
 
 const navItems = [
   { label: "Home", href: "/", icon: Home },
-  { label: "Umrah", href: "/umrah-packages", icon: Kaaba },
-  { label: "Hajj", href: "/hajj-packages", icon: BookOpen },
-  { label: "Tours", href: "/tour-packages", icon: Globe },
+  { label: "Umrah Packages", href: "/umrah-packages", icon: Heart },
+  { label: "Hajj Packages", href: "/hajj-packages", icon: Star },
+  { label: "Tours Packages", href: "/tour-packages", icon: Globe },
 ];
 
 const loginItem = { label: "Login", href: "#login", icon: LogIn };

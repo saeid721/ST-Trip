@@ -1,0 +1,58 @@
+import type { TravelGuideItem } from "@/features/content/types";
+
+export const travelGuides: TravelGuideItem[] = [
+  {
+    id: "guide-coxsbazar",
+    title: "The Complete Cox's Bazar Travel Guide",
+    excerpt: "Best beaches, seasonal tips, and where to stay along the world's longest sea beach.",
+    coverImage: "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=800&q=80",
+    region: "Bangladesh",
+    readTime: "8 min read",
+    href: "/travel-guide/coxs-bazar",
+  },
+  {
+    id: "guide-sylhet",
+    title: "Sylhet: Tea Gardens, Hills & Waterfalls",
+    excerpt: "A regional guide to the greenest corner of Bangladesh, best visited June–September.",
+    coverImage: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
+    region: "Bangladesh",
+    readTime: "6 min read",
+    href: "/travel-guide/sylhet",
+  },
+  {
+    id: "guide-malaysia",
+    title: "First-Time Visitor's Guide to Malaysia",
+    excerpt: "Visa requirements, currency tips, and a 5-day Kuala Lumpur & Penang itinerary.",
+    coverImage: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80",
+    region: "Southeast Asia",
+    readTime: "10 min read",
+    href: "/travel-guide/malaysia",
+  },
+  {
+    id: "guide-umrah",
+    title: "Umrah Packing & Preparation Checklist",
+    excerpt: "Everything to prepare — documents, ihram essentials, and etiquette reminders.",
+    coverImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
+    region: "Saudi Arabia",
+    readTime: "7 min read",
+    href: "/travel-guide/umrah-checklist",
+  },
+  {
+    id: "guide-dubai",
+    title: "48 Hours in Dubai on a Budget",
+    excerpt: "How to see the highlights without overspending, from transit to attraction passes.",
+    coverImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
+    region: "Middle East",
+    readTime: "6 min read",
+    href: "/travel-guide/dubai-budget",
+  },
+  {
+    id: "guide-thailand",
+    title: "Bangkok Street Food You Shouldn't Miss",
+    excerpt: "A local's shortlist of night markets and stalls worth the detour.",
+    coverImage: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80",
+    region: "Southeast Asia",
+    readTime: "5 min read",
+    href: "/travel-guide/bangkok-street-food",
+  },
+];

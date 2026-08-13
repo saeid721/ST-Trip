@@ -1,0 +1,76 @@
+import type { PackageCategory, PackageItem } from "@/features/packages/types";
+
+export const tourCategories: PackageCategory[] = [
+  { value: "all", label: "All Tours" },
+  { value: "asia", label: "Asia" },
+  { value: "europe", label: "Europe" },
+  { value: "multi-country", label: "Multi-Country" },
+  { value: "africa", label: "Africa" },
+];
+
+export const tourPackages: PackageItem[] = [
+  {
+    id: "tour-europe-classic-10",
+    category: "multi-country",
+    title: "Classic / Central Europe Tour Package",
+    image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80",
+    durationDays: 10,
+    priceFrom: 299000,
+    href: "/tour-packages/central-europe-classic",
+    badge: "Best Of",
+  },
+  {
+    id: "tour-europe-5country",
+    category: "europe",
+    title: "5 Countries Europe Tour Package",
+    image: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=800&q=80",
+    durationDays: 12,
+    priceFrom: 269000,
+    href: "/tour-packages/europe-5-countries",
+  },
+  {
+    id: "tour-malaysia",
+    category: "asia",
+    title: "Kuala Lumpur Getaway",
+    image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80",
+    durationDays: 5,
+    priceFrom: 11999,
+    href: "/tour-packages/kuala-lumpur",
+  },
+  {
+    id: "tour-thailand",
+    category: "asia",
+    title: "Bangkok & Pattaya Explorer",
+    image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80",
+    durationDays: 5,
+    priceFrom: 9000,
+    href: "/tour-packages/bangkok",
+  },
+  {
+    id: "tour-egypt",
+    category: "africa",
+    title: "Treasures of Egypt",
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
+    durationDays: 7,
+    priceFrom: 160000,
+    href: "/tour-packages/egypt",
+  },
+  {
+    id: "tour-vietnam-cambodia",
+    category: "asia",
+    title: "Explore Vietnam & Cambodia",
+    image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
+    durationDays: 5,
+    priceFrom: 45000,
+    href: "/tour-packages/vietnam-cambodia",
+  },
+  {
+    id: "tour-turkey-uk",
+    category: "europe",
+    title: "London & Turkey Tour Package",
+    image: "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=800&q=80",
+    durationDays: 8,
+    priceFrom: 289999,
+    href: "/tour-packages/london-turkey",
+  },
+];

@@ -29,8 +29,8 @@ export function HotelSearchTab() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid gap-3 sm:grid-cols-4">
-        <div className="sm:col-span-2">
+      <div className="grid gap-3 md:grid-cols-4">
+        <div className="md:col-span-2">
           <label htmlFor="hotelDestination" className="mb-1 block text-xs font-medium text-neutral-500">
             Destination
           </label>
@@ -80,7 +80,7 @@ export function HotelSearchTab() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+      <div className="flex flex-col gap-3 md:flex-row md:items-end">
         <div className="flex-1">
           <label htmlFor="roomsGuests" className="mb-1 block text-xs font-medium text-neutral-500">
             Rooms & Guests

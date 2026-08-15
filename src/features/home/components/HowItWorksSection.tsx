@@ -14,7 +14,7 @@ export function HowItWorksSection({ tiles }: { tiles: HelpTile[] }) {
           title="How It Works"
           description="Short guides to help you book faster and save more."
         />
-        <div className="grid gap-5 sm:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-3">
           {tiles.map((tile) => (
             <Link
               key={tile.id}

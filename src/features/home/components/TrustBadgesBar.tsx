@@ -11,7 +11,7 @@ const icons = {
 export function TrustBadgesBar({ items }: { items: TrustBadgeItem[] }) {
   return (
     <section aria-label="Why book with us" className="border-b border-neutral-100 bg-white">
-      <div className="container-app grid grid-cols-2 gap-6 py-8 sm:grid-cols-4">
+      <div className="container-app grid grid-cols-2 gap-6 py-8 md:grid-cols-4">
         {items.map((item) => {
           const Icon = icons[item.id as keyof typeof icons] ?? ShieldCheck;
           return (

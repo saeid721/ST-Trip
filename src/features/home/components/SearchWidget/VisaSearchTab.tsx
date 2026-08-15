@@ -25,7 +25,7 @@ export function VisaSearchTab() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+      <div className="flex flex-col gap-3 md:flex-row md:items-end">
         <div className="flex-1">
           <label htmlFor="visaCountry" className="mb-1 block text-xs font-medium text-neutral-500">
             Which country are you visiting?

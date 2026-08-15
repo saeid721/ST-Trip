@@ -31,7 +31,7 @@ export function HajjSearchTab() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-5 sm:grid-cols-[1.3fr_1.3fr_1.6fr_auto] sm:items-end">
+    <form onSubmit={handleSubmit} className="grid gap-5 md:grid-cols-[1.3fr_1.3fr_1.6fr_auto] md:items-end">
       <fieldset>
         <legend className="mb-1.5 text-xs font-medium text-neutral-500">Identity Type</legend>
         <div className="flex flex-wrap gap-4">

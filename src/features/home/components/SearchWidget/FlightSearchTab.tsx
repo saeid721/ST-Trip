@@ -63,7 +63,7 @@ export function FlightSearchTab() {
       </div>
 
       {/* Origin / Destination with swap */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+      <div className="flex flex-col gap-3 md:flex-row md:items-end">
         <AirportAutocomplete
           label="From"
           variant="origin"
@@ -76,7 +76,7 @@ export function FlightSearchTab() {
           type="button"
           aria-label="Swap origin and destination"
           onClick={swapOriginDestination}
-          className="mx-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-white text-primary-700 shadow-sm transition-transform hover:rotate-180 hover:bg-primary-50 sm:mx-0 sm:mb-0.5"
+          className="mx-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-white text-primary-700 shadow-sm transition-transform hover:rotate-180 hover:bg-primary-50 md:mx-0 md:mb-0.5"
         >
           <ArrowLeftRight className="h-4 w-4" aria-hidden />
         </button>
@@ -91,7 +91,7 @@ export function FlightSearchTab() {
       </div>
 
       {/* Dates + travelers */}
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid gap-3 md:grid-cols-3">
         <div>
           <label htmlFor="departureDate" className="mb-1 block text-xs font-medium text-neutral-500">
             Departing

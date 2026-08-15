@@ -17,7 +17,7 @@ export function TourSearchTab() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row sm:items-end">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 md:flex-row md:items-end">
       <div className="flex-1">
         <label htmlFor="tourDestination" className="mb-1 block text-xs font-medium text-neutral-500">
           Where do you want to go?

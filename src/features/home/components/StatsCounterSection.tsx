@@ -56,7 +56,7 @@ export function StatsCounterSection({ stats }: { stats: StatItem[] }) {
           Discover the difference — trusted by travellers across Bangladesh.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.id}

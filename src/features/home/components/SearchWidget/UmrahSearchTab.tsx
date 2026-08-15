@@ -118,7 +118,7 @@ export function UmrahSearchTab() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-3 sm:grid-cols-[2fr_1.4fr_1.6fr_auto] sm:items-end">
+    <form onSubmit={handleSubmit} className="grid gap-3 md:grid-cols-[2fr_1.4fr_1.6fr_auto] md:items-end">
       <div>
         <label htmlFor="umrahDestination" className="mb-1 block text-xs font-medium text-neutral-500">
           To

@@ -29,8 +29,8 @@ export function TravelGuideDetailView({ guide, relatedGuides }: TravelGuideDetai
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-[calc(var(--header-height)+1.5rem)]">
-        <div className="relative h-[320px] w-full overflow-hidden sm:h-[420px]">
+      <section className="relative">
+        <div className="relative h-[340px] w-full overflow-hidden sm:h-[460px]">
           <Image
             src={guide.heroImage}
             alt={guide.title}
@@ -39,7 +39,7 @@ export function TravelGuideDetailView({ guide, relatedGuides }: TravelGuideDetai
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/40 to-neutral-900/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/35 to-neutral-900/60" />
         </div>
 
         <div className="container-app relative -mt-24 sm:-mt-28">

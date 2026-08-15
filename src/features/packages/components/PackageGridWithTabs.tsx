@@ -18,7 +18,11 @@ export function PackageGridWithTabs({
 
   return (
     <div>
-      <div role="tablist" aria-label="Package categories" className="flex flex-wrap gap-2">
+      <div
+        role="tablist"
+        aria-label="Package categories"
+        className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden"
+      >
         {categories.map((cat) => (
           <button
             key={cat.value}
@@ -27,7 +31,7 @@ export function PackageGridWithTabs({
             aria-selected={active === cat.value}
             onClick={() => setActive(cat.value)}
             className={cn(
-              "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
+              "shrink-0 rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors sm:px-4 sm:py-2",
               active === cat.value
                 ? "bg-primary-600 text-white shadow-sm"
                 : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200",
@@ -43,7 +47,7 @@ export function PackageGridWithTabs({
           No packages found in this category yet — check back soon.
         </p>
       ) : (
-        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-6 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((pkg, i) => (
             <Reveal key={pkg.id} delay={(i % 8) * 0.05}>
               <PackageCard

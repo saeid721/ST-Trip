@@ -29,8 +29,8 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-[calc(var(--header-height)+1.5rem)]">
-        <div className="relative h-[320px] w-full overflow-hidden sm:h-[400px]">
+      <section className="relative">
+        <div className="relative h-[240px] w-full overflow-hidden sm:h-[340px] md:h-[440px]">
           <Image
             src={detail.heroImage}
             alt={detail.title}
@@ -39,11 +39,11 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/85 via-neutral-900/35 to-neutral-900/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/85 via-neutral-900/30 to-neutral-900/60" />
         </div>
 
-        <div className="container-app relative -mt-28 sm:-mt-32">
-          <div className="rounded-2xl bg-white p-6 shadow-lg sm:p-8">
+        <div className="container-app relative -mt-16 sm:-mt-28 md:-mt-32">
+          <div className="rounded-2xl bg-white p-4 shadow-lg sm:p-6 md:p-8">
             <Link
               href={backHref}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 hover:text-primary-800"
@@ -52,14 +52,14 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
               {backLabel}
             </Link>
 
-            <div className="mt-3 flex flex-wrap items-start justify-between gap-4">
+            <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-4">
               <div>
                 {detail.badge && (
                   <span className="mb-2 inline-block rounded-full bg-accent-500 px-2.5 py-1 text-xs font-bold text-white">
                     {detail.badge}
                   </span>
                 )}
-                <h1 className="font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
+                <h1 className="font-heading text-xl font-bold text-neutral-900 sm:text-2xl md:text-3xl">
                   {detail.title}
                 </h1>
                 {detail.subtitle && (
@@ -67,25 +67,25 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
                 )}
               </div>
 
-              <div className="text-right">
+              <div className="sm:text-right">
                 <p className="text-[11px] uppercase tracking-wide text-neutral-400">
                   {detail.priceNote ?? "Starts from"}
                 </p>
-                <p className="font-heading text-2xl font-bold text-primary-700 sm:text-3xl">
+                <p className="font-heading text-xl font-bold text-primary-700 sm:text-2xl md:text-3xl">
                   {formatCurrency(detail.priceFrom)}
                 </p>
               </div>
             </div>
 
-            <div className="mt-5 flex flex-wrap gap-4 border-t border-neutral-100 pt-5">
+            <div className="mt-4 flex flex-wrap gap-3 border-t border-neutral-100 pt-4 sm:mt-5 sm:gap-4 sm:pt-5">
               {detail.durationDays > 0 && (
-                <span className="inline-flex items-center gap-1.5 text-sm text-neutral-600">
+                <span className="inline-flex items-center gap-1.5 text-xs text-neutral-600 sm:text-sm">
                   <CalendarDays className="h-4 w-4 text-primary-600" aria-hidden />
                   {detail.durationDays} Days
                 </span>
               )}
               {detail.nightsLabel && (
-                <span className="inline-flex items-center gap-1.5 text-sm text-neutral-600">
+                <span className="inline-flex items-center gap-1.5 text-xs text-neutral-600 sm:text-sm">
                   <MapPin className="h-4 w-4 text-primary-600" aria-hidden />
                   {detail.nightsLabel}
                 </span>
@@ -96,12 +96,12 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
       </section>
 
       {/* Body */}
-      <section className="py-12 sm:py-16">
-        <div className="container-app grid gap-10 lg:grid-cols-[1fr_340px]">
+      <section className="pb-28 pt-10 sm:pb-16 sm:pt-12 md:pt-16 lg:pb-16">
+        <div className="container-app grid gap-8 lg:grid-cols-[1fr_340px] lg:gap-10">
           {/* Main content */}
-          <div className="space-y-10">
+          <div className="space-y-8 sm:space-y-10">
             {gallery.length > 1 && (
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3">
                 {gallery.slice(0, 3).map((src, i) => (
                   <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-xl">
                     <Image
@@ -117,13 +117,13 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
             )}
 
             <div>
-              <h2 className="font-heading text-xl font-bold text-neutral-900">Overview</h2>
+              <h2 className="font-heading text-lg font-bold text-neutral-900 sm:text-xl">Overview</h2>
               <p className="mt-3 text-sm leading-relaxed text-neutral-600">{detail.overview}</p>
             </div>
 
             {detail.highlights.length > 0 && (
               <div>
-                <h2 className="font-heading text-xl font-bold text-neutral-900">Highlights</h2>
+                <h2 className="font-heading text-lg font-bold text-neutral-900 sm:text-xl">Highlights</h2>
                 <ul className="mt-3 grid gap-2.5 sm:grid-cols-2">
                   {detail.highlights.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-neutral-600">
@@ -135,8 +135,8 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
               </div>
             )}
 
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="rounded-xl border border-neutral-200 p-5">
+            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+              <div className="rounded-xl border border-neutral-200 p-4 sm:p-5">
                 <h3 className="font-heading text-base font-semibold text-neutral-900">
                   Package Includes
                 </h3>
@@ -149,7 +149,7 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
                   ))}
                 </ul>
               </div>
-              <div className="rounded-xl border border-neutral-200 p-5">
+              <div className="rounded-xl border border-neutral-200 p-4 sm:p-5">
                 <h3 className="font-heading text-base font-semibold text-neutral-900">
                   Not Included
                 </h3>
@@ -166,7 +166,7 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
 
             {detail.itinerary && detail.itinerary.length > 0 && (
               <div>
-                <h2 className="font-heading text-xl font-bold text-neutral-900">
+                <h2 className="font-heading text-lg font-bold text-neutral-900 sm:text-xl">
                   Day-by-Day Itinerary
                 </h2>
                 <ItineraryAccordion days={detail.itinerary} />
@@ -175,7 +175,7 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
 
             {detail.faqs && detail.faqs.length > 0 && (
               <div>
-                <h2 className="font-heading text-xl font-bold text-neutral-900">
+                <h2 className="font-heading text-lg font-bold text-neutral-900 sm:text-xl">
                   Frequently Asked Questions
                 </h2>
                 <FaqAccordion faqs={detail.faqs} />
@@ -183,8 +183,8 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
             )}
           </div>
 
-          {/* Sidebar */}
-          <aside className="lg:sticky lg:top-[calc(var(--header-height)+1.5rem)] lg:h-fit">
+          {/* Sidebar (desktop/tablet) */}
+          <aside className="hidden lg:sticky lg:top-[calc(var(--header-height)+1.5rem)] lg:block lg:h-fit">
             <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <p className="text-[11px] uppercase tracking-wide text-neutral-400">
                 {detail.priceNote ?? "Starts from"}
@@ -221,6 +221,39 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
           </aside>
         </div>
       </section>
+
+      {/* Mobile sticky booking bar */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-neutral-200 bg-white/95 px-4 py-3 backdrop-blur-sm [padding-bottom:calc(0.75rem+env(safe-area-inset-bottom))] lg:hidden">
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="truncate text-[10px] uppercase tracking-wide text-neutral-400">
+              {detail.priceNote ?? "Starts from"}
+            </p>
+            <p className="font-heading text-lg font-bold text-primary-700">
+              {formatCurrency(detail.priceFrom)}
+            </p>
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
+            <a
+              href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp Inquiry"
+              className="flex h-11 w-11 items-center justify-center rounded-lg border border-neutral-200 text-neutral-700 transition-colors hover:border-primary-300 hover:text-primary-700"
+            >
+              <MessageCircle className="h-5 w-5" aria-hidden />
+            </a>
+
+            <a
+              href={`tel:${siteConfig.contact.supportPhone}`}
+              className="flex h-11 items-center justify-center gap-2 rounded-lg bg-primary-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
+            >
+              <Phone className="h-4 w-4" aria-hidden />
+              Call
+            </a>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, Heart, Star, Globe, LogIn } from "lucide-react";
 import { useCallback, useState } from "react";
+import { LoginModal } from "@/components/layout/LoginModal";
 
 const navItems = [
   { label: "Home", href: "/", icon: Home },
@@ -33,70 +34,46 @@ export function MobileTabBar() {
         aria-label="Mobile bottom navigation"
         className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-neutral-200 shadow-xl"
       >
-        <div className="flex items-center justify-around h-20 px-2 max-w-full">
-          {/* Navigation Links */}
-          <div className="flex items-center justify-around flex-1">
-            {navItems.map(({ label, href, icon: Icon }) => {
-              const isActive = pathname === href || pathname.startsWith(href + "/");
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  className={`flex flex-col items-center justify-center min-h-16 flex-1 rounded-lg transition-all duration-200 ease-out ${
-                    isActive
-                      ? "text-blue-600 bg-blue-50"
-                      : "text-neutral-600 hover:bg-neutral-50"
-                  }`}
-                >
-                  <Icon className="h-6 w-6 mb-1" aria-hidden="true" />
-                  <span className="text-xs font-medium leading-tight text-center px-1">
-                    {label}
-                  </span>
-                  {isActive && (
-                    <span className="absolute bottom-0 h-1 w-8 bg-blue-600 rounded-t-lg" />
-                  )}
-                </Link>
-              );
-            })}
-          </div>
+        <div className="grid grid-cols-5 h-20 px-1">
+          {navItems.map(({ label, href, icon: Icon }) => {
+            const isActive = pathname === href || pathname.startsWith(href + "/");
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`relative flex flex-col items-center justify-center gap-1 rounded-lg mx-0.5 transition-all duration-200 ease-out ${
+                  isActive
+                    ? "text-blue-600 bg-blue-50"
+                    : "text-neutral-600 hover:bg-neutral-50"
+                }`}
+              >
+                <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                <span className="text-[10px] font-medium leading-tight text-center px-0.5 line-clamp-1">
+                  {label}
+                </span>
+                {isActive && (
+                  <span className="absolute top-0 h-0.5 w-8 bg-blue-600 rounded-b-lg" />
+                )}
+              </Link>
+            );
+          })}
 
           {/* Login Button */}
           <button
+            type="button"
             onClick={handleLoginClick}
-            className="flex flex-col items-center justify-center min-h-16 flex-1 rounded-lg text-neutral-600 hover:bg-neutral-50 transition-all duration-200 ease-out ml-1"
+            className="relative flex flex-col items-center justify-center gap-1 rounded-lg mx-0.5 text-neutral-600 hover:bg-neutral-50 transition-all duration-200 ease-out"
             aria-label="Open login modal"
           >
-            <loginItem.icon className="h-6 w-6 mb-1" aria-hidden="true" />
-            <span className="text-xs font-medium leading-tight text-center px-1">
+            <loginItem.icon className="h-5 w-5 shrink-0" aria-hidden="true" />
+            <span className="text-[10px] font-medium leading-tight text-center px-0.5">
               {loginItem.label}
             </span>
           </button>
         </div>
       </nav>
 
-      {/* Login Modal Placeholder - You can trigger your existing LoginModal here */}
-      {isLoginModalOpen && (
-        <div
-          className="fixed inset-0 z-[60] bg-black bg-opacity-50 flex items-center justify-center md:hidden"
-          onClick={() => setIsLoginModalOpen(false)}
-        >
-          <div
-            className="bg-white rounded-2xl p-6 m-4 w-full max-w-sm"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2 className="text-xl font-bold mb-4">Login</h2>
-            <p className="text-neutral-600 mb-6">
-              Login functionality will be integrated here with your existing LoginModal component.
-            </p>
-            <button
-              onClick={() => setIsLoginModalOpen(false)}
-              className="w-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 font-medium py-2 px-4 rounded-lg transition-colors"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      <LoginModal open={isLoginModalOpen} onOpenChange={setIsLoginModalOpen} />
     </>
   );
 }

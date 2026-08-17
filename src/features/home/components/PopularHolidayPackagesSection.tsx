@@ -5,13 +5,17 @@ import Link from "next/link";
 import { Carousel } from "@/components/ui/Carousel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { formatCurrency } from "@/lib/utils";
-import type { HolidayPackage } from "@/features/home/types";
+import type { HolidayPackage } from "@/features/holiday-packages/types";
 
 export function PopularHolidayPackagesSection({ packages }: { packages: HolidayPackage[] }) {
   return (
     <section aria-labelledby="holiday-packages-heading" className="bg-neutral-50 py-14 sm:py-20">
       <div className="container-app">
-        <SectionHeading id="holiday-packages-heading" title="Popular Holiday Packages" />
+        <SectionHeading
+          id="holiday-packages-heading"
+          title="Popular Holiday Packages"
+          viewAllHref="/holiday-packages"
+        />
 
         <Carousel
           ariaLabel="Popular holiday packages"

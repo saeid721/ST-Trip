@@ -119,16 +119,16 @@ const flightRoutes: FlightRoute[] = [
 
 export function WorldMapFlights() {
   return (
-    <div className="relative mx-auto aspect-[16/9] w-full max-w-xl overflow-hidden">
+    <div className="relative mx-auto aspect-[16/9] w-full max-w-[280px] overflow-hidden sm:max-w-md lg:max-w-xl">
       {/* 1. Custom Dotted World Map Asset */}
       <Image
         src="/images/world-map.png"
         alt="Dotted World Map"
         fill
         className="object-contain p-2 opacity-90 select-none"
+        sizes="(max-width: 640px) 280px, (max-width: 1024px) 448px, 576px"
         priority
       />
-
 
       {/* 3. Native SVG Flight Routes & animateMotion Engine */}
       <svg
@@ -199,6 +199,7 @@ export function WorldMapFlights() {
               height="24"
               x="-12"
               y="-12"
+              transform="rotate(90)"
               style={{ filter: "drop-shadow(0px 2px 4px rgba(15,23,42,0.3))" }}
             >
               <animateMotion

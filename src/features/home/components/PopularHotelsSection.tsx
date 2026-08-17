@@ -13,7 +13,7 @@ export function PopularHotelsSection({ hotels }: { hotels: HotelListing[] }) {
           eyebrow="Cox's Bazar"
           title="Best Hotels in Cox's Bazar"
           description="Discover the vibrant culture of Bangladesh and the breathtaking beauty of Cox's Bazar."
-          viewAllHref="/hotels?location=coxs-bazar"
+          viewAllHref="/hotels"
         />
         <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
           {hotels.map((hotel, i) => (

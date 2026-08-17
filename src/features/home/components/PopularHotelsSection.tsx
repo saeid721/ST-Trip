@@ -2,7 +2,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContentCard } from "@/components/ui/ContentCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { formatCurrency } from "@/lib/utils";
-import type { HotelListing } from "@/features/home/types";
+import type { HotelListing } from "@/features/hotels/types";
 
 export function PopularHotelsSection({ hotels }: { hotels: HotelListing[] }) {
   return (

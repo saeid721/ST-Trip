@@ -4,15 +4,16 @@ import { hotelDetails } from "@/features/hotels/data/hotels";
 import { HotelDetailView } from "@/features/hotels/components/HotelDetailView";
 
 interface HotelPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
   return Object.keys(hotelDetails).map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: HotelPageProps): Metadata {
-  const detail = hotelDetails[params.slug];
+export async function generateMetadata({ params }: HotelPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const detail = hotelDetails[slug];
   if (!detail) return {};
   return {
     title: detail.name,
@@ -20,8 +21,9 @@ export function generateMetadata({ params }: HotelPageProps): Metadata {
   };
 }
 
-export default function HotelDetailPage({ params }: HotelPageProps) {
-  const detail = hotelDetails[params.slug];
+export default async function HotelDetailPage({ params }: HotelPageProps) {
+  const { slug } = await params;
+  const detail = hotelDetails[slug];
   if (!detail) notFound();
 
   return <HotelDetailView detail={detail} backHref="/hotels" backLabel="Back to All Hotels" />;

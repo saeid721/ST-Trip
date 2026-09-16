@@ -1,4 +1,5 @@
 import type { PackageDetail } from "@/features/packages/types";
+import { umrahPackages } from "./umrah-packages";
 
 export const umrahPackageDetails: Record<string, PackageDetail> = {
   "exclusive-14-days": {
@@ -87,3 +88,38 @@ export const umrahPackageDetails: Record<string, PackageDetail> = {
     ],
   },
 };
+
+export function getUmrahPackageDetail(slug: string): PackageDetail | undefined {
+  const detail = umrahPackageDetails[slug];
+  if (detail) return detail;
+
+  const item = umrahPackages.find((pkg) => pkg.href.endsWith(`/${slug}`));
+  if (!item) return undefined;
+
+  return {
+    slug,
+    category: item.category,
+    title: item.title,
+    subtitle: item.nightsLabel ?? `${item.durationDays} days with guided support`,
+    heroImage: item.image,
+    gallery: [item.image],
+    durationDays: item.durationDays,
+    nightsLabel: item.nightsLabel,
+    priceFrom: item.priceFrom,
+    badge: item.badge,
+    overview: `${item.title} is designed for a smooth, well-supported journey from Bangladesh. Our team can help with the itinerary, documentation, accommodation and travel arrangements before departure.`,
+    highlights: [
+      "Guided planning and documentation support",
+      "Comfortable accommodation and transfers",
+      "Dedicated support before and during travel",
+    ],
+    inclusions: ["Package coordination", "Travel guidance", "Pre-departure consultation"],
+    exclusions: ["Personal expenses", "Optional upgrades", "Travel insurance unless stated"],
+    faqs: [
+      {
+        question: "Can this package be customized?",
+        answer: "Yes. Contact our travel specialists to confirm available dates, room preferences and optional services.",
+      },
+    ],
+  };
+}

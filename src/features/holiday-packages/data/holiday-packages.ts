@@ -937,3 +937,36 @@ export const holidayPackageDetails: Record<string, HolidayPackageDetail> = {
     ],
   },
 };
+
+export function getHolidayPackageDetail(slug: string): HolidayPackageDetail | undefined {
+  const detail = holidayPackageDetails[slug];
+  if (detail) return detail;
+
+  const item = holidayPackages.find((pkg) => pkg.href.endsWith(`/${slug}`));
+  if (!item) return undefined;
+
+  return {
+    slug,
+    city: item.city,
+    title: `${item.city} Holiday Package`,
+    subtitle: `${item.city} travel arranged with ST Trip`,
+    heroImage: item.image,
+    gallery: [item.image],
+    durationDays: 5,
+    priceFrom: item.priceFrom,
+    overview: `Enjoy a thoughtfully arranged ${item.city} holiday with practical travel support, comfortable accommodation options and time to experience the destination at your own pace.`,
+    highlights: [
+      `Curated experiences in ${item.city}`,
+      "Accommodation and transfer coordination",
+      "Pre-departure support from our travel team",
+    ],
+    inclusions: ["Package coordination", "Travel guidance", "Pre-departure consultation"],
+    exclusions: ["Personal expenses", "Optional excursions", "Travel insurance unless stated"],
+    faqs: [
+      {
+        question: "Can I customize this holiday package?",
+        answer: "Yes. Contact our team to discuss dates, hotel preferences, transport and optional experiences.",
+      },
+    ],
+  };
+}

@@ -1,4 +1,5 @@
 import type { PackageDetail } from "@/features/packages/types";
+import { hajjPackages } from "./hajj-packages";
 
 // Keyed by slug — the last path segment of each package's `href` in
 // hajj-packages.ts. Add more entries here as you flesh out each package;
@@ -126,3 +127,38 @@ export const hajjPackageDetails: Record<string, PackageDetail> = {
     ],
   },
 };
+
+export function getHajjPackageDetail(slug: string): PackageDetail | undefined {
+  const detail = hajjPackageDetails[slug];
+  if (detail) return detail;
+
+  const item = hajjPackages.find((pkg) => pkg.href.endsWith(`/${slug}`));
+  if (!item) return undefined;
+
+  return {
+    slug,
+    category: item.category,
+    title: item.title,
+    subtitle: item.nightsLabel ?? `${item.durationDays} days with dedicated Hajj support`,
+    heroImage: item.image,
+    gallery: [item.image],
+    durationDays: item.durationDays,
+    nightsLabel: item.nightsLabel,
+    priceFrom: item.priceFrom,
+    badge: item.badge,
+    overview: `${item.title} is planned for pilgrims who want clear arrangements and dependable support throughout the journey. Our specialists will confirm the latest dates, accommodation and authority requirements with you before booking.`,
+    highlights: [
+      "Pre-departure document guidance",
+      "Accommodation and transport coordination",
+      "Experienced pilgrimage support team",
+    ],
+    inclusions: ["Package coordination", "Travel guidance", "Pre-departure consultation"],
+    exclusions: ["Personal expenses", "Optional upgrades", "Costs subject to official updates"],
+    faqs: [
+      {
+        question: "Are dates and accommodation guaranteed?",
+        answer: "Availability depends on the official Hajj schedule and supplier confirmation. Our team confirms the final arrangements before payment is completed.",
+      },
+    ],
+  };
+}

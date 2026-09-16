@@ -1,16 +1,36 @@
+import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 import { DestinationDetailView } from '@/features/destinations/components/DestinationDetailView';
-import { destinationDetails } from '@/features/destinations/data/destinations';
-import { notFound } from 'next/navigation';
+import { destinationDetails, getDestinationDetail } from '@/features/destinations/data/destinations';
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
-export default function DestinationPage({ params }: Props) {
-  const detail = destinationDetails[params.slug];
-  if (!detail) {
-    notFound();
-  }
-
-  return <DestinationDetailView detail={detail} />;
+export function generateStaticParams() {
+  return Object.keys(destinationDetails).map((slug) => ({ slug }));
 }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const detail = getDestinationDetail(slug);
+  return {
+    title: `${detail.city}, ${detail.country} — Travel Guide & Hotels`,
+    description: detail.tagline,
+    alternates: { canonical: `${siteConfig.url}/destinations/${slug}` },
+  };
+}
+
+export default async function DestinationPage({ params }: Props) {
+  const { slug } = await params;
+  const detail = getDestinationDetail(slug);
+
+  return (
+    <DestinationDetailView
+      detail={detail}
+      backHref="/destinations"
+      backLabel="Back to Destinations"
+    />
+  );
+}
+

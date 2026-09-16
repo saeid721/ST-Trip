@@ -14,8 +14,8 @@ import { holidayPackages } from "@/features/holiday-packages/data/holiday-packag
 
 interface DestinationDetailViewProps {
   detail: DestinationDetail;
-  backHref: string;
-  backLabel: string;
+  backHref?: string;
+  backLabel?: string;
 }
 
 // Twemoji Flag renderer for Windows compatibility
@@ -258,7 +258,11 @@ const localMockHotels: Record<string, Array<{
   ],
 };
 
-export function DestinationDetailView({ detail, backHref, backLabel }: DestinationDetailViewProps) {
+export function DestinationDetailView({
+  detail,
+  backHref = "/destinations",
+  backLabel = "Back to Destinations",
+}: DestinationDetailViewProps) {
   // 1. Get hotels for this destination
   const matchedHotels = allHotels.filter(
     (h) => h.location.toLowerCase() === detail.city.toLowerCase()
@@ -499,6 +503,7 @@ export function DestinationDetailView({ detail, backHref, backLabel }: Destinati
         <section className="bg-neutral-50 py-14 sm:py-16 border-t border-neutral-250/30">
           <div className="container-app">
             <SectionHeading
+              id="destination-packages"
               title="Featured Holiday Packages"
               description={`Unbeatable tour package deals to ${detail.city} from Dhaka.`}
             />

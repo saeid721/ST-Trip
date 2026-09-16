@@ -1,4 +1,5 @@
 import type { TravelGuideDetail } from "@/features/content/types";
+import { travelGuides } from "./travel-guides";
 
 // Keyed by slug — matches the last path segment of each guide's `href`
 // in travel-guides.ts. Add more entries here as you write up the rest;
@@ -122,3 +123,39 @@ export const travelGuideDetails: Record<string, TravelGuideDetail> = {
     ],
   },
 };
+
+export function getTravelGuideDetail(slug: string): TravelGuideDetail | undefined {
+  const detail = travelGuideDetails[slug];
+  if (detail) return detail;
+
+  const item = travelGuides.find((guide) => guide.href.endsWith(`/${slug}`));
+  if (!item) return undefined;
+
+  return {
+    slug,
+    title: item.title,
+    subtitle: item.excerpt,
+    heroImage: item.coverImage,
+    gallery: [item.coverImage],
+    region: item.region,
+    readTime: item.readTime,
+    author: "ST Trip Travel Desk",
+    publishedAt: new Date().toISOString().slice(0, 10),
+    intro: item.excerpt,
+    sections: [
+      {
+        heading: "Plan Your Visit",
+        content: `Use this guide as a practical starting point for planning your ${item.title.toLowerCase()} journey. Confirm current transport, entry and local operating information before you travel.`,
+      },
+      {
+        heading: "Make the Most of Your Time",
+        content: "Choose a manageable pace, leave room for weather and local conditions, and prioritize the experiences that matter most to you.",
+      },
+    ],
+    tips: [
+      "Confirm current travel and entry requirements before departure",
+      "Keep a flexible plan for weather and local conditions",
+      "Carry essentials, identification and emergency contacts",
+    ],
+  };
+}

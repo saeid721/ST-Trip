@@ -1,4 +1,5 @@
 import type { PackageDetail } from "@/features/packages/types";
+import { tourPackages } from "./tour-packages";
 
 export const tourPackageDetails: Record<string, PackageDetail> = {
   "central-europe-classic": {
@@ -97,3 +98,38 @@ export const tourPackageDetails: Record<string, PackageDetail> = {
     ],
   },
 };
+
+export function getTourPackageDetail(slug: string): PackageDetail | undefined {
+  const detail = tourPackageDetails[slug];
+  if (detail) return detail;
+
+  const item = tourPackages.find((pkg) => pkg.href.endsWith(`/${slug}`));
+  if (!item) return undefined;
+
+  return {
+    slug,
+    category: item.category,
+    title: item.title,
+    subtitle: item.nightsLabel ?? `${item.durationDays} days of curated travel`,
+    heroImage: item.image,
+    gallery: [item.image],
+    durationDays: item.durationDays,
+    nightsLabel: item.nightsLabel,
+    priceFrom: item.priceFrom,
+    badge: item.badge,
+    overview: `${item.title} brings together comfortable stays, practical transfers and carefully selected experiences. Speak with our specialists to confirm the latest itinerary and availability for your dates.`,
+    highlights: [
+      "Curated sightseeing and local experiences",
+      "Accommodation and transfer coordination",
+      "Pre-departure support from our travel team",
+    ],
+    inclusions: ["Tour coordination", "Travel guidance", "Pre-departure consultation"],
+    exclusions: ["Personal expenses", "Optional excursions", "Travel insurance unless stated"],
+    faqs: [
+      {
+        question: "Can I request a different departure date?",
+        answer: "Contact our team and we will check available departures, room options and any applicable price changes.",
+      },
+    ],
+  };
+}

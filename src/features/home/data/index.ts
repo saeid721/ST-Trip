@@ -451,42 +451,12 @@ export const stats: StatItem[] = [
 ];
 
 export const blogPosts: BlogPost[] = [
-  {
-    id: "blog-1",
-    title: "A First-Timer's Guide to Cox's Bazar",
-    excerpt: "Everything to know before visiting the world's longest natural sea beach.",
-    coverImage: "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=800&q=80",
-    author: "Nusrat Jahan",
-    publishedAt: "2026-08-01",
-    href: "/blog/coxs-bazar-first-timer-guide",
-  },
-  {
-    id: "blog-2",
-    title: "5 Visa-Free Destinations for Bangladeshi Passport Holders",
-    excerpt: "Plan your next trip without the visa hassle.",
-    coverImage: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80",
-    author: "Tanvir Ahmed",
-    publishedAt: "2026-07-22",
-    href: "/blog/visa-free-destinations-bd",
-  },
-  {
-    id: "blog-3",
-    title: "How to Change Your Flight Booking Without Extra Fees",
-    excerpt: "A step-by-step guide to rebooking smartly.",
-    coverImage: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80",
-    author: "Zakar Hossan",
-    publishedAt: "2026-07-15",
-    href: "/blog/change-flight-without-fees",
-  },
-  {
-    id: "blog-4",
-    title: "Sylhet in Monsoon: Tea Gardens & Waterfalls Worth the Trip",
-    excerpt: "Why the rainy season is the best time to visit Sylhet.",
-    coverImage: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
-    author: "Nusrat Jahan",
-    publishedAt: "2026-07-07",
-    href: "/blog/sylhet-monsoon-guide",
-  },
+  { id: "blog-1", title: "A First-Timer's Guide to Cox's Bazar", excerpt: "Everything to know before visiting the world's longest natural sea beach.", coverImage: "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=800&q=80", author: "Nusrat Jahan", publishedAt: "2026-08-01", href: "/blog/coxs-bazar-first-timer-guide" },
+  { id: "blog-2", title: "5 Visa-Free Destinations for Bangladeshi Passport Holders", excerpt: "Plan your next trip without the visa hassle.", coverImage: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80", author: "Tanvir Ahmed", publishedAt: "2026-07-22", href: "/blog/visa-free-destinations-bd" },
+  { id: "blog-3", title: "How to Change Your Flight Booking Without Extra Fees", excerpt: "A step-by-step guide to rebooking smartly.", coverImage: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80", author: "Zakar Hossan", publishedAt: "2026-07-15", href: "/blog/change-flight-without-fees" },
+  { id: "blog-4", title: "Sylhet in Monsoon: Tea Gardens & Waterfalls Worth the Trip", excerpt: "Why the rainy season is the best time to visit Sylhet.", coverImage: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80", author: "Nusrat Jahan", publishedAt: "2026-07-07", href: "/blog/sylhet-monsoon-guide" },
+  { id: "blog-5", title: "18% Off International Flights with City Bank Amex", excerpt: "How to stack this card offer with our seasonal fare drops.", coverImage: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80", author: "Tanvir Ahmed", publishedAt: "2026-06-28", href: "/blog/amex-deal-guide" },
+  { id: "blog-6", title: "The Only Carry-On Packing List You'll Need", excerpt: "Pack light for any climate with this reusable checklist.", coverImage: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80", author: "Zakar Hossan", publishedAt: "2026-06-10", href: "/blog/carry-on-packing-list" },
 ];
 
 export const partnerLogos: string[] = [

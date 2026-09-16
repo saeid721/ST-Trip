@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 interface SectionHeadingProps {
-  id: string;
+  id?: string;
   eyebrow?: string;
   title: string;
   description?: string;

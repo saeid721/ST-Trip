@@ -86,3 +86,23 @@ export interface FaqEntry {
   question: string;
   answer: string;
 }
+export interface BlogArticleSection {
+  heading: string;
+  paragraphs: string[];
+}
+
+export interface BlogPostDetail {
+  slug: string;
+  category: string;
+  title: string;
+  excerpt: string;
+  coverImage: string;
+  author: string;
+  publishedAt: string;
+  readTime: string;
+  location: string;
+  intro: string;
+  sections: BlogArticleSection[];
+  tips: string[];
+  faqs: { question: string; answer: string }[];
+}

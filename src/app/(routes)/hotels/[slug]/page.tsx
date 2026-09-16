@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { siteConfig } from "@/config/site";
 import { hotelDetails } from "@/features/hotels/data/hotels";
 import { HotelDetailView } from "@/features/hotels/components/HotelDetailView";
 
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }: HotelPageProps): Promise<Meta
   return {
     title: detail.name,
     description: detail.overview,
+    alternates: { canonical: `${siteConfig.url}/hotels/${slug}` },
   };
 }
 

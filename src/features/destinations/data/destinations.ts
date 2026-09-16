@@ -492,4 +492,636 @@ export const destinationDetails: Record<string, DestinationDetail> = {
     currency: "Bangladeshi Taka (BDT)",
     languages: "Bengali, Tribal Languages",
   },
+
+  rangamati: {
+    slug: "rangamati",
+    city: "Rangamati",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "Serene mountain town surrounded by the turquoise waters of Kaptai Lake",
+    image: "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?w=800&q=80",
+      "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
+      "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=800&q=80",
+    ],
+    longOverview: "Rangamati is a picturesque hill district in the Chittagong Hill Tracts. Famed for Kaptai Lake—the largest artificial lake in South Asia—it offers boat rides through scenic valleys, indigenous handicrafts, and cascading waterfalls.",
+    whyVisit: [
+      "Cruise the calm waters of Kaptai Lake by engine boat",
+      "Walk across the iconic Rangamati Hanging Bridge",
+      "Shop for authentic handmade Chakma fabrics and souvenirs",
+      "Visit the cascading waterfalls of Shuvolong",
+    ],
+    attractions: [
+      {
+        name: "Kaptai Lake",
+        description: "A vast turquoise lake dotted with lush green islands and hill ridges.",
+        image: "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?w=800&q=80",
+      },
+      {
+        name: "Rangamati Hanging Bridge",
+        description: "The iconic multi-colored suspension bridge crossing a scenic arm of the lake.",
+        image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
+      },
+      {
+        name: "Shuvolong Waterfalls",
+        description: "Spectacular natural waterfalls dropping directly into the lake during monsoon and autumn.",
+        image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "October to March",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, Chakma, English",
+  },
+
+  khagrachari: {
+    slug: "khagrachari",
+    city: "Khagrachari",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "The gateway to Sajek Valley, mystical caves, and wild hill streams",
+    image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80",
+      "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?w=800&q=80",
+      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80",
+    ],
+    longOverview: "Khagrachari is the heart of the northern Hill Tracts and the primary starting point for Sajek Valley. It features mysterious subterranean caves, panoramic hilltops, and cascading rivers.",
+    whyVisit: [
+      "Journey onward to the cloud kingdom of Sajek Valley",
+      "Explore the dark, ancient tunnels of Alutila Mysterious Cave",
+      "Enjoy 360-degree views of the valleys from Tareng Hill",
+      "Cool off under the rushing cascades of Richhang Falls",
+    ],
+    attractions: [
+      {
+        name: "Alutila Mysterious Cave",
+        description: "A 100-meter dark limestone cave you navigate carrying a traditional bamboo torch.",
+        image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80",
+      },
+      {
+        name: "Tareng Hill Viewpoint",
+        description: "A scenic ridge-top park offering dramatic views over surrounding hill ranges.",
+        image: "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?w=800&q=80",
+      },
+      {
+        name: "Richhang Waterfall",
+        description: "A natural rocky water slide and waterfall hidden in dense tropical greenery.",
+        image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "September to March",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, Tripuri, Marma",
+  },
+
+  "saint-martin": {
+    slug: "saint-martin",
+    city: "Saint Martin",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "Bangladesh's only coral island, boasting crystalline blue waters and coconut groves",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
+      "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=800&q=80",
+    ],
+    longOverview: "Saint Martin's Island (Narikel Jinjira) is a tropical coral paradise in the northeastern Bay of Bengal. Known for azure waters, live coral reefs, fresh green coconuts, and starry night skies, it is an essential beach escape.",
+    whyVisit: [
+      "Wade across to the uninhabited coral island of Chera Dwip",
+      "Taste fresh grilled lobster, pomfret, and king prawns by the sea",
+      "Bicycle along peaceful sandy paths under coconut canopies",
+      "Stargaze under some of the clearest night skies in the country",
+    ],
+    attractions: [
+      {
+        name: "Chera Dwip",
+        description: "A pristine coral islet accessible during low tide, surrounded by turquoise water.",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      },
+      {
+        name: "West Beach Coral Reefs",
+        description: "A tranquil shoreline with natural rock pools, live corals, and sunset views.",
+        image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
+      },
+      {
+        name: "Coconut Trails",
+        description: "Miles of idyllic sandy trails bordered by leaning palms and fishermen hamlets.",
+        image: "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "November to February",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, English",
+  },
+
+  kuakata: {
+    slug: "kuakata",
+    city: "Kuakata",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "The rare beach where you can watch both sunrise and sunset over the Bay of Bengal",
+    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=800&q=80",
+    ],
+    longOverview: "Kuakata, known as 'Sagor Kannya' (Daughter of the Sea), is located at the southern tip of Bangladesh. It is one of the few places on earth where both the rising and setting sun can be witnessed in unobstructed glory over the sea.",
+    whyVisit: [
+      "Watch the sunrise and sunset over the open sea from one vantage point",
+      "Visit the ancient Buddhist Rakhine Temple and copper Buddha statues",
+      "Explore the dense mangrove forest trails of Lebur Char",
+      "Walk the vast 30-km wide sandy beachfront",
+    ],
+    attractions: [
+      {
+        name: "Kuakata Sunrise & Sunset Beach",
+        description: "The sweeping shoreline renowned for dual horizon views at dawn and dusk.",
+        image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80",
+      },
+      {
+        name: "Lebur Char Mangroves",
+        description: "An estuary point where sea meets river, lined with mangrove roots and crabs.",
+        image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80",
+      },
+      {
+        name: "Misripara Buddhist Temple",
+        description: "A historic Rakhine temple featuring the second largest Buddha statue in South Asia.",
+        image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "October to March",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, Rakhine, English",
+  },
+
+  sundarbans: {
+    slug: "sundarbans",
+    city: "Sundarbans",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "The world's largest mangrove forest and home of the legendary Royal Bengal Tiger",
+    image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80",
+      "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&q=80",
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+    ],
+    longOverview: "A UNESCO World Heritage Site, the Sundarbans is an immense deltaic mangrove forest spanning the coast of Bangladesh. Crossed by complex tidal waterways, mudflats, and small islands, it is home to spotted deer, saltwater crocodiles, and the Royal Bengal Tiger.",
+    whyVisit: [
+      "Embark on a multi-day liveaboard boat cruise through tidal canals",
+      "Spot spotted deer, kingfishers, and wild boars in Kotka Wildlife Sanctuary",
+      "Climb watchtowers at Hiron Point for panoramic forest views",
+      "Experience the pristine solitude of the untouched Jamtola Sea Beach",
+    ],
+    attractions: [
+      {
+        name: "Kotka Wildlife Sanctuary",
+        description: "The primary base for spotting spotted deer herds and observing tiger footprints.",
+        image: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80",
+      },
+      {
+        name: "Karamjal Crocodile & Deer Breeding Center",
+        description: "An accessible educational center with wooden boardwalks over the mangrove swamps.",
+        image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&q=80",
+      },
+      {
+        name: "Jamtola Beach",
+        description: "A wild, secluded beach facing the open Bay, bordered by dense mangrove trees.",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "November to February",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, English",
+  },
+
+  rajshahi: {
+    slug: "rajshahi",
+    city: "Rajshahi",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "The clean Silk City on the banks of the Padma, famous for mangoes and ancient heritage",
+    image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80",
+      "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80",
+      "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=800&q=80",
+    ],
+    longOverview: "Rajshahi is situated on the northern bank of the mighty Padma River. Celebrated for its lush mango orchards, premier silk factories, and clean urban boulevards, it is also surrounded by centuries-old terracotta temples in Puthia.",
+    whyVisit: [
+      "Stroll the serene riverbanks of the Padma during golden sunset",
+      "Explore the magnificent terracotta temple complex in Puthia",
+      "Visit the historic Varendra Research Museum, the oldest in Bangladesh",
+      "Taste world-famous Rajshahi mangoes in summer or purchase Rajshahi silk",
+    ],
+    attractions: [
+      {
+        name: "Puthia Temple Complex",
+        description: "A royal palace and historic Hindu temples featuring ornate terracotta carvings.",
+        image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80",
+      },
+      {
+        name: "Padma River Garden Promenade",
+        description: "A wide riverside walkway offering pleasant breezes, boating, and street food.",
+        image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80",
+      },
+      {
+        name: "Varendra Research Museum",
+        description: "Bangladesh's premier archaeological museum with ancient Hindu and Buddhist sculptures.",
+        image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "October to March (or May–July for mangoes)",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, English",
+  },
+
+  bogura: {
+    slug: "bogura",
+    city: "Bogura",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "Ancient archaeological capital of Bengal, rich in historical mounds and sweet traditions",
+    image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&q=80",
+      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80",
+      "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80",
+    ],
+    longOverview: "Bogura is one of the oldest settlements in South Asia, home to Mahasthangarh dating back to the 3rd century BCE. Beyond its archaeological riches, Bogura is celebrated nationwide for its authentic sweet yogurt (Bogurar Doi).",
+    whyVisit: [
+      "Step back over 2,000 years at the Mahasthangarh ruins",
+      "Taste the legendary clay-pot sweet curd (Bogurar Doi)",
+      "Explore the mysterious Gokul Medh (Behula's honeymoon chamber)",
+      "Visit the historic Kherua Mosque built in 1582",
+    ],
+    attractions: [
+      {
+        name: "Mahasthangarh Citadel Ruins",
+        description: "Ancient ramparts and museum showcasing Mauryan, Gupta, and Pala dynasty relics.",
+        image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&q=80",
+      },
+      {
+        name: "Gokul Medh",
+        description: "A monumental terraced stupa linked to the folk legend of Behula and Lakhindar.",
+        image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800&q=80",
+      },
+      {
+        name: "Kherua Mosque",
+        description: "A picturesque Sultanate-era three-domed brick mosque surrounded by palm trees.",
+        image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "November to February",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, English",
+  },
+
+  chattogram: {
+    slug: "chattogram",
+    city: "Chattogram",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "Commercial capital nestled between the Bay of Bengal, gentle hills, and ports",
+    image: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?w=800&q=80",
+      "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=800&q=80",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+    ],
+    longOverview: "Chattogram (Chittagong) is the principal seaport and commercial heartbeat of Bangladesh. Surrounded by undulating hills, calm beaches like Patenga, and the Karnaphuli River, it is rich in colonial and maritime heritage.",
+    whyVisit: [
+      "Watch container ships roll by while eating street snacks at Patenga Sea Beach",
+      "Ride boats and explore nature trails around picturesque Foy's Lake",
+      "Pay respects at the solemn World War II Commonwealth Cemetery",
+      "Taste authentic Mezbani Beef, Chattogram's famous feast delicacy",
+    ],
+    attractions: [
+      {
+        name: "Patenga Sea Beach",
+        description: "A popular shoreline offering stunning sunsets, crab fry, and views of ship anchorages.",
+        image: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?w=800&q=80",
+      },
+      {
+        name: "Foy's Lake",
+        description: "A scenic man-made lake nestled in green hills, featuring boating and an amusement park.",
+        image: "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?w=800&q=80",
+      },
+      {
+        name: "Chittagong Commonwealth War Cemetery",
+        description: "A beautifully maintained memorial for soldiers of the Burma Campaign.",
+        image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "October to March",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, Chittagonian, English",
+  },
+
+  barisal: {
+    slug: "barisal",
+    city: "Barisal",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "The Venice of Bengal, famous for vibrant floating markets and meandering rivers",
+    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
+      "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80",
+      "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?w=800&q=80",
+    ],
+    longOverview: "Barisal is the southern riverine capital of Bangladesh. Interwoven by rivers, canals, and waterways, it is famous for its lively floating guava markets in Bhimruli, giant passenger river steamers (rocket steamers), and abundant agriculture.",
+    whyVisit: [
+      "Glide through canals to witness the Bhimruli Floating Guava Market",
+      "Take an iconic overnight Rocket Steamer trip on the mighty rivers",
+      "Visit the historical lake-reservoir of Durga Sagar",
+      "Explore Oxford Mission Church, one of Asia's finest architectural gems",
+    ],
+    attractions: [
+      {
+        name: "Bhimruli Floating Market",
+        description: "Dozens of small wooden country boats trading fresh guavas on serene canal crossroads.",
+        image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
+      },
+      {
+        name: "Durga Sagar Dighi",
+        description: "A scenic 45-acre lake built in 1780 with an island sanctuary for migratory birds.",
+        image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
+      },
+      {
+        name: "Oxford Mission Church",
+        description: "A monumental 1903 red-brick church built in traditional Greek and Byzantine style.",
+        image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "July to September (for floating markets) & Nov–Feb",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, English",
+  },
+
+  jashore: {
+    slug: "jashore",
+    city: "Jashore",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "A historic southern crossroads famed for date-palm sweets and literary heritage",
+    image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80",
+      "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
+      "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=800&q=80",
+    ],
+    longOverview: "Jashore (Jessore) is the oldest municipality in Bangladesh. Renowned as the birthplace of legendary poet Michael Madhusudan Dutt along the Kopotakkho River, it is also famed for winter date-palm juice and aromatic jaggery (Khejur Gur).",
+    whyVisit: [
+      "Visit Sagardari, the picturesque riverside home of Michael Madhusudan Dutt",
+      "Savor pure date-palm molasses and traditional winter pitha",
+      "Visit the ancient Chanchra Shiva Temple and historic royal palaces",
+      "Explore the lively flower village of Gadkhali, the flower capital of Bangladesh",
+    ],
+    attractions: [
+      {
+        name: "Gadkhali Flower Fields",
+        description: "Thousands of acres of vibrant rose, gerbera, and marigold gardens.",
+        image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80",
+      },
+      {
+        name: "Sagardari Poet Memorial",
+        description: "The historical estate of Michael Madhusudan Dutt beside the Kopotakkho river.",
+        image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
+      },
+      {
+        name: "Chanchra Rajbari & Shiva Temple",
+        description: "Ancient royal remains and terracotta temple dating back to 1696.",
+        image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "November to March",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, English",
+  },
+
+  comilla: {
+    slug: "comilla",
+    city: "Comilla",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "Home of Mainamati Buddhist ruins, green ridges, and legendary sweet treats",
+    image: "https://images.unsplash.com/photo-1483354483454-4cd359948304?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1483354483454-4cd359948304?w=800&q=80",
+      "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80",
+      "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&q=80",
+    ],
+    longOverview: "Comilla is rich in archaeological history, dating back to the 7th-century Deva and Chandra dynasties. With the Lalmai-Mainamati hills running along its western border and the famous authentic Matri Bhandar Rasmalai, it is an ideal cultural destination.",
+    whyVisit: [
+      "Explore the 8th-century Buddhist archaeological site at Shalban Vihara",
+      "Taste the genuine Comilla Rasmalai from the historic Matri Bhandar",
+      "Visit the Mainamati War Cemetery honoring World War II heroes",
+      "Enjoy scenic walks along the Gomti River embankment",
+    ],
+    attractions: [
+      {
+        name: "Shalban Vihara & Mainamati Museum",
+        description: "A monumental 115-cell Buddhist monastery with stupas and museum relics.",
+        image: "https://images.unsplash.com/photo-1483354483454-4cd359948304?w=800&q=80",
+      },
+      {
+        name: "Maynamati War Cemetery",
+        description: "Serene memorial grounds nestled in tree-covered slopes with over 700 war graves.",
+        image: "https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=800&q=80",
+      },
+      {
+        name: "Dharmasagar Dighi",
+        description: "A huge historic lake excavated in 1458, lined with parks and shaded walking tracks.",
+        image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "October to March",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, English",
+  },
+
+  mymensingh: {
+    slug: "mymensingh",
+    city: "Mymensingh",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "Cultural capital along the Old Brahmaputra, famed for folklore and grand estates",
+    image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+      "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80",
+    ],
+    longOverview: "Mymensingh is known for the Maimansingha Gitika folk ballads, the Old Brahmaputra riverfront, and historic zamindar estates. It houses the renowned Shilpacharya Zainul Abedin Art Gallery and the expansive Bangladesh Agricultural University.",
+    whyVisit: [
+      "Admire original masterworks at Shilpacharya Zainul Abedin Art Gallery",
+      "Stroll or boat along the scenic Old Brahmaputra riverbanks",
+      "Visit the European-influenced architectural marvel of Alexander Castle",
+      "Explore the sprawling gardens of the Agricultural University campus",
+    ],
+    attractions: [
+      {
+        name: "Zainul Abedin Art Gallery",
+        description: "A riverside gallery exhibiting original sketches and paintings by Bangladesh's greatest artist.",
+        image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+      },
+      {
+        name: "Alexander Castle",
+        description: "A 1879 Gothic-style palace that hosted Rabindranath Tagore and Lord Curzon.",
+        image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
+      },
+      {
+        name: "Brahmaputra Riverfront Park",
+        description: "A lush riverside promenade offering evening sunset views and fresh river fish dishes.",
+        image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "November to March",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, English",
+  },
+
+  panchagarh: {
+    slug: "panchagarh",
+    city: "Panchagarh",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "Northernmost frontier with plainland tea gardens and snow-capped Kanchenjunga views",
+    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80",
+      "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
+      "https://images.unsplash.com/photo-1518733057094-95b532cb43b9?w=800&q=80",
+    ],
+    longOverview: "Panchagarh is the northernmost tip of Bangladesh, surrounded on three sides by India. In autumn and winter mornings, the snow-capped peak of Mount Kanchenjunga is visible across the horizon from Tetulia. It is also famous for organic plainland tea gardens and boulder-strewn rivers.",
+    whyVisit: [
+      "Witness Mount Kanchenjunga gleaming on the horizon on clear autumn mornings",
+      "Tour the lush plainland tea estates unique to northern Bangladesh",
+      "Visit the Zero Point border marker at Tetulia along the Mahananda River",
+      "Explore ancient rock-collection rivers and peaceful border scenery",
+    ],
+    attractions: [
+      {
+        name: "Tetulia Dak Bungalow & Kanchenjunga Viewpoint",
+        description: "The premier vantage point overlooking the Mahananda River with Himalayan peak views.",
+        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80",
+      },
+      {
+        name: "Plainland Tea Gardens",
+        description: "Flat-terrain tea plantations stretching to the horizon like vibrant green carpets.",
+        image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
+      },
+      {
+        name: "Mirzapur Shahi Mosque",
+        description: "An ornate 1656 Mughal architectural mosque boasting delicate terracotta artwork.",
+        image: "https://images.unsplash.com/photo-1518733057094-95b532cb43b9?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "October to December (for mountain views) & Jan–Feb",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, English",
+  },
+
+  naogaon: {
+    slug: "naogaon",
+    city: "Naogaon",
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: "Home of Paharpur Buddhist Vihara, a UNESCO World Heritage treasure",
+    image: "https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=800&q=80",
+      "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80",
+      "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&q=80",
+    ],
+    longOverview: "Naogaon is an extraordinary archaeological treasure in northern Bangladesh. It holds Somapura Mahavihara at Paharpur, the largest Buddhist monastery south of the Himalayas and a UNESCO World Heritage site, as well as the historic stone Kusumba Mosque.",
+    whyVisit: [
+      "Marvel at Somapura Mahavihara, the 8th-century UNESCO World Heritage monastery",
+      "Visit the black-stone Kusumba Mosque (featured on the 5-Taka note)",
+      "Explore the magnificent terracotta plaques and stupa architecture",
+      "Walk the vast green grounds of Dubalhati and Balihar Zamindar Palaces",
+    ],
+    attractions: [
+      {
+        name: "Somapura Mahavihara (Paharpur)",
+        description: "A monumental 27-acre UNESCO Buddhist monastery complex with a soaring central shrine.",
+        image: "https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=800&q=80",
+      },
+      {
+        name: "Kusumba Mosque",
+        description: "A stunning 1558 black basalt stone mosque known as the 'Black Gem of Bengal'.",
+        image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80",
+      },
+      {
+        name: "Paharpur Site Museum",
+        description: "Houses priceless stone sculptures, terracotta plaques, and copper coins from the Pala era.",
+        image: "https://images.unsplash.com/photo-1500534623283-312aade485b7?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "November to February",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, English",
+  },
 };
+
+/**
+ * Safe accessor that returns the destination details, or generates a complete
+ * fallback detail view if the slug was not statically defined.
+ */
+export function getDestinationDetail(slug: string): DestinationDetail {
+  if (destinationDetails[slug]) {
+    return destinationDetails[slug];
+  }
+
+  // Generate dynamic fallback
+  const formattedName = slug
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+
+  return {
+    slug,
+    city: formattedName,
+    country: "Bangladesh",
+    countryFlag: "🇧🇩",
+    tagline: `Discover the unforgettable beauty, culture, and hospitality of ${formattedName}`,
+    image: "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=1200&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=800&q=80",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
+    ],
+    longOverview: `${formattedName} is a wonderful travel destination in Bangladesh. Packed with scenic spots, warm local hospitality, vibrant markets, and rich cultural traditions, it is an ideal destination for travelers of all styles.`,
+    whyVisit: [
+      `Explore historical landmarks and local sights across ${formattedName}`,
+      "Enjoy delicious regional culinary specialties and street delicacies",
+      "Capture stunning photos of local scenery and natural landscapes",
+      "Book flights, hotels, and holiday packages with ease on ST-Trip",
+    ],
+    attractions: [
+      {
+        name: `${formattedName} Highlights Tour`,
+        description: `Experience the best views, markets, and cultural heritage of ${formattedName}.`,
+        image: "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=800&q=80",
+      },
+      {
+        name: "Scenic Riverfront & Promenades",
+        description: "Serene walkways and water vistas perfect for evening strolls and photography.",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      },
+      {
+        name: "Local Heritage & Markets",
+        description: "Bustling bazaars offering local crafts, fresh produce, and unique regional souvenirs.",
+        image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=800&q=80",
+      },
+    ],
+    bestTimeToVisit: "October to March",
+    currency: "Bangladeshi Taka (BDT)",
+    languages: "Bengali, English",
+  };
+}
+

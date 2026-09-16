@@ -37,6 +37,7 @@ export function TrendingDestinationsSection({
           id="trending-destinations-heading"
           title="Trending Destinations"
           description="Most popular choices for travellers from Bangladesh."
+          viewAllHref="/destinations"
         />
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
@@ -93,7 +94,7 @@ function TrendingCard({
         <span className="font-heading text-xl font-bold text-white drop-shadow-sm">
           {destination.city}
         </span>
-        <img
+        <Image
           src={getTwemojiUrl(destination.countryFlag)}
           alt=""
           aria-hidden

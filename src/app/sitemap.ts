@@ -11,7 +11,7 @@ import { holidayPackages } from "@/features/holiday-packages/data/holiday-packag
 import { allHotels } from "@/features/hotels/data/hotels";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/flights", "/hotels", "/visa", "/offers", "/blog", "/about", "/news", "/travel-guide", "/umrah-packages", "/hajj-packages", "/tour-packages", "/holiday-packages"];
+  const routes = ["", "/flights", "/hotels", "/destinations", "/visa", "/offers", "/blog", "/about", "/news", "/travel-guide", "/umrah-packages", "/hajj-packages", "/tour-packages", "/holiday-packages"];
   const detailRoutes = [
     ...trendingDestinations.map((item) => item.href),
     ...topDestinations.map((item) => item.href),

@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, Calendar, Landmark, Globe, Building2, Luggage, Phone, MessageCircle } from "lucide-react";
+import { ArrowLeft, Check, Calendar, Landmark, Globe, Building2, Phone, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { cn, formatCurrency } from "@/lib/utils";
+import { formatCurrency } from "@/lib/utils";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContentCard } from "@/components/ui/ContentCard";

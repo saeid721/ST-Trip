@@ -1,14 +1,6 @@
 import Image from "next/image";
-import { Plane, Hotel, Compass, ShieldCheck } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { SearchWidget } from "@/features/home/components/SearchWidget/SearchWidget";
-
-const valueProps = [
-  { icon: Plane, label: "Flights" },
-  { icon: Hotel, label: "Hotels" },
-  { icon: Compass, label: "Tours" },
-  { icon: ShieldCheck, label: "Verified Visa Help" },
-];
 
 export function HeroSection() {
   return (

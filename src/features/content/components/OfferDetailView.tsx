@@ -2,14 +2,21 @@ import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Copy, Ticket } from "lucide-react";
 import type { HotDeal } from "@/features/home/types";
 import { formatDate } from "@/lib/utils";
+import { PageHero } from "@/components/ui/PageHero";
 
 export function OfferDetailView({ deal }: { deal: HotDeal }) {
   return (
-    <article className="py-10 sm:py-16">
+    <>
+      <PageHero
+        eyebrow="Limited-time offer"
+        title={deal.title}
+        description={`${deal.bankName} · ${deal.discountLabel} savings on your next booking.`}
+      />
+      <article className="py-10 sm:py-16">
       <div className="container-app">
-        <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 hover:text-primary-800">
+        <Link href="/offers" className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 hover:text-primary-800">
           <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-          Back to Home
+          Back to Offers
         </Link>
         <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
           <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-10">
@@ -42,6 +49,7 @@ export function OfferDetailView({ deal }: { deal: HotDeal }) {
           </aside>
         </div>
       </div>
-    </article>
+      </article>
+    </>
   );
 }

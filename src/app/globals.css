@@ -164,6 +164,14 @@
       transform: translateX(100%);
     }
   }
+  @keyframes marquee {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 
   .animate-fade-in {
     animation: fade-in 200ms var(--ease-out-soft) both;
@@ -173,6 +181,9 @@
   }
   .animate-scale-in {
     animation: scale-in 200ms var(--ease-out-soft) both;
+  }
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
   }
 
   .skip-link {

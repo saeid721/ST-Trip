@@ -30,7 +30,6 @@ import {
   popularRoutes,
   stats,
   blogPosts,
-  partnerLogos,
 } from "@/features/home/data";
 
 export const metadata: Metadata = buildMetadata({
@@ -50,7 +49,7 @@ const AppDownloadSection = dynamic(
   { loading: () => <SectionSkeleton /> },
 );
 const PartnersMarquee = dynamic(
-  () => import("@/features/home/components/PartnersMarquee").then((m) => m.PartnersMarquee),
+  () => import("@/features/home/components/PartnersMarquee").then((m) => m.default),
   { loading: () => <div className="h-24" /> },
 );
 
@@ -94,7 +93,7 @@ export default function HomePage() {
       <StatsCounterSection stats={stats} />
       <AppDownloadSection />
       <TravelBlogSection posts={blogPosts} />
-      <PartnersMarquee logos={partnerLogos} />
+      <PartnersMarquee />
       <PartnerCtaBanner />
     </>
   );

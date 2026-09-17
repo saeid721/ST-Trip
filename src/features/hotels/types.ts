@@ -26,6 +26,26 @@ export interface HotelDetail {
   badge?: string;
   overview: string;
   amenities: string[];
-  roomTypes?: { name: string; priceFrom: number; description: string }[];
+  roomTypes?: {
+    name: string;
+    priceFrom: number;
+    description: string;
+    originalPriceFrom?: number;
+    discountPercent?: number;
+    bedType?: string;
+    sizeSqft?: number;
+    maxGuests?: number;
+    mealOption?: string;
+    amenities?: string[];
+    images?: string[];
+    roomsLeft?: number;
+    refundable?: boolean;
+  }[];
+  policies?: {
+    cancellation: string;
+    checkInTime: string;
+    checkOutTime: string;
+    rules: string[];
+  };
   faqs?: { question: string; answer: string }[];
 }

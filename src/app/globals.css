@@ -1,227 +1,103 @@
-@import "tailwindcss";
-@import "../styles/tokens.css";
 
-/* Tailwind v4 CSS-first theme mapping: expose our tokens as Tailwind utilities
-   (bg-primary-700, text-accent-500, rounded-lg, shadow-floating, font-heading, etc). */
-@theme {
-  --color-primary-50: var(--color-primary-50);
-  --color-primary-100: var(--color-primary-100);
-  --color-primary-200: var(--color-primary-200);
-  --color-primary-300: var(--color-primary-300);
-  --color-primary-400: var(--color-primary-400);
-  --color-primary-500: var(--color-primary-500);
-  --color-primary-600: var(--color-primary-600);
-  --color-primary-700: var(--color-primary-700);
-  --color-primary-800: var(--color-primary-800);
-  --color-primary-900: var(--color-primary-900);
+:root {
+  --color-primary-50: #eff6ff; /* "Primary Soft" — search areas, filter panels */
+  --color-primary-100: #dbeafe; /* "Primary Light" — badges, selected chips */
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb; /* "Primary Blue" — the one CTA color */
+  --color-primary-700: #1d4ed8; /* "Primary Hover" */
+  --color-primary-800: #1e40af; /* "Primary Dark" — active/pressed */
+  --color-primary-900: #1e3a8a;
 
-  --color-accent-50: var(--color-accent-50);
-  --color-accent-100: var(--color-accent-100);
-  --color-accent-200: var(--color-accent-200);
-  --color-accent-300: var(--color-accent-300);
-  --color-accent-400: var(--color-accent-400);
-  --color-accent-500: var(--color-accent-500);
-  --color-accent-600: var(--color-accent-600);
-  --color-accent-700: var(--color-accent-700);
-  --color-accent-800: var(--color-accent-800);
-  --color-accent-900: var(--color-accent-900);
+  --color-accent-50: #f0f9ff;
+  --color-accent-100: #e0f2fe; /* "Sky Light" */
+  --color-accent-200: #bae6fd;
+  --color-accent-300: #7dd3fc;
+  --color-accent-400: #38bdf8;
+  --color-accent-500: #0ea5e9; /* "Sky Accent" */
+  --color-accent-600: #0284c7;
+  --color-accent-700: #0369a1;
+  --color-accent-800: #075985;
+  --color-accent-900: #0c4a6e;
 
-  --color-neutral-0: var(--color-neutral-0);
-  --color-neutral-50: var(--color-neutral-50);
-  --color-neutral-100: var(--color-neutral-100);
-  --color-neutral-200: var(--color-neutral-200);
-  --color-neutral-300: var(--color-neutral-300);
-  --color-neutral-400: var(--color-neutral-400);
-  --color-neutral-500: var(--color-neutral-500);
-  --color-neutral-600: var(--color-neutral-600);
-  --color-neutral-700: var(--color-neutral-700);
-  --color-neutral-800: var(--color-neutral-800);
-  --color-neutral-900: var(--color-neutral-900);
-  --color-neutral-950: var(--color-neutral-950);
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f8fafc; /* Page Background */
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0; /* Border */
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b; /* Muted Text */
+  --color-neutral-600: #475569; /* Secondary Text */
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b; /* Navy Surface */
+  --color-neutral-900: #0f172a; /* Deep Navy / Primary Text */
+  --color-neutral-950: #020617;
 
-  /* Semantic — meaning is never carried by color alone (see globals.css
-     base layer / each usage site for the paired icon/label). */
-  --color-success: var(--color-success);
-  --color-warning: var(--color-warning);
-  --color-danger: var(--color-danger);
-  --color-info: var(--color-info);
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-danger: #dc2626;
+  --color-info: var(--color-accent-500); /* Sky — informational, not action */
 
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
-  --radius-xl: var(--radius-xl);
-  --radius-2xl: var(--radius-2xl);
-  --radius-full: var(--radius-full);
+  /* ---- Surface / text roles (dark-mode ready) ---- */
+  --surface-app: var(--color-neutral-0);
+  --surface-muted: var(--color-neutral-50);
+  --surface-raised: var(--color-neutral-0);
+  --surface-inverse: var(--color-neutral-900); /* Deep Navy, not blue */
 
-  --shadow-sm: var(--shadow-sm);
-  --shadow-md: var(--shadow-md);
-  --shadow-lg: var(--shadow-lg);
-  --shadow-xl: var(--shadow-xl);
-  --shadow-floating: var(--shadow-floating);
+  --text-primary: var(--color-neutral-900);
+  --text-secondary: var(--color-neutral-600);
+  --text-muted: var(--color-neutral-500);
+  --text-on-brand: var(--color-neutral-0);
+  --text-link: var(--color-primary-700); /* darker than button-fill 600 for
+                                             safer small-text contrast on white */
 
-  --font-heading: var(--font-sora), var(--font-noto-bengali), sans-serif;
-  --font-body: var(--font-inter), var(--font-noto-bengali), sans-serif;
+  --border-default: var(--color-neutral-200);
+  --border-strong: var(--color-neutral-300);
 
-  --container-content: var(--container-max);
+  /* ---- Radius scale ---- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --radius-full: 999px;
 
-  /* ---- Breakpoints — replaces Tailwind's default scale with the exact
-     device widths this project targets. `xs`/`xl2` etc. become available
-     as xs:/base-mobile:/tablet:/desktop:/wide:/xwide:/uhd: variants. ---- */
-  --breakpoint-xs: 360px;    /* small phones */
-  --breakpoint-sm: 390px;    /* standard phones (iPhone, most Android) */
-  --breakpoint-md: 768px;    /* tablets */
-  --breakpoint-lg: 1024px;   /* small laptops / landscape tablets */
-  --breakpoint-xl: 1280px;   /* desktop */
-  --breakpoint-2xl: 1440px;  /* large desktop */
-  --breakpoint-3xl: 1920px;  /* wide / external monitors */
+  /* ---- Elevation (soft, layered — never stacked/excessive) ---- */
+  --shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+  --shadow-md: 0 4px 12px -2px rgb(15 23 42 / 0.08), 0 2px 4px -2px rgb(15 23 42 / 0.04);
+  --shadow-lg: 0 12px 24px -8px rgb(15 23 42 / 0.12), 0 4px 8px -4px rgb(15 23 42 / 0.06);
+  --shadow-xl: 0 24px 48px -12px rgb(15 23 42 / 0.18), 0 8px 16px -8px rgb(15 23 42 / 0.08);
+  --shadow-floating: 0 20px 40px -8px rgb(37 99 235 / 0.18);
+
+  /* ---- Motion ---- */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+
+  /* ---- Layout ---- */
+  --header-height: 76px;
+  --header-height-mobile: 64px;
+  --container-max: 1280px;
+
+  /* ---- Touch targets (mobile-first, WCAG 2.5.5 AAA = 44px min) ---- */
+  --tap-target-min: 44px;
+  --tap-target-comfortable: 48px;
 }
 
-@layer base {
-  * {
-    border-color: var(--border-default);
-  }
+/* Dark theme scaffold — flip on <html data-theme="dark"> once dark mode ships. */
+[data-theme="dark"] {
+  --surface-app: var(--color-neutral-950);
+  --surface-muted: var(--color-neutral-900);
+  --surface-raised: var(--color-neutral-800);
+  --surface-inverse: var(--color-neutral-950);
 
-  html {
-    scroll-behavior: smooth;
-  }
+  --text-primary: var(--color-neutral-50);
+  --text-secondary: var(--color-neutral-300);
+  --text-muted: var(--color-neutral-500);
 
-  body {
-    background: var(--surface-app);
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-
-  /* Consistent, visible focus ring for keyboard users (WCAG 2.4.7) */
-  :focus-visible {
-    outline: 2px solid var(--color-accent-500);
-    outline-offset: 2px;
-    border-radius: var(--radius-sm);
-  }
-
-  ::selection {
-    background: var(--color-accent-200);
-    color: var(--color-primary-900);
-  }
-}
-
-@layer utilities {
-  /* ---- Motion primitives — every "premium" micro-animation in the app
-     (tab content switch, dropdown/dialog open, popover) draws from this
-     single easing curve so motion feels like one consistent material,
-     not a different animation library per component. ---- */
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(6px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes scale-in {
-    from {
-      opacity: 0;
-      transform: scale(0.96);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  @keyframes slide-in-right {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-  @keyframes slide-out-right {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(100%);
-    }
-  }
-  @keyframes marquee {
-    from {
-      transform: translateX(0%);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 200ms var(--ease-out-soft) both;
-  }
-  .animate-fade-in-up {
-    animation: fade-in-up 260ms var(--ease-out-soft) both;
-  }
-  .animate-scale-in {
-    animation: scale-in 200ms var(--ease-out-soft) both;
-  }
-  .animate-marquee {
-    animation: marquee 40s linear infinite;
-  }
-
-  .skip-link {
-    position: absolute;
-    left: -9999px;
-    top: 0;
-    z-index: 100;
-    background: var(--color-primary-700);
-    color: white;
-    padding: 0.75rem 1.25rem;
-    border-radius: 0 0 var(--radius-md) 0;
-  }
-  .skip-link:focus {
-    left: 0;
-  }
-
-  .container-app {
-    max-width: var(--container-max);
-    margin-inline: auto;
-    padding-inline: 1.25rem;
-  }
-
-  @media (min-width: 1024px) {
-    .container-app {
-      padding-inline: 2rem;
-    }
-  }
-}
-
-/* Respect user motion preferences globally — carousels/counters also check
-   this in JS via lib/utils.ts#prefersReducedMotion(). */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+  --border-default: var(--color-neutral-700);
+  --border-strong: var(--color-neutral-600);
 }

@@ -17,6 +17,10 @@ export interface HotelDetail {
   slug: string;
   name: string;
   location: string;
+  /** Full postal-style address shown in the info header & map card. Falls back to `location`. */
+  address?: string;
+  /** Approximate coordinates for the static map card. Falls back to a Cox's Bazar default. */
+  coordinates?: { lat: number; lng: number };
   heroImage: string;
   gallery?: string[];
   priceFrom: number;

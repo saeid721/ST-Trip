@@ -499,6 +499,7 @@ function FilterSelect({
 function Gallery({ images, name }: { images: string[]; name: string }) {
   if (images.length === 0) return null;
   const main = images[0];
+  if (!main) return null;
   const thumbs = images.slice(1, 5);
   const extraCount = images.length - 5;
 

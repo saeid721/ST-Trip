@@ -81,8 +81,9 @@ export function EsimSearchTab() {
         </label>
         <button type="button" onClick={() => setOpen((current) => !current)} className="flex min-h-12 w-full items-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 text-left text-sm text-neutral-900 shadow-sm transition-colors hover:border-primary-300 focus-visible:border-primary-500" aria-expanded={open} aria-controls="esim-selection-menu">
           {mode === "country" ? <Wifi className="h-4 w-4 shrink-0 text-primary-600" aria-hidden /> : <Globe2 className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />}
-          <span className={cn("flex-1 truncate", !country && !region && "text-neutral-400")}>
-            {country?.flag} {country?.name || region?.name || (mode === "country" ? "Search a destination for eSIM plans" : "Select a travel region")}
+          <span className={cn("flex flex-1 items-center gap-2 truncate", !country && !region && "text-neutral-400")}>
+            {country ? <FlagBadge country={country} /> : null}
+            <span className="truncate">{country?.name || region?.name || (mode === "country" ? "Search a destination for eSIM plans" : "Select a travel region")}</span>
           </span>
           <ChevronDown className={cn("h-4 w-4 shrink-0 text-neutral-400 transition-transform", open && "rotate-180")} aria-hidden />
         </button>
@@ -111,9 +112,13 @@ function ModeButton({ active, onClick, children }: { active: boolean; onClick: (
   return <button type="button" onClick={onClick} aria-pressed={active} className={cn("inline-flex min-h-10 items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-medium transition-colors", active ? "border-primary-200 bg-primary-50 text-primary-700" : "border-neutral-200 text-neutral-600 hover:border-primary-200 hover:text-primary-700")}>{children}</button>;
 }
 
+function FlagBadge({ country }: { country: EsimCountry }) {
+  return <span className="inline-flex h-7 w-9 shrink-0 items-center justify-center rounded-md border border-primary-100 bg-primary-50 text-base leading-none shadow-sm" aria-label={`${country.name} flag`}>{country.flag}</span>;
+}
+
 function CountryList({ countries, selectedCode, selectedCodes = [], multiple = false, onSelect }: { countries: EsimCountry[]; selectedCode?: string; selectedCodes?: string[]; multiple?: boolean; onSelect: (country: EsimCountry) => void }) {
   if (countries.length === 0) return <p className="px-3 py-8 text-center text-sm text-neutral-500">No countries found</p>;
-  return <ul className="mt-2 max-h-64 overflow-y-auto" role="listbox" aria-multiselectable={multiple}>{countries.map((item) => { const selected = multiple ? selectedCodes.includes(item.code) : selectedCode === item.code; return <li key={item.code}><button type="button" role="option" aria-selected={selected} onClick={() => onSelect(item)} className={cn("flex min-h-11 w-full items-center gap-3 rounded-lg px-3 text-left text-sm transition-colors hover:bg-primary-50", selected && "bg-primary-50 font-medium text-primary-700")}><span className="text-lg" aria-hidden>{item.flag}</span><span className="flex-1">{item.name}</span>{selected && <Check className="h-4 w-4" aria-hidden />}</button></li>; })}</ul>;
+  return <ul className="mt-2 max-h-64 overflow-y-auto" role="listbox" aria-multiselectable={multiple}>{countries.map((item) => { const selected = multiple ? selectedCodes.includes(item.code) : selectedCode === item.code; return <li key={item.code}><button type="button" role="option" aria-selected={selected} onClick={() => onSelect(item)} className={cn("flex min-h-12 w-full items-center gap-3 rounded-lg px-3 text-left text-sm transition-colors hover:bg-primary-50", selected && "bg-primary-50 font-medium text-primary-700")}><FlagBadge country={item} /><span className="flex-1 truncate">{item.name}</span>{selected && <Check className="h-4 w-4 shrink-0" aria-hidden />}</button></li>; })}</ul>;
 }
 
 function RegionList({ regions, onSelect }: { regions: EsimRegion[]; onSelect: (region: EsimRegion) => void }) {

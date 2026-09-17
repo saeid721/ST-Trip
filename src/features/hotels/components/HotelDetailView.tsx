@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getAmenityIcon } from "@/features/hotels/amenity-icons";
 import type { LucideIcon } from "lucide-react";
 import {
   Anchor,
@@ -62,39 +63,6 @@ interface HotelDetailViewProps {
 /* -------------------------------------------------------------------------- */
 /* Shared helpers                                                              */
 /* -------------------------------------------------------------------------- */
-
-const AMENITY_ICON_RULES: { keywords: string[]; icon: LucideIcon }[] = [
-  { keywords: ["wifi"], icon: Wifi },
-  { keywords: ["a/c", "ac", "air condition"], icon: Snowflake },
-  { keywords: ["breakfast", "tea", "coffee"], icon: Coffee },
-  { keywords: ["pool"], icon: Waves },
-  { keywords: ["gym", "fitness"], icon: Dumbbell },
-  { keywords: ["lobby", "sofa"], icon: Sofa },
-  { keywords: ["security"], icon: ShieldCheck },
-  { keywords: ["airport"], icon: PlaneTakeoff },
-  { keywords: ["city center"], icon: Landmark },
-  { keywords: ["beach"], icon: Anchor },
-  { keywords: ["bar"], icon: Beer },
-  { keywords: ["tv"], icon: Tv },
-  { keywords: ["fridge", "mini bar"], icon: Refrigerator },
-  { keywords: ["almira"], icon: DoorClosed },
-  { keywords: ["toilet"], icon: Bath },
-  { keywords: ["hot water"], icon: Thermometer },
-  { keywords: ["water"], icon: Bath },
-  { keywords: ["phone"], icon: Phone },
-  { keywords: ["mirror", "housekeeping"], icon: Sparkles },
-  { keywords: ["hair dryer"], icon: Wind },
-  { keywords: ["safe box"], icon: Lock },
-  { keywords: ["iron"], icon: Shirt },
-];
-
-function getAmenityIcon(label: string): LucideIcon {
-  const normalized = label.toLowerCase();
-  const rule = AMENITY_ICON_RULES.find((entry) =>
-    entry.keywords.some((keyword) => normalized.includes(keyword)),
-  );
-  return rule?.icon ?? Check;
-}
 
 function formatDisplayDate(iso: string): string {
   const date = new Date(iso);
@@ -171,7 +139,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
     <>
       {/* Header offset: the global Header is fixed + transparent-until-scroll,
           so the very first block on the page needs top padding to clear it. */}
-      <div className="pt-[calc(var(--header-height)+0.75rem)] sm:pt-[calc(var(--header-height)+1rem)]">
+      <div className="bg-primary-700 pt-[calc(var(--header-height)+0.75rem)] sm:pt-[calc(var(--header-height)+1rem)]">
         {searchOpen && (
           <section className="border-b border-neutral-200 bg-white">
             <div className="container-app py-5 sm:py-6">

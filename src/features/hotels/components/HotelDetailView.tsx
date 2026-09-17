@@ -117,7 +117,7 @@ function nightsBetween(checkIn: string, checkOut: string): number {
 
 export function HotelDetailView({ detail, backHref, backLabel, searchContext }: HotelDetailViewProps) {
   const gallery = detail.gallery && detail.gallery.length > 0 ? detail.gallery : [detail.heroImage];
-  const rooms = detail.roomTypes ?? [];
+  const rooms = useMemo(() => detail.roomTypes ?? [], [detail.roomTypes]);
   const starCount = Math.min(5, Math.max(1, Math.round(detail.rating)));
 
   // --- Modify Search panel state (local only — no navigation, no reload) ---

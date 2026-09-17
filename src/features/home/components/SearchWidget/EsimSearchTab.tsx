@@ -13,7 +13,6 @@ export function EsimSearchTab() {
   const [mode, setMode] = useState<EsimMode>("country");
   const [country, setCountry] = useState<EsimCountry | null>(null);
   const [region, setRegion] = useState<EsimRegion | null>(null);
-  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const selectorRef = useRef<HTMLDivElement>(null);
@@ -31,16 +30,10 @@ export function EsimSearchTab() {
     [query],
   );
 
-  const regionCountries = useMemo(
-    () => (region ? esimCountries.filter((item) => region.countryCodes.includes(item.code)) : []),
-    [region],
-  );
-
   function chooseMode(nextMode: EsimMode) {
     setMode(nextMode);
     setCountry(null);
     setRegion(null);
-    setSelectedCountries([]);
     setQuery("");
     setOpen(false);
   }
@@ -54,21 +47,16 @@ export function EsimSearchTab() {
 
   function chooseRegion(item: EsimRegion) {
     setRegion(item);
-    setSelectedCountries([]);
     setQuery("");
-    setOpen(true);
-  }
-
-  function toggleCountry(code: string) {
-    setSelectedCountries((current) => current.includes(code) ? current.filter((item) => item !== code) : [...current, code]);
+    setOpen(false);
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (mode === "country" && country) {
       router.push(`/esim?country=${encodeURIComponent(country.code)}`);
-    } else if (mode === "region" && region && selectedCountries.length > 0) {
-      const params = new URLSearchParams({ region: region.id, countries: selectedCountries.join(",") });
+    } else if (mode === "region" && region) {
+      const params = new URLSearchParams({ region: region.id, countries: region.countryCodes.join(",") });
       router.push(`/esim?${params.toString()}`);
     }
   }
@@ -87,7 +75,7 @@ export function EsimSearchTab() {
 
       <div ref={selectorRef} className="relative">
         <label htmlFor="esimCountry" className="mb-1 block text-xs font-medium text-neutral-500">
-          {mode === "country" ? "Which country are you visiting?" : "Choose a region and countries"}
+          {mode === "country" ? "Which country are you visiting?" : "Which region?"}
         </label>
         <button type="button" onClick={() => setOpen((current) => !current)} className="flex min-h-12 w-full items-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 text-left text-sm text-neutral-900 shadow-sm transition-colors hover:border-primary-300 focus-visible:border-primary-500" aria-expanded={open} aria-controls="esim-selection-menu">
           {mode === "country" ? <Wifi className="h-4 w-4 shrink-0 text-primary-600" aria-hidden /> : <Globe2 className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />}
@@ -97,30 +85,21 @@ export function EsimSearchTab() {
           <ChevronDown className={cn("h-4 w-4 shrink-0 text-neutral-400 transition-transform", open && "rotate-180")} aria-hidden />
         </button>
 
-        {mode === "region" && region && selectedCountries.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-2">
-            {selectedCountries.map((code) => {
-              const item = esimCountries.find((countryItem) => countryItem.code === code);
-              return item ? <button key={code} type="button" onClick={() => toggleCountry(code)} className="inline-flex items-center gap-1 rounded-full bg-primary-50 px-2.5 py-1 text-xs font-medium text-primary-700 hover:bg-primary-100">{item.flag} {item.name} <X className="h-3 w-3" aria-hidden /></button> : null;
-            })}
-          </div>
-        )}
-
         {open && (
           <div id="esim-selection-menu" role="dialog" aria-label={mode === "country" ? "Country selection" : "Region selection"} className="animate-scale-in absolute z-20 mt-2 w-full overflow-hidden rounded-xl border border-neutral-200 bg-white p-2 shadow-xl">
             <div className="flex items-center gap-2 rounded-lg border border-neutral-200 px-3 focus-within:border-primary-400">
               <Search className="h-4 w-4 shrink-0 text-neutral-400" aria-hidden />
-              <input id="esimCountry" autoFocus type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={mode === "country" ? "Type a country name..." : region ? "Search countries in this region..." : "Type a region name..."} className="h-10 w-full bg-transparent text-sm text-neutral-900 outline-none placeholder:text-neutral-400" />
+              <input id="esimCountry" autoFocus type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={mode === "country" ? "Type a country name..." : "Type a region name..."} className="h-10 w-full bg-transparent text-sm text-neutral-900 outline-none placeholder:text-neutral-400" />
               {query && <button type="button" onClick={() => setQuery("")} aria-label="Clear search" className="text-neutral-400 hover:text-neutral-700"><X className="h-4 w-4" /></button>}
             </div>
-            {mode === "country" ? <CountryList countries={filteredCountries} selectedCode={country?.code} onSelect={chooseCountry} /> : region ? <><CountryList countries={regionCountries.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()))} selectedCodes={selectedCountries} multiple onSelect={(item) => toggleCountry(item.code)} /><button type="button" onClick={() => setOpen(false)} className="mt-2 min-h-10 w-full rounded-lg border border-neutral-200 text-sm font-medium text-neutral-700 hover:border-primary-300 hover:text-primary-700">Done selecting</button></> : <RegionList regions={esimRegions.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()))} onSelect={chooseRegion} />}
+            {mode === "country" ? <CountryList countries={filteredCountries} selectedCode={country?.code} onSelect={chooseCountry} /> : <RegionList regions={esimRegions.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()))} onSelect={chooseRegion} />}
           </div>
         )}
       </div>
 
-      <Button type="submit" variant="primary" size="lg" className="w-full gap-2 sm:w-auto" disabled={mode === "country" ? !country : !region || selectedCountries.length === 0}>
+      <Button type="submit" variant="primary" size="lg" className="w-full gap-2 sm:w-auto" disabled={mode === "country" ? !country : !region}>
         <Search className="h-4 w-4" aria-hidden />
-        {mode === "country" ? "Find Plans" : "Search Selected Countries"}
+        {mode === "country" ? "Find Plans" : "Search Region Plans"}
       </Button>
     </form>
   );

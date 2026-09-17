@@ -27,12 +27,17 @@ export const esimCountries: EsimCountry[] = [
 ];
 
 export const esimRegions: EsimRegion[] = [
-  { id: "asia", name: "Asia", description: "Stay connected across Asia", countryCodes: ["AF", "BD", "CN", "IN", "JP", "MY", "MV", "SG", "KR", "TH"] },
+  { id: "eu-uk", name: "European Union and United Kingdom", description: "Stay connected across Europe", countryCodes: ["FR", "DE", "IT", "ES", "GB"] },
   { id: "europe", name: "Europe", description: "One plan for European travel", countryCodes: ["FR", "DE", "IT", "ES", "GB"] },
-  { id: "middle-east", name: "Middle East", description: "Explore the Gulf and beyond", countryCodes: ["QA", "TR", "AE"] },
-  { id: "north-america", name: "North America", description: "Coverage for the United States and Canada", countryCodes: ["CA", "US"] },
+  { id: "asia", name: "Asia", description: "Stay connected across Asia", countryCodes: ["AF", "BD", "CN", "IN", "JP", "MY", "MV", "SG", "KR", "TH"] },
   { id: "africa", name: "Africa", description: "Reliable data for your African journey", countryCodes: ["EG"] },
+  { id: "caribbean", name: "Caribbean Islands", description: "Travel connected across the Caribbean", countryCodes: [] },
+  { id: "discover-global", name: "Discover Global", description: "Flexible connectivity across destinations", countryCodes: esimCountries.map((country) => country.code) },
+  { id: "latin-america", name: "Latin America", description: "Stay connected across Latin America", countryCodes: [] },
+  { id: "mena", name: "Middle East and North Africa", description: "Explore the Middle East and North Africa", countryCodes: ["QA", "TR", "AE", "EG"] },
+  { id: "north-america", name: "North America", description: "Coverage for the United States and Canada", countryCodes: ["CA", "US"] },
   { id: "oceania", name: "Oceania", description: "Travel connected across the Pacific", countryCodes: ["AU", "NZ"] },
+  { id: "africa-safari", name: "Africa Safari", description: "Reliable data for your safari journey", countryCodes: ["EG"] },
 ];
 
 const planTemplates = [

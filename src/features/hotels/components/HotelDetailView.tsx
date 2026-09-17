@@ -24,6 +24,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
   const gallery = detail.gallery && detail.gallery.length > 0 ? detail.gallery : [detail.heroImage];
   const heroGallery = [detail.heroImage, ...gallery.filter((src) => src !== detail.heroImage)].slice(0, 5);
   const primaryImage = heroGallery[0] ?? detail.heroImage;
+  const galleryTiles = [...heroGallery, heroGallery[1] ?? primaryImage].slice(0, 5);
 
   return (
     <>
@@ -33,7 +34,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
             <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
             {backLabel}
           </Link>
-          <div className="mt-5 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div className="mt-5 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
               <div className="flex items-center gap-1 text-accent-300" aria-label={`${detail.rating} out of 5 stars`}>
                 {Array.from({ length: 5 }).map((_, index) => <Star key={index} className="h-3.5 w-3.5 fill-current" aria-hidden />)}
@@ -45,7 +46,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
               <p className="mt-2 flex items-center gap-1.5 text-sm text-primary-100"><MapPin className="h-4 w-4" aria-hidden />{detail.location}</p>
               <div className="mt-3 flex items-center gap-2 text-xs text-primary-100"><Star className="h-4 w-4 fill-accent-300 text-accent-300" aria-hidden /><span className="font-semibold text-white">{detail.rating.toFixed(1)}</span><span>Excellent · {detail.reviewCount} reviews</span></div>
             </div>
-            <div className="sm:text-right">
+            <div className="md:text-right">
               <p className="text-xs text-primary-100">{detail.priceNote ?? "Starts from"}</p>
               <p className="font-heading text-2xl font-bold sm:text-3xl">{formatCurrency(detail.priceFrom)}</p>
               <p className="text-[11px] text-primary-100">per night, before taxes</p>
@@ -58,7 +59,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
         <div className="container-app">
           <div className="grid h-[260px] grid-cols-2 gap-1.5 overflow-hidden rounded-xl sm:h-[390px] sm:grid-cols-4">
             <div className="relative col-span-2 row-span-2"><Image src={primaryImage} alt={`${detail.name} exterior`} fill priority sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" /></div>
-            {heroGallery.slice(1).map((src, index) => <div key={src} className="relative hidden sm:block"><Image src={src} alt={`${detail.name} photo ${index + 2}`} fill sizes="25vw" className="object-cover" /></div>)}
+            {galleryTiles.slice(1).map((src, index) => <div key={`${src}-${index}`} className="relative hidden sm:block"><Image src={src} alt={`${detail.name} photo ${index + 2}`} fill sizes="25vw" className="object-cover" /></div>)}
             {heroGallery.length > 1 && <div className="absolute" aria-hidden />}
           </div>
 
@@ -148,7 +149,7 @@ function AmenityIcon({ index }: { index: number }) {
 
 function RoomCard({ room }: { room: NonNullable<HotelDetail["roomTypes"]>[number] }) {
   return <article className="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm"><div className="grid sm:grid-cols-[150px_minmax(0,1fr)_155px]">
-    <div className="relative hidden min-h-[150px] sm:block">{room.images?.[0] ? <Image src={room.images[0]} alt={room.name} fill sizes="150px" className="object-cover" /> : <Image src="/images/placeholder.jpg" alt="" fill sizes="150px" className="object-cover" />}</div>
+    <div className="relative hidden min-h-[150px] bg-primary-50 sm:block">{room.images?.[0] ? <Image src={room.images[0]} alt={room.name} fill sizes="150px" className="object-cover" /> : <div className="flex h-full items-center justify-center"><BedDouble className="h-8 w-8 text-primary-200" aria-hidden /></div>}</div>
     <div className="p-4"><div className="flex items-start justify-between gap-3"><div><h3 className="font-heading text-sm font-bold text-neutral-900">{room.name}</h3><p className="mt-1 text-xs text-neutral-500">{room.description}</p></div>{room.roomsLeft && <span className="shrink-0 rounded-full bg-danger/10 px-2 py-1 text-[10px] font-semibold text-danger">{room.roomsLeft} left</span>}</div><div className="mt-3 flex flex-wrap gap-x-3 gap-y-2 text-[11px] text-neutral-600"><span className="flex items-center gap-1"><BedDouble className="h-3.5 w-3.5" />{room.bedType ?? "Comfortable bed"}</span>{room.maxGuests && <span className="flex items-center gap-1"><Users className="h-3.5 w-3.5" />{room.maxGuests} guests</span>}{room.sizeSqft && <span>{room.sizeSqft} sq ft</span>}</div>{room.amenities && <div className="mt-3 flex flex-wrap gap-1.5">{room.amenities.slice(0, 5).map((item) => <span key={item} className="rounded bg-neutral-100 px-1.5 py-1 text-[10px] text-neutral-600">{item}</span>)}</div>}</div>
     <div className="border-t border-neutral-200 bg-neutral-50 p-4 sm:border-l sm:border-t-0"><p className="text-[10px] uppercase tracking-wide text-neutral-500">From</p>{room.originalPriceFrom && <p className="text-xs text-neutral-400 line-through">{formatCurrency(room.originalPriceFrom)}</p>}<p className="font-heading text-xl font-bold text-primary-700">{formatCurrency(room.priceFrom)}</p>{room.mealOption && <p className="mt-1 text-[11px] font-medium text-success">{room.mealOption}</p>}<a href={`tel:${siteConfig.contact.supportPhone}`} className="mt-3 flex h-9 items-center justify-center rounded-lg bg-primary-700 text-xs font-semibold text-white hover:bg-primary-800">Select room</a><p className="mt-2 text-center text-[10px] text-neutral-500">{room.refundable ? "Free cancellation" : "Non-refundable"}</p></div>
   </div></article>;

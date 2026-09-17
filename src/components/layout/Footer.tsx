@@ -75,24 +75,6 @@ export function Footer() {
             </ul>
           </nav>
         ))}
-
-        <div>
-          <h3 className="font-heading text-sm font-semibold text-white">Contact</h3>
-          <ul className="mt-4 space-y-2.5 text-sm text-neutral-300">
-            <li className="flex items-center gap-2">
-              <Mail className="h-4 w-4 shrink-0" aria-hidden />
-              <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white">
-                {siteConfig.contact.email}
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Phone className="h-4 w-4 shrink-0" aria-hidden />
-              <a href={`tel:${siteConfig.contact.supportPhone}`} className="hover:text-white">
-                {siteConfig.contact.supportPhoneDisplay}
-              </a>
-            </li>
-          </ul>
-        </div>
       </div>
 
       <div className="border-t border-white/10">

@@ -52,6 +52,21 @@ const europePlanTemplates = [
   { data: "2 GB", duration: "15 days", price: 461 },
 ];
 
+const euUkPlanTemplates = [
+  { data: "1 GB", duration: "7 days", price: 240 },
+  { data: "2 GB", duration: "15 days", price: 295 },
+  { data: "3 GB", duration: "30 days", price: 332 },
+  { data: "5 GB", duration: "30 days", price: 442 },
+  { data: "Unlimited", duration: "3 days", price: 553 },
+  { data: "10 GB", duration: "30 days", price: 663 },
+  { data: "20 GB", duration: "30 days", price: 899 },
+  { data: "50 GB", duration: "90 days", price: 1399 },
+  { data: "100 GB", duration: "180 days", price: 2199 },
+  { data: "1 GB", duration: "3 days", price: 203 },
+  { data: "2 GB", duration: "7 days", price: 270 },
+  { data: "5 GB", duration: "15 days", price: 520 },
+];
+
 export const esimPlans: EsimPlan[] = esimCountries.flatMap((country) =>
   (country.region === "Europe" ? europePlanTemplates : planTemplates).map((template, index) => ({
     id: `${country.code.toLowerCase()}-${index + 1}`,
@@ -63,6 +78,16 @@ export const esimPlans: EsimPlan[] = esimCountries.flatMap((country) =>
   })),
 );
 
+export const euUkPlans: EsimPlan[] = euUkPlanTemplates.map((template, index) => ({
+  id: `eu-uk-${index + 1}`,
+  countryCode: "EU-UK",
+  regionId: "eu-uk",
+  provider: "EU connect",
+  ...template,
+  coverage: "European Union + the UK",
+  network: "5G",
+}));
+
 export function getCountry(code: string) {
   return esimCountries.find((country) => country.code === code);
 }
@@ -73,4 +98,9 @@ export function getRegion(id: string) {
 
 export function getPlansForCountries(countryCodes: string[]) {
   return esimPlans.filter((plan) => countryCodes.includes(plan.countryCode));
+}
+
+export function getPlansForRegion(regionId: string, countryCodes: string[]) {
+  if (regionId === "eu-uk") return euUkPlans;
+  return getPlansForCountries(countryCodes);
 }

@@ -17,6 +17,7 @@ export interface EsimRegion {
 export interface EsimPlan {
   id: string;
   countryCode: string;
+  regionId?: string;
   provider: string;
   data: string;
   duration: string;

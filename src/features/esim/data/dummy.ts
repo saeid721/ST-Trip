@@ -46,11 +46,17 @@ const planTemplates = [
   { data: "10 GB", duration: "30 days", price: 2062 },
 ];
 
+const europePlanTemplates = [
+  { data: "500 MB", duration: "3 days", price: 203 },
+  { data: "1 GB", duration: "7 days", price: 332 },
+  { data: "2 GB", duration: "15 days", price: 461 },
+];
+
 export const esimPlans: EsimPlan[] = esimCountries.flatMap((country) =>
-  planTemplates.map((template, index) => ({
+  (country.region === "Europe" ? europePlanTemplates : planTemplates).map((template, index) => ({
     id: `${country.code.toLowerCase()}-${index + 1}`,
     countryCode: country.code,
-    provider: country.code === "AF" ? "Sohbat Mobile" : "ST Connect",
+    provider: country.region === "Europe" ? "Eurolink" : country.code === "AF" ? "Sohbat Mobile" : "ST Connect",
     ...template,
     coverage: country.name,
     network: "4G LTE",

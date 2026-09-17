@@ -49,6 +49,8 @@ export function EsimSearchTab() {
     setRegion(item);
     setQuery("");
     setOpen(false);
+    const params = new URLSearchParams({ region: item.id, countries: item.countryCodes.join(",") });
+    router.push(`/esim?${params.toString()}`);
   }
 
   function handleSubmit(e: React.FormEvent) {

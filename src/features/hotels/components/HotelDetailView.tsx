@@ -140,8 +140,6 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
 
   return (
     <>
-      {/* Header offset: the global Header is fixed + transparent-until-scroll,
-          so the very first block on the page needs top padding to clear it. */}
       <div className="bg-primary-700 pt-[calc(var(--header-height)+0.75rem)] sm:pt-[calc(var(--header-height)+1rem)]">
         {searchOpen && (
           <section className="border-b border-neutral-200 bg-white">
@@ -244,8 +242,8 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
         )}
 
         <section className="bg-primary-700 text-white">
-          <div className="container-app py-6 sm:py-8">
-            <div className="flex items-center justify-between gap-3">
+          <div className="container-app py-4 sm:py-8">
+            <div className="flex items-center justify-between gap-2 sm:gap-3">
               <Link
                 href={backHref}
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-100 transition-colors hover:text-white"
@@ -257,46 +255,46 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
                 <button
                   type="button"
                   onClick={() => setSearchOpen(true)}
-                  className="inline-flex h-9 items-center gap-1.5 rounded-full border border-white/40 px-4 text-xs font-semibold text-white transition-colors hover:bg-white/10"
+                  className="inline-flex h-7 items-center gap-1 rounded-full border border-white/40 px-2.5 text-[10px] font-semibold text-white transition-colors hover:bg-white/10 sm:h-9 sm:gap-1.5 sm:px-4 sm:text-xs"
                 >
-                  <Filter className="h-3.5 w-3.5" aria-hidden />
+                  <Filter className="h-3 w-3 sm:h-3.5 sm:w-3.5" aria-hidden />
                   Modify Search
                 </button>
               )}
               <span className="w-[92px] sm:w-[110px]" aria-hidden />
             </div>
 
-            <div className="mt-5 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+            <div className="mt-3 flex flex-col gap-3 sm:mt-5 sm:gap-5 md:flex-row md:items-end md:justify-between">
               <div>
                 <div className="flex items-center gap-1 text-accent-300" aria-label={`${starCount} out of 5 stars`}>
                   {Array.from({ length: starCount }).map((_, index) => (
-                    <Star key={index} className="h-4 w-4 fill-current" aria-hidden />
+                    <Star key={index} className="h-3 w-3 fill-current sm:h-4 sm:w-4" aria-hidden />
                   ))}
                 </div>
-                <div className="mt-2 flex flex-wrap items-center gap-2">
-                  <Building2 className="h-5 w-5 shrink-0 text-primary-100" aria-hidden />
-                  <h1 className="font-heading text-xl font-bold uppercase tracking-wide sm:text-2xl">
+                <div className="mt-1.5 flex flex-wrap items-center gap-1.5 sm:mt-2 sm:gap-2">
+                  <Building2 className="h-4 w-4 shrink-0 text-primary-100 sm:h-5 sm:w-5" aria-hidden />
+                  <h1 className="font-heading text-base font-bold uppercase tracking-wide sm:text-2xl">
                     {detail.name}
                   </h1>
                   {detail.badge && (
-                    <span className="rounded-full bg-white/15 px-2.5 py-1 text-[8px] font-semibold uppercase tracking-wide">
+                    <span className="rounded-full bg-white/15 px-2 py-0.5 text-[7px] font-semibold uppercase tracking-wide sm:px-2.5 sm:py-1 sm:text-[8px]">
                       {detail.badge}
                     </span>
                   )}
                 </div>
-                <p className="mt-2 flex items-start gap-1.5 text-sm text-primary-100">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+                <p className="mt-1 flex items-start gap-1 text-[11px] leading-snug text-primary-100 sm:mt-2 sm:gap-1.5 sm:text-sm">
+                  <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" aria-hidden />
                   {detail.address ?? detail.location}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-2.5 flex flex-wrap gap-1.5 sm:mt-4 sm:gap-2">
                   {detail.amenities.map((item) => {
                     const Icon = getAmenityIcon(item);
                     return (
                       <span
                         key={item}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium"
+                        className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2 py-1 text-[10px] font-medium sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-xs"
                       >
-                        <Icon className="h-3.5 w-3.5" aria-hidden />
+                        <Icon className="h-3 w-3 sm:h-3.5 sm:w-3.5" aria-hidden />
                         {item}
                       </span>
                     );
@@ -304,9 +302,9 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
                 </div>
               </div>
               <div className="shrink-0 md:text-right">
-                <p className="text-xs text-primary-100">{detail.priceNote ?? "Starting from"}</p>
-                <p className="font-heading text-2xl font-bold sm:text-3xl">{formatCurrency(detail.priceFrom)}</p>
-                <p className="text-[11px] text-primary-100">1 night × 1 room</p>
+                <p className="text-[10px] text-primary-100 sm:text-xs">{detail.priceNote ?? "Starting from"}</p>
+                <p className="font-heading text-lg font-bold sm:text-3xl">{formatCurrency(detail.priceFrom)}</p>
+                <p className="text-[10px] text-primary-100 sm:text-[11px]">1 night × 1 room</p>
               </div>
             </div>
           </div>
@@ -326,10 +324,10 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
                     <h2 className="font-heading text-lg font-bold text-neutral-900">Available Rooms</h2>
                   </div>
 
-                  <div className="mb-4 flex flex-col gap-2 rounded-xl border border-neutral-200 bg-white p-3 sm:flex-row sm:flex-wrap sm:items-center sm:overflow-x-auto">
-                    <span className="flex shrink-0 items-center gap-1.5 pl-1 text-xs font-semibold text-neutral-600">
-                      <Filter className="h-3.5 w-3.5" aria-hidden />
-                      Filter:
+                  <div className="mb-4 flex flex-col gap-2.5 rounded-2xl border border-neutral-200 bg-white p-4 shadow-[0_1px_4px_rgba(0,0,0,0.05)] sm:flex-row sm:flex-wrap sm:items-center sm:gap-2 sm:overflow-x-auto sm:rounded-xl sm:p-3 sm:shadow-none">
+                    <span className="mb-0.5 flex w-full items-center gap-1.5 text-[13px] font-medium text-neutral-400 sm:mb-0 sm:w-auto sm:shrink-0 sm:pl-1 sm:text-xs sm:text-neutral-600">
+                      <Filter className="h-4 w-4 sm:h-3.5 sm:w-3.5" aria-hidden />
+                      Filter :
                     </span>
                     <FilterSelect
                       value={mealFilter}
@@ -353,13 +351,13 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
                       <select
                         value={sortOrder}
                         onChange={(e) => setSortOrder(e.target.value as "low-high" | "high-low")}
-                        className="h-9 w-full appearance-none rounded-lg border border-neutral-200 bg-white pl-8 pr-7 text-xs font-medium text-neutral-700 outline-none focus:border-primary-400"
+                        style={{ WebkitAppearance: "none", MozAppearance: "none" }}
+                        className="h-[52px] w-full appearance-none rounded-xl border border-neutral-200 bg-white bg-none pl-4 pr-10 text-[15px] font-normal text-neutral-700 outline-none focus:border-primary-400 focus:ring-0 sm:h-9 sm:rounded-lg sm:pl-3 sm:pr-7 sm:text-xs sm:font-medium"
                       >
                         <option value="low-high">Price: Low to High</option>
                         <option value="high-low">Price: High to Low</option>
                       </select>
-                      <ArrowUpDown className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-400" aria-hidden />
-                      <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-400" aria-hidden />
+                      <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400 sm:right-2 sm:h-3.5 sm:w-3.5" aria-hidden />
                     </div>
                   </div>
 
@@ -449,7 +447,8 @@ function FilterSelect({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-9 w-full appearance-none rounded-lg border border-neutral-200 bg-white pl-3 pr-7 text-xs font-medium text-neutral-700 outline-none focus:border-primary-400"
+        style={{ WebkitAppearance: "none", MozAppearance: "none" }}
+        className="h-[52px] w-full appearance-none rounded-xl border border-neutral-200 bg-white bg-none pl-4 pr-10 text-[15px] font-normal text-neutral-700 outline-none focus:border-primary-400 focus:ring-0 sm:h-9 sm:rounded-lg sm:pl-3 sm:pr-7 sm:text-xs sm:font-medium"
       >
         <option value="all">-- {placeholder} --</option>
         {options.map((opt) => (
@@ -458,7 +457,7 @@ function FilterSelect({
           </option>
         ))}
       </select>
-      <ChevronDown className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-neutral-400" aria-hidden />
+      <ChevronDown className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400 sm:right-2 sm:h-3.5 sm:w-3.5" aria-hidden />
     </div>
   );
 }

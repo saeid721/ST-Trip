@@ -279,7 +279,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
                     {detail.name}
                   </h1>
                   {detail.badge && (
-                    <span className="rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide">
+                    <span className="rounded-full bg-white/15 px-2.5 py-1 text-[8px] font-semibold uppercase tracking-wide">
                       {detail.badge}
                     </span>
                   )}
@@ -478,7 +478,7 @@ function Gallery({ images, name }: { images: string[]; name: string }) {
 
   return (
     <>
-      <div className="overflow-hidden rounded-xl sm:hidden">
+      <div className="overflow-hidden rounded-xl md:hidden">
         <button
           type="button"
           onClick={() => setLightboxIndex(0)}
@@ -508,7 +508,7 @@ function Gallery({ images, name }: { images: string[]; name: string }) {
         </div>
       </div>
 
-      <div className="hidden h-[390px] grid-cols-4 grid-rows-2 gap-1.5 overflow-hidden rounded-2xl sm:grid">
+      <div className="hidden h-[390px] grid-cols-4 grid-rows-2 gap-1.5 overflow-hidden rounded-2xl md:grid">
         <button
           type="button"
           onClick={() => setLightboxIndex(0)}
@@ -694,17 +694,17 @@ function RoomCard({ room, isSelected, onSelect }: { room: RoomType; isSelected: 
   return (
     <article
       className={cn(
-        "overflow-hidden rounded-xl border bg-white shadow-sm transition-colors",
+        "overflow-hidden rounded-2xl border bg-white shadow-sm transition-colors max-md:shadow-md md:rounded-xl",
         isSelected ? "border-primary-400 ring-1 ring-primary-200" : "border-neutral-200",
       )}
     >
-      <div className="flex flex-col sm:grid sm:grid-cols-[190px_minmax(0,1fr)_190px]">
-        <div className="flex flex-col gap-1 sm:h-full sm:pr-1.5 sm:border-r sm:border-neutral-100">
+      <div className="flex flex-col md:grid md:grid-cols-[190px_minmax(0,1fr)_190px]">
+        <div className="flex flex-col gap-1 md:h-full md:pr-1.5 md:border-r md:border-neutral-100">
           <button
             type="button"
             onClick={() => images[0] && setLightboxIndex(0)}
             disabled={!images[0]}
-            className="group relative h-48 w-full cursor-pointer overflow-hidden rounded-t-xl bg-primary-50 sm:h-auto sm:min-h-[110px] sm:flex-1 sm:rounded-t-none sm:rounded-tl-xl"
+            className="group relative h-56 w-full cursor-pointer overflow-hidden rounded-t-2xl bg-primary-50 md:h-auto md:min-h-[110px] md:flex-1 md:rounded-t-none md:rounded-tl-xl"
           >
             {images[0] ? (
               <>
@@ -730,26 +730,35 @@ function RoomCard({ room, isSelected, onSelect }: { room: RoomType; isSelected: 
           </button>
           {images.length > 1 && (
             <div className="grid shrink-0 grid-cols-3 gap-1">
-              {images.slice(1, 4).map((src, index) => (
-                <button
-                  type="button"
-                  key={`${src}-${index}`}
-                  onClick={() => setLightboxIndex(index + 1)}
-                  className={cn(
-                    "group relative h-14 cursor-pointer overflow-hidden bg-primary-50 rounded-none",
-                    index === 0 && "sm:rounded-bl-[10px]",
-                  )}
-                >
-                  <Image
-                    src={src}
-                    alt={`${room.name} view ${index + 2}`}
-                    fill
-                    sizes="60px"
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
-                </button>
-              ))}
+              {images.slice(1, 4).map((src, index) => {
+                const extraCount = images.length - 4; // images beyond the 4 shown (1 hero + 3 thumbs)
+                const isLastThumb = index === 2;
+                return (
+                  <button
+                    type="button"
+                    key={`${src}-${index}`}
+                    onClick={() => setLightboxIndex(index + 1)}
+                    className={cn(
+                      "group relative h-20 md:h-14 cursor-pointer overflow-hidden bg-primary-50 rounded-none",
+                      index === 0 && "md:rounded-bl-[10px]",
+                    )}
+                  >
+                    <Image
+                      src={src}
+                      alt={`${room.name} view ${index + 2}`}
+                      fill
+                      sizes="80px"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
+                    {isLastThumb && extraCount > 0 && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/60">
+                        <span className="text-sm font-bold text-white">+{extraCount}</span>
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
             </div>
           )}
 
@@ -764,35 +773,35 @@ function RoomCard({ room, isSelected, onSelect }: { room: RoomType; isSelected: 
           )}
         </div>
 
-        <div className="p-3">
-          <h3 className="font-heading text-sm font-bold uppercase tracking-wide text-neutral-900">{room.name}</h3>
-          <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-600">
+        <div className="p-2 md:p-2">
+          <h3 className="font-heading text-base md:text-sm font-bold uppercase tracking-wide text-neutral-900">{room.name}</h3>
+          <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-xs font-medium text-neutral-600">
             <span className="flex items-center gap-1.5">
-              <BedDouble className="h-3.5 w-3.5 text-neutral-400" aria-hidden />
+              <BedDouble className="h-3.5 w-3.5 text-neutral-400 max-md:text-primary-600" aria-hidden />
               {room.bedType ?? "Comfortable bed"}
             </span>
             {room.sizeSqft && (
               <span className="flex items-center gap-1.5">
-                <Ruler className="h-3.5 w-3.5 text-neutral-400" aria-hidden />
+                <Ruler className="h-3.5 w-3.5 text-neutral-400 max-md:text-primary-600" aria-hidden />
                 {room.sizeSqft} Sqft
               </span>
             )}
             {room.maxGuests && (
               <span className="flex items-center gap-1.5">
-                <Users className="h-3.5 w-3.5 text-neutral-400" aria-hidden />
+                <Users className="h-3.5 w-3.5 text-neutral-400 max-md:text-primary-600" aria-hidden />
                 Max {room.maxGuests} sleeps
               </span>
             )}
           </div>
 
           {room.amenities && room.amenities.length > 0 && (
-            <div className="mt-2 flex flex-wrap gap-1.5">
+            <div className="mt-1 flex flex-wrap gap-1">
               {room.amenities.map((item) => {
                 const Icon = getAmenityIcon(item);
                 return (
                   <span
                     key={item}
-                    className="inline-flex items-center gap-1 rounded-full bg-neutral-100 px-2 py-1 text-[10px] font-medium text-neutral-600"
+                    className="inline-flex items-center gap-1 rounded-full bg-neutral-100 px-2 py-1 text-[8px] font-medium text-neutral-600 max-md:rounded-lg max-md:border max-md:border-primary-100 max-md:bg-primary-50 max-md:px-2 max-md:py-1 max-md:text-[8px] max-md:font-semibold max-md:text-primary-700"
                   >
                     <Icon className="h-3 w-3" aria-hidden />
                     {item}
@@ -802,9 +811,9 @@ function RoomCard({ room, isSelected, onSelect }: { room: RoomType; isSelected: 
             </div>
           )}
 
-          <p className="mt-2 text-xs leading-relaxed text-neutral-500">{room.description}</p>
+          <p className="mt-2 text-xs leading-snug text-neutral-500 max-md:italic">{room.description}</p>
 
-          <div className="mt-2 flex flex-wrap items-center gap-1.5 text-[10px]">
+          <div className="mt-1 flex flex-wrap items-center gap-1 text-[8px]">
             {room.roomsLeft ? (
               <span className="inline-flex items-center gap-1 rounded-md bg-success/10 px-1.5 py-1 font-medium text-success">
                 <Check className="h-3 w-3" aria-hidden />
@@ -823,9 +832,9 @@ function RoomCard({ room, isSelected, onSelect }: { room: RoomType; isSelected: 
           </div>
         </div>
 
-        <div className="flex flex-col justify-between border-t border-neutral-100 bg-neutral-50 p-3 sm:border-l sm:border-t-0">
-          <div className="text-center sm:text-right">
-            <p className="font-heading text-xl font-bold text-primary-700">{formatCurrency(room.priceFrom)}</p>
+        <div className="flex flex-col justify-between border-t border-neutral-100 bg-neutral-50 p-3.5 md:border-l md:border-t-0 md:p-3">
+          <div className="text-center md:text-right">
+            <p className="font-heading text-2xl md:text-xl font-bold text-primary-700">{formatCurrency(room.priceFrom)}</p>
             <p className="text-[11px] text-neutral-500">(1 night × 1 room)</p>
             {room.originalPriceFrom && (
               <>
@@ -838,11 +847,11 @@ function RoomCard({ room, isSelected, onSelect }: { room: RoomType; isSelected: 
             <p className="mt-1 text-xs text-neutral-500">{formatCurrency(room.priceFrom)} / night</p>
           </div>
 
-          <div className="mt-2 space-y-2">
+          <div className="mt-2 md:mt-2 space-y-2">
             <button
               type="button"
               onClick={onSelect}
-              className="flex h-9 w-full items-center justify-center gap-2 rounded-lg bg-primary-700 text-xs font-semibold text-white transition-colors hover:bg-primary-800"
+              className="flex h-9 w-full items-center justify-center gap-2 rounded-lg bg-primary-700 text-xs font-semibold text-white transition-colors hover:bg-primary-800 max-md:h-11 max-md:rounded-full max-md:text-sm max-md:font-bold max-md:shadow-md"
             >
               <BedDouble className="h-3.5 w-3.5" aria-hidden />
               {isSelected ? "Selected" : "Select Room"}

@@ -32,7 +32,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="container-app relative -mt-16 md:-mt-24">
+      <div className="container-app container-search relative -mt-16 md:-mt-24">
         <SearchWidget />
       </div>
     </section>

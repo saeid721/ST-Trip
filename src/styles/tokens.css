@@ -121,7 +121,8 @@
   /* ---- Layout ---- */
   --header-height: 76px;
   --header-height-mobile: 64px;
-  --container-max: 1280px;
+   --container-max: 1440px;
+   --container-search-max: 1280px;
 
   /* ---- Touch targets (mobile-first, WCAG 2.5.5 AAA = 44px min) ---- */
   --tap-target-min: 44px;

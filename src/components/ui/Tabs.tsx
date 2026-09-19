@@ -2,7 +2,6 @@
 
 import * as RadixTabs from "@radix-ui/react-tabs";
 import { useEffect, useRef, useState, createContext, useContext } from "react";
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -74,12 +73,10 @@ export function TabsList({ className, children, ...props }: RadixTabs.TabsListPr
       {...props}
     >
       {indicator && (
-        <motion.div
+        <div
           aria-hidden
-          className="absolute inset-y-1 left-0 rounded-full bg-white shadow-sm"
-          initial={false}
-          animate={{ x: indicator.left, width: indicator.width }}
-          transition={{ type: "spring", stiffness: 420, damping: 38, mass: 0.7 }}
+          className="absolute inset-y-1 left-0 rounded-full bg-white shadow-sm transition-[transform,width] duration-300 ease-out"
+          style={{ transform: `translateX(${indicator.left}px)`, width: indicator.width }}
         />
       )}
       {children}

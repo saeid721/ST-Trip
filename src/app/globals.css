@@ -135,6 +135,10 @@
     padding-inline: 1.25rem;
   }
 
+  .container-search {
+    max-width: var(--container-search-max);
+  }
+
   .skip-link {
     position: absolute;
     left: -9999px;

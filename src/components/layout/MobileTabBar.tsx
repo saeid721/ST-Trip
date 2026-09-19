@@ -8,9 +8,9 @@ import { LoginModal } from "@/components/layout/LoginModal";
 
 const navItems = [
   { label: "Home", href: "/", icon: Home },
-  { label: "Umrah Packages", href: "/umrah-packages", icon: Heart },
-  { label: "Hajj Packages", href: "/hajj-packages", icon: Star },
-  { label: "Tours Packages", href: "/tour-packages", icon: Globe },
+  { label: "Umrah", href: "/umrah-packages", icon: Heart },
+  { label: "Hajj", href: "/hajj-packages", icon: Star },
+  { label: "Tours", href: "/tour-packages", icon: Globe },
 ];
 
 const loginItem = { label: "Login", href: "#login", icon: LogIn };

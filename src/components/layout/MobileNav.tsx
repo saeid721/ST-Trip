@@ -40,6 +40,7 @@ export function MobileNav({ open, onOpenChange }: MobileNavProps) {
               <button
                 type="button"
                 aria-label="Close menu"
+                onClick={() => onOpenChange(false)}
                 className="flex h-11 w-11 items-center justify-center rounded-lg text-neutral-600 hover:bg-neutral-100"
               >
                 <X className="h-5 w-5" aria-hidden />

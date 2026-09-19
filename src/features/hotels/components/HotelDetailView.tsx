@@ -4,46 +4,23 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getAmenityIcon } from "@/features/hotels/amenity-icons";
-import type { LucideIcon } from "lucide-react";
 import {
-  Anchor,
   ArrowLeft,
-  ArrowUpDown,
   Ban,
-  Bath,
   BedDouble,
-  Beer,
   Building2,
   Check,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
   Clock3,
-  Coffee,
-  DoorClosed,
-  Dumbbell,
   Filter,
   Info,
-  Landmark,
-  Lock,
   Maximize2,
   MapPin,
-  Phone,
-  PlaneTakeoff,
-  Refrigerator,
   Ruler,
-  ShieldCheck,
-  Shirt,
-  Snowflake,
-  Sofa,
-  Sparkles,
   Star,
-  Thermometer,
-  Tv,
   Users,
-  Waves,
-  Wifi,
-  Wind,
   X,
 } from "lucide-react";
 import { cn, formatCurrency } from "@/lib/utils";
@@ -91,16 +68,11 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
   const rooms = useMemo(() => detail.roomTypes ?? [], [detail.roomTypes]);
   const starCount = Math.min(5, Math.max(1, Math.round(detail.rating)));
 
-  // --- Modify Search panel state (local only — no navigation, no reload) ---
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchType, setSearchType] = useState<"domestic" | "international">("domestic");
-  const [location, setLocation] = useState(detail.location);
-  const [checkIn, setCheckIn] = useState(searchContext?.checkIn ?? new Date().toISOString().slice(0, 10));
-  const [checkOut, setCheckOut] = useState(
-    searchContext?.checkOut ?? new Date(Date.now() + 86_400_000).toISOString().slice(0, 10),
-  );
-  const [roomCount, setRoomCount] = useState(searchContext?.rooms ?? 1);
-  const [guestCount, setGuestCount] = useState(searchContext?.guests ?? 2);
+  // --- Search summary (read-only, shown in the "Your Search" sidebar card) ---
+  const checkIn = searchContext?.checkIn ?? new Date().toISOString().slice(0, 10);
+  const checkOut = searchContext?.checkOut ?? new Date(Date.now() + 86_400_000).toISOString().slice(0, 10);
+  const roomCount = searchContext?.rooms ?? 1;
+  const guestCount = searchContext?.guests ?? 2;
   const nights = nightsBetween(checkIn, checkOut);
 
   // --- Room filters ---
@@ -140,178 +112,83 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
 
   return (
     <>
-      <div className="bg-primary-700 pt-[calc(var(--header-height)+0.75rem)] sm:pt-[calc(var(--header-height)+1rem)]">
-        {searchOpen && (
-          <section className="border-b border-neutral-200 bg-white">
-            <div className="container-app py-5 sm:py-6">
-              <div className="flex justify-center">
-                <button
-                  type="button"
-                  onClick={() => setSearchOpen(false)}
-                  className="inline-flex h-9 items-center gap-1.5 rounded-full bg-primary-700 px-4 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-primary-800"
-                >
-                  <X className="h-3.5 w-3.5" aria-hidden />
-                  Close
-                </button>
-              </div>
+      {/* Hero */}
+      <section className="relative">
+        <div className="relative h-[260px] w-full overflow-hidden sm:h-[340px] md:h-[420px]">
+          <Image
+            src={detail.heroImage}
+            alt={detail.name}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/85 via-neutral-900/30 to-neutral-900/60" />
+        </div>
 
-              <div className="mt-5 flex items-center gap-5 text-sm font-medium text-neutral-700">
-                <label className="inline-flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="searchType"
-                    checked={searchType === "domestic"}
-                    onChange={() => setSearchType("domestic")}
-                    className="h-4 w-4 accent-primary-600"
-                  />
-                  Domestic
-                </label>
-                <label className="inline-flex items-center gap-2">
-                  <input
-                    type="radio"
-                    name="searchType"
-                    checked={searchType === "international"}
-                    onChange={() => setSearchType("international")}
-                    className="h-4 w-4 accent-primary-600"
-                  />
-                  International
-                </label>
-              </div>
+        <div className="container-app relative -mt-16 sm:-mt-24 md:-mt-28">
+          <div className="rounded-2xl bg-white p-4 shadow-lg sm:p-6 md:p-8">
+            <Link
+              href={backHref}
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 transition-colors hover:text-primary-800"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
+              {backLabel}
+            </Link>
 
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-6 lg:items-end">
-                <SearchField label="Location">
-                  <input
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    className="w-full bg-transparent text-sm text-neutral-900 outline-none"
-                  />
-                </SearchField>
-                <SearchField label="Check In">
-                  <input
-                    type="date"
-                    value={checkIn}
-                    onChange={(e) => setCheckIn(e.target.value)}
-                    className="w-full bg-transparent text-sm text-neutral-900 outline-none"
-                  />
-                </SearchField>
-                <SearchField label="Check Out">
-                  <input
-                    type="date"
-                    value={checkOut}
-                    onChange={(e) => setCheckOut(e.target.value)}
-                    className="w-full bg-transparent text-sm text-neutral-900 outline-none"
-                  />
-                </SearchField>
-                <SearchField label="Room">
-                  <select
-                    value={roomCount}
-                    onChange={(e) => setRoomCount(Number(e.target.value))}
-                    className="w-full bg-transparent text-sm text-neutral-900 outline-none"
-                  >
-                    {[1, 2, 3, 4, 5].map((n) => (
-                      <option key={n} value={n}>
-                        {n} Room{n > 1 ? "s" : ""}
-                      </option>
-                    ))}
-                  </select>
-                </SearchField>
-                <SearchField label="Guest">
-                  <select
-                    value={guestCount}
-                    onChange={(e) => setGuestCount(Number(e.target.value))}
-                    className="w-full bg-transparent text-sm text-neutral-900 outline-none"
-                  >
-                    {[1, 2, 3, 4, 5, 6].map((n) => (
-                      <option key={n} value={n}>
-                        {n} Adult{n > 1 ? "s" : ""}
-                      </option>
-                    ))}
-                  </select>
-                </SearchField>
-                <button
-                  type="button"
-                  onClick={() => setSearchOpen(false)}
-                  className="flex h-11 items-center justify-center gap-2 rounded-lg bg-primary-600 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
-                >
-                  <Filter className="h-4 w-4" aria-hidden />
-                  Search Again
-                </button>
-              </div>
-            </div>
-          </section>
-        )}
-
-        <section className="bg-primary-700 text-white">
-          <div className="container-app py-4 sm:py-8">
-            <div className="flex items-center justify-between gap-2 sm:gap-3">
-              <Link
-                href={backHref}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-100 transition-colors hover:text-white"
-              >
-                <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-                {backLabel}
-              </Link>
-              {!searchOpen && (
-                <button
-                  type="button"
-                  onClick={() => setSearchOpen(true)}
-                  className="inline-flex h-7 items-center gap-1 rounded-full border border-white/40 px-2.5 text-[10px] font-semibold text-white transition-colors hover:bg-white/10 sm:h-9 sm:gap-1.5 sm:px-4 sm:text-xs"
-                >
-                  <Filter className="h-3 w-3 sm:h-3.5 sm:w-3.5" aria-hidden />
-                  Modify Search
-                </button>
-              )}
-              <span className="w-[92px] sm:w-[110px]" aria-hidden />
-            </div>
-
-            <div className="mt-3 flex flex-col gap-3 sm:mt-5 sm:gap-5 md:flex-row md:items-end md:justify-between">
+            <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-4">
               <div>
-                <div className="flex items-center gap-1 text-accent-300" aria-label={`${starCount} out of 5 stars`}>
+                <div className="flex items-center gap-1 text-warning" aria-label={`${starCount} out of 5 stars`}>
                   {Array.from({ length: starCount }).map((_, index) => (
-                    <Star key={index} className="h-3 w-3 fill-current sm:h-4 sm:w-4" aria-hidden />
+                    <Star key={index} className="h-3.5 w-3.5 fill-current" aria-hidden />
                   ))}
                 </div>
-                <div className="mt-1.5 flex flex-wrap items-center gap-1.5 sm:mt-2 sm:gap-2">
-                  <Building2 className="h-4 w-4 shrink-0 text-primary-100 sm:h-5 sm:w-5" aria-hidden />
-                  <h1 className="font-heading text-base font-bold uppercase tracking-wide sm:text-2xl">
+                <div className="mt-1.5 flex flex-wrap items-center gap-2">
+                  <h1 className="font-heading text-xl font-bold uppercase tracking-wide text-neutral-900 sm:text-2xl md:text-3xl">
                     {detail.name}
                   </h1>
                   {detail.badge && (
-                    <span className="rounded-full bg-white/15 px-2 py-0.5 text-[7px] font-semibold uppercase tracking-wide sm:px-2.5 sm:py-1 sm:text-[8px]">
+                    <span className="rounded-full bg-accent-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white sm:text-xs">
                       {detail.badge}
                     </span>
                   )}
                 </div>
-                <p className="mt-1 flex items-start gap-1 text-[11px] leading-snug text-primary-100 sm:mt-2 sm:gap-1.5 sm:text-sm">
-                  <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" aria-hidden />
+                <p className="mt-1.5 flex items-start gap-1.5 text-xs text-neutral-500 sm:text-sm">
+                  <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary-600 sm:h-4 sm:w-4" aria-hidden />
                   {detail.address ?? detail.location}
                 </p>
-                <div className="mt-2.5 flex flex-wrap gap-1.5 sm:mt-4 sm:gap-2">
-                  {detail.amenities.map((item) => {
-                    const Icon = getAmenityIcon(item);
-                    return (
-                      <span
-                        key={item}
-                        className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2 py-1 text-[10px] font-medium sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-xs"
-                      >
-                        <Icon className="h-3 w-3 sm:h-3.5 sm:w-3.5" aria-hidden />
-                        {item}
-                      </span>
-                    );
-                  })}
-                </div>
               </div>
-              <div className="shrink-0 md:text-right">
-                <p className="text-[10px] text-primary-100 sm:text-xs">{detail.priceNote ?? "Starting from"}</p>
-                <p className="font-heading text-lg font-bold sm:text-3xl">{formatCurrency(detail.priceFrom)}</p>
-                <p className="text-[10px] text-primary-100 sm:text-[11px]">1 night × 1 room</p>
+
+              <div className="sm:text-right">
+                <p className="text-[11px] uppercase tracking-wide text-neutral-400">
+                  {detail.priceNote ?? "Starting from"}
+                </p>
+                <p className="font-heading text-xl font-bold text-primary-700 sm:text-2xl md:text-3xl">
+                  {formatCurrency(detail.priceFrom)}
+                </p>
+                <p className="text-[11px] text-neutral-400">1 night × 1 room</p>
               </div>
             </div>
-          </div>
-        </section>
-      </div>
 
-      <section className="bg-neutral-50 pb-16 pt-5 sm:pt-8">
+            <div className="mt-4 flex flex-wrap gap-2 border-t border-neutral-100 pt-4 sm:mt-5 sm:pt-5">
+              {detail.amenities.map((item) => {
+                const Icon = getAmenityIcon(item);
+                return (
+                  <span
+                    key={item}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-neutral-100 px-3 py-1.5 text-xs font-medium text-neutral-600"
+                  >
+                    <Icon className="h-3.5 w-3.5 text-primary-600" aria-hidden />
+                    {item}
+                  </span>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-neutral-50 pb-16 pt-8 sm:pt-10">
         <div className="container-app">
           <Gallery images={gallery} name={detail.name} />
 
@@ -409,21 +286,6 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
         </div>
       </section>
     </>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/* Search panel field wrapper                                                 */
-/* -------------------------------------------------------------------------- */
-
-function SearchField({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <label className="block text-xs font-medium text-neutral-500">
-      {label}
-      <div className="mt-1 flex h-11 items-center rounded-lg border border-neutral-200 px-3 focus-within:border-primary-400">
-        {children}
-      </div>
-    </label>
   );
 }
 

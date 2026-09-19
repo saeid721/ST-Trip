@@ -1,9 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SlidersHorizontal, Search as SearchIcon } from "lucide-react";
 import { HotelCard } from "@/features/hotels/components/HotelCard";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
 import type { HotelDetail, HotelListing } from "@/features/hotels/types";
@@ -13,9 +12,25 @@ type SortOption = "default" | "price-asc" | "price-desc" | "rating-desc";
 interface HotelsBrowserProps {
   hotels: HotelListing[];
   hotelDetails: Record<string, HotelDetail>;
+  /** Location text from the search hero — seeds/updates the sidebar search box. */
+  locationQuery?: string;
+  /** Domestic vs International toggle from the search hero. */
+  searchType?: "domestic" | "international";
+  /** Dates/rooms/guests from the search hero — carried into each hotel's detail link. */
+  searchContext?: {
+    checkIn: string;
+    checkOut: string;
+    rooms: number;
+    guests: number;
+  };
 }
 
-export function HotelsBrowser({ hotels, hotelDetails }: HotelsBrowserProps) {
+export function HotelsBrowser({
+  hotels,
+  hotelDetails,
+  locationQuery = "",
+  searchContext,
+}: HotelsBrowserProps) {
   const enriched = useMemo(
     () =>
       hotels.map((hotel) => {
@@ -46,7 +61,7 @@ export function HotelsBrowser({ hotels, hotelDetails }: HotelsBrowserProps) {
     return { min: Math.min(...prices), max: Math.max(...prices) };
   }, [enriched]);
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(locationQuery);
   const [selectedTypes, setSelectedTypes] = useState<Set<string>>(new Set());
   const [selectedAreas, setSelectedAreas] = useState<Set<string>>(new Set());
   const [selectedAmenities, setSelectedAmenities] = useState<Set<string>>(new Set());
@@ -56,9 +71,31 @@ export function HotelsBrowser({ hotels, hotelDetails }: HotelsBrowserProps) {
   const [maxPrice, setMaxPrice] = useState(priceBounds.max);
   const [sortBy, setSortBy] = useState<SortOption>("default");
 
+  // Keep the sidebar search box in sync whenever the hero search is submitted.
+  useEffect(() => {
+    setSearch(locationQuery);
+  }, [locationQuery]);
+
+  // Query string carried from the hero search into each hotel's detail page,
+  // so Check-In/Check-Out/Rooms/Guests show up in that page's "Your Search" card.
+  const detailQueryString = useMemo(() => {
+    if (!searchContext) return "";
+    const params = new URLSearchParams({
+      checkIn: searchContext.checkIn,
+      checkOut: searchContext.checkOut,
+      rooms: String(searchContext.rooms),
+      guests: String(searchContext.guests),
+    });
+    return `?${params.toString()}`;
+  }, [searchContext]);
+
   function toggle(set: Set<string>, value: string, setter: (s: Set<string>) => void) {
     const next = new Set(set);
-    next.has(value) ? next.delete(value) : next.add(value);
+    if (next.has(value)) {
+      next.delete(value);
+    } else {
+      next.add(value);
+    }
     setter(next);
   }
 
@@ -101,7 +138,9 @@ export function HotelsBrowser({ hotels, hotelDetails }: HotelsBrowserProps) {
   return (
     <section className="py-14 sm:py-20">
       <div className="container-app">
-        <SectionHeading id="all-hotels-heading" title={`${filtered.length} Hotels Available`} />
+        <h2 id="all-hotels-heading" className="mb-6 text-2xl font-bold tracking-tight text-neutral-900 sm:text-3xl">
+          {filtered.length} Hotels Available
+        </h2>
 
         <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
           <aside className="h-fit rounded-xl border border-neutral-200 bg-white p-5 shadow-sm lg:sticky lg:top-[calc(var(--header-height)+1.5rem)]">
@@ -193,7 +232,7 @@ export function HotelsBrowser({ hotels, hotelDetails }: HotelsBrowserProps) {
                 {filtered.map((hotel, i) => (
                   <Reveal key={hotel.id} delay={i * 0.06}>
                     <HotelCard
-                        href={hotel.href}
+                      href={`${hotel.href}${detailQueryString}`}
                         image={hotel.image}
                         name={hotel.name}
                         location={hotel.location}

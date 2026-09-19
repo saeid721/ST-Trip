@@ -27,7 +27,7 @@ export default function PartnersMarquee() {
 
   return (
     <section className="w-full bg-slate-50 py-8 border-y border-slate-200 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 mb-4 text-center">
+      <div className="container-app mb-4 text-center">
         <p className="text-xs font-bold uppercase tracking-widest text-slate-400">
           Top Airline Partners
         </p>

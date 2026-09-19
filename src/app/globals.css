@@ -253,7 +253,10 @@
   /* ---- Layout ---- */
   --header-height: 76px;
   --header-height-mobile: 64px;
-  --container-max: 1280px;
+  /* Wider production layout: ~85–90% viewport usage on desktop while preserving readable max width. */
+  --container-max: 1600px;
+  /* Homepage search must retain its original 1280px container width. */
+  --container-search-max: 1280px;
 
   /* ---- Touch targets (mobile-first, WCAG 2.5.5 AAA = 44px min) ---- */
   --tap-target-min: 44px;

@@ -242,6 +242,8 @@ export const hotelDetails: Record<string, HotelDetail> = {
         images: [
           "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
           "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80",
+          "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
+          "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
         ],
         roomsLeft: 5,
         refundable: false,
@@ -260,6 +262,8 @@ export const hotelDetails: Record<string, HotelDetail> = {
         images: [
           "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80",
           "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
+          "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=800&q=80",
+          "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80",
         ],
         roomsLeft: 5,
         refundable: false,
@@ -278,6 +282,8 @@ export const hotelDetails: Record<string, HotelDetail> = {
         images: [
           "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
           "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
+          "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80",
+          "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
         ],
         roomsLeft: 5,
         refundable: false,
@@ -296,6 +302,8 @@ export const hotelDetails: Record<string, HotelDetail> = {
         images: [
           "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
           "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
+          "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
+          "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80",
         ],
         roomsLeft: 5,
         refundable: false,
@@ -314,6 +322,8 @@ export const hotelDetails: Record<string, HotelDetail> = {
         images: [
           "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=800&q=80",
           "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80",
+          "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
+          "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
         ],
         roomsLeft: 5,
         refundable: false,
@@ -368,6 +378,8 @@ export const hotelDetails: Record<string, HotelDetail> = {
         images: [
           "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
           "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80",
+          "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=800&q=80",
+          "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
         ],
         roomsLeft: 5,
         refundable: false,

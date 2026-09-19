@@ -12,11 +12,8 @@ type SortOption = "default" | "price-asc" | "price-desc" | "rating-desc";
 interface HotelsBrowserProps {
   hotels: HotelListing[];
   hotelDetails: Record<string, HotelDetail>;
-  /** Location text from the search hero — seeds/updates the sidebar search box. */
   locationQuery?: string;
-  /** Domestic vs International toggle from the search hero. */
   searchType?: "domestic" | "international";
-  /** Dates/rooms/guests from the search hero — carried into each hotel's detail link. */
   searchContext?: {
     checkIn: string;
     checkOut: string;

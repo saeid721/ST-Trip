@@ -131,7 +131,7 @@ export function HotelsBrowser({
   const visibleAmenities = showAllAmenities ? amenityOptions : amenityOptions.slice(0, 4);
 
   return (
-    <section className="py-14 sm:py-20">
+    <section className="py-8 sm:py-10">
       <div className="container-app">
         <h2 id="all-hotels-heading" className="mb-6 text-2xl font-bold tracking-tight text-neutral-900 sm:text-3xl">
           {filtered.length} Hotels Available
@@ -216,7 +216,7 @@ export function HotelsBrowser({
 
           <div>
             {filtered.length > 0 ? (
-              <div className="grid grid-cols-2 gap-5 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {filtered.map((hotel, i) => (
                   <Reveal key={hotel.id} delay={i * 0.06}>
                     <HotelCard

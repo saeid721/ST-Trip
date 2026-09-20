@@ -109,10 +109,12 @@ export function HotelsBrowser({
 
   const filtered = useMemo(() => {
     const list = enriched.filter((hotel) => {
+      const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
+      const searchCity = search.split(" - ")[0] ?? search;
       const matchesSearch =
         search.trim() === "" ||
         hotel.name.toLowerCase().includes(search.toLowerCase()) ||
-        hotel.location.toLowerCase().includes(search.toLowerCase());
+        normalize(hotel.location).includes(normalize(searchCity));
       const matchesType = selectedTypes.size === 0 || selectedTypes.has(hotel.propertyType);
       const matchesArea = selectedAreas.size === 0 || selectedAreas.has(hotel.location);
       const matchesAmenities =

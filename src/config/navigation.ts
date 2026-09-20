@@ -16,7 +16,7 @@ export const primaryNav: NavLink[] = [
     href: "/others",
     children: [
       { label: "About", href: "/about" },
-      // { label: "Promotions", href: "/promotions" },
+      { label: "Promotions", href: "/promotions" },
       { label: "Why STTrip?", href: "/why-sttrip" },
       { label: "Travel Guide", href: "/travel-guide" },
       { label: "Blog", href: "/blog" },

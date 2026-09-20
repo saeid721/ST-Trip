@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
 import { BedDouble, CalendarDays, Minus, MapPin, Plus, Search, Users } from "lucide-react";
+import { domesticLocations, internationalLocations } from "@/features/hotels/data/locations";
 
 export interface HotelSearchValues {
   searchType: "domestic" | "international";
@@ -19,7 +20,7 @@ interface HotelsSearchHeroProps {
   onSearch: (values: HotelSearchValues) => void;
 }
 
-const HERO_IMAGE = "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=1600&q=80";
+const HERO_IMAGE = "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80";
 
 export function HotelsSearchHero({ initial, onSearch }: HotelsSearchHeroProps) {
   const [searchType, setSearchType] = useState(initial.searchType);
@@ -28,6 +29,24 @@ export function HotelsSearchHero({ initial, onSearch }: HotelsSearchHeroProps) {
   const [checkOut, setCheckOut] = useState(initial.checkOut);
   const [rooms, setRooms] = useState(initial.rooms);
   const [guests, setGuests] = useState(initial.guests);
+
+  const [locationOpen, setLocationOpen] = useState(false);
+  const locationRef = useRef<HTMLDivElement>(null);
+  const locationOptions = searchType === "domestic" ? domesticLocations : internationalLocations;
+  const filteredLocations = useMemo(
+    () => locationOptions.filter((loc) => loc.toLowerCase().includes(location.toLowerCase())),
+    [locationOptions, location],
+  );
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (locationRef.current && !locationRef.current.contains(e.target as Node)) {
+        setLocationOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -40,7 +59,6 @@ export function HotelsSearchHero({ initial, onSearch }: HotelsSearchHeroProps) {
         <Image src={HERO_IMAGE} alt="Hotels" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-neutral-900/55" />
         <div className="absolute inset-0 flex items-center justify-center pt-[var(--header-height)]">
-          <h1 className="font-heading text-3xl font-bold text-white sm:text-4xl">Hotels</h1>
         </div>
       </div>
 
@@ -53,7 +71,7 @@ export function HotelsSearchHero({ initial, onSearch }: HotelsSearchHeroProps) {
                   type="radio"
                   name="hotelSearchType"
                   checked={searchType === "domestic"}
-                  onChange={() => setSearchType("domestic")}
+                  onChange={() => { setSearchType("domestic"); setLocation(""); setLocationOpen(false); }}
                   className="h-4 w-4 accent-primary-600"
                 />
                 Domestic
@@ -63,7 +81,7 @@ export function HotelsSearchHero({ initial, onSearch }: HotelsSearchHeroProps) {
                   type="radio"
                   name="hotelSearchType"
                   checked={searchType === "international"}
-                  onChange={() => setSearchType("international")}
+                  onChange={() => { setSearchType("international"); setLocation(""); setLocationOpen(false); }}
                   className="h-4 w-4 accent-primary-600"
                 />
                 International
@@ -77,15 +95,47 @@ export function HotelsSearchHero({ initial, onSearch }: HotelsSearchHeroProps) {
           </div>
 
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:items-end">
-            <SearchField label="Location">
-              <MapPin className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
-              <input
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                placeholder="City, area or hotel name"
-                className="w-full bg-transparent text-sm text-neutral-900 outline-none placeholder:text-neutral-400"
-              />
-            </SearchField>
+            <div ref={locationRef} className="relative">
+              <label htmlFor="hotelLocation" className="block text-xs font-medium text-neutral-500">
+                Location
+                <div className="mt-1 flex h-11 items-center gap-2 rounded-lg border border-neutral-200 px-3 focus-within:border-primary-400">
+                  <MapPin className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
+                  <input
+                    id="hotelLocation"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    onFocus={() => setLocationOpen(true)}
+                    autoComplete="off"
+                    placeholder={searchType === "domestic" ? "Search city or district" : "Search city or country"}
+                    className="w-full bg-transparent text-sm text-neutral-900 outline-none placeholder:text-neutral-400"
+                  />
+                </div>
+              </label>
+
+              {locationOpen && (
+                <div className="absolute left-0 top-full z-30 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+                  {filteredLocations.length > 0 ? (
+                    filteredLocations.map((loc) => (
+                      <button
+                        key={loc}
+                        type="button"
+                        onClick={() => {
+                          setLocation(loc);
+                          setLocationOpen(false);
+                        }}
+                        className={`block w-full rounded-md px-3 py-2 text-left text-sm font-medium transition-colors hover:bg-primary-50 hover:text-primary-700 ${
+                          loc === location ? "bg-primary-50 text-primary-700" : "text-neutral-700"
+                        }`}
+                      >
+                        {loc}
+                      </button>
+                    ))
+                  ) : (
+                    <p className="px-3 py-2 text-sm text-neutral-400">No matches found</p>
+                  )}
+                </div>
+              )}
+            </div>
             <SearchField label="Check-In">
               <CalendarDays className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
               <input

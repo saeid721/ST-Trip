@@ -43,7 +43,7 @@ export function HotelCard({
     <Link
       href={href}
       className={cn(
-        "group flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm",
+        "group flex h-full flex-col overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm",
         "transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)]",
         "hover:-translate-y-1 hover:border-primary-200 hover:shadow-xl focus-visible:-translate-y-1 focus-visible:shadow-xl",
         className,

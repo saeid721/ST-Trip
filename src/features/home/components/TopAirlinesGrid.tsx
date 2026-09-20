@@ -20,7 +20,7 @@ export function TopAirlinesGrid({ airlines }: { airlines: Airline[] }) {
               <Reveal delay={i * 0.04}>
                 <Link
                   href={airline.href}
-                  className="flex h-24 flex-col items-center justify-center gap-2 rounded-xl border border-neutral-200 bg-white px-3 text-center shadow-sm transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:border-primary-200 hover:shadow-md"
+                  className="flex h-24 flex-col items-center justify-center gap-2 rounded-md border border-neutral-200 bg-white px-3 text-center shadow-sm transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:border-primary-200 hover:shadow-md"
                 >
                   <Plane className="h-5 w-5 text-primary-600" aria-hidden />
                   <span className="text-xs font-medium text-neutral-700">{airline.name}</span>

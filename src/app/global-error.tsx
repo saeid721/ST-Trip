@@ -19,7 +19,7 @@ export default function GlobalError({
     <html lang="en" className={fontVariables}>
       <body>
         <main className="flex min-h-screen items-center justify-center bg-neutral-50 px-6 text-center">
-          <div className="max-w-md rounded-xl border border-neutral-200 bg-white p-8 shadow-sm">
+          <div className="max-w-md rounded-md border border-neutral-200 bg-white p-8 shadow-sm">
             <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-50 text-accent-600">
               <AlertTriangle className="h-7 w-7" aria-hidden />
             </span>

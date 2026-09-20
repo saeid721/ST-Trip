@@ -63,7 +63,7 @@ export function HotelsSearchHero({ initial, onSearch }: HotelsSearchHeroProps) {
       </div>
 
       <div className="container-app relative -mt-16 sm:-mt-20 md:-mt-24">
-        <form onSubmit={handleSubmit} className="rounded-2xl bg-white p-4 shadow-lg sm:p-6">
+        <form onSubmit={handleSubmit} className="rounded-md bg-white p-4 shadow-lg sm:p-6">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <div className="flex items-center gap-5 text-sm font-medium text-neutral-700">
               <label className="inline-flex items-center gap-2">

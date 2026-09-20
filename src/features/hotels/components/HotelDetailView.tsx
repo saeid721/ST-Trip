@@ -127,7 +127,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
         </div>
 
         <div className="container-app relative -mt-16 sm:-mt-24 md:-mt-28">
-          <div className="rounded-2xl bg-white p-4 shadow-lg sm:p-6 md:p-8">
+          <div className="rounded-md bg-white p-4 shadow-lg sm:p-6 md:p-8">
             <Link
               href={backHref}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 transition-colors hover:text-primary-800"
@@ -201,7 +201,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
                     <h2 className="font-heading text-lg font-bold text-neutral-900">Available Rooms</h2>
                   </div>
 
-                  <div className="mb-4 flex flex-col gap-2.5 rounded-2xl border border-neutral-200 bg-white p-4 shadow-[0_1px_4px_rgba(0,0,0,0.05)] sm:flex-row sm:flex-wrap sm:items-center sm:gap-2 sm:overflow-x-auto sm:rounded-xl sm:p-3 sm:shadow-none">
+                  <div className="mb-4 flex flex-col gap-2.5 rounded-md border border-neutral-200 bg-white p-4 shadow-[0_1px_4px_rgba(0,0,0,0.05)] sm:flex-row sm:flex-wrap sm:items-center sm:gap-2 sm:overflow-x-auto sm:rounded-md sm:p-3 sm:shadow-none">
                     <span className="mb-0.5 flex w-full items-center gap-1.5 text-[13px] font-medium text-neutral-400 sm:mb-0 sm:w-auto sm:shrink-0 sm:pl-1 sm:text-xs sm:text-neutral-600">
                       <Filter className="h-4 w-4 sm:h-3.5 sm:w-3.5" aria-hidden />
                       Filter :
@@ -229,7 +229,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
                         value={sortOrder}
                         onChange={(e) => setSortOrder(e.target.value as "low-high" | "high-low")}
                         style={{ WebkitAppearance: "none", MozAppearance: "none" }}
-                        className="h-[52px] w-full appearance-none rounded-xl border border-neutral-200 bg-white bg-none pl-4 pr-10 text-[15px] font-normal text-neutral-700 outline-none focus:border-primary-400 focus:ring-0 sm:h-9 sm:rounded-lg sm:pl-3 sm:pr-7 sm:text-xs sm:font-medium"
+                        className="h-[52px] w-full appearance-none rounded-md border border-neutral-200 bg-white bg-none pl-4 pr-10 text-[15px] font-normal text-neutral-700 outline-none focus:border-primary-400 focus:ring-0 sm:h-9 sm:rounded-lg sm:pl-3 sm:pr-7 sm:text-xs sm:font-medium"
                       >
                         <option value="low-high">Price: Low to High</option>
                         <option value="high-low">Price: High to Low</option>
@@ -250,7 +250,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
                       ))}
                     </div>
                   ) : (
-                    <div className="rounded-xl border border-dashed border-neutral-300 bg-white p-8 text-center">
+                    <div className="rounded-md border border-dashed border-neutral-300 bg-white p-8 text-center">
                       <p className="text-sm font-semibold text-neutral-700">No rooms match your filters</p>
                       <p className="mt-1 text-xs text-neutral-500">Try adjusting or clearing your filters.</p>
                       <button
@@ -310,7 +310,7 @@ function FilterSelect({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         style={{ WebkitAppearance: "none", MozAppearance: "none" }}
-        className="h-[52px] w-full appearance-none rounded-xl border border-neutral-200 bg-white bg-none pl-4 pr-10 text-[15px] font-normal text-neutral-700 outline-none focus:border-primary-400 focus:ring-0 sm:h-9 sm:rounded-lg sm:pl-3 sm:pr-7 sm:text-xs sm:font-medium"
+        className="h-[52px] w-full appearance-none rounded-md border border-neutral-200 bg-white bg-none pl-4 pr-10 text-[15px] font-normal text-neutral-700 outline-none focus:border-primary-400 focus:ring-0 sm:h-9 sm:rounded-lg sm:pl-3 sm:pr-7 sm:text-xs sm:font-medium"
       >
         <option value="all">-- {placeholder} --</option>
         {options.map((opt) => (
@@ -339,7 +339,7 @@ function Gallery({ images, name }: { images: string[]; name: string }) {
 
   return (
     <>
-      <div className="overflow-hidden rounded-xl md:hidden">
+      <div className="overflow-hidden rounded-md md:hidden">
         <button
           type="button"
           onClick={() => setLightboxIndex(0)}
@@ -369,7 +369,7 @@ function Gallery({ images, name }: { images: string[]; name: string }) {
         </div>
       </div>
 
-      <div className="hidden h-[390px] grid-cols-4 grid-rows-2 gap-1.5 overflow-hidden rounded-2xl md:grid">
+      <div className="hidden h-[390px] grid-cols-4 grid-rows-2 gap-1.5 overflow-hidden rounded-md md:grid">
         <button
           type="button"
           onClick={() => setLightboxIndex(0)}
@@ -555,7 +555,7 @@ function RoomCard({ room, isSelected, onSelect }: { room: RoomType; isSelected: 
   return (
     <article
       className={cn(
-        "overflow-hidden rounded-2xl border bg-white shadow-sm transition-colors max-md:shadow-md md:rounded-xl",
+        "overflow-hidden rounded-md border bg-white shadow-sm transition-colors max-md:shadow-md md:rounded-md",
         isSelected ? "border-primary-400 ring-1 ring-primary-200" : "border-neutral-200",
       )}
     >
@@ -733,7 +733,7 @@ function AboutCard({ overview }: { overview: string }) {
   const isLong = overview.length > 220;
 
   return (
-    <div className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
+    <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
       <p className="flex items-center gap-2 text-sm font-bold text-neutral-900">
         <Info className="h-4 w-4 text-primary-700" aria-hidden />
         About
@@ -764,7 +764,7 @@ function MapCard({ detail }: { detail: HotelDetail }) {
   const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lng}`;
 
   return (
-    <div className="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm">
       <div className="relative h-[170px] w-full bg-neutral-100">
         <iframe
           title={`${detail.name} location map`}
@@ -805,7 +805,7 @@ function YourSearchCard({
   ];
 
   return (
-    <div className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm">
+    <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
       <p className="text-sm font-bold text-neutral-900">Your Search</p>
       <div className="mt-3 divide-y divide-neutral-100 text-xs">
         {rows.map((row) => (
@@ -829,7 +829,7 @@ function YourSearchCard({
 
 function PolicyPanel({ policies }: { policies: NonNullable<HotelDetail["policies"]> }) {
   return (
-    <section className="rounded-xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+    <section className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
       <h2 className="font-heading text-lg font-bold text-neutral-900">Policies</h2>
 
       <div className="mt-4">

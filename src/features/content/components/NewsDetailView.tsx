@@ -13,7 +13,7 @@ export function NewsDetailView({ item }: { item: NewsItem }) {
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/35 to-transparent" />
         </div>
         <div className="container-app relative -mt-24 pb-10 sm:-mt-32 sm:pb-14">
-          <div className="max-w-4xl rounded-2xl bg-white p-6 shadow-lg sm:p-8">
+          <div className="max-w-4xl rounded-md bg-white p-6 shadow-lg sm:p-8">
             <Link href="/news" className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 hover:text-primary-800">
               <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
               Back to News

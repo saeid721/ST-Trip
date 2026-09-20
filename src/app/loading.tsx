@@ -12,7 +12,7 @@ export default function Loading() {
         </div>
       </div>
       <div className="container-app relative -mt-20 sm:-mt-24">
-        <Skeleton className="h-48 w-full rounded-2xl sm:h-40" />
+        <Skeleton className="h-48 w-full rounded-md sm:h-40" />
       </div>
 
       {/* Trust badges */}

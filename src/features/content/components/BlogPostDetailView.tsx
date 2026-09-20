@@ -105,7 +105,7 @@ export function BlogPostDetailView({ post, relatedPosts }: BlogPostDetailViewPro
         <div className="container-app">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-14">
             <div className="min-w-0">
-              <div className="rounded-2xl border border-primary-100 bg-primary-50/70 p-5 sm:p-6">
+              <div className="rounded-md border border-primary-100 bg-primary-50/70 p-5 sm:p-6">
                 <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-primary-700">Quick read</p>
                 <p className="mt-2 text-sm leading-7 text-neutral-700 sm:text-[15px]">{post.intro}</p>
               </div>
@@ -129,7 +129,7 @@ export function BlogPostDetailView({ post, relatedPosts }: BlogPostDetailViewPro
                 ))}
               </div>
 
-              <div className="mt-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-5 sm:p-6">
+              <div className="mt-10 rounded-md border border-neutral-200 bg-neutral-50 p-5 sm:p-6">
                 <h2 className="font-heading text-lg font-bold text-neutral-900 sm:text-xl">Practical tips</h2>
                 <ul className="mt-4 space-y-3">
                   {post.tips.map((tip) => (
@@ -180,7 +180,7 @@ export function BlogPostDetailView({ post, relatedPosts }: BlogPostDetailViewPro
                 </div>
               </div>
 
-              <div className="mt-10 rounded-2xl bg-gradient-to-r from-primary-700 to-primary-600 p-6 text-white sm:p-8">
+              <div className="mt-10 rounded-md bg-gradient-to-r from-primary-700 to-primary-600 p-6 text-white sm:p-8">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary-100">Plan with ST Trip</p>
                 <h2 className="mt-2 font-heading text-xl font-bold sm:text-2xl">Ready to turn the guide into a trip?</h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-primary-50/90">Compare flights, hotels and travel services in one place, with support when you need it.</p>
@@ -196,7 +196,7 @@ export function BlogPostDetailView({ post, relatedPosts }: BlogPostDetailViewPro
             </div>
 
             <aside className="lg:sticky lg:top-24">
-              <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+              <div className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm">
                 <div className="flex items-center justify-between">
                   <p className="font-heading text-sm font-bold text-neutral-900">In this article</p>
                   <Link2 className="h-4 w-4 text-primary-600" aria-hidden />
@@ -214,7 +214,7 @@ export function BlogPostDetailView({ post, relatedPosts }: BlogPostDetailViewPro
                 </nav>
               </div>
 
-              <div className="mt-4 rounded-2xl border border-neutral-200 bg-neutral-50 p-5">
+              <div className="mt-4 rounded-md border border-neutral-200 bg-neutral-50 p-5">
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-neutral-500">Author</p>
                 <div className="mt-3 flex items-center gap-3">
                   <div className="grid h-11 w-11 place-items-center rounded-full bg-primary-100 font-heading text-sm font-bold text-primary-700">
@@ -273,7 +273,7 @@ export function BlogPostDetailView({ post, relatedPosts }: BlogPostDetailViewPro
             {post.faqs.map((faq, index) => {
               const open = faqOpen === index;
               return (
-                <div key={faq.question} className="overflow-hidden rounded-xl border border-neutral-200 bg-white">
+                <div key={faq.question} className="overflow-hidden rounded-md border border-neutral-200 bg-white">
                   <button
                     type="button"
                     aria-expanded={open}

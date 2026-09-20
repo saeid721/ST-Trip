@@ -142,7 +142,7 @@ export function HotelsBrowser({
         </h2>
 
         <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
-          <aside className="h-fit rounded-xl border border-neutral-200 bg-white p-5 shadow-sm lg:sticky lg:top-[calc(var(--header-height)+1.5rem)]">
+          <aside className="h-fit rounded-md border border-neutral-200 bg-white p-5 shadow-sm lg:sticky lg:top-[calc(var(--header-height)+1.5rem)]">
             <div className="mb-4 flex items-center justify-between">
               <p className="flex items-center gap-2 text-sm font-bold text-neutral-900">
                 <SlidersHorizontal className="h-4 w-4 text-primary-700" aria-hidden />
@@ -244,7 +244,7 @@ export function HotelsBrowser({
                 ))}
               </div>
             ) : (
-              <div className="rounded-xl border border-dashed border-neutral-300 bg-white p-10 text-center">
+              <div className="rounded-md border border-dashed border-neutral-300 bg-white p-10 text-center">
                 <p className="text-sm font-semibold text-neutral-700">No hotels match your filters</p>
                 <button type="button" onClick={clearAll} className="mt-3 inline-flex h-9 items-center rounded-lg border border-neutral-300 px-4 text-xs font-semibold text-neutral-700 hover:border-primary-400 hover:text-primary-700">
                   Clear filters

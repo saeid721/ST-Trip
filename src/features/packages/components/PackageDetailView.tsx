@@ -43,7 +43,7 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
         </div>
 
         <div className="container-app relative -mt-16 sm:-mt-28 md:-mt-32">
-          <div className="rounded-2xl bg-white p-4 shadow-lg sm:p-6 md:p-8">
+          <div className="rounded-md bg-white p-4 shadow-lg sm:p-6 md:p-8">
             <Link
               href={backHref}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 hover:text-primary-800"
@@ -103,7 +103,7 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
             {gallery.length > 1 && (
               <div className="grid grid-cols-3 gap-2 sm:gap-3">
                 {gallery.slice(0, 3).map((src, i) => (
-                  <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                  <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-md">
                     <Image
                       src={src}
                       alt={`${detail.title} photo ${i + 1}`}
@@ -136,7 +136,7 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
             )}
 
             <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-              <div className="rounded-xl border border-neutral-200 p-4 sm:p-5">
+              <div className="rounded-md border border-neutral-200 p-4 sm:p-5">
                 <h3 className="font-heading text-base font-semibold text-neutral-900">
                   Package Includes
                 </h3>
@@ -149,7 +149,7 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
                   ))}
                 </ul>
               </div>
-              <div className="rounded-xl border border-neutral-200 p-4 sm:p-5">
+              <div className="rounded-md border border-neutral-200 p-4 sm:p-5">
                 <h3 className="font-heading text-base font-semibold text-neutral-900">
                   Not Included
                 </h3>
@@ -185,7 +185,7 @@ export function PackageDetailView({ detail, backHref, backLabel }: PackageDetail
 
           {/* Sidebar (desktop/tablet) */}
           <aside className="hidden lg:sticky lg:top-[calc(var(--header-height)+1.5rem)] lg:block lg:h-fit">
-            <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <div className="rounded-md border border-neutral-200 bg-white p-6 shadow-sm">
               <p className="text-[11px] uppercase tracking-wide text-neutral-400">
                 {detail.priceNote ?? "Starts from"}
               </p>
@@ -266,7 +266,7 @@ function ItineraryAccordion({ days }: { days: NonNullable<PackageDetail["itinera
       {days.map((day) => {
         const isOpen = openDay === day.day;
         return (
-          <div key={day.day} className="overflow-hidden rounded-xl border border-neutral-200">
+          <div key={day.day} className="overflow-hidden rounded-md border border-neutral-200">
             <button
               type="button"
               onClick={() => setOpenDay(isOpen ? null : day.day)}
@@ -304,7 +304,7 @@ function FaqAccordion({ faqs }: { faqs: NonNullable<PackageDetail["faqs"]> }) {
       {faqs.map((faq, i) => {
         const isOpen = openIndex === i;
         return (
-          <div key={faq.question} className="overflow-hidden rounded-xl border border-neutral-200">
+          <div key={faq.question} className="overflow-hidden rounded-md border border-neutral-200">
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}

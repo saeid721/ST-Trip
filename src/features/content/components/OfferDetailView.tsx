@@ -19,7 +19,7 @@ export function OfferDetailView({ deal }: { deal: HotDeal }) {
           Back to Offers
         </Link>
         <div className="mt-5 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
-          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm sm:p-10">
+          <div className="rounded-md border border-neutral-200 bg-white p-6 shadow-sm sm:p-10">
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-full bg-primary-50 px-3 py-1 text-xs font-bold text-primary-700">{deal.bankName}</span>
               <span className="rounded-full bg-accent-500 px-3 py-1 text-xs font-bold text-white">{deal.discountLabel}</span>
@@ -38,9 +38,9 @@ export function OfferDetailView({ deal }: { deal: HotDeal }) {
               </ul>
             </div>
           </div>
-          <aside className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm lg:sticky lg:top-24">
+          <aside className="rounded-md border border-neutral-200 bg-white p-6 shadow-sm lg:sticky lg:top-24">
             <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">Promotion code</p>
-            <div className="mt-3 flex items-center justify-between gap-3 rounded-xl bg-neutral-100 px-4 py-3">
+            <div className="mt-3 flex items-center justify-between gap-3 rounded-md bg-neutral-100 px-4 py-3">
               <span className="inline-flex items-center gap-2 font-mono text-sm font-bold text-neutral-800"><Ticket className="h-4 w-4" aria-hidden />{deal.promoCode}</span>
               <Copy className="h-4 w-4 text-neutral-500" aria-hidden />
             </div>

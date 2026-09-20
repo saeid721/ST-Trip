@@ -27,7 +27,7 @@ export function PackageCard({
   return (
     <Link
       href={href}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:border-primary-200 hover:shadow-lg"
+      className="group relative flex h-full flex-col overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:border-primary-200 hover:shadow-lg"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image

@@ -6,7 +6,7 @@ export function PartnerCtaBanner() {
   return (
     <section aria-labelledby="partner-cta-heading" className="py-14 sm:py-16">
       <div className="container-app">
-        <div className="flex flex-col items-center justify-between gap-6 rounded-2xl bg-gradient-to-r from-primary-700 to-primary-600 px-6 py-10 text-center sm:flex-row sm:text-left">
+        <div className="flex flex-col items-center justify-between gap-6 rounded-md bg-gradient-to-r from-primary-700 to-primary-600 px-6 py-10 text-center sm:flex-row sm:text-left">
           <div>
             <h2 id="partner-cta-heading" className="font-heading text-2xl font-bold text-white">
               Grow Your Business With Us

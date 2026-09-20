@@ -12,7 +12,7 @@ export function NewsList({ items }: { items: NewsItem[] }) {
         <Reveal key={item.id} delay={i * 0.06}>
           <Link
             href={item.href}
-            className="group flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-0.5 hover:border-primary-200 hover:shadow-md sm:flex-row"
+            className="group flex flex-col overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-0.5 hover:border-primary-200 hover:shadow-md sm:flex-row"
           >
             <div className="relative h-48 w-full shrink-0 overflow-hidden sm:h-auto sm:w-64">
               <Image

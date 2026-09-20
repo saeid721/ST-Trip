@@ -26,7 +26,7 @@ const tabs = [
  */
 export function SearchWidget() {
   return (
-    <div className="rounded-2xl border border-neutral-100 bg-white p-4 shadow-floating sm:p-6">
+    <div className="rounded-md border border-neutral-100 bg-white p-4 shadow-floating sm:p-6">
       <Tabs defaultValue="flights">
         <TabsList className="mb-5 w-full justify-start gap-0.5 overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:w-fit md:gap-1 md:overflow-visible">
           {tabs.map(({ value, label, icon: Icon }) => (

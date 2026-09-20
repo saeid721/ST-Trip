@@ -25,7 +25,7 @@ export function ChatWidget() {
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             role="dialog"
             aria-label="Support chat"
-            className="mb-4 w-[320px] overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl"
+            className="mb-4 w-[320px] overflow-hidden rounded-md border border-neutral-200 bg-white shadow-xl"
           >
             <div className="flex items-center justify-between bg-primary-700 px-4 py-3.5 text-white">
               <p className="font-heading text-sm font-semibold">{siteConfig.name} Support</p>

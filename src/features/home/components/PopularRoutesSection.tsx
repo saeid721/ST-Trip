@@ -45,7 +45,7 @@ function RouteGrid({ routes }: { routes: Route[] }) {
         <li key={route.id}>
           <Link
             href={route.href}
-            className="flex items-center justify-between rounded-xl border border-neutral-200 bg-white px-4 py-3.5 text-sm shadow-sm transition-colors hover:border-primary-300"
+            className="flex items-center justify-between rounded-md border border-neutral-200 bg-white px-4 py-3.5 text-sm shadow-sm transition-colors hover:border-primary-300"
           >
             <span className="flex items-center gap-2 font-medium text-neutral-800">
               {route.originCity}

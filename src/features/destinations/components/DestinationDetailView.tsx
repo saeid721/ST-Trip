@@ -298,7 +298,7 @@ export function DestinationDetailView({
 
         {/* Back navigation & Title bar */}
         <div className="container-app relative -mt-20 sm:-mt-28 md:-mt-32">
-          <div className="rounded-2xl bg-white/95 p-5 shadow-lg backdrop-blur-md sm:p-6 md:p-8 border border-neutral-100">
+          <div className="rounded-md bg-white/95 p-5 shadow-lg backdrop-blur-md sm:p-6 md:p-8 border border-neutral-100">
             <Link
               href={backHref}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 hover:text-primary-800 transition-colors"
@@ -333,7 +333,7 @@ export function DestinationDetailView({
               <div className="flex flex-wrap gap-2.5">
                 <a
                   href={`tel:${siteConfig.contact.supportPhone}`}
-                  className="flex items-center justify-center gap-2 rounded-xl bg-primary-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-700 shadow-sm"
+                  className="flex items-center justify-center gap-2 rounded-md bg-primary-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-700 shadow-sm"
                 >
                   <Phone className="h-4 w-4" aria-hidden />
                   Book Flights & Hotels
@@ -342,7 +342,7 @@ export function DestinationDetailView({
                   href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}?text=Hi,%20I%20am%20interested%20in%20traveling%20to%20${encodeURIComponent(detail.city)}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-2 rounded-xl border border-neutral-200 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition-colors hover:border-primary-300 hover:text-primary-700 shadow-sm"
+                  className="flex items-center justify-center gap-2 rounded-md border border-neutral-200 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 transition-colors hover:border-primary-300 hover:text-primary-700 shadow-sm"
                 >
                   <MessageCircle className="h-4 w-4 text-emerald-500" aria-hidden />
                   Customized Query
@@ -356,9 +356,9 @@ export function DestinationDetailView({
       {/* Quick Facts Section */}
       <section className="pt-8 sm:pt-10">
         <div className="container-app">
-          <div className="grid grid-cols-2 gap-4 rounded-2xl bg-neutral-50 p-5 md:grid-cols-4 border border-neutral-200/50">
+          <div className="grid grid-cols-2 gap-4 rounded-md bg-neutral-50 p-5 md:grid-cols-4 border border-neutral-200/50">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-700">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary-100 text-primary-700">
                 <Calendar className="h-5 w-5" />
               </div>
               <div>
@@ -368,7 +368,7 @@ export function DestinationDetailView({
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-700">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary-100 text-primary-700">
                 <Landmark className="h-5 w-5" />
               </div>
               <div>
@@ -378,7 +378,7 @@ export function DestinationDetailView({
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-700">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary-100 text-primary-700">
                 <Globe className="h-5 w-5" />
               </div>
               <div>
@@ -388,7 +388,7 @@ export function DestinationDetailView({
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary-100 text-primary-700">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary-100 text-primary-700">
                 <Building2 className="h-5 w-5" />
               </div>
               <div>
@@ -414,7 +414,7 @@ export function DestinationDetailView({
             {gallery.length > 1 && (
               <div className="grid grid-cols-3 gap-3">
                 {gallery.slice(0, 3).map((src, i) => (
-                  <Reveal key={i} delay={i * 0.05} className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-neutral-100 shadow-sm">
+                  <Reveal key={i} delay={i * 0.05} className="relative aspect-[4/3] overflow-hidden rounded-md border border-neutral-100 shadow-sm">
                     <Image
                       src={src}
                       alt={`${detail.city} photo ${i + 1}`}
@@ -447,7 +447,7 @@ export function DestinationDetailView({
               <h2 className="font-heading text-xl font-bold text-neutral-900 sm:text-2xl">Key Attractions</h2>
               <div className="mt-5 grid gap-5 sm:grid-cols-3">
                 {detail.attractions.map((attraction, i) => (
-                  <Reveal key={attraction.name} delay={i * 0.05} className="flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                  <Reveal key={attraction.name} delay={i * 0.05} className="flex flex-col overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow">
                     <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100">
                       <Image
                         src={attraction.image}
@@ -469,7 +469,7 @@ export function DestinationDetailView({
 
           {/* Right Column: Sidebar CTA */}
           <aside className="sticky top-24 h-fit space-y-6">
-            <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <div className="rounded-md border border-neutral-200 bg-white p-6 shadow-sm">
               <h3 className="font-heading text-lg font-bold text-neutral-900">Custom Trip Planner</h3>
               <p className="mt-2 text-xs leading-relaxed text-neutral-500">
                 Want to book a flight, plan a family vacation, or get custom hotel rates for {detail.city}? Our experts are ready to assist you.
@@ -478,7 +478,7 @@ export function DestinationDetailView({
               <div className="mt-5 space-y-2.5">
                 <a
                   href={`tel:${siteConfig.contact.supportPhone}`}
-                  className="flex h-12 w-full items-center justify-center gap-2.5 rounded-xl bg-primary-600 text-sm font-semibold text-white transition-colors hover:bg-primary-700 shadow-sm"
+                  className="flex h-12 w-full items-center justify-center gap-2.5 rounded-md bg-primary-600 text-sm font-semibold text-white transition-colors hover:bg-primary-700 shadow-sm"
                 >
                   <Phone className="h-4.5 w-4.5" />
                   Call Support (24/7)
@@ -487,7 +487,7 @@ export function DestinationDetailView({
                   href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex h-12 w-full items-center justify-center gap-2.5 rounded-xl border border-neutral-200 bg-white text-sm font-semibold text-neutral-700 transition-colors hover:border-emerald-300 hover:text-emerald-700 hover:bg-emerald-50/20 shadow-sm"
+                  className="flex h-12 w-full items-center justify-center gap-2.5 rounded-md border border-neutral-200 bg-white text-sm font-semibold text-neutral-700 transition-colors hover:border-emerald-300 hover:text-emerald-700 hover:bg-emerald-50/20 shadow-sm"
                 >
                   <MessageCircle className="h-4.5 w-4.5 text-emerald-500" />
                   WhatsApp Inquiry
@@ -512,7 +512,7 @@ export function DestinationDetailView({
                 <Reveal key={pkg.id} delay={i * 0.05}>
                   <Link
                     href={pkg.href}
-                    className="group relative block aspect-[3/4] overflow-hidden rounded-2xl border border-neutral-200 shadow-sm hover:shadow-lg transition-[transform,box-shadow] duration-300 hover:-translate-y-1"
+                    className="group relative block aspect-[3/4] overflow-hidden rounded-md border border-neutral-200 shadow-sm hover:shadow-lg transition-[transform,box-shadow] duration-300 hover:-translate-y-1"
                   >
                     <Image
                       src={pkg.image}

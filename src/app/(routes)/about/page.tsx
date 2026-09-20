@@ -42,23 +42,23 @@ export default function AboutPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-2xl bg-primary-50 p-6 text-center">
+              <div className="rounded-md bg-primary-50 p-6 text-center">
                 <p className="font-heading text-3xl font-bold text-primary-700">
                   {new Date().getFullYear() - siteConfig.founded}+
                 </p>
                 <p className="mt-1 text-xs font-medium text-neutral-600">Years of Excellence</p>
               </div>
-              <div className="rounded-2xl bg-primary-50 p-6 text-center">
+              <div className="rounded-md bg-primary-50 p-6 text-center">
                 <p className="font-heading text-3xl font-bold text-primary-700">300K+</p>
                 <p className="mt-1 text-xs font-medium text-neutral-600">Happy Travellers</p>
               </div>
-              <div className="rounded-2xl bg-primary-50 p-6 text-center">
+              <div className="rounded-md bg-primary-50 p-6 text-center">
                 <p className="font-heading text-3xl font-bold text-primary-700">
                   {siteConfig.offices.length}
                 </p>
                 <p className="mt-1 text-xs font-medium text-neutral-600">Offices Nationwide</p>
               </div>
-              <div className="rounded-2xl bg-primary-50 p-6 text-center">
+              <div className="rounded-md bg-primary-50 p-6 text-center">
                 <p className="font-heading text-3xl font-bold text-primary-700">24/7</p>
                 <p className="mt-1 text-xs font-medium text-neutral-600">Support Availability</p>
               </div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
               const Icon = icons[value.icon];
               return (
                 <Reveal key={value.id} delay={i * 0.06}>
-                  <div className="h-full rounded-2xl border border-neutral-200 bg-white p-6">
+                  <div className="h-full rounded-md border border-neutral-200 bg-white p-6">
                     <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-50 text-primary-700">
                       <Icon className="h-5 w-5" aria-hidden />
                     </span>
@@ -127,7 +127,7 @@ export default function AboutPage() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {siteConfig.offices.map((office, i) => (
               <Reveal key={office.name} delay={i * 0.06}>
-                <div className="h-full rounded-2xl border border-neutral-200 bg-white p-5">
+                <div className="h-full rounded-md border border-neutral-200 bg-white p-5">
                   <h3 className="font-heading text-sm font-semibold text-neutral-900">
                     {office.name}
                   </h3>

@@ -19,7 +19,7 @@ export function HowItWorksSection({ tiles }: { tiles: HelpTile[] }) {
             <Link
               key={tile.id}
               href={tile.href}
-              className="group relative block aspect-video overflow-hidden rounded-xl"
+              className="group relative block aspect-video overflow-hidden rounded-md"
             >
               <Image
                 src={tile.thumbnail}

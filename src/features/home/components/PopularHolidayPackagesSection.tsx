@@ -25,7 +25,7 @@ export function PopularHolidayPackagesSection({ packages }: { packages: HolidayP
             <Link
               key={pkg.id}
               href={pkg.href}
-              className="group relative block aspect-[3/4] overflow-hidden rounded-xl transition-[transform,box-shadow] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:shadow-lg"
+              className="group relative block aspect-[3/4] overflow-hidden rounded-md transition-[transform,box-shadow] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:shadow-lg"
             >
               <Image
                 src={pkg.image}

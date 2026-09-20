@@ -10,7 +10,7 @@ const deviceGuides = [
 
 export function EsimSearchAndGuides() {
   return (
-    <section className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-floating sm:p-8">
+    <section className="rounded-md border border-neutral-200 bg-white p-5 shadow-floating sm:p-8">
       <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr_1fr]">
         <div>
           <h2 className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Where are you travelling?</h2>
@@ -36,7 +36,7 @@ export function EsimSearchAndGuides() {
 
         <div className="border-t border-neutral-200 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
           <h2 className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Setup guide</h2>
-          <Link href="/help" className="group mt-3 block overflow-hidden rounded-xl">
+          <Link href="/help" className="group mt-3 block overflow-hidden rounded-md">
             <div className="relative flex aspect-video items-center justify-center bg-gradient-to-br from-primary-800 via-primary-900 to-neutral-900">
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-primary-700 shadow-md transition-transform group-hover:scale-105">
                 <Play className="h-4 w-4 fill-current" aria-hidden />

@@ -12,7 +12,7 @@ export function HelpArticleDetailView({ article }: { article: HelpTile }) {
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/35 to-neutral-950/10" />
         </div>
         <div className="container-app relative -mt-20 pb-8 sm:-mt-28 sm:pb-12">
-          <div className="max-w-3xl rounded-2xl bg-white p-6 shadow-lg sm:p-8">
+          <div className="max-w-3xl rounded-md bg-white p-6 shadow-lg sm:p-8">
             <Link href="/" className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 hover:text-primary-800">
               <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
               Back to Home
@@ -35,7 +35,7 @@ export function HelpArticleDetailView({ article }: { article: HelpTile }) {
                 Start by choosing the service and travel dates that match your plans. Review the fare, room, or package conditions carefully, then keep your confirmation and contact details available after booking.
               </p>
             </div>
-            <div className="rounded-2xl border border-primary-100 bg-primary-50 p-5 sm:p-6">
+            <div className="rounded-md border border-primary-100 bg-primary-50 p-5 sm:p-6">
               <h2 className="font-heading text-lg font-bold text-neutral-900">A simple checklist</h2>
               <ul className="mt-4 space-y-3">
                 {["Confirm your dates and traveller details", "Compare the available options and total price", "Review the conditions before payment", "Save your confirmation and contact support if anything changes"].map((item) => (
@@ -47,7 +47,7 @@ export function HelpArticleDetailView({ article }: { article: HelpTile }) {
               </ul>
             </div>
           </div>
-          <aside className="h-fit rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm lg:sticky lg:top-24">
+          <aside className="h-fit rounded-md border border-neutral-200 bg-white p-5 shadow-sm lg:sticky lg:top-24">
             <h2 className="font-heading text-base font-bold text-neutral-900">Need help?</h2>
             <p className="mt-2 text-sm leading-6 text-neutral-600">Our support team can walk you through the next step and answer questions before you pay.</p>
             <Link href="/help/faq" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary-700 hover:text-primary-800">

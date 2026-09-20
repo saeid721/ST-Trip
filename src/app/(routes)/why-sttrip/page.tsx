@@ -36,7 +36,7 @@ export default function WhySTTripPage() {
             const Icon = icons[reason.icon];
             return (
               <Reveal key={reason.id} delay={i * 0.06}>
-                <div className="h-full rounded-2xl border border-neutral-200 bg-white p-6 transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:border-primary-200 hover:shadow-md">
+                <div className="h-full rounded-md border border-neutral-200 bg-white p-6 transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:border-primary-200 hover:shadow-md">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-50 text-primary-700">
                     <Icon className="h-5 w-5" aria-hidden />
                   </span>
@@ -55,7 +55,7 @@ export default function WhySTTripPage() {
 
       <section className="py-14 sm:py-16">
         <div className="container-app">
-          <div className="flex flex-col items-center justify-between gap-6 rounded-2xl bg-gradient-to-r from-primary-700 to-primary-600 px-6 py-10 text-center sm:flex-row sm:text-left">
+          <div className="flex flex-col items-center justify-between gap-6 rounded-md bg-gradient-to-r from-primary-700 to-primary-600 px-6 py-10 text-center sm:flex-row sm:text-left">
             <div>
               <h2 className="font-heading text-2xl font-bold text-white">
                 Ready to plan your next trip?

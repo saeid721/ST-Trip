@@ -89,7 +89,7 @@ export function EsimSearchTab() {
         </button>
 
         {open && (
-          <div id="esim-selection-menu" role="dialog" aria-label={mode === "country" ? "Country selection" : "Region selection"} className="animate-scale-in absolute z-20 mt-2 w-full overflow-hidden rounded-xl border border-neutral-200 bg-white p-2 shadow-xl">
+          <div id="esim-selection-menu" role="dialog" aria-label={mode === "country" ? "Country selection" : "Region selection"} className="animate-scale-in absolute z-20 mt-2 w-full overflow-hidden rounded-md border border-neutral-200 bg-white p-2 shadow-xl">
             <div className="flex items-center gap-2 rounded-lg border border-neutral-200 px-3 focus-within:border-primary-400">
               <Search className="h-4 w-4 shrink-0 text-neutral-400" aria-hidden />
               <input id="esimCountry" autoFocus type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={mode === "country" ? "Type a country name..." : "Type a region name..."} className="h-10 w-full bg-transparent text-sm text-neutral-900 outline-none placeholder:text-neutral-400" />

@@ -51,7 +51,7 @@ export function FaqSection({
           return (
             <div
               key={faq.question}
-              className="overflow-hidden rounded-xl border border-neutral-200 bg-white"
+              className="overflow-hidden rounded-md border border-neutral-200 bg-white"
             >
               <button
                 type="button"

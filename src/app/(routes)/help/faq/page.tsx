@@ -25,7 +25,7 @@ export default function FaqSupportPage() {
           <FaqSection categories={faqCategories} faqs={faqs} />
 
           <aside className="lg:sticky lg:top-[calc(var(--header-height)+1.5rem)] lg:h-fit">
-            <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <div className="rounded-md border border-neutral-200 bg-white p-6 shadow-sm">
               <h3 className="font-heading text-base font-semibold text-neutral-900">
                 Still need help?
               </h3>

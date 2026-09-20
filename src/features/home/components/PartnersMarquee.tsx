@@ -39,7 +39,7 @@ export default function PartnersMarquee() {
           {marqueeItems.map((partner, idx) => (
             <div
               key={`${partner.name}-${idx}`}
-              className="flex items-center justify-center h-16 w-36 px-4 bg-white rounded-xl shadow-sm border border-slate-100 transition-all duration-300 hover:shadow-md hover:scale-105 group shrink-0"
+              className="flex items-center justify-center h-16 w-36 px-4 bg-white rounded-md shadow-sm border border-slate-100 transition-all duration-300 hover:shadow-md hover:scale-105 group shrink-0"
             >
               <img
                 src={partner.logo}

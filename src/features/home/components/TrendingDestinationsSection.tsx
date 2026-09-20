@@ -75,7 +75,7 @@ function TrendingCard({
     <Link
       href={destination.href}
       className={cn(
-        "group relative block overflow-hidden rounded-xl",
+        "group relative block overflow-hidden rounded-md",
         "transition-[transform,box-shadow] duration-300 [transition-timing-function:var(--ease-out-soft)]",
         "hover:-translate-y-1 hover:shadow-lg",
         aspect,

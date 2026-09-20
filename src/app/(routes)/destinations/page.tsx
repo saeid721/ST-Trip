@@ -120,7 +120,7 @@ function SummaryStat({
   value: number;
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3">
+    <div className="flex items-center gap-3 rounded-md border border-neutral-200 bg-neutral-50 px-4 py-3">
       <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-100 text-primary-700">
         <Icon className="h-5 w-5" aria-hidden />
       </span>
@@ -147,7 +147,7 @@ function DestinationCard({
     <Link
       href={destination.href}
       className={cn(
-        "group flex h-full flex-col overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm",
+        "group flex h-full flex-col overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm",
         "transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)]",
         "hover:-translate-y-1 hover:border-primary-200 hover:shadow-lg focus-visible:-translate-y-1 focus-visible:border-primary-300 focus-visible:shadow-lg",
       )}

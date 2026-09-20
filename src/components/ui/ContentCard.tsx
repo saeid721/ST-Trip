@@ -47,7 +47,7 @@ export function ContentCard({
     <Link
       href={href}
       className={cn(
-        "group block overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm",
+        "group block overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm",
         "transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)]",
         "hover:-translate-y-1 hover:border-neutral-300 hover:shadow-lg focus-visible:-translate-y-1 focus-visible:shadow-lg",
         className,

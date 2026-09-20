@@ -43,7 +43,7 @@ export function TravelGuideDetailView({ guide, relatedGuides }: TravelGuideDetai
         </div>
 
         <div className="container-app relative -mt-24 sm:-mt-28">
-          <div className="rounded-2xl bg-white p-6 shadow-lg sm:p-8">
+          <div className="rounded-md bg-white p-6 shadow-lg sm:p-8">
             <Link
               href="/travel-guide"
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 hover:text-primary-800"
@@ -86,7 +86,7 @@ export function TravelGuideDetailView({ guide, relatedGuides }: TravelGuideDetai
             {gallery.length > 1 && (
               <div className="grid grid-cols-3 gap-3">
                 {gallery.slice(0, 3).map((src, i) => (
-                  <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                  <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-md">
                     <Image
                       src={src}
                       alt={`${guide.title} photo ${i + 1}`}
@@ -115,7 +115,7 @@ export function TravelGuideDetailView({ guide, relatedGuides }: TravelGuideDetai
             </div>
 
             {guide.tips.length > 0 && (
-              <div className="rounded-2xl border border-primary-100 bg-primary-50 p-6">
+              <div className="rounded-md border border-primary-100 bg-primary-50 p-6">
                 <h2 className="font-heading text-lg font-bold text-neutral-900">
                   Quick Tips
                 </h2>
@@ -142,7 +142,7 @@ export function TravelGuideDetailView({ guide, relatedGuides }: TravelGuideDetai
 
           {/* Sidebar */}
           <aside className="lg:sticky lg:top-[calc(var(--header-height)+1.5rem)] lg:h-fit lg:space-y-5">
-            <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+            <div className="rounded-md border border-neutral-200 bg-white p-6 shadow-sm">
               <h3 className="font-heading text-sm font-semibold text-neutral-900">
                 Quick Facts
               </h3>
@@ -176,7 +176,7 @@ export function TravelGuideDetailView({ guide, relatedGuides }: TravelGuideDetai
             </div>
 
             {guide.sections.length > 1 && (
-              <div className="hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm lg:block">
+              <div className="hidden rounded-md border border-neutral-200 bg-white p-6 shadow-sm lg:block">
                 <h3 className="font-heading text-sm font-semibold text-neutral-900">
                   On This Page
                 </h3>
@@ -241,7 +241,7 @@ function GuideFaqAccordion({ faqs }: { faqs: NonNullable<TravelGuideDetail["faqs
       {faqs.map((faq, i) => {
         const isOpen = openIndex === i;
         return (
-          <div key={faq.question} className="overflow-hidden rounded-xl border border-neutral-200">
+          <div key={faq.question} className="overflow-hidden rounded-md border border-neutral-200">
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}

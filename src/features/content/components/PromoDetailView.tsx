@@ -82,10 +82,10 @@ export function PromoDetailView({ banner }: { banner: PromoBanner }) {
             </div>
           </div>
 
-          <aside className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm lg:sticky lg:top-24">
+          <aside className="rounded-md border border-neutral-200 bg-white p-6 shadow-sm lg:sticky lg:top-24">
             <h2 className="font-heading text-xl font-bold text-neutral-900">Ready to get started?</h2>
             <p className="mt-2 text-sm leading-6 text-neutral-600">Our team is here to help you choose the right option and complete your booking with confidence.</p>
-            <Link href={detail.ctaHref} className="mt-6 flex h-12 items-center justify-center gap-2 rounded-xl bg-primary-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-primary-700">
+            <Link href={detail.ctaHref} className="mt-6 flex h-12 items-center justify-center gap-2 rounded-md bg-primary-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-primary-700">
               {detail.ctaLabel}
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>

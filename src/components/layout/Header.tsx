@@ -66,7 +66,7 @@ export function Header() {
                     <Link
                       key={child.href}
                       href={child.href}
-                      className="block rounded-2xl px-4 py-2 text-sm text-neutral-700 transition hover:bg-neutral-50"
+                      className="block rounded-md px-4 py-2 text-sm text-neutral-700 transition hover:bg-neutral-50"
                     >
                       {child.label}
                     </Link>

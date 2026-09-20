@@ -31,7 +31,7 @@ export default function AllHolidayPackagesPage() {
               <Reveal key={pkg.id} delay={(i % 8) * 0.05}>
                 <Link
                   href={pkg.href}
-                  className="group relative block aspect-[3/4] overflow-hidden rounded-xl border border-neutral-200 shadow-sm transition-[transform,box-shadow] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:shadow-lg"
+                  className="group relative block aspect-[3/4] overflow-hidden rounded-md border border-neutral-200 shadow-sm transition-[transform,box-shadow] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:shadow-lg"
                 >
                   <Image
                     src={pkg.image}

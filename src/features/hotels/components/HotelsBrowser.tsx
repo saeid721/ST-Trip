@@ -47,7 +47,6 @@ export function HotelsBrowser({
     () => Array.from(new Set(enriched.map((h) => h.propertyType))).sort(),
     [enriched],
   );
-  const areas = useMemo(() => Array.from(new Set(enriched.map((h) => h.location))).sort(), [enriched]);
   const amenityOptions = useMemo(() => {
     const counts = new Map<string, number>();
     enriched.forEach((h) => h.amenities.forEach((a) => counts.set(a, (counts.get(a) ?? 0) + 1)));
@@ -60,7 +59,6 @@ export function HotelsBrowser({
 
   const [search, setSearch] = useState(locationQuery);
   const [selectedTypes, setSelectedTypes] = useState<Set<string>>(new Set());
-  const [selectedAreas, setSelectedAreas] = useState<Set<string>>(new Set());
   const [selectedAmenities, setSelectedAmenities] = useState<Set<string>>(new Set());
   const [showAllAmenities, setShowAllAmenities] = useState(false);
   const [minStars, setMinStars] = useState<number | null>(null);
@@ -99,7 +97,6 @@ export function HotelsBrowser({
   function clearAll() {
     setSearch("");
     setSelectedTypes(new Set());
-    setSelectedAreas(new Set());
     setSelectedAmenities(new Set());
     setMinStars(null);
     setMinPrice(priceBounds.min);
@@ -116,12 +113,11 @@ export function HotelsBrowser({
         hotel.name.toLowerCase().includes(search.toLowerCase()) ||
         normalize(hotel.location).includes(normalize(searchCity));
       const matchesType = selectedTypes.size === 0 || selectedTypes.has(hotel.propertyType);
-      const matchesArea = selectedAreas.size === 0 || selectedAreas.has(hotel.location);
       const matchesAmenities =
         selectedAmenities.size === 0 || hotel.amenities.some((a) => selectedAmenities.has(a));
       const matchesStars = minStars === null || Math.round(hotel.rating) >= minStars;
       const matchesPrice = hotel.priceFrom >= minPrice && hotel.priceFrom <= maxPrice;
-      return matchesSearch && matchesType && matchesArea && matchesAmenities && matchesStars && matchesPrice;
+      return matchesSearch && matchesType && matchesAmenities && matchesStars && matchesPrice;
     });
 
     return list.slice().sort((a, b) => {
@@ -130,7 +126,7 @@ export function HotelsBrowser({
       if (sortBy === "rating-desc") return b.rating - a.rating;
       return 0;
     });
-  }, [enriched, search, selectedTypes, selectedAreas, selectedAmenities, minStars, minPrice, maxPrice, sortBy]);
+  }, [enriched, search, selectedTypes, selectedAmenities, minStars, minPrice, maxPrice, sortBy]);
 
   const visibleAmenities = showAllAmenities ? amenityOptions : amenityOptions.slice(0, 4);
 
@@ -142,8 +138,8 @@ export function HotelsBrowser({
         </h2>
 
         <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
-          <aside className="h-fit rounded-md border border-neutral-200 bg-white p-5 shadow-sm lg:sticky lg:top-[calc(var(--header-height)+1.5rem)]">
-            <div className="mb-4 flex items-center justify-between">
+          <aside className="h-fit rounded-xl border border-neutral-200 bg-white p-4 shadow-sm lg:sticky lg:top-[calc(var(--header-height)+1.5rem)]">
+            <div className="mb-3 flex items-center justify-between">
               <p className="flex items-center gap-2 text-sm font-bold text-neutral-900">
                 <SlidersHorizontal className="h-4 w-4 text-primary-700" aria-hidden />
                 Filters & Sort
@@ -153,7 +149,7 @@ export function HotelsBrowser({
               </button>
             </div>
 
-            <div className="relative mb-5">
+            <div className="relative mb-3">
               <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" aria-hidden />
               <input
                 value={search}
@@ -169,12 +165,6 @@ export function HotelsBrowser({
               ))}
             </FilterGroup>
 
-            <FilterGroup title="Area">
-              {areas.map((area) => (
-                <Checkbox key={area} label={area} checked={selectedAreas.has(area)} onChange={() => toggle(selectedAreas, area, setSelectedAreas)} />
-              ))}
-            </FilterGroup>
-
             <FilterGroup title="Amenities">
               {visibleAmenities.map((amenity) => (
                 <Checkbox key={amenity} label={amenity} checked={selectedAmenities.has(amenity)} onChange={() => toggle(selectedAmenities, amenity, setSelectedAmenities)} />
@@ -187,8 +177,7 @@ export function HotelsBrowser({
             </FilterGroup>
 
             <FilterGroup title="Star Rating">
-              <div className="flex flex-wrap gap-1.5">
-                <StarPill label="All" active={minStars === null} onClick={() => setMinStars(null)} />
+              <div className="flex flex-wrap gap-1">
                 {[5, 4, 3, 2, 1].map((n) => (
                   <StarPill key={n} label={`${n}★`} active={minStars === n} onClick={() => setMinStars(n)} />
                 ))}
@@ -207,7 +196,7 @@ export function HotelsBrowser({
               </div>
               <input type="range" min={priceBounds.min} max={priceBounds.max} value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
-                className="mt-3 w-full accent-primary-600" />
+                className="mt-2 w-full accent-primary-600" />
             </FilterGroup>
 
             <FilterGroup title="Sort By" last>
@@ -260,9 +249,9 @@ export function HotelsBrowser({
 
 function FilterGroup({ title, children, last = false }: { title: string; children: React.ReactNode; last?: boolean }) {
   return (
-    <div className={cn("mb-4 border-b border-neutral-100 pb-4", last && "mb-0 border-none pb-0")}>
-      <p className="mb-2 text-xs font-bold uppercase tracking-wide text-neutral-500">{title}</p>
-      <div className="space-y-1.5">{children}</div>
+    <div className={cn("mb-3 border-b border-neutral-100 pb-3", last && "mb-0 border-none pb-0")}>
+      <p className="mb-1.5 text-xs font-bold uppercase tracking-wide text-neutral-500">{title}</p>
+      <div className="space-y-1">{children}</div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { SlidersHorizontal, Search as SearchIcon } from "lucide-react";
+import { SlidersHorizontal, Search as SearchIcon, ChevronDown } from "lucide-react";
 import { HotelCard } from "@/features/hotels/components/HotelCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
@@ -65,6 +65,7 @@ export function HotelsBrowser({
   const [minPrice, setMinPrice] = useState(priceBounds.min);
   const [maxPrice, setMaxPrice] = useState(priceBounds.max);
   const [sortBy, setSortBy] = useState<SortOption>("default");
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   // Keep the sidebar search box in sync whenever the hero search is submitted.
   useEffect(() => {
@@ -137,9 +138,26 @@ export function HotelsBrowser({
           {filtered.length} Hotels Available
         </h2>
 
+        <button
+          type="button"
+          onClick={() => setFiltersOpen((v) => !v)}
+          className="mb-4 flex w-full items-center justify-between rounded-xl bg-primary-700 px-4 py-3 text-sm font-semibold text-white shadow-sm lg:hidden"
+        >
+          <span className="flex items-center gap-2">
+            <SlidersHorizontal className="h-4 w-4" aria-hidden />
+            Filters & Sort
+          </span>
+          <ChevronDown className={cn("h-4 w-4 transition-transform", filtersOpen && "rotate-180")} aria-hidden />
+        </button>
+
         <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
-          <aside className="h-fit rounded-xl border border-neutral-200 bg-white p-4 shadow-sm lg:sticky lg:top-[calc(var(--header-height)+1.5rem)]">
-            <div className="mb-3 flex items-center justify-between">
+          <aside
+            className={cn(
+              "h-fit rounded-xl border border-neutral-200 bg-white p-4 shadow-sm max-lg:p-3 lg:sticky lg:top-[calc(var(--header-height)+1.5rem)] lg:block",
+              filtersOpen ? "block" : "hidden",
+            )}
+          >
+            <div className="mb-2.5 flex items-center justify-between max-lg:mb-2">
               <p className="flex items-center gap-2 text-sm font-bold text-neutral-900">
                 <SlidersHorizontal className="h-4 w-4 text-primary-700" aria-hidden />
                 Filters & Sort
@@ -149,7 +167,7 @@ export function HotelsBrowser({
               </button>
             </div>
 
-            <div className="relative mb-3">
+            <div className="relative mb-2.5 max-lg:mb-2">
               <SearchIcon className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" aria-hidden />
               <input
                 value={search}
@@ -177,7 +195,7 @@ export function HotelsBrowser({
             </FilterGroup>
 
             <FilterGroup title="Star Rating">
-              <div className="flex flex-wrap gap-1">
+              <div className="flex flex-wrap gap-1 max-lg:gap-1">
                 {[5, 4, 3, 2, 1].map((n) => (
                   <StarPill key={n} label={`${n}★`} active={minStars === n} onClick={() => setMinStars(n)} />
                 ))}
@@ -196,7 +214,7 @@ export function HotelsBrowser({
               </div>
               <input type="range" min={priceBounds.min} max={priceBounds.max} value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
-                className="mt-2 w-full accent-primary-600" />
+                className="mt-1.5 w-full accent-primary-600 max-lg:mt-1" />
             </FilterGroup>
 
             <FilterGroup title="Sort By" last>
@@ -206,7 +224,7 @@ export function HotelsBrowser({
                 { value: "price-desc", label: "Price: High to Low" },
                 { value: "rating-desc", label: "Top Rated" },
               ] as { value: SortOption; label: string }[]).map((opt) => (
-                <label key={opt.value} className="flex items-center gap-2 py-1 text-sm text-neutral-700">
+                <label key={opt.value} className="flex items-center gap-2 py-0.5 text-sm text-neutral-700 max-lg:py-1">
                   <input type="radio" name="sortBy" checked={sortBy === opt.value} onChange={() => setSortBy(opt.value)} className="h-4 w-4 accent-primary-600" />
                   {opt.label}
                 </label>
@@ -216,7 +234,7 @@ export function HotelsBrowser({
 
           <div>
             {filtered.length > 0 ? (
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {filtered.map((hotel, i) => (
                   <Reveal key={hotel.id} delay={i * 0.06}>
                     <HotelCard
@@ -249,9 +267,9 @@ export function HotelsBrowser({
 
 function FilterGroup({ title, children, last = false }: { title: string; children: React.ReactNode; last?: boolean }) {
   return (
-    <div className={cn("mb-3 border-b border-neutral-100 pb-3", last && "mb-0 border-none pb-0")}>
-      <p className="mb-1.5 text-xs font-bold uppercase tracking-wide text-neutral-500">{title}</p>
-      <div className="space-y-1">{children}</div>
+    <div className={cn("mb-2.5 border-b border-neutral-100 pb-2.5 max-lg:mb-2 max-lg:pb-2", last && "mb-0 border-none pb-0")}>
+      <p className="mb-1 text-xs font-bold uppercase tracking-wide text-neutral-500">{title}</p>
+      <div className="space-y-0.5">{children}</div>
     </div>
   );
 }

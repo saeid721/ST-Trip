@@ -52,8 +52,11 @@ interface MultiCityLeg {
   date: string;
 }
 
+let nextLegId = 0;
+
 function createLeg(): MultiCityLeg {
-  return { id: crypto.randomUUID(), origin: "", destination: "", date: "" };
+  nextLegId += 1;
+  return { id: `leg-${nextLegId}`, origin: "", destination: "", date: "" };
 }
 
 export function FlightSearchTab() {
@@ -144,6 +147,15 @@ export function FlightSearchTab() {
     }
       router.push(`/flights?${params.toString()}`);
     });
+  }
+
+  function updateLeg(
+    id: string,
+    patch: Partial<Pick<MultiCityLeg, "origin" | "destination" | "date">>,
+  ): void {
+    setMultiCityLegs((prev) =>
+      prev.map((leg) => (leg.id === id ? { ...leg, ...patch } : leg)),
+    );
   }
 
   return (

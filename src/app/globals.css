@@ -136,7 +136,7 @@
   }
 
   .container-search {
-    max-width: var(--container-search-max);
+    max-width: var(--container-max);
   }
 
   .skip-link {

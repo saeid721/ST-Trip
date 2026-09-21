@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { ArrowLeft, CalendarDays, Check, Database, Filter, Search, ShoppingCart, Signal, Wifi } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { PageHero } from "@/components/ui/PageHero";
+import { TravelSearchHero } from "@/features/home/components/TravelSearchHero";
 import { EsimSearchAndGuides } from "@/features/esim/components/EsimSearchAndGuides";
 import { cn, formatCurrency } from "@/lib/utils";
 import type { EsimCountry, EsimPlan, EsimRegion } from "@/features/esim/types";
@@ -45,7 +45,11 @@ export function EsimResultsView({ region, countries, plans }: EsimResultsViewPro
 
   return (
     <>
-      <PageHero eyebrow="Travel connectivity" title="eSIM for Travellers" description="Stay connected worldwide with instant eSIM activation — no physical SIM needed." />
+      <TravelSearchHero
+        eyebrow="Travel connectivity"
+        title="eSIM for Travellers"
+        description="Stay connected worldwide with instant eSIM activation — no physical SIM needed."
+      />
 
       <section className="bg-neutral-50 pb-16 pt-8 sm:pt-10">
       <div className="container-app">

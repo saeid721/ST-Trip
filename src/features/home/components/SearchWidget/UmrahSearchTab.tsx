@@ -114,7 +114,7 @@ export function UmrahSearchTab() {
       children: String(travelers.children),
       infants: String(travelers.infants),
     });
-    router.push(`/umrah?${params.toString()}`);
+    router.push(`/umrah-packages?${params.toString()}`);
   }
 
   return (

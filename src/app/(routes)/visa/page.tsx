@@ -3,14 +3,12 @@ import {
   ArrowRight,
   CheckCircle2,
   Clock3,
-  FileCheck2,
-  Globe2,
   Info,
   MapPin,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
-import { VisaSearchTab } from "@/features/home/components/SearchWidget/VisaSearchTab";
+import { TravelSearchHero } from "@/features/home/components/TravelSearchHero";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
@@ -19,38 +17,12 @@ export const metadata: Metadata = {
 
 export default function VisaPage() {
   return (
-    <div className="bg-neutral-50 pt-[var(--header-height)]">
-      <section className="relative overflow-hidden bg-primary-900 text-white">
-        <div className="absolute inset-0 bg-[url('/images/world-map.png')] bg-cover bg-center opacity-10" aria-hidden />
-        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(0,48,74,0.98),rgba(0,92,150,0.86),rgba(0,166,81,0.52))]" aria-hidden />
-        <div className="container-app relative py-14 sm:py-20">
-          <div className="max-w-3xl">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white/85">
-              <Globe2 className="h-4 w-4" aria-hidden />
-              Visa assistance, made simple
-            </div>
-            <h1 className="max-w-2xl text-3xl font-bold leading-tight sm:text-5xl">
-              Travel farther with the right visa guidance.
-            </h1>
-            <p className="mt-4 max-w-xl text-sm leading-6 text-white/75 sm:text-base">
-              Check entry requirements, understand your documents, and get application support from a team that knows the journey.
-            </p>
-          </div>
-
-          <div className="mt-9 rounded-md bg-white p-4 text-neutral-900 shadow-xl sm:p-6">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-md bg-primary-50 text-primary-700">
-                <FileCheck2 className="h-5 w-5" aria-hidden />
-              </span>
-              <div>
-                <h2 className="font-heading text-lg font-semibold">Find visa requirements</h2>
-                <p className="text-sm text-neutral-500">Choose a destination and visa type to get started.</p>
-              </div>
-            </div>
-            <VisaSearchTab />
-          </div>
-        </div>
-      </section>
+    <div className="bg-neutral-50">
+      <TravelSearchHero
+        eyebrow="Visa assistance, made simple"
+        title="Travel farther with the right visa guidance."
+        description="Check entry requirements, understand your documents, and get application support from a team that knows the journey."
+      />
 
       <section className="border-b border-neutral-200 bg-white">
         <div className="container-app grid gap-5 py-6 sm:grid-cols-3 sm:py-8">

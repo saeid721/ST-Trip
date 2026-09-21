@@ -34,7 +34,7 @@ export function TourSearchTab() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const params = new URLSearchParams({ searchType, destination, month });
-    router.push(`/tours?${params.toString()}`);
+    router.push(`/tour-packages?${params.toString()}`);
   }
 
   return (

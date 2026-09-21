@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
-import { PackagePageHero } from "@/features/packages/components/PackagePageHero";
+import { TravelSearchHero } from "@/features/home/components/TravelSearchHero";
 import { PackageGridWithTabs } from "@/features/packages/components/PackageGridWithTabs";
 import { tourCategories, tourPackages } from "@/features/packages/data/tour-packages";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = buildMetadata({
 export default function TourPackagesPage() {
   return (
     <>
-      <PackagePageHero
+      <TravelSearchHero
         eyebrow="Where to next"
         title="Tour Packages"
         description="Handpicked holiday packages across the region and beyond — flights, hotels and sightseeing bundled in."

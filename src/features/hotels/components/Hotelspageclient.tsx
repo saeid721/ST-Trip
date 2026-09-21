@@ -1,9 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { HotelsSearchHero, type HotelSearchValues } from "@/features/hotels/components/Hotelssearchhero";
 import { HotelsBrowser } from "@/features/hotels/components/HotelsBrowser";
 import type { HotelDetail, HotelListing } from "@/features/hotels/types";
+
+interface HotelSearchValues {
+  searchType: "domestic" | "international";
+  location: string;
+  checkIn: string;
+  checkOut: string;
+  rooms: number;
+  guests: number;
+}
 
 interface HotelsPageClientProps {
   hotels: HotelListing[];
@@ -12,22 +19,17 @@ interface HotelsPageClientProps {
 }
 
 export function HotelsPageClient({ hotels, hotelDetails, initial }: HotelsPageClientProps) {
-  const [values, setValues] = useState<HotelSearchValues>(initial);
-
   return (
-    <>
-      <HotelsSearchHero initial={initial} onSearch={setValues} />
-      <HotelsBrowser
-        hotels={hotels}
-        hotelDetails={hotelDetails}
-        locationQuery={values.location}
-        searchContext={{
-          checkIn: values.checkIn,
-          checkOut: values.checkOut,
-          rooms: values.rooms,
-          guests: values.guests,
-        }}
-      />
-    </>
+    <HotelsBrowser
+      hotels={hotels}
+      hotelDetails={hotelDetails}
+      locationQuery={initial.location}
+      searchContext={{
+        checkIn: initial.checkIn,
+        checkOut: initial.checkOut,
+        rooms: initial.rooms,
+        guests: initial.guests,
+      }}
+    />
   );
 }

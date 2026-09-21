@@ -27,7 +27,7 @@ export function HajjSearchTab() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const params = new URLSearchParams({ identityType, passportType, passportNo });
-    router.push(`/hajj/pre-registration?${params.toString()}`);
+    router.push(`/hajj-packages?${params.toString()}`);
   }
 
   return (

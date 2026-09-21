@@ -409,8 +409,8 @@ export function FlightSearchTab() {
     <>
       <div className="space-y-3">
         {multiCityLegs.map((leg, index) => (
-          <div key={leg.id} className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-end">
-            <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:items-end">
+          <div key={leg.id} className="flex flex-1 flex-col gap-3 md:flex-row md:items-end">
+            <div className="flex flex-1 flex-col gap-3 md:flex-row md:items-end">
                 <AirportAutocomplete
                   label="Journey From"
                   variant="origin"
@@ -422,7 +422,7 @@ export function FlightSearchTab() {
                   type="button"
                   aria-label="Swap journey from and to"
                   onClick={() => swapLeg(leg.id)}
-                  className="mx-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-white text-primary-700 shadow-sm transition-transform hover:rotate-180 hover:bg-primary-50 sm:mx-0 sm:mb-0.5"
+                  className="mx-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-white text-primary-700 shadow-sm transition-transform hover:rotate-180 hover:bg-primary-50 md:mx-0 md:mb-0.5"
                 >
                   <ArrowLeftRight className="h-4 w-4" aria-hidden />
                 </button>
@@ -435,7 +435,7 @@ export function FlightSearchTab() {
                 />
               </div>
 
-              <div className="sm:w-40 sm:shrink-0">
+              <div className="md:w-40 md:shrink-0">
                 <label className="mb-1 block text-xs font-medium text-neutral-500">Departing</label>
                 <div className="flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-2.5 transition-colors focus-within:border-primary-400">
                   <CalendarDays className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
@@ -453,7 +453,7 @@ export function FlightSearchTab() {
                 type="button"
                 onClick={() => removeLeg(leg.id)}
                 aria-label="Remove flight"
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-danger/30 bg-danger/5 text-danger transition-colors hover:bg-danger/10 sm:mb-0"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-danger/30 bg-danger/5 text-danger transition-colors hover:bg-danger/10 md:mb-0"
               >
                 <Trash2 className="h-4 w-4" aria-hidden />
               </button>
@@ -462,7 +462,7 @@ export function FlightSearchTab() {
         ))}
       </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <button
           type="button"
           onClick={addLeg}
@@ -472,7 +472,7 @@ export function FlightSearchTab() {
           Add Flight
         </button>
 
-        <Button type="submit" variant="primary" size="lg" className="h-11 w-full gap-2 sm:w-auto">
+        <Button type="submit" variant="primary" size="lg" className="h-11 w-full gap-2 md:w-auto">
           <Search className="h-4 w-4" aria-hidden />
           Search Flights
         </Button>

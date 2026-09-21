@@ -94,7 +94,7 @@ export function TourSearchTab() {
           </label>
 
           {locationOpen && (
-            <div className="absolute left-0 top-full z-30 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
               {filteredLocations.length > 0 ? (
                 filteredLocations.map((loc) => (
                   <button

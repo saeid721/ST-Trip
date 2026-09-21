@@ -114,7 +114,7 @@ export function HotelSearchTab() {
             </button>
 
             {roomsOpen && (
-              <div className="absolute left-0 top-full z-30 mt-2 w-40 overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-lg">
+              <div className="absolute left-0 top-full z-40 mt-2 w-40 overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-lg">
                 {Array.from({ length: 8 }, (_, i) => i + 1).map((n) => (
                   <button
                     key={n}
@@ -150,7 +150,7 @@ export function HotelSearchTab() {
             </button>
 
             {guestsOpen && (
-              <div className="absolute right-0 top-full z-30 mt-2 w-72 rounded-lg border border-neutral-200 bg-white p-4 shadow-lg">
+              <div className="absolute right-0 top-full z-40 mt-2 w-72 rounded-lg border border-neutral-200 bg-white p-4 shadow-lg">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-neutral-700">Adult</span>
                   <div className="flex items-center gap-3">
@@ -240,7 +240,7 @@ export function HotelSearchTab() {
           </label>
 
           {locationOpen && (
-            <div className="absolute left-0 top-full z-30 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
               {filteredLocations.length > 0 ? (
                 filteredLocations.map((loc) => (
                   <button

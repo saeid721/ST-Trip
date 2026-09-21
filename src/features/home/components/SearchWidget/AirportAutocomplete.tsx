@@ -76,7 +76,7 @@ export function AirportAutocomplete({
         <ul
           id={listId}
           role="listbox"
-          className="absolute z-20 mt-1 max-h-64 w-full min-w-[260px] overflow-auto rounded-lg border border-neutral-200 bg-white py-1 shadow-lg"
+          className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full min-w-[260px] overflow-auto rounded-lg border border-neutral-200 bg-white py-1 shadow-lg"
         >
           {results.map((airport) => (
             <li key={airport.code} role="option" aria-selected={airport.code === value}>

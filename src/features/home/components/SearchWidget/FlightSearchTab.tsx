@@ -199,7 +199,7 @@ export function FlightSearchTab() {
             </button>
 
             {cabinOpen && (
-              <div className="absolute left-0 top-full z-30 mt-2 w-44 overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-lg">
+              <div className="absolute left-0 top-full z-40 mt-2 w-44 overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-lg">
                 {cabinClasses.map((option) => (
                   <button
                     key={option.value}
@@ -240,7 +240,7 @@ export function FlightSearchTab() {
             </button>
 
             {travelersOpen && (
-              <div className="absolute right-0 top-full z-30 mt-2 w-72 rounded-lg border border-neutral-200 bg-white p-4 shadow-lg sm:left-0 sm:right-auto">
+              <div className="absolute right-0 top-full z-40 mt-2 w-72 rounded-lg border border-neutral-200 bg-white p-4 shadow-lg">
                 <TravelerRow
                   label="Adult"
                   sublabel="12 years and above"
@@ -299,7 +299,7 @@ export function FlightSearchTab() {
             </button>
 
             {airlinesOpen && (
-              <div className="absolute right-0 top-full z-30 mt-2 max-h-64 w-60 overflow-y-auto rounded-lg border border-neutral-200 bg-white p-2 shadow-lg sm:left-0 sm:right-auto">
+              <div className="absolute right-0 top-full z-40 mt-2 max-h-64 w-60 overflow-y-auto rounded-lg border border-neutral-200 bg-white p-2 shadow-lg">
                 <label className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-2 text-sm font-semibold text-neutral-800 hover:bg-primary-50">
                   <input
                     type="checkbox"

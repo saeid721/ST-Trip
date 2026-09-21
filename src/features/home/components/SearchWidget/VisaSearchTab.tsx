@@ -99,7 +99,7 @@ export function VisaSearchTab() {
           </div>
 
           {countryOpen && (
-            <div className="absolute left-0 top-full z-30 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
               {filteredCountries.length > 0 ? (
                 filteredCountries.map((c) => (
                   <button
@@ -144,7 +144,7 @@ export function VisaSearchTab() {
           </button>
 
           {visaTypeOpen && (
-            <div className="absolute left-0 top-full z-30 mt-1 w-full overflow-hidden rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 w-full overflow-hidden rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
               {visaTypes.map((type) => (
                 <button
                   key={type}

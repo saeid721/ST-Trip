@@ -149,7 +149,7 @@ export function EsimSearchTab() {
           </button>
 
           {destOpen && (
-            <div className="absolute left-0 top-full z-30 mt-1 w-full overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 w-full overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-lg">
               <div className="border-b border-neutral-100 p-2">
                 <input
                   autoFocus
@@ -203,7 +203,7 @@ export function EsimSearchTab() {
           </button>
 
           {dataTypeOpen && (
-            <div className="absolute left-0 top-full z-30 mt-1 w-full overflow-hidden rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 w-full overflow-hidden rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
               {dataTypes.map((type) => (
                 <button
                   key={type}

@@ -43,7 +43,7 @@ export function TravelSearchHero({
         </div>
       </div>
 
-      <div className="container-app container-search relative -mt-16 md:-mt-24">
+      <div className="container-app container-search relative z-30 -mt-16 md:-mt-24">
         <SearchWidget />
       </div>
     </section>

@@ -48,17 +48,20 @@ export function SearchWidget() {
   }, [routeTab]);
 
   return (
-    <div className="rounded-md border border-neutral-100 bg-white p-4 shadow-floating sm:p-6">
-      <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as SearchTab)}>
-        <TabsList className="mb-5 w-full justify-start gap-0.5 overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:w-fit md:gap-1 md:overflow-visible">
+    <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as SearchTab)}>
+      {/* Floating pill — centered, straddling the seam between the hero image and the card below */}
+      <div className="relative z-10 flex justify-center px-2">
+        <TabsList className="-mb-7 w-full gap-1 overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mb-8 md:w-fit md:gap-2.5 md:overflow-visible">
           {tabs.map(({ value, label, icon: Icon }) => (
             <TabsTrigger key={value} value={value} className="shrink-0 snap-start">
               <Icon className="h-5 w-5 md:h-4 md:w-4" aria-hidden />
-              <span className="leading-tight">{label}</span>
+              <span className="leading-tight font-bold">{label}</span>
             </TabsTrigger>
           ))}
         </TabsList>
+      </div>
 
+      <div className="rounded-md border border-neutral-100 bg-white p-4 pt-10 shadow-floating sm:p-6 sm:pt-11">
         <TabsContent value="flights">
           <FlightSearchTab />
         </TabsContent>
@@ -80,7 +83,7 @@ export function SearchWidget() {
         <TabsContent value="hajj">
           <HajjSearchTab />
         </TabsContent>
-      </Tabs>
-    </div>
+      </div>
+    </Tabs>
   );
 }

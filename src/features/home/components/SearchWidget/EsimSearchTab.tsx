@@ -119,7 +119,7 @@ export function EsimSearchTab() {
       </div>
 
       {/* Destination + Data Type + Button — same line on desktop, stacked on mobile */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+      <div className="grid grid-cols-1 gap-3 sm:flex sm:flex-row sm:items-end">
         <div ref={destRef} className="relative flex-[1.4]">
           <label className="mb-1 block text-xs font-medium text-neutral-500">
             {mode === "country" ? "Which country are you visiting?" : "Which region are you visiting?"}
@@ -224,7 +224,7 @@ export function EsimSearchTab() {
           )}
         </div>
 
-        <Button type="submit" variant="primary" size="lg" className="h-11 gap-2 sm:w-auto">
+        <Button type="submit" variant="primary" size="lg" className="h-11 w-full gap-2 sm:w-auto">
           <Search className="h-4 w-4" aria-hidden />
           Find Plans
         </Button>

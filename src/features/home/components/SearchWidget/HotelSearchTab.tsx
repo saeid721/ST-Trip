@@ -97,7 +97,7 @@ export function HotelSearchTab() {
           </label>
         </div>
 
-        <div className="flex items-center gap-5 sm:ml-auto">
+        <div className="flex flex-wrap items-center gap-3 sm:ml-auto sm:flex-nowrap sm:gap-5">
           {/* Rooms dropdown */}
           <div ref={roomsRef} className="relative">
             <button
@@ -150,7 +150,7 @@ export function HotelSearchTab() {
             </button>
 
             {guestsOpen && (
-              <div className="absolute right-0 top-full z-40 mt-2 w-72 rounded-lg border border-neutral-200 bg-white p-4 shadow-lg">
+              <div className="absolute left-0 right-auto top-full z-40 mt-2 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-neutral-200 bg-white p-4 shadow-lg sm:left-auto sm:right-0 sm:w-72">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-neutral-700">Adult</span>
                   <div className="flex items-center gap-3">

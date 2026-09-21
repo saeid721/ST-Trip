@@ -50,8 +50,8 @@ export function SearchWidget() {
   return (
     <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as SearchTab)}>
       {/* Floating pill — centered, straddling the seam between the hero image and the card below */}
-      <div className="relative z-10 flex justify-center px-2">
-        <TabsList className="-mb-7 w-full gap-1 overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mb-8 md:w-fit md:gap-2.5 md:overflow-visible">
+      <div className="relative z-10 flex justify-center px-1">
+        <TabsList className="-mb-7 w-full gap-1 overflow-x-auto scroll-smooth px-3 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mb-8 md:w-fit md:gap-2.5 md:overflow-visible md:px-0">
           {tabs.map(({ value, label, icon: Icon }) => (
             <TabsTrigger key={value} value={value} className="shrink-0 snap-start">
               <Icon className="h-5 w-5 md:h-4 md:w-4" aria-hidden />

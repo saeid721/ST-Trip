@@ -161,7 +161,7 @@ export function FlightSearchTab() {
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-0">
       {/* Row 1: Trip type + Cabin class + Travelers + Preferred Airlines */}
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2.5 sm:gap-x-6 sm:gap-y-3">
         <div role="radiogroup" aria-label="Trip type" className="flex flex-wrap gap-4">
           {tripTypes.map((option) => (
             <label
@@ -181,7 +181,7 @@ export function FlightSearchTab() {
           ))}
         </div>
 
-        <div className="flex flex-wrap items-center gap-5 sm:ml-auto">
+        <div className="flex flex-wrap items-center gap-3 sm:ml-auto sm:gap-5">
           {/* Cabin class dropdown */}
           <div ref={cabinRef} className="relative">
             <button
@@ -240,7 +240,7 @@ export function FlightSearchTab() {
             </button>
 
             {travelersOpen && (
-              <div className="absolute right-0 top-full z-40 mt-2 w-72 rounded-lg border border-neutral-200 bg-white p-4 shadow-lg">
+              <div className="absolute left-0 right-auto top-full z-40 mt-2 max-h-64 w-[min(15rem,calc(100vw-2rem))] overflow-y-auto rounded-lg border border-neutral-200 bg-white p-2 shadow-lg sm:left-auto sm:right-0 sm:w-60">
                 <TravelerRow
                   label="Adult"
                   sublabel="12 years and above"

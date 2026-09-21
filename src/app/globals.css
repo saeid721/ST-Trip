@@ -275,3 +275,10 @@
   --border-default: var(--color-neutral-700);
   --border-strong: var(--color-neutral-600);
 }
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select,
+button {
+  border-radius: var(--radius-md);
+}

@@ -78,7 +78,7 @@ export function VisaSearchTab() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
-      <div className="grid grid-cols-1 gap-3 sm:flex sm:flex-row sm:items-end">
+      <div className="grid grid-cols-1 gap-3 md:flex md:flex-row md:items-end">
         {/* Country field with searchable dropdown */}
         <div ref={countryRef} className="relative flex-1">
           <label htmlFor="visaCountry" className="mb-1 block text-xs font-medium text-neutral-500">
@@ -165,7 +165,7 @@ export function VisaSearchTab() {
           )}
         </div>
 
-        <Button type="submit" variant="primary" size="lg" className="h-11 w-full gap-2 sm:w-auto">
+        <Button type="submit" variant="primary" size="lg" className="h-11 w-full gap-2 md:w-auto">
           <Search className="h-4 w-4" aria-hidden />
           Check Requirements
         </Button>

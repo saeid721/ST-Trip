@@ -93,7 +93,7 @@ export function HajjSearchTab() {
         </div>
       </div>
 
-      <Button type="submit" variant="primary" size="lg" className="gap-2">
+      <Button type="submit" variant="primary" size="lg" className="h-11 w-full gap-2 md:w-auto">
         Pre-register Now!
       </Button>
     </form>

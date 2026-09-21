@@ -220,7 +220,7 @@ export function HotelSearchTab() {
       </div>
 
       {/* Row 2: Location + Check-In + Check-Out + Search */}
-      <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:items-end">
+      <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4 lg:items-end">
         <div ref={locationRef} className="relative">
           <label htmlFor="hotelDestination" className="block text-xs font-medium text-neutral-500">
             Location
@@ -290,7 +290,7 @@ export function HotelSearchTab() {
           </div>
         </label>
 
-        <Button type="submit" variant="primary" size="lg" className="h-11 gap-2">
+        <Button type="submit" variant="primary" size="lg" className="h-11 w-full gap-2 sm:w-auto">
           <Search className="h-4 w-4" aria-hidden />
           Search Hotels
         </Button>

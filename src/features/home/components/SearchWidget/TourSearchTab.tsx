@@ -74,7 +74,7 @@ export function TourSearchTab() {
       </div>
 
       {/* Row 2: Location + Travel month + Search */}
-      <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:items-end">
+      <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 lg:items-end">
         <div ref={locationRef} className="relative">
           <label htmlFor="tourDestination" className="block text-xs font-medium text-neutral-500">
             Where do you want to go?
@@ -132,7 +132,7 @@ export function TourSearchTab() {
           </div>
         </label>
 
-        <Button type="submit" variant="primary" size="lg" className="h-11 gap-2">
+        <Button type="submit" variant="primary" size="lg" className="h-11 w-full gap-2 sm:w-auto">
           <Search className="h-4 w-4" aria-hidden />
           Find Tours
         </Button>

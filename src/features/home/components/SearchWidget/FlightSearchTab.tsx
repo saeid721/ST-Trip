@@ -400,7 +400,7 @@ export function FlightSearchTab() {
         </div>
       </div>
 
-      <Button type="submit" variant="primary" size="lg" className="h-11 gap-2 lg:w-auto">
+      <Button type="submit" variant="primary" size="lg" className="h-11 w-full gap-2 lg:w-auto">
         <Search className="h-4 w-4" aria-hidden />
         Search Flights
       </Button>
@@ -472,7 +472,7 @@ export function FlightSearchTab() {
           Add Flight
         </button>
 
-        <Button type="submit" variant="primary" size="lg" className="h-11 gap-2 sm:w-auto">
+        <Button type="submit" variant="primary" size="lg" className="h-11 w-full gap-2 sm:w-auto">
           <Search className="h-4 w-4" aria-hidden />
           Search Flights
         </Button>

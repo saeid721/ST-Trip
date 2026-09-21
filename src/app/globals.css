@@ -280,5 +280,11 @@ input:not([type="checkbox"]):not([type="radio"]),
 textarea,
 select,
 button {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm) !important;
+}
+
+[class*="rounded-"]:has(> input:not([type="checkbox"]):not([type="radio"])),
+[class*="rounded-"]:has(> textarea),
+[class*="rounded-"]:has(> select) {
+  border-radius: var(--radius-sm) !important;
 }

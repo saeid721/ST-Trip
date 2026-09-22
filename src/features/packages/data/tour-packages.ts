@@ -73,4 +73,13 @@ export const tourPackages: PackageItem[] = [
     priceFrom: 289999,
     href: "/tour-packages/london-turkey",
   },
+  {
+    id: "mv-sher-khan-2-0",
+    category: "bangladesh",
+    title: "MV Sher Khan - 2.0",
+    image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
+    durationDays: 3,
+    priceFrom: 12500,
+    href: "/tour-packages/mv-sher-khan-2-0",
+  },
 ];

@@ -26,6 +26,40 @@ export interface PackageFaq {
   answer: string;
 }
 
+// New interfaces for additional tabs
+export interface CabinPrice {
+  name: string;
+  price: number;
+}
+
+export interface PackagePrice {
+  cabinType1?: CabinPrice;
+  cabinType2?: CabinPrice;
+}
+
+export interface LocationInfo {
+  pickup: string;
+  reportingTime: string;
+  departureTime: string;
+}
+
+export interface PolicyInfo {
+  cancellation: string[];
+  refund: string[];
+  childPolicy: string[];
+}
+
+export interface TravelTipsInfo {
+  onCruise: string[];
+  inJungle: string[];
+  packingList: Record<string, string[]>;
+}
+
+export interface GroupSize {
+  min: number;
+  max: number;
+}
+
 export interface PackageDetail {
   slug: string;
   category: string;
@@ -39,9 +73,19 @@ export interface PackageDetail {
   priceNote?: string;
   badge?: string;
   overview: string;
+  description?: string;
   highlights: string[];
   inclusions: string[];
   exclusions: string[];
   itinerary?: ItineraryDay[];
+  location?: LocationInfo;
+  packagePrice?: PackagePrice;
+  bookingSteps?: string[];
+  additionalInfo?: string[];
+  requirements?: string[];
+  travelTips?: TravelTipsInfo;
+  options?: string[];
+  policy?: PolicyInfo;
+  groupSize?: GroupSize;
   faqs?: PackageFaq[];
 }

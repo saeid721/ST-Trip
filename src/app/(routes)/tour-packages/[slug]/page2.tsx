@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
-import { TourPackageDetailView } from "@/features/packages/components/TourPackageDetailView";
+import { PackageDetailView } from "@/features/packages/components/PackageDetailView";
 import { getTourPackageDetail } from "@/features/packages/data/tour-package-details";
 import { tourPackages } from "@/features/packages/data/tour-packages";
 
@@ -26,5 +26,5 @@ export default async function TourPackageDetailPage({ params }: PageProps) {
   const detail = getTourPackageDetail(slug);
   if (!detail) notFound();
 
-  return <TourPackageDetailView detail={detail} backHref="/tour-packages" backLabel="All Tour Packages" />;
+  return <PackageDetailView detail={detail} backHref="/tour-packages" backLabel="All Tour Packages" />;
 }

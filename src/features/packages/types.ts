@@ -79,6 +79,8 @@ export interface PackageDetail {
   exclusions: string[];
   itinerary?: ItineraryDay[];
   location?: LocationInfo;
+  address?: string;
+  coordinates?: { lat: number; lng: number };
   packagePrice?: PackagePrice;
   bookingSteps?: string[];
   additionalInfo?: string[];

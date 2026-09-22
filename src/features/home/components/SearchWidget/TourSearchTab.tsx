@@ -33,7 +33,16 @@ export function TourSearchTab() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const params = new URLSearchParams({ searchType, destination, month });
+
+    const trimmedDestination = destination.trim();
+    if (!trimmedDestination) {
+      setLocationOpen(true);
+      return;
+    }
+
+    const params = new URLSearchParams({ searchType, destination: trimmedDestination });
+    if (month) params.set("month", month);
+
     router.push(`/tour-packages?${params.toString()}`);
   }
 

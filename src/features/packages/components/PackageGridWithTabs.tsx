@@ -9,12 +9,22 @@ import type { PackageCategory, PackageItem } from "@/features/packages/types";
 export function PackageGridWithTabs({
   categories,
   packages,
+  initialDestination,
 }: {
   categories: PackageCategory[];
   packages: PackageItem[];
+  initialDestination?: string;
 }) {
   const [active, setActive] = useState(categories[0]?.value ?? "all");
-  const filtered = active === "all" ? packages : packages.filter((p) => p.category === active);
+  const [destinationQuery, setDestinationQuery] = useState(initialDestination?.trim() ?? "");
+
+  const categoryFiltered =
+    active === "all" ? packages : packages.filter((p) => p.category === active);
+
+  const searchTerm = destinationQuery.split(" - ")[0]?.toLowerCase().trim();
+  const filtered = searchTerm
+    ? categoryFiltered.filter((p) => p.title.toLowerCase().includes(searchTerm))
+    : categoryFiltered;
 
   return (
     <div>
@@ -42,9 +52,26 @@ export function PackageGridWithTabs({
         ))}
       </div>
 
+      {destinationQuery && (
+        <div className="mt-4 flex items-center gap-2 text-sm text-neutral-600">
+          <span>
+            Showing results for <strong className="text-neutral-900">{destinationQuery}</strong>
+          </span>
+          <button
+            type="button"
+            onClick={() => setDestinationQuery("")}
+            className="text-primary-600 underline-offset-2 hover:underline"
+          >
+            Clear
+          </button>
+        </div>
+      )}
+
       {filtered.length === 0 ? (
         <p className="mt-10 text-center text-sm text-neutral-500">
-          No packages found in this category yet — check back soon.
+          {destinationQuery
+            ? `No tours found for "${destinationQuery}". Try a different destination or browse all tours below.`
+            : "No packages found in this category yet — check back soon."}
         </p>
       ) : (
         <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-6 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">

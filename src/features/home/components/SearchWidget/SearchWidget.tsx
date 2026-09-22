@@ -74,14 +74,14 @@ export function SearchWidget() {
         <TabsContent value="visa">
           <VisaSearchTab />
         </TabsContent>
-        <TabsContent value="esim">
-          <EsimSearchTab />
-        </TabsContent>
         <TabsContent value="umrah">
           <UmrahSearchTab />
         </TabsContent>
         <TabsContent value="hajj">
           <HajjSearchTab />
+        </TabsContent>
+        <TabsContent value="esim">
+          <EsimSearchTab />
         </TabsContent>
       </div>
     </Tabs>

@@ -10,7 +10,13 @@ export const metadata: Metadata = buildMetadata({
     "Curated single and multi-country holiday tour packages from Bangladesh across Asia, Europe and beyond.",
 });
 
-export default function TourPackagesPage() {
+interface TourPackagesPageProps {
+  searchParams: Promise<{ destination?: string; searchType?: string; month?: string }>;
+}
+
+export default async function TourPackagesPage({ searchParams }: TourPackagesPageProps) {
+  const { destination } = await searchParams;
+
   return (
     <>
       <TravelSearchHero
@@ -20,7 +26,11 @@ export default function TourPackagesPage() {
       />
       <section className="py-12 sm:py-16">
         <div className="container-app">
-          <PackageGridWithTabs categories={tourCategories} packages={tourPackages} />
+          <PackageGridWithTabs
+            categories={tourCategories}
+            packages={tourPackages}
+            initialDestination={destination}
+          />
         </div>
       </section>
     </>

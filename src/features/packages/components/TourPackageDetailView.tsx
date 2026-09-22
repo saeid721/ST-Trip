@@ -524,12 +524,15 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
               {detail.faqs && detail.faqs.length > 0 && <FaqSection faqs={detail.faqs} />}
             </div>
 
-            <aside className="lg:sticky lg:top-[calc(var(--header-height)+1.25rem)] lg:h-fit">
-              <BookingCard
-                detail={detail}
-                phone={supportPhone}
-                whatsapp={whatsappUrl}
-              />
+            <aside className="lg:sticky lg:top-[calc(var(--header-height)+1.25rem)] lg:h-fit lg:space-y-4">
+              <div className="space-y-4">
+                <MapCard detail={detail} />
+                <BookingCard
+                  detail={detail}
+                  phone={supportPhone}
+                  whatsapp={whatsappUrl}
+                />
+              </div>
             </aside>
           </div>
         </div>
@@ -715,6 +718,37 @@ function ItineraryTimeline({ days }: { days: { day: number; title: string; descr
   );
 }
 
+const DEFAULT_TOUR_COORDINATES = { lat: 23.8103, lng: 90.4125 }; // ST Trip HQ, Dhaka — fallback only
+
+function MapCard({ detail }: { detail: PackageDetail }) {
+  const { lat, lng } = detail.coordinates ?? DEFAULT_TOUR_COORDINATES;
+  const delta = 0.03;
+  const bbox = `${lng - delta},${lat - delta},${lng + delta},${lat + delta}`;
+  const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lng}`;
+
+  const address =
+    detail.address ??
+    (detail.location?.pickup && detail.location.pickup !== "N/A"
+      ? detail.location.pickup
+      : detail.subtitle ?? detail.title);
+
+  return (
+    <div className="overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm">
+      <div className="relative h-[170px] w-full bg-neutral-100">
+        <iframe
+          title={`${detail.title} location map`}
+          src={src}
+          loading="lazy"
+          className="h-full w-full border-0"
+        />
+      </div>
+      <div className="flex items-start gap-2 border-t border-neutral-100 p-4">
+        <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-700" aria-hidden />
+        <p className="text-xs leading-relaxed text-neutral-600">{address}</p>
+      </div>
+    </div>
+  );
+}
 function BookingCard({ detail, phone, whatsapp }: { detail: PackageDetail; phone: string; whatsapp: string }) {
   return (
     <div className="overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm">

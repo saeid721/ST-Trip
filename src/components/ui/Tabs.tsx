@@ -4,19 +4,6 @@ import * as RadixTabs from "@radix-ui/react-tabs";
 import { useEffect, useRef, useState, createContext, useContext } from "react";
 import { cn } from "@/lib/utils";
 
-/**
- * Thin wrapper around Radix Tabs so every tabbed section (search widget,
- * Hot Deals filter, Popular Routes) gets correct role="tablist"/"tab" ARIA
- * wiring, roving tabindex keyboard nav, and aria-selected for free — plus a
- * shared "glide" indicator instead of an instant background snap.
- *
- * Motion psychology: a pill that visibly travels from the old tab to the
- * new one reads as continuity ("the same surface moved"), which the brain
- * parses as smoother/more premium than an instant color swap, even though
- * the total animation time is under 300ms. Spring physics (not a linear
- * tween) is what sells the "glide" — it decelerates the way a physical
- * object would, not a mechanical fade.
- */
 const ActiveTabContext = createContext<string | undefined>(undefined);
 
 type TabsRootProps = React.ComponentProps<typeof RadixTabs.Root>;

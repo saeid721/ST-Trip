@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
@@ -55,15 +55,20 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
     () => (detail.gallery?.length ? detail.gallery : [detail.heroImage]),
     [detail.gallery, detail.heroImage],
   );
-  const [activeTab, setActiveTab] = useState<TabId>("overview");
+  const [activeTab, setActiveTab] = useState<TabId | null>("overview");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`;
   const supportPhone = `tel:${siteConfig.contact.supportPhone}`;
 
-  const scrollToSection = (id: TabId) => {
+  const handleTabClick = (id: TabId) => {
     setActiveTab(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleSectionToggle = (id: TabId) => {
+    setActiveTab((prev) => (prev === id ? null : id));
   };
 
   return (
@@ -84,7 +89,7 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
         </div>
 
         <div className="container-app relative -mt-16 sm:-mt-20 md:-mt-24">
-          <div className="rounded-xl border border-white/70 bg-white px-4 py-4 shadow-[0_18px_45px_-22px_rgba(15,23,42,0.45)] sm:px-6 sm:py-5 md:px-7">
+          <div className="rounded-sm border border-white/70 bg-white px-4 py-4 shadow-[0_18px_45px_-22px_rgba(15,23,42,0.45)] sm:px-6 sm:py-5 md:px-7">
             <Link
               href={backHref}
               className="inline-flex min-h-9 items-center gap-1.5 text-[11px] font-semibold text-primary-700 transition-colors hover:text-primary-800 sm:text-xs"
@@ -152,14 +157,14 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
           {/* Section navigation */}
           <nav
             aria-label="Tour details sections"
-            className="sticky top-[var(--header-height-mobile)] z-20 mt-4 overflow-x-auto rounded-lg border border-neutral-200 bg-white shadow-sm md:top-[var(--header-height)]"
+            className="sticky top-[var(--header-height-mobile)] z-20 mt-4 overflow-x-auto rounded-sm border border-neutral-200 bg-white shadow-sm md:top-[var(--header-height)]"
           >
             <div className="flex min-w-max">
               {tabItems.map((tab) => (
                 <button
                   key={tab.id}
                   type="button"
-                  onClick={() => scrollToSection(tab.id)}
+                  onClick={() => handleTabClick(tab.id)}
                   className={cn(
                     "relative min-h-11 px-4 text-[11px] font-semibold transition-colors sm:px-5 sm:text-xs",
                     activeTab === tab.id ? "text-primary-700" : "text-neutral-500 hover:text-neutral-800",
@@ -173,12 +178,19 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
           </nav>
 
           <div className="mt-5 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_310px] xl:gap-7">
-            <div className="min-w-0 space-y-5">
-              
+            <div ref={panelRef} className="min-w-0 space-y-2 sm:space-y-2.5">
+
               {/* Overview Section */}
-              <section id="overview" className="scroll-mt-28 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
-                <SectionHeading icon={Info} title="Overview" />
-                <p className="mt-4 text-[13px] leading-7 text-neutral-600 sm:text-sm sm:leading-7">{detail.overview}</p>
+              <section id="overview" className="overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm">
+                <SectionHeading
+                  icon={Info}
+                  title="Overview"
+                  isOpen={activeTab === "overview"}
+                  onClick={() => handleSectionToggle("overview")}
+                />
+                {activeTab === "overview" && (
+                <div className="border-t border-neutral-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
+                <p className="text-[13px] leading-7 text-neutral-600 sm:text-sm sm:leading-7">{detail.overview}</p>
 
                 {detail.highlights && detail.highlights.length > 0 && (
                   <div className="mt-5 border-t border-neutral-100 pt-5">
@@ -215,23 +227,39 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
                     </div>
                   </div>
                 )}
+                </div>
+                )}
               </section>
 
               {/* Description Section */}
               {detail.description && (
-                <section id="description" className="scroll-mt-28 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
-                  <SectionHeading icon={FileText} title="Description" />
-                  <div className="mt-4 text-[13px] leading-7 text-neutral-600 sm:text-sm sm:leading-7 whitespace-pre-line">
+                <section id="description" className="overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm">
+                  <SectionHeading
+                    icon={FileText}
+                    title="Description"
+                    isOpen={activeTab === "description"}
+                    onClick={() => handleSectionToggle("description")}
+                  />
+                  {activeTab === "description" && (
+                  <div className="border-t border-neutral-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6 text-[13px] leading-7 text-neutral-600 sm:text-sm sm:leading-7 whitespace-pre-line">
                     {detail.description}
                   </div>
+                  )}
                 </section>
               )}
 
               {/* Location & Timing Section */}
               {detail.location && (
-                <section id="location-timing" className="scroll-mt-28 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
-                  <SectionHeading icon={MapPin} title="Location & Timing" />
-                  <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <section id="location-timing" className="overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm">
+                  <SectionHeading
+                    icon={MapPin}
+                    title="Location & Timing"
+                    isOpen={activeTab === "location-timing"}
+                    onClick={() => handleSectionToggle("location-timing")}
+                  />
+                  {activeTab === "location-timing" && (
+                  <div className="border-t border-neutral-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
+                  <div className="grid gap-4 sm:grid-cols-2">
                     <div className="rounded-md bg-neutral-50 p-4">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-neutral-500">Pick-up Location</p>
                       <p className="mt-1 text-sm font-medium text-neutral-900">{detail.location.pickup}</p>
@@ -249,22 +277,40 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
                       <p className="mt-1 text-sm font-medium text-neutral-900">{detail.durationDays} Days</p>
                     </div>
                   </div>
+                  </div>
+                  )}
                 </section>
               )}
 
               {/* Itinerary Section */}
               {detail.itinerary && detail.itinerary.length > 0 && (
-                <section id="itinerary" className="scroll-mt-28 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
-                  <SectionHeading icon={CalendarDays} title="Itinerary" />
-                  <p className="mt-1 text-xs text-neutral-500">A day-by-day outline of your tour experience.</p>
+                <section id="itinerary" className="overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm">
+                  <SectionHeading
+                    icon={CalendarDays}
+                    title="Itinerary"
+                    isOpen={activeTab === "itinerary"}
+                    onClick={() => handleSectionToggle("itinerary")}
+                  />
+                  {activeTab === "itinerary" && (
+                  <div className="border-t border-neutral-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
+                  <p className="text-xs text-neutral-500">A day-by-day outline of your tour experience.</p>
                   <ItineraryTimeline days={detail.itinerary} />
+                  </div>
+                  )}
                 </section>
               )}
 
               {/* Inclusions & Exclusions Section */}
-              <section id="inclusions-exclusions" className="scroll-mt-28 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
-                <SectionHeading icon={Check} title="Inclusions & Exclusions" />
-                <div className="mt-4 grid gap-6 md:grid-cols-2">
+              <section id="inclusions-exclusions" className="overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm">
+                <SectionHeading
+                  icon={Check}
+                  title="Inclusions & Exclusions"
+                  isOpen={activeTab === "inclusions-exclusions"}
+                  onClick={() => handleSectionToggle("inclusions-exclusions")}
+                />
+                {activeTab === "inclusions-exclusions" && (
+                <div className="border-t border-neutral-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
+                <div className="grid gap-6 md:grid-cols-2">
                   <div>
                     <h3 className="mb-3 flex items-center gap-2 text-sm font-bold text-success">
                       <Check className="h-4 w-4" /> Inclusions
@@ -286,13 +332,22 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
                     </div>
                   </div>
                 </div>
+                </div>
+                )}
               </section>
 
               {/* Additional Info & Requirements Section */}
               {(detail.additionalInfo?.length || detail.requirements?.length) && (
-                <section id="additional-info" className="scroll-mt-28 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
-                  <SectionHeading icon={AlertCircle} title="Additional Information & Requirements" />
-                  <div className="mt-4 space-y-6">
+                <section id="additional-info" className="overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm">
+                  <SectionHeading
+                    icon={AlertCircle}
+                    title="Additional Information & Requirements"
+                    isOpen={activeTab === "additional-info"}
+                    onClick={() => handleSectionToggle("additional-info")}
+                  />
+                  {activeTab === "additional-info" && (
+                  <div className="border-t border-neutral-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
+                  <div className="space-y-6">
                     {detail.additionalInfo && detail.additionalInfo.length > 0 && (
                       <div>
                         <h3 className="text-sm font-bold text-neutral-900">Additional Information</h3>
@@ -320,14 +375,23 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
                       </div>
                     )}
                   </div>
+                  </div>
+                  )}
                 </section>
               )}
 
               {/* Travel Tips Section */}
               {detail.travelTips && (detail.travelTips.onCruise?.length || detail.travelTips.inJungle?.length || (detail.travelTips.packingList && Object.keys(detail.travelTips.packingList).length > 0)) && (
-                <section id="travel-tips" className="scroll-mt-28 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
-                  <SectionHeading icon={Compass} title="Travel Tips" />
-                  <div className="mt-4 space-y-6">
+                <section id="travel-tips" className="overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm">
+                  <SectionHeading
+                    icon={Compass}
+                    title="Travel Tips"
+                    isOpen={activeTab === "travel-tips"}
+                    onClick={() => handleSectionToggle("travel-tips")}
+                  />
+                  {activeTab === "travel-tips" && (
+                  <div className="border-t border-neutral-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
+                  <div className="space-y-6">
                     {detail.travelTips.onCruise && detail.travelTips.onCruise.length > 0 && (
                       <div>
                         <h3 className="text-sm font-bold text-neutral-900">Guidelines While on the Cruise</h3>
@@ -375,14 +439,23 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
                       </div>
                     )}
                   </div>
+                  </div>
+                  )}
                 </section>
               )}
 
               {/* Policy Section */}
               {detail.policy && (detail.policy.cancellation?.length || detail.policy.refund?.length || detail.policy.childPolicy?.length) && (
-                <section id="policy" className="scroll-mt-28 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
-                  <SectionHeading icon={ShieldCheck} title="Policy" />
-                  <div className="mt-4 space-y-6">
+                <section id="policy" className="overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm">
+                  <SectionHeading
+                    icon={ShieldCheck}
+                    title="Policy"
+                    isOpen={activeTab === "policy"}
+                    onClick={() => handleSectionToggle("policy")}
+                  />
+                  {activeTab === "policy" && (
+                  <div className="border-t border-neutral-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
+                  <div className="space-y-6">
                     {detail.policy.cancellation && detail.policy.cancellation.length > 0 && (
                       <div>
                         <h3 className="text-sm font-bold text-neutral-900">Cancellation Policy</h3>
@@ -423,20 +496,29 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
                       </div>
                     )}
                   </div>
+                  </div>
+                  )}
                 </section>
               )}
 
               {/* Options Section */}
               {detail.options && detail.options.length > 0 && (
-                <section id="options" className="scroll-mt-28 rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
-                  <SectionHeading icon={Layers} title="Options" />
-                  <div className="mt-4 space-y-3">
+                <section id="options" className="overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm">
+                  <SectionHeading
+                    icon={Layers}
+                    title="Options"
+                    isOpen={activeTab === "options"}
+                    onClick={() => handleSectionToggle("options")}
+                  />
+                  {activeTab === "options" && (
+                  <div className="border-t border-neutral-100 px-5 pb-5 pt-4 sm:px-6 sm:pb-6 space-y-3">
                     {detail.options.map((option, idx) => (
                       <div key={idx} className="rounded-md border border-neutral-200 p-4 text-sm text-neutral-700">
                         {typeof option === 'string' ? option : JSON.stringify(option)}
                       </div>
                     ))}
                   </div>
+                  )}
                 </section>
               )}
 
@@ -466,11 +548,11 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
             target="_blank"
             rel="noreferrer"
             aria-label="WhatsApp inquiry"
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-neutral-200 bg-white text-neutral-700"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-neutral-200 bg-white text-neutral-700"
           >
             <MessageCircle className="h-5 w-5" aria-hidden />
           </a>
-          <a href={supportPhone} className="flex h-11 shrink-0 items-center justify-center gap-1.5 rounded-lg bg-primary-600 px-4 text-xs font-bold text-white">
+          <a href={supportPhone} className="flex h-11 shrink-0 items-center justify-center gap-1.5 rounded-sm bg-primary-600 px-4 text-xs font-bold text-white">
             <Phone className="h-4 w-4" aria-hidden />
             Call
           </a>
@@ -490,14 +572,46 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
   );
 }
 
-function SectionHeading({ icon: Icon, title }: { icon: LucideIcon; title: string }) {
+function SectionHeading({
+  icon: Icon,
+  title,
+  isOpen,
+  onClick,
+}: {
+  icon: LucideIcon;
+  title: string;
+  isOpen?: boolean;
+  onClick?: () => void;
+}) {
+  if (!onClick) {
+    return (
+      <div className="flex items-center gap-2 border-b border-neutral-100 pb-3">
+        <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary-50 text-primary-700">
+          <Icon className="h-4 w-4" aria-hidden />
+        </span>
+        <h2 className="font-heading text-base font-bold text-neutral-900 sm:text-lg">{title}</h2>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex items-center gap-2 border-b border-neutral-100 pb-3">
-      <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary-50 text-primary-700">
-        <Icon className="h-4 w-4" aria-hidden />
+    <button
+      type="button"
+      onClick={onClick}
+      aria-expanded={isOpen}
+      className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left transition-colors hover:bg-neutral-50 sm:px-6"
+    >
+      <span className="flex items-center gap-2.5">
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary-50 text-primary-700">
+          <Icon className="h-4 w-4" aria-hidden />
+        </span>
+        <h2 className="font-heading text-sm font-bold text-neutral-900 sm:text-base">{title}</h2>
       </span>
-      <h2 className="font-heading text-base font-bold text-neutral-900 sm:text-lg">{title}</h2>
-    </div>
+      <ChevronDown
+        className={cn("h-4 w-4 shrink-0 text-neutral-400 transition-transform", isOpen && "rotate-180")}
+        aria-hidden
+      />
+    </button>
   );
 }
 
@@ -550,7 +664,7 @@ function ItineraryTimeline({ days }: { days: { day: number; title: string; descr
   return (
     <div className="mt-5">
       {/* Day Tabs */}
-      <div className="mb-6 flex gap-2 overflow-x-auto rounded-lg bg-slate-100 p-1">
+      <div className="mb-6 flex gap-2 overflow-x-auto rounded-sm bg-slate-100 p-1">
         {days.map((day) => (
           <button
             key={day.day}
@@ -613,7 +727,7 @@ function ItineraryTimeline({ days }: { days: { day: number; title: string; descr
 
 function BookingCard({ detail, phone, whatsapp }: { detail: PackageDetail; phone: string; whatsapp: string }) {
   return (
-    <div className="overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-sm">
       <div className="border-b border-neutral-100 bg-neutral-50 px-5 py-4">
         <div className="flex items-center gap-2">
           <ShieldCheck className="h-4 w-4 text-primary-700" aria-hidden />
@@ -692,7 +806,7 @@ function FaqSection({ faqs }: { faqs: { question: string; answer: string }[] | u
   if (!faqs?.length) return null;
 
   return (
-    <section className="rounded-lg border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
+    <section className="rounded-sm border border-neutral-200 bg-white p-5 shadow-sm sm:p-6">
       <SectionHeading icon={Info} title="Frequently Asked Questions" />
       <div className="mt-3 divide-y divide-neutral-100">
         {faqs.map((faq, index) => {
@@ -717,7 +831,7 @@ function TourGallery({ images, title, onOpen }: { images: string[]; title: strin
   if (!shown.length) return null;
 
   return (
-    <div className="overflow-hidden rounded-lg border border-neutral-200 bg-white p-1 shadow-sm sm:p-1.5">
+    <div className="overflow-hidden rounded-sm border border-neutral-200 bg-white p-1 shadow-sm sm:p-1.5">
       <div className="grid h-[260px] grid-cols-2 grid-rows-2 gap-1 sm:h-[360px] sm:gap-1.5 md:h-[410px] lg:h-[440px] lg:grid-cols-4">
         <button type="button" onClick={() => onOpen(0)} className="group relative col-span-2 row-span-2 overflow-hidden rounded-md bg-neutral-100 text-left lg:col-span-2">
           <Image src={shown[0]} alt={`${title} main photo`} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.025]" />

@@ -114,7 +114,7 @@ export function HotelSearchTab() {
             </button>
 
             {roomsOpen && (
-              <div className="absolute left-0 top-full z-40 mt-2 w-40 overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-lg">
+              <div className="absolute left-0 top-full z-40 mt-2 w-40 overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-lg">
                 {Array.from({ length: 8 }, (_, i) => i + 1).map((n) => (
                   <button
                     key={n}
@@ -150,7 +150,7 @@ export function HotelSearchTab() {
             </button>
 
             {guestsOpen && (
-              <div className="absolute left-0 right-auto top-full z-40 mt-2 w-[min(18rem,calc(100vw-2rem))] rounded-lg border border-neutral-200 bg-white p-4 shadow-lg sm:left-auto sm:right-0 sm:w-72">
+              <div className="absolute left-0 right-auto top-full z-40 mt-2 w-[min(18rem,calc(100vw-2rem))] rounded-sm border border-neutral-200 bg-white p-4 shadow-lg sm:left-auto sm:right-0 sm:w-72">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-neutral-700">Adult</span>
                   <div className="flex items-center gap-3">
@@ -224,7 +224,7 @@ export function HotelSearchTab() {
         <div ref={locationRef} className="relative">
           <label htmlFor="hotelDestination" className="block text-xs font-medium text-neutral-500">
             Location
-            <div className="mt-1 flex h-11 items-center gap-2 rounded-lg border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
+            <div className="mt-1 flex h-11 items-center gap-2 rounded-sm border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
               <MapPin className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
               <input
                 id="hotelDestination"
@@ -240,7 +240,7 @@ export function HotelSearchTab() {
           </label>
 
           {locationOpen && (
-            <div className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full overflow-y-auto rounded-sm border border-neutral-200 bg-white p-1 shadow-lg">
               {filteredLocations.length > 0 ? (
                 filteredLocations.map((loc) => (
                   <button
@@ -266,7 +266,7 @@ export function HotelSearchTab() {
 
         <label className="block text-xs font-medium text-neutral-500">
           Check-In
-          <div className="mt-1 flex h-11 items-center gap-2 rounded-lg border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
+          <div className="mt-1 flex h-11 items-center gap-2 rounded-sm border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
             <CalendarDays className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
             <input
               type="date"
@@ -279,7 +279,7 @@ export function HotelSearchTab() {
 
         <label className="block text-xs font-medium text-neutral-500">
           Check-Out
-          <div className="mt-1 flex h-11 items-center gap-2 rounded-lg border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
+          <div className="mt-1 flex h-11 items-center gap-2 rounded-sm border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
             <CalendarDays className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
             <input
               type="date"

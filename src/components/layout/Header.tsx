@@ -119,7 +119,7 @@ export function Header() {
           aria-expanded={mobileNavOpen}
           onClick={() => setMobileNavOpen(true)}
           className={cn(
-            "flex h-11 w-11 items-center justify-center rounded-lg lg:hidden",
+            "flex h-11 w-11 items-center justify-center rounded-sm lg:hidden",
             scrolled ? "text-neutral-800" : "text-white",
           )}
         >

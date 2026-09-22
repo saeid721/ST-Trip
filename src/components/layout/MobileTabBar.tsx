@@ -41,7 +41,7 @@ export function MobileTabBar() {
               <Link
                 key={href}
                 href={href}
-                className={`relative flex flex-col items-center justify-center gap-1 rounded-lg mx-0.5 transition-all duration-200 ease-out ${
+                className={`relative flex flex-col items-center justify-center gap-1 rounded-sm mx-0.5 transition-all duration-200 ease-out ${
                   isActive
                     ? "text-blue-600 bg-blue-50"
                     : "text-neutral-600 hover:bg-neutral-50"
@@ -62,7 +62,7 @@ export function MobileTabBar() {
           <button
             type="button"
             onClick={handleLoginClick}
-            className="relative flex flex-col items-center justify-center gap-1 rounded-lg mx-0.5 text-neutral-600 hover:bg-neutral-50 transition-all duration-200 ease-out"
+            className="relative flex flex-col items-center justify-center gap-1 rounded-sm mx-0.5 text-neutral-600 hover:bg-neutral-50 transition-all duration-200 ease-out"
             aria-label="Open login modal"
           >
             <loginItem.icon className="h-5 w-5 shrink-0" aria-hidden="true" />

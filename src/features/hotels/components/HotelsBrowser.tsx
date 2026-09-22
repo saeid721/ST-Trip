@@ -141,7 +141,7 @@ export function HotelsBrowser({
         <button
           type="button"
           onClick={() => setFiltersOpen((v) => !v)}
-          className="mb-4 flex w-full items-center justify-between rounded-xl bg-primary-700 px-4 py-3 text-sm font-semibold text-white shadow-sm lg:hidden"
+          className="mb-4 flex w-full items-center justify-between rounded-sm bg-primary-700 px-4 py-3 text-sm font-semibold text-white shadow-sm lg:hidden"
         >
           <span className="flex items-center gap-2">
             <SlidersHorizontal className="h-4 w-4" aria-hidden />
@@ -153,7 +153,7 @@ export function HotelsBrowser({
         <div className="grid gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
           <aside
             className={cn(
-              "h-fit rounded-xl border border-neutral-200 bg-white p-4 shadow-sm max-lg:p-3 lg:sticky lg:top-[calc(var(--header-height)+1.5rem)] lg:block",
+              "h-fit rounded-sm border border-neutral-200 bg-white p-4 shadow-sm max-lg:p-3 lg:sticky lg:top-[calc(var(--header-height)+1.5rem)] lg:block",
               filtersOpen ? "block" : "hidden",
             )}
           >
@@ -173,7 +173,7 @@ export function HotelsBrowser({
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search hotel name, area..."
-                className="w-full rounded-lg border border-neutral-200 py-2 pl-9 pr-3 text-sm outline-none focus:border-primary-400"
+                className="w-full rounded-sm border border-neutral-200 py-2 pl-9 pr-3 text-sm outline-none focus:border-primary-400"
               />
             </div>
 
@@ -206,11 +206,11 @@ export function HotelsBrowser({
               <div className="flex items-center gap-2">
                 <input type="number" value={minPrice} min={priceBounds.min} max={maxPrice}
                   onChange={(e) => setMinPrice(Number(e.target.value))}
-                  className="w-full rounded-lg border border-neutral-200 px-2 py-1.5 text-xs outline-none focus:border-primary-400" />
+                  className="w-full rounded-sm border border-neutral-200 px-2 py-1.5 text-xs outline-none focus:border-primary-400" />
                 <span className="text-xs text-neutral-400">—</span>
                 <input type="number" value={maxPrice} min={minPrice} max={priceBounds.max}
                   onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  className="w-full rounded-lg border border-neutral-200 px-2 py-1.5 text-xs outline-none focus:border-primary-400" />
+                  className="w-full rounded-sm border border-neutral-200 px-2 py-1.5 text-xs outline-none focus:border-primary-400" />
               </div>
               <input type="range" min={priceBounds.min} max={priceBounds.max} value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
@@ -253,7 +253,7 @@ export function HotelsBrowser({
             ) : (
               <div className="rounded-md border border-dashed border-neutral-300 bg-white p-10 text-center">
                 <p className="text-sm font-semibold text-neutral-700">No hotels match your filters</p>
-                <button type="button" onClick={clearAll} className="mt-3 inline-flex h-9 items-center rounded-lg border border-neutral-300 px-4 text-xs font-semibold text-neutral-700 hover:border-primary-400 hover:text-primary-700">
+                <button type="button" onClick={clearAll} className="mt-3 inline-flex h-9 items-center rounded-sm border border-neutral-300 px-4 text-xs font-semibold text-neutral-700 hover:border-primary-400 hover:text-primary-700">
                   Clear filters
                 </button>
               </div>

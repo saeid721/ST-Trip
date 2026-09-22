@@ -98,7 +98,7 @@ export function HotelsSearchHero({ initial, onSearch }: HotelsSearchHeroProps) {
             <div ref={locationRef} className="relative">
               <label htmlFor="hotelLocation" className="block text-xs font-medium text-neutral-500">
                 Location
-                <div className="mt-1 flex h-11 items-center gap-2 rounded-lg border border-neutral-200 px-3 focus-within:border-primary-400">
+                <div className="mt-1 flex h-11 items-center gap-2 rounded-sm border border-neutral-200 px-3 focus-within:border-primary-400">
                   <MapPin className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
                   <input
                     id="hotelLocation"
@@ -113,7 +113,7 @@ export function HotelsSearchHero({ initial, onSearch }: HotelsSearchHeroProps) {
               </label>
 
               {locationOpen && (
-                <div className="absolute left-0 top-full z-30 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+                <div className="absolute left-0 top-full z-30 mt-1 max-h-64 w-full overflow-y-auto rounded-sm border border-neutral-200 bg-white p-1 shadow-lg">
                   {filteredLocations.length > 0 ? (
                     filteredLocations.map((loc) => (
                       <button
@@ -156,7 +156,7 @@ export function HotelsSearchHero({ initial, onSearch }: HotelsSearchHeroProps) {
             </SearchField>
             <button
               type="submit"
-              className="flex h-11 items-center justify-center gap-2 rounded-lg bg-primary-600 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
+              className="flex h-11 items-center justify-center gap-2 rounded-sm bg-primary-600 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
             >
               <Search className="h-4 w-4" aria-hidden />
               Search
@@ -172,7 +172,7 @@ function SearchField({ label, children }: { label: string; children: React.React
   return (
     <label className="block text-xs font-medium text-neutral-500">
       {label}
-      <div className="mt-1 flex h-11 items-center gap-2 rounded-lg border border-neutral-200 px-3 focus-within:border-primary-400">
+      <div className="mt-1 flex h-11 items-center gap-2 rounded-sm border border-neutral-200 px-3 focus-within:border-primary-400">
         {children}
       </div>
     </label>
@@ -220,7 +220,7 @@ function CounterField({
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full z-20 mt-2 flex items-center gap-3 rounded-lg border border-neutral-200 bg-white p-3 shadow-lg">
+        <div className="absolute left-0 top-full z-20 mt-2 flex items-center gap-3 rounded-sm border border-neutral-200 bg-white p-3 shadow-lg">
           <button
             type="button"
             onClick={() => onChange(Math.max(min, value - 1))}

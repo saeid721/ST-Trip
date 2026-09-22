@@ -46,7 +46,7 @@ function TravelerStepper({
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-haspopup="true"
-        className="flex w-full items-center gap-2 rounded-lg border border-neutral-200 px-3 py-2.5 text-left focus-within:border-primary-400"
+        className="flex w-full items-center gap-2 rounded-sm border border-neutral-200 px-3 py-2.5 text-left focus-within:border-primary-400"
       >
         <Users className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
         <span className="text-sm text-neutral-900">
@@ -58,7 +58,7 @@ function TravelerStepper({
         <div
           role="dialog"
           aria-label="Select travellers"
-          className="absolute z-20 mt-1 w-72 rounded-lg border border-neutral-200 bg-white p-4 shadow-lg"
+          className="absolute z-20 mt-1 w-72 rounded-sm border border-neutral-200 bg-white p-4 shadow-lg"
         >
           {rows.map((row) => (
             <div key={row.key} className="flex items-center justify-between py-2.5">
@@ -72,7 +72,7 @@ function TravelerStepper({
                   aria-label={`Decrease ${row.label}`}
                   onClick={() => update(row.key, -1, row.min)}
                   disabled={value[row.key] <= row.min}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-200 text-neutral-600 hover:border-primary-400 hover:text-primary-700 disabled:pointer-events-none disabled:opacity-40"
+                  className="flex h-9 w-9 items-center justify-center rounded-sm border border-neutral-200 text-neutral-600 hover:border-primary-400 hover:text-primary-700 disabled:pointer-events-none disabled:opacity-40"
                 >
                   <Minus className="h-4 w-4" aria-hidden />
                 </button>
@@ -83,7 +83,7 @@ function TravelerStepper({
                   type="button"
                   aria-label={`Increase ${row.label}`}
                   onClick={() => update(row.key, 1, row.min)}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-200 text-neutral-600 hover:border-primary-400 hover:text-primary-700"
+                  className="flex h-9 w-9 items-center justify-center rounded-sm border border-neutral-200 text-neutral-600 hover:border-primary-400 hover:text-primary-700"
                 >
                   <Plus className="h-4 w-4" aria-hidden />
                 </button>
@@ -123,7 +123,7 @@ export function UmrahSearchTab() {
         <label htmlFor="umrahDestination" className="mb-1 block text-xs font-medium text-neutral-500">
           To
         </label>
-        <div className="flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-2.5 focus-within:border-primary-400">
+        <div className="flex items-center gap-2 rounded-sm border border-neutral-200 px-3 py-2.5 focus-within:border-primary-400">
           <MapPin className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
           <select
             id="umrahDestination"
@@ -144,7 +144,7 @@ export function UmrahSearchTab() {
         <label htmlFor="umrahDepartureDate" className="mb-1 block text-xs font-medium text-neutral-500">
           Departure Date
         </label>
-        <div className="flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-2.5 focus-within:border-primary-400">
+        <div className="flex items-center gap-2 rounded-sm border border-neutral-200 px-3 py-2.5 focus-within:border-primary-400">
           <CalendarDays className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
           <input
             id="umrahDepartureDate"

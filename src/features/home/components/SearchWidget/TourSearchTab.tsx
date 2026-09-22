@@ -78,7 +78,7 @@ export function TourSearchTab() {
         <div ref={locationRef} className="relative">
           <label htmlFor="tourDestination" className="block text-xs font-medium text-neutral-500">
             Where do you want to go?
-            <div className="mt-1 flex h-11 items-center gap-2 rounded-lg border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
+            <div className="mt-1 flex h-11 items-center gap-2 rounded-sm border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
               <MapPin className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
               <input
                 id="tourDestination"
@@ -94,7 +94,7 @@ export function TourSearchTab() {
           </label>
 
           {locationOpen && (
-            <div className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full overflow-y-auto rounded-sm border border-neutral-200 bg-white p-1 shadow-lg">
               {filteredLocations.length > 0 ? (
                 filteredLocations.map((loc) => (
                   <button
@@ -120,7 +120,7 @@ export function TourSearchTab() {
 
         <label className="block text-xs font-medium text-neutral-500">
           Travel month
-          <div className="mt-1 flex h-11 items-center gap-2 rounded-lg border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
+          <div className="mt-1 flex h-11 items-center gap-2 rounded-sm border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
             <CalendarDays className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
             <input
               id="tourMonth"

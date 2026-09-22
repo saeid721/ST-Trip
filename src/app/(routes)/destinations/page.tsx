@@ -121,7 +121,7 @@ function SummaryStat({
 }) {
   return (
     <div className="flex items-center gap-3 rounded-md border border-neutral-200 bg-neutral-50 px-4 py-3">
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-100 text-primary-700">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-primary-100 text-primary-700">
         <Icon className="h-5 w-5" aria-hidden />
       </span>
       <div>

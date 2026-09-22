@@ -79,7 +79,7 @@ export function EsimSearchTab() {
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
       {/* Country Wise / Region Wise toggle */}
-      <div className="inline-flex rounded-lg border border-neutral-200 bg-neutral-50 p-1">
+      <div className="inline-flex rounded-sm border border-neutral-200 bg-neutral-50 p-1">
         <button
           type="button"
           onClick={() => switchMode("country")}
@@ -131,7 +131,7 @@ export function EsimSearchTab() {
               setDataTypeOpen(false);
             }}
             aria-expanded={destOpen}
-            className="flex h-11 w-full items-center gap-2 rounded-lg border border-neutral-200 px-3 text-left transition-colors hover:border-primary-300 focus-within:border-primary-400"
+            className="flex h-11 w-full items-center gap-2 rounded-sm border border-neutral-200 px-3 text-left transition-colors hover:border-primary-300 focus-within:border-primary-400"
           >
             <Wifi className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
             <span className={cn("flex-1 truncate text-sm", selectedOption ? "text-neutral-900" : "text-neutral-400")}>
@@ -149,7 +149,7 @@ export function EsimSearchTab() {
           </button>
 
           {destOpen && (
-            <div className="absolute left-0 top-full z-40 mt-1 w-full overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 w-full overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-lg">
               <div className="border-b border-neutral-100 p-2">
                 <input
                   autoFocus
@@ -195,7 +195,7 @@ export function EsimSearchTab() {
               setDestOpen(false);
             }}
             aria-expanded={dataTypeOpen}
-            className="flex h-11 w-full items-center gap-2 rounded-lg border border-neutral-200 px-3 text-left transition-colors hover:border-primary-300 focus-within:border-primary-400"
+            className="flex h-11 w-full items-center gap-2 rounded-sm border border-neutral-200 px-3 text-left transition-colors hover:border-primary-300 focus-within:border-primary-400"
           >
             <Database className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
             <span className="flex-1 truncate text-sm text-neutral-900">{dataType}</span>
@@ -203,7 +203,7 @@ export function EsimSearchTab() {
           </button>
 
           {dataTypeOpen && (
-            <div className="absolute left-0 top-full z-40 mt-1 w-full overflow-hidden rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 w-full overflow-hidden rounded-sm border border-neutral-200 bg-white p-1 shadow-lg">
               {dataTypes.map((type) => (
                 <button
                   key={type}

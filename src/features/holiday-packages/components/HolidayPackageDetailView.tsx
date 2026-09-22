@@ -160,11 +160,11 @@ export function HolidayPackageDetailView({ detail, backHref, backLabel }: Holida
               </p>
               <p className="mt-1 text-xs text-neutral-500">Per person, subject to availability</p>
 
-              <a href={`tel:${siteConfig.contact.supportPhone}`} className="mt-5 flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary-600 text-sm font-semibold text-white transition-colors hover:bg-primary-700">
+              <a href={`tel:${siteConfig.contact.supportPhone}`} className="mt-5 flex h-12 w-full items-center justify-center gap-2 rounded-sm bg-primary-600 text-sm font-semibold text-white transition-colors hover:bg-primary-700">
                 <Phone className="h-4 w-4" aria-hidden />
                 Call to Book
               </a>
-              <a href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer" className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-lg border border-neutral-200 text-sm font-semibold text-neutral-700 transition-colors hover:border-primary-300 hover:text-primary-700">
+              <a href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer" className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-sm border border-neutral-200 text-sm font-semibold text-neutral-700 transition-colors hover:border-primary-300 hover:text-primary-700">
                 <MessageCircle className="h-4 w-4" aria-hidden />
                 WhatsApp Inquiry
               </a>
@@ -190,10 +190,10 @@ export function HolidayPackageDetailView({ detail, backHref, backLabel }: Holida
             </p>
           </div>
           <div className="flex shrink-0 items-center gap-2">
-            <a href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer" aria-label="WhatsApp Inquiry" className="flex h-11 w-11 items-center justify-center rounded-lg border border-neutral-200 text-neutral-700 transition-colors hover:border-primary-300 hover:text-primary-700">
+            <a href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer" aria-label="WhatsApp Inquiry" className="flex h-11 w-11 items-center justify-center rounded-sm border border-neutral-200 text-neutral-700 transition-colors hover:border-primary-300 hover:text-primary-700">
               <MessageCircle className="h-5 w-5" aria-hidden />
             </a>
-            <a href={`tel:${siteConfig.contact.supportPhone}`} className="flex h-11 items-center justify-center gap-2 rounded-lg bg-primary-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-primary-700">
+            <a href={`tel:${siteConfig.contact.supportPhone}`} className="flex h-11 items-center justify-center gap-2 rounded-sm bg-primary-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-primary-700">
               <Phone className="h-4 w-4" aria-hidden />
               Call
             </a>

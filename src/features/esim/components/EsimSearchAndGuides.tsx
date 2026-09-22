@@ -26,7 +26,7 @@ export function EsimSearchAndGuides() {
           <ul className="mt-3 space-y-1">
             {deviceGuides.map(({ icon: Icon, label, href }) => (
               <li key={label}>
-                <Link href={href} className="flex min-h-10 items-center gap-2.5 rounded-lg px-2 text-sm text-neutral-700 transition-colors hover:bg-primary-50 hover:text-primary-700">
+                <Link href={href} className="flex min-h-10 items-center gap-2.5 rounded-sm px-2 text-sm text-neutral-700 transition-colors hover:bg-primary-50 hover:text-primary-700">
                   <Icon className="h-4 w-4 shrink-0 text-primary-600" aria-hidden /> {label}
                 </Link>
               </li>

@@ -197,7 +197,7 @@ export function TravelGuideDetailView({ guide, relatedGuides }: TravelGuideDetai
 
             <Link
               href="/"
-              className="flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-primary-600 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
+              className="flex h-12 w-full items-center justify-center gap-2 rounded-sm bg-primary-600 text-sm font-semibold text-white transition-colors hover:bg-primary-700"
             >
               Plan This Trip
               <ArrowRight className="h-4 w-4" aria-hidden />

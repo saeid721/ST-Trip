@@ -72,7 +72,7 @@ export function PackageCard({
               {formatCurrency(priceFrom)}
             </p>
           </div>
-          <span className="inline-flex items-center gap-1 rounded-lg bg-primary-50 px-2.5 py-1.5 text-[11px] font-semibold text-primary-700 transition-colors group-hover:bg-primary-600 group-hover:text-white sm:px-3 sm:py-2 sm:text-xs">
+          <span className="inline-flex items-center gap-1 rounded-sm bg-primary-50 px-2.5 py-1.5 text-[11px] font-semibold text-primary-700 transition-colors group-hover:bg-primary-600 group-hover:text-white sm:px-3 sm:py-2 sm:text-xs">
             View Details
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </span>

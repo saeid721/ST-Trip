@@ -93,7 +93,7 @@ export function HotelCard({
 
         {/* Bottom-left: rating chip overlaid on the photo */}
         {rating > 0 && (
-          <div className="absolute bottom-3 left-3 flex items-center gap-1 rounded-lg bg-white/90 px-2 py-1 text-xs font-bold text-neutral-900 shadow-sm backdrop-blur-sm">
+          <div className="absolute bottom-3 left-3 flex items-center gap-1 rounded-sm bg-white/90 px-2 py-1 text-xs font-bold text-neutral-900 shadow-sm backdrop-blur-sm">
             <Star className="h-3.5 w-3.5 fill-warning text-warning" aria-hidden />
             {rating.toFixed(1)}
             {typeof reviewCount === "number" && reviewCount > 0 && (

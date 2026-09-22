@@ -31,7 +31,7 @@ export function NewsDetailView({ item }: { item: NewsItem }) {
             <p>ST Trip continues to expand its travel services with a focus on simpler planning, dependable support and useful tools for travellers from Bangladesh.</p>
             <p>For the latest details, availability or support related to this update, contact our team through the Help Centre before making a booking.</p>
           </div>
-          <Link href="/help/faq" className="mt-8 inline-flex items-center rounded-lg bg-primary-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-700">Contact Support</Link>
+          <Link href="/help/faq" className="mt-8 inline-flex items-center rounded-sm bg-primary-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-700">Contact Support</Link>
         </div>
       </section>
     </article>

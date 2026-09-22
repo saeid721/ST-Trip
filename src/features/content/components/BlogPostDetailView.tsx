@@ -185,10 +185,10 @@ export function BlogPostDetailView({ post, relatedPosts }: BlogPostDetailViewPro
                 <h2 className="mt-2 font-heading text-xl font-bold sm:text-2xl">Ready to turn the guide into a trip?</h2>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-primary-50/90">Compare flights, hotels and travel services in one place, with support when you need it.</p>
                 <div className="mt-5 flex flex-wrap gap-3">
-                  <Link href="/flights" className="inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-primary-700 transition hover:-translate-y-0.5">
+                  <Link href="/flights" className="inline-flex items-center gap-2 rounded-sm bg-white px-4 py-2.5 text-sm font-bold text-primary-700 transition hover:-translate-y-0.5">
                     Search Flights <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
-                  <Link href="/hotels" className="inline-flex items-center gap-2 rounded-lg border border-white/30 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/15">
+                  <Link href="/hotels" className="inline-flex items-center gap-2 rounded-sm border border-white/30 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/15">
                     Find Hotels
                   </Link>
                 </div>
@@ -206,7 +206,7 @@ export function BlogPostDetailView({ post, relatedPosts }: BlogPostDetailViewPro
                     <a
                       key={section.heading}
                       href={`#section-${index}`}
-                      className="block rounded-lg px-3 py-2 text-xs font-medium leading-5 text-neutral-600 transition hover:bg-primary-50 hover:text-primary-700"
+                      className="block rounded-sm px-3 py-2 text-xs font-medium leading-5 text-neutral-600 transition hover:bg-primary-50 hover:text-primary-700"
                     >
                       {index + 1}. {section.heading}
                     </a>

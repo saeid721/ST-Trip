@@ -84,7 +84,7 @@ export function VisaSearchTab() {
           <label htmlFor="visaCountry" className="mb-1 block text-xs font-medium text-neutral-500">
             Which country are you visiting?
           </label>
-          <div className="flex h-11 items-center gap-2 rounded-lg border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
+          <div className="flex h-11 items-center gap-2 rounded-sm border border-neutral-200 px-3 transition-colors focus-within:border-primary-400">
             <Globe2 className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
             <input
               id="visaCountry"
@@ -99,7 +99,7 @@ export function VisaSearchTab() {
           </div>
 
           {countryOpen && (
-            <div className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full overflow-y-auto rounded-sm border border-neutral-200 bg-white p-1 shadow-lg">
               {filteredCountries.length > 0 ? (
                 filteredCountries.map((c) => (
                   <button
@@ -134,7 +134,7 @@ export function VisaSearchTab() {
               setCountryOpen(false);
             }}
             aria-expanded={visaTypeOpen}
-            className="flex h-11 w-full items-center gap-2 rounded-lg border border-neutral-200 px-3 text-left transition-colors focus-within:border-primary-400 hover:border-primary-300"
+            className="flex h-11 w-full items-center gap-2 rounded-sm border border-neutral-200 px-3 text-left transition-colors focus-within:border-primary-400 hover:border-primary-300"
           >
             <FileCheck2 className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
             <span className={cn("flex-1 truncate text-sm", visaType ? "text-neutral-900" : "text-neutral-400")}>
@@ -144,7 +144,7 @@ export function VisaSearchTab() {
           </button>
 
           {visaTypeOpen && (
-            <div className="absolute left-0 top-full z-40 mt-1 w-full overflow-hidden rounded-lg border border-neutral-200 bg-white p-1 shadow-lg">
+            <div className="absolute left-0 top-full z-40 mt-1 w-full overflow-hidden rounded-sm border border-neutral-200 bg-white p-1 shadow-lg">
               {visaTypes.map((type) => (
                 <button
                   key={type}

@@ -80,7 +80,7 @@ export function HajjSearchTab() {
         <label htmlFor="passportNo" className="mb-1 block text-xs font-medium text-neutral-500">
           Passport No.
         </label>
-        <div className="flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-2.5 focus-within:border-primary-400">
+        <div className="flex items-center gap-2 rounded-sm border border-neutral-200 px-3 py-2.5 focus-within:border-primary-400">
           <IdCard className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
           <input
             id="passportNo"

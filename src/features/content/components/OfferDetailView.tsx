@@ -45,7 +45,7 @@ export function OfferDetailView({ deal }: { deal: HotDeal }) {
               <Copy className="h-4 w-4 text-neutral-500" aria-hidden />
             </div>
             <p className="mt-4 text-sm text-neutral-600">Offer valid until {formatDate(deal.expiresAt)}. Terms, route restrictions and eligibility may apply.</p>
-            <Link href="/flights" className="mt-6 flex h-12 items-center justify-center rounded-lg bg-primary-600 text-sm font-semibold text-white transition-colors hover:bg-primary-700">Search Flights</Link>
+            <Link href="/flights" className="mt-6 flex h-12 items-center justify-center rounded-sm bg-primary-600 text-sm font-semibold text-white transition-colors hover:bg-primary-700">Search Flights</Link>
           </aside>
         </div>
       </div>

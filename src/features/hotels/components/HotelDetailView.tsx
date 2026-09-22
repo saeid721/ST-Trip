@@ -229,7 +229,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
                         value={sortOrder}
                         onChange={(e) => setSortOrder(e.target.value as "low-high" | "high-low")}
                         style={{ WebkitAppearance: "none", MozAppearance: "none" }}
-                        className="h-[52px] w-full appearance-none rounded-md border border-neutral-200 bg-white bg-none pl-4 pr-10 text-[15px] font-normal text-neutral-700 outline-none focus:border-primary-400 focus:ring-0 sm:h-9 sm:rounded-lg sm:pl-3 sm:pr-7 sm:text-xs sm:font-medium"
+                        className="h-[52px] w-full appearance-none rounded-md border border-neutral-200 bg-white bg-none pl-4 pr-10 text-[15px] font-normal text-neutral-700 outline-none focus:border-primary-400 focus:ring-0 sm:h-9 sm:rounded-sm sm:pl-3 sm:pr-7 sm:text-xs sm:font-medium"
                       >
                         <option value="low-high">Price: Low to High</option>
                         <option value="high-low">Price: High to Low</option>
@@ -256,7 +256,7 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
                       <button
                         type="button"
                         onClick={resetFilters}
-                        className="mt-3 inline-flex h-9 items-center rounded-lg border border-neutral-300 px-4 text-xs font-semibold text-neutral-700 hover:border-primary-400 hover:text-primary-700"
+                        className="mt-3 inline-flex h-9 items-center rounded-sm border border-neutral-300 px-4 text-xs font-semibold text-neutral-700 hover:border-primary-400 hover:text-primary-700"
                       >
                         Clear filters
                       </button>
@@ -310,7 +310,7 @@ function FilterSelect({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         style={{ WebkitAppearance: "none", MozAppearance: "none" }}
-        className="h-[52px] w-full appearance-none rounded-md border border-neutral-200 bg-white bg-none pl-4 pr-10 text-[15px] font-normal text-neutral-700 outline-none focus:border-primary-400 focus:ring-0 sm:h-9 sm:rounded-lg sm:pl-3 sm:pr-7 sm:text-xs sm:font-medium"
+        className="h-[52px] w-full appearance-none rounded-md border border-neutral-200 bg-white bg-none pl-4 pr-10 text-[15px] font-normal text-neutral-700 outline-none focus:border-primary-400 focus:ring-0 sm:h-9 sm:rounded-sm sm:pl-3 sm:pr-7 sm:text-xs sm:font-medium"
       >
         <option value="all">-- {placeholder} --</option>
         {options.map((opt) => (
@@ -662,7 +662,7 @@ function RoomCard({ room, isSelected, onSelect }: { room: RoomType; isSelected: 
                 return (
                   <span
                     key={item}
-                    className="inline-flex items-center gap-1 rounded-full bg-neutral-100 px-2 py-1 text-[8px] font-medium text-neutral-600 max-md:rounded-lg max-md:border max-md:border-primary-100 max-md:bg-primary-50 max-md:px-2 max-md:py-1 max-md:text-[8px] max-md:font-semibold max-md:text-primary-700"
+                    className="inline-flex items-center gap-1 rounded-full bg-neutral-100 px-2 py-1 text-[8px] font-medium text-neutral-600 max-md:rounded-sm max-md:border max-md:border-primary-100 max-md:bg-primary-50 max-md:px-2 max-md:py-1 max-md:text-[8px] max-md:font-semibold max-md:text-primary-700"
                   >
                     <Icon className="h-3 w-3" aria-hidden />
                     {item}
@@ -712,7 +712,7 @@ function RoomCard({ room, isSelected, onSelect }: { room: RoomType; isSelected: 
             <button
               type="button"
               onClick={onSelect}
-              className="flex h-9 w-full items-center justify-center gap-2 rounded-lg bg-primary-700 text-xs font-semibold text-white transition-colors hover:bg-primary-800 max-md:h-11 max-md:rounded-full max-md:text-sm max-md:font-bold max-md:shadow-md"
+              className="flex h-9 w-full items-center justify-center gap-2 rounded-sm bg-primary-700 text-xs font-semibold text-white transition-colors hover:bg-primary-800 max-md:h-11 max-md:rounded-full max-md:text-sm max-md:font-bold max-md:shadow-md"
             >
               <BedDouble className="h-3.5 w-3.5" aria-hidden />
               {isSelected ? "Selected" : "Select Room"}
@@ -840,7 +840,7 @@ function PolicyPanel({ policies }: { policies: NonNullable<HotelDetail["policies
         <p className="mt-2 text-xs leading-6 text-neutral-600">{policies.cancellation}</p>
       </div>
 
-      <div className="mt-5 flex flex-col gap-3 rounded-lg bg-neutral-50 p-4 text-xs text-neutral-700 sm:flex-row sm:items-center sm:gap-6">
+      <div className="mt-5 flex flex-col gap-3 rounded-sm bg-neutral-50 p-4 text-xs text-neutral-700 sm:flex-row sm:items-center sm:gap-6">
         <span className="flex items-center gap-2">
           <Clock3 className="h-4 w-4 text-primary-700" aria-hidden />
           <span>

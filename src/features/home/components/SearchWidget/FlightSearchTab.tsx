@@ -199,7 +199,7 @@ export function FlightSearchTab() {
             </button>
 
             {cabinOpen && (
-              <div className="absolute left-0 top-full z-40 mt-2 w-44 overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-lg">
+              <div className="absolute left-0 top-full z-40 mt-2 w-44 overflow-hidden rounded-sm border border-neutral-200 bg-white shadow-lg">
                 {cabinClasses.map((option) => (
                   <button
                     key={option.value}
@@ -240,7 +240,7 @@ export function FlightSearchTab() {
             </button>
 
             {travelersOpen && (
-              <div className="absolute left-0 right-auto top-full z-40 mt-2 max-h-64 w-[min(15rem,calc(100vw-2rem))] overflow-y-auto rounded-lg border border-neutral-200 bg-white p-2 shadow-lg sm:left-auto sm:right-0 sm:w-60">
+              <div className="absolute left-0 right-auto top-full z-40 mt-2 max-h-64 w-[min(15rem,calc(100vw-2rem))] overflow-y-auto rounded-sm border border-neutral-200 bg-white p-2 shadow-lg sm:left-auto sm:right-0 sm:w-60">
                 <TravelerRow
                   label="Adult"
                   sublabel="12 years and above"
@@ -299,7 +299,7 @@ export function FlightSearchTab() {
             </button>
 
             {airlinesOpen && (
-              <div className="absolute right-0 top-full z-40 mt-2 max-h-64 w-60 overflow-y-auto rounded-lg border border-neutral-200 bg-white p-2 shadow-lg">
+              <div className="absolute right-0 top-full z-40 mt-2 max-h-64 w-60 overflow-y-auto rounded-sm border border-neutral-200 bg-white p-2 shadow-lg">
                 <label className="flex cursor-pointer items-center gap-2 rounded-md px-2 py-2 text-sm font-semibold text-neutral-800 hover:bg-primary-50">
                   <input
                     type="checkbox"
@@ -365,7 +365,7 @@ export function FlightSearchTab() {
           <label htmlFor="departureDate" className="mb-1 block text-xs font-medium text-neutral-500">
             Departing
           </label>
-          <div className="flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-2.5 transition-colors focus-within:border-primary-400">
+          <div className="flex items-center gap-2 rounded-sm border border-neutral-200 px-3 py-2.5 transition-colors focus-within:border-primary-400">
             <CalendarDays className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
             <input
               id="departureDate"
@@ -381,7 +381,7 @@ export function FlightSearchTab() {
           <label htmlFor="returnDate" className="mb-1 block text-xs font-medium text-neutral-500">
             Returning
           </label>
-          <div className="flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-2.5 transition-colors focus-within:border-primary-400">
+          <div className="flex items-center gap-2 rounded-sm border border-neutral-200 px-3 py-2.5 transition-colors focus-within:border-primary-400">
             <CalendarDays className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
             <input
               id="returnDate"
@@ -437,7 +437,7 @@ export function FlightSearchTab() {
 
               <div className="md:w-40 md:shrink-0">
                 <label className="mb-1 block text-xs font-medium text-neutral-500">Departing</label>
-                <div className="flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-2.5 transition-colors focus-within:border-primary-400">
+                <div className="flex items-center gap-2 rounded-sm border border-neutral-200 px-3 py-2.5 transition-colors focus-within:border-primary-400">
                   <CalendarDays className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
                   <input
                     type="date"
@@ -453,7 +453,7 @@ export function FlightSearchTab() {
                 type="button"
                 onClick={() => removeLeg(leg.id)}
                 aria-label="Remove flight"
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-danger/30 bg-danger/5 text-danger transition-colors hover:bg-danger/10 md:mb-0"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-danger/30 bg-danger/5 text-danger transition-colors hover:bg-danger/10 md:mb-0"
               >
                 <Trash2 className="h-4 w-4" aria-hidden />
               </button>
@@ -466,7 +466,7 @@ export function FlightSearchTab() {
         <button
           type="button"
           onClick={addLeg}
-          className="inline-flex w-fit items-center gap-2 rounded-lg bg-primary-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-800"
+          className="inline-flex w-fit items-center gap-2 rounded-sm bg-primary-700 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-primary-800"
         >
           <PlusCircle className="h-4 w-4" aria-hidden />
           Add Flight

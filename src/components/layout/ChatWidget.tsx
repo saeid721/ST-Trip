@@ -48,7 +48,7 @@ export function ChatWidget() {
                 type="text"
                 placeholder="Type a message…"
                 aria-label="Chat message"
-                className="h-10 flex-1 rounded-lg border border-neutral-200 px-3 text-sm focus-visible:outline-none"
+                className="h-10 flex-1 rounded-sm border border-neutral-200 px-3 text-sm focus-visible:outline-none"
               />
               <Button size="icon" aria-label="Send message">
                 <Send className="h-4 w-4" aria-hidden />

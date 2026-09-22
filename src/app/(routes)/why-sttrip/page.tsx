@@ -66,7 +66,7 @@ export default function WhySTTripPage() {
             </div>
             <Link
               href="/"
-              className="inline-flex h-[52px] items-center gap-2 whitespace-nowrap rounded-lg bg-white px-7 text-base font-semibold text-primary-600 shadow-md transition-colors hover:bg-neutral-50"
+              className="inline-flex h-[52px] items-center gap-2 whitespace-nowrap rounded-sm bg-white px-7 text-base font-semibold text-primary-600 shadow-md transition-colors hover:bg-neutral-50"
             >
               Start Searching
               <ArrowRight className="h-4 w-4" aria-hidden />

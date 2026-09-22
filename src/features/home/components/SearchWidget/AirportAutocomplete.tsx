@@ -50,7 +50,7 @@ export function AirportAutocomplete({
       <label htmlFor={inputId} className="mb-1 block text-xs font-medium text-neutral-500">
         {label}
       </label>
-      <div className="flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-2.5 focus-within:border-primary-400">
+      <div className="flex items-center gap-2 rounded-sm border border-neutral-200 px-3 py-2.5 focus-within:border-primary-400">
         <Icon className="h-4 w-4 shrink-0 text-primary-600" aria-hidden />
         <input
           id={inputId}
@@ -76,7 +76,7 @@ export function AirportAutocomplete({
         <ul
           id={listId}
           role="listbox"
-          className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full min-w-[260px] overflow-auto rounded-lg border border-neutral-200 bg-white py-1 shadow-lg"
+          className="absolute left-0 top-full z-40 mt-1 max-h-64 w-full min-w-[260px] overflow-auto rounded-sm border border-neutral-200 bg-white py-1 shadow-lg"
         >
           {results.map((airport) => (
             <li key={airport.code} role="option" aria-selected={airport.code === value}>

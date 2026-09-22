@@ -126,59 +126,59 @@ export function HotelDetailView({ detail, backHref, backLabel, searchContext }: 
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/85 via-neutral-900/30 to-neutral-900/60" />
         </div>
 
-        <div className="container-app relative -mt-16 sm:-mt-24 md:-mt-28">
-          <div className="rounded-md bg-white p-4 shadow-lg sm:p-6 md:p-8">
+        <div className="container-app container-search relative z-30 -mt-16 md:-mt-24">
+          <div className="rounded-md bg-white p-3.5 shadow-lg sm:p-6 md:p-8">
             <Link
               href={backHref}
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 transition-colors hover:text-primary-800"
+              className="inline-flex items-center gap-1 text-[10px] font-semibold text-primary-700 transition-colors hover:text-primary-800 sm:gap-1.5 sm:text-xs"
             >
-              <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
+              <ArrowLeft className="h-3 w-3 sm:h-3.5 sm:w-3.5" aria-hidden />
               {backLabel}
             </Link>
 
-            <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-4">
+            <div className="mt-2 flex flex-col gap-2 sm:mt-3 sm:flex-row sm:flex-wrap sm:items-start sm:justify-between sm:gap-4">
               <div>
-                <div className="flex items-center gap-1 text-warning" aria-label={`${starCount} out of 5 stars`}>
+                <div className="flex items-center gap-0.5 text-warning sm:gap-1" aria-label={`${starCount} out of 5 stars`}>
                   {Array.from({ length: starCount }).map((_, index) => (
-                    <Star key={index} className="h-3.5 w-3.5 fill-current" aria-hidden />
+                    <Star key={index} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" aria-hidden />
                   ))}
                 </div>
-                <div className="mt-1.5 flex flex-wrap items-center gap-2">
-                  <h1 className="font-heading text-xl font-bold uppercase tracking-wide text-neutral-900 sm:text-2xl md:text-3xl">
+                <div className="mt-1 flex flex-wrap items-center gap-1.5 sm:mt-1.5 sm:gap-2">
+                  <h1 className="font-heading text-[17px] font-bold uppercase tracking-wide text-neutral-900 sm:text-2xl md:text-3xl">
                     {detail.name}
                   </h1>
                   {detail.badge && (
-                    <span className="rounded-full bg-accent-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white sm:text-xs">
+                    <span className="rounded-full bg-accent-500 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white sm:px-2.5 sm:py-1 sm:text-xs">
                       {detail.badge}
                     </span>
                   )}
                 </div>
-                <p className="mt-1.5 flex items-start gap-1.5 text-xs text-neutral-500 sm:text-sm">
-                  <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary-600 sm:h-4 sm:w-4" aria-hidden />
+                <p className="mt-1 flex items-start gap-1 text-[11px] text-neutral-500 sm:mt-1.5 sm:gap-1.5 sm:text-sm">
+                  <MapPin className="mt-0.5 h-3 w-3 shrink-0 text-primary-600 sm:h-4 sm:w-4" aria-hidden />
                   {detail.address ?? detail.location}
                 </p>
               </div>
 
               <div className="sm:text-right">
-                <p className="text-[11px] uppercase tracking-wide text-neutral-400">
+                <p className="text-[9px] uppercase tracking-wide text-neutral-400 sm:text-[11px]">
                   {detail.priceNote ?? "Starting from"}
                 </p>
-                <p className="font-heading text-xl font-bold text-primary-700 sm:text-2xl md:text-3xl">
+                <p className="font-heading text-lg font-bold text-primary-700 sm:text-2xl md:text-3xl">
                   {formatCurrency(detail.priceFrom)}
                 </p>
-                <p className="text-[11px] text-neutral-400">1 night × 1 room</p>
+                <p className="text-[10px] text-neutral-400 sm:text-[11px]">1 night × 1 room</p>
               </div>
             </div>
 
-            <div className="mt-4 flex flex-wrap gap-2 border-t border-neutral-100 pt-4 sm:mt-5 sm:pt-5">
+            <div className="mt-3 flex flex-wrap gap-1.5 border-t border-neutral-100 pt-3 sm:mt-5 sm:gap-2 sm:pt-5">
               {detail.amenities.map((item) => {
                 const Icon = getAmenityIcon(item);
                 return (
                   <span
                     key={item}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-neutral-100 px-3 py-1.5 text-xs font-medium text-neutral-600"
+                    className="inline-flex items-center gap-1 rounded-full bg-neutral-100 px-2 py-1 text-[10px] font-medium text-neutral-600 sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-xs"
                   >
-                    <Icon className="h-3.5 w-3.5 text-primary-600" aria-hidden />
+                    <Icon className="h-3 w-3 text-primary-600 sm:h-3.5 sm:w-3.5" aria-hidden />
                     {item}
                   </span>
                 );

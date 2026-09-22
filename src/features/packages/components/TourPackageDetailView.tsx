@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
@@ -56,7 +56,6 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
     [detail.gallery, detail.heroImage],
   );
   const [activeTab, setActiveTab] = useState<TabId | null>("overview");
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
   const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`;
@@ -88,59 +87,59 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
           <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/45 to-transparent" />
         </div>
 
-        <div className="container-app relative -mt-16 sm:-mt-20 md:-mt-24">
-          <div className="rounded-sm border border-white/70 bg-white px-4 py-4 shadow-[0_18px_45px_-22px_rgba(15,23,42,0.45)] sm:px-6 sm:py-5 md:px-7">
+        <div className="container-app container-search relative z-30 -mt-16 md:-mt-24">
+          <div className="rounded-md border border-white/70 bg-white px-3.5 py-3.5 shadow-[0_18px_45px_-22px_rgba(15,23,42,0.45)] sm:px-6 sm:py-5 md:px-7">
             <Link
               href={backHref}
-              className="inline-flex min-h-9 items-center gap-1.5 text-[11px] font-semibold text-primary-700 transition-colors hover:text-primary-800 sm:text-xs"
+              className="inline-flex min-h-7 items-center gap-1 text-[10px] font-semibold text-primary-700 transition-colors hover:text-primary-800 sm:min-h-9 sm:gap-1.5 sm:text-xs"
             >
-              <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
+              <ArrowLeft className="h-3 w-3 sm:h-3.5 sm:w-3.5" aria-hidden />
               {backLabel}
             </Link>
 
-            <div className="mt-3 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div className="mt-2 flex flex-col gap-3 sm:mt-3 sm:gap-4 md:flex-row md:items-start md:justify-between">
               <div className="min-w-0">
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                   {detail.badge && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-accent-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-accent-700">
-                      <Sparkles className="h-3 w-3" aria-hidden />
+                    <span className="inline-flex items-center gap-1 rounded-full bg-accent-50 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-accent-700 sm:px-2.5 sm:py-1 sm:text-[10px]">
+                      <Sparkles className="h-2.5 w-2.5 sm:h-3 sm:w-3" aria-hidden />
                       {detail.badge}
                     </span>
                   )}
-                  <span className="inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-primary-700">
-                    <Globe2 className="h-3 w-3" aria-hidden />
+                  <span className="inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.1em] text-primary-700 sm:text-[10px] sm:tracking-[0.12em]">
+                    <Globe2 className="h-2.5 w-2.5 sm:h-3 sm:w-3" aria-hidden />
                     {detail.category.replaceAll("-", " ")}
                   </span>
                 </div>
 
-                <h1 className="mt-2 font-heading text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl md:text-3xl">
+                <h1 className="mt-1.5 font-heading text-[17px] font-bold leading-snug tracking-tight text-neutral-900 sm:mt-2 sm:text-2xl sm:leading-tight md:text-3xl">
                   {detail.title}
                 </h1>
-                {detail.subtitle && <p className="mt-1 text-xs text-neutral-500 sm:text-sm">{detail.subtitle}</p>}
+                {detail.subtitle && <p className="mt-0.5 text-[11px] text-neutral-500 sm:mt-1 sm:text-sm">{detail.subtitle}</p>}
 
-                <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-neutral-600 sm:text-xs">
-                  <span className="inline-flex items-center gap-1.5">
-                    <CalendarDays className="h-3.5 w-3.5 text-primary-600" aria-hidden />
+                <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-neutral-600 sm:mt-3 sm:gap-x-4 sm:gap-y-2 sm:text-xs">
+                  <span className="inline-flex items-center gap-1 sm:gap-1.5">
+                    <CalendarDays className="h-3 w-3 text-primary-600 sm:h-3.5 sm:w-3.5" aria-hidden />
                     {detail.durationDays} Days
                   </span>
                   {detail.nightsLabel && (
-                    <span className="inline-flex items-center gap-1.5">
-                      <Clock3 className="h-3.5 w-3.5 text-primary-600" aria-hidden />
+                    <span className="inline-flex items-center gap-1 sm:gap-1.5">
+                      <Clock3 className="h-3 w-3 text-primary-600 sm:h-3.5 sm:w-3.5" aria-hidden />
                       {detail.nightsLabel}
                     </span>
                   )}
-                  <span className="inline-flex items-center gap-1.5">
-                    <Users className="h-3.5 w-3.5 text-primary-600" aria-hidden />
+                  <span className="inline-flex items-center gap-1 sm:gap-1.5">
+                    <Users className="h-3 w-3 text-primary-600 sm:h-3.5 sm:w-3.5" aria-hidden />
                     Per person
                   </span>
                 </div>
               </div>
 
-              <div className="shrink-0 border-t border-neutral-100 pt-3 md:min-w-[190px] md:border-t-0 md:pt-0 md:text-right">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-neutral-400">
+              <div className="shrink-0 border-t border-neutral-100 pt-2 md:min-w-[190px] md:border-t-0 md:pt-0 md:text-right">
+                <p className="text-[9px] font-semibold uppercase tracking-[0.1em] text-neutral-400 sm:text-[10px] sm:tracking-[0.12em]">
                   {detail.priceNote ?? "Starts from"}
                 </p>
-                <p className="mt-0.5 font-heading text-2xl font-bold tracking-tight text-primary-700 sm:text-3xl">
+                <p className="mt-0.5 font-heading text-lg font-bold tracking-tight text-primary-700 sm:text-3xl">
                   {formatCurrency(detail.priceFrom)}
                 </p>
               </div>
@@ -152,7 +151,7 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
       {/* Main content */}
       <section className="bg-[#f7f9fc] pb-28 pt-6 sm:pb-16 sm:pt-8 md:pt-10 lg:pb-20">
         <div className="container-app">
-          <TourGallery images={gallery} title={detail.title} onOpen={setLightboxIndex} />
+          <TourGallery images={gallery} title={detail.title} />
 
           {/* Section navigation */}
           <nav
@@ -559,15 +558,6 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
         </div>
       </div>
 
-      {lightboxIndex !== null && (
-        <GalleryLightbox
-          images={gallery}
-          title={detail.title}
-          index={lightboxIndex}
-          onClose={() => setLightboxIndex(null)}
-          onChange={setLightboxIndex}
-        />
-      )}
     </main>
   );
 }
@@ -826,53 +816,215 @@ function FaqSection({ faqs }: { faqs: { question: string; answer: string }[] | u
   );
 }
 
-function TourGallery({ images, title, onOpen }: { images: string[]; title: string; onOpen: (index: number) => void }) {
-  const shown = images.slice(0, 4);
-  if (!shown.length) return null;
+function TourGallery({ images, title }: { images: string[]; title: string }) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  if (images.length === 0) return null;
+  const main = images[0];
+  if (!main) return null;
+  const thumbs = images.slice(1, 5);
+  const extraCount = images.length - 5;
 
   return (
-    <div className="overflow-hidden rounded-sm border border-neutral-200 bg-white p-1 shadow-sm sm:p-1.5">
-      <div className="grid h-[260px] grid-cols-2 grid-rows-2 gap-1 sm:h-[360px] sm:gap-1.5 md:h-[410px] lg:h-[440px] lg:grid-cols-4">
-        <button type="button" onClick={() => onOpen(0)} className="group relative col-span-2 row-span-2 overflow-hidden rounded-md bg-neutral-100 text-left lg:col-span-2">
-          <Image src={shown[0]} alt={`${title} main photo`} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.025]" />
-          <GalleryOverlay />
+    <>
+      <div className="overflow-hidden rounded-sm md:hidden">
+        <button
+          type="button"
+          onClick={() => setLightboxIndex(0)}
+          className="relative h-56 w-full cursor-pointer overflow-hidden"
+        >
+          <Image src={main} alt={`${title} main photo`} fill priority sizes="100vw" className="object-cover" />
         </button>
+        <div className="grid grid-cols-4 gap-1 pt-1">
+          {thumbs.map((src, index) => {
+            const isLast = index === thumbs.length - 1;
+            return (
+              <button
+                type="button"
+                key={`${src}-${index}`}
+                onClick={() => setLightboxIndex(index + 1)}
+                className="relative h-16 cursor-pointer overflow-hidden"
+              >
+                <Image src={src} alt={`${title} photo ${index + 2}`} fill sizes="25vw" className="object-cover" />
+                {isLast && extraCount > 0 && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-sm font-bold text-white">
+                    +{extraCount}
+                  </div>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
-        {shown.slice(1, 4).map((src, index) => (
-          <button key={`${src}-${index}`} type="button" onClick={() => onOpen(index + 1)} className="group relative overflow-hidden rounded-md bg-neutral-100 text-left lg:col-span-1">
-            <Image src={src} alt={`${title} photo ${index + 2}`} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.025]" />
-            <GalleryOverlay />
+      <div className="hidden h-[390px] grid-cols-4 grid-rows-2 gap-1.5 overflow-hidden rounded-sm md:grid">
+        <button
+          type="button"
+          onClick={() => setLightboxIndex(0)}
+          className="group relative col-span-2 row-span-2 cursor-pointer overflow-hidden"
+        >
+          <Image
+            src={main}
+            alt={`${title} main photo`}
+            fill
+            priority
+            sizes="50vw"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/20">
+            <ZoomIn
+              className="h-6 w-6 scale-75 text-white opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
+              aria-hidden
+            />
+          </div>
+        </button>
+        {thumbs.map((src, index) => {
+          const isLast = index === thumbs.length - 1;
+          return (
+            <button
+              type="button"
+              key={`${src}-${index}`}
+              onClick={() => setLightboxIndex(index + 1)}
+              className="group relative cursor-pointer overflow-hidden"
+            >
+              <Image
+                src={src}
+                alt={`${title} photo ${index + 2}`}
+                fill
+                sizes="25vw"
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/20">
+                <ZoomIn
+                  className="h-5 w-5 scale-75 text-white opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
+                  aria-hidden
+                />
+              </div>
+              {isLast && extraCount > 0 && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-lg font-bold text-white">
+                  +{extraCount}
+                </div>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {lightboxIndex !== null && (
+        <GalleryLightbox
+          images={images}
+          title={title}
+          index={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onIndexChange={setLightboxIndex}
+        />
+      )}
+    </>
+  );
+}
+
+function GalleryLightbox({
+  images,
+  title,
+  index,
+  onClose,
+  onIndexChange,
+}: {
+  images: string[];
+  title: string;
+  index: number;
+  onClose: () => void;
+  onIndexChange: (index: number) => void;
+}) {
+  const total = images.length;
+  const goPrev = () => onIndexChange((index - 1 + total) % total);
+  const goNext = () => onIndexChange((index + 1) % total);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") goPrev();
+      if (e.key === "ArrowRight") goNext();
+    };
+    document.addEventListener("keydown", handleKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = "";
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[80] flex flex-col bg-black/95"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${title} photo gallery`}
+    >
+      <div className="flex items-center justify-between px-4 py-3 text-white sm:px-6">
+        <p className="text-sm font-medium text-white/80">
+          Photo {index + 1} of {total}
+        </p>
+        <button
+          type="button"
+          onClick={onClose}
+          className="rounded-full p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+          aria-label="Close gallery"
+        >
+          <X className="h-5 w-5" aria-hidden />
+        </button>
+      </div>
+
+      <div className="relative flex flex-1 items-center justify-center px-2 sm:px-16">
+        {total > 1 && (
+          <button
+            type="button"
+            onClick={goPrev}
+            className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20 sm:left-4 sm:p-3"
+            aria-label="Previous photo"
+          >
+            <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
           </button>
-        ))}
-      </div>
-    </div>
-  );
-}
+        )}
 
-function GalleryOverlay() {
-  return (
-    <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/15">
-      <span className="flex h-9 w-9 scale-90 items-center justify-center rounded-full bg-black/55 text-white opacity-0 shadow-lg transition-all group-hover:scale-100 group-hover:opacity-100">
-        <ZoomIn className="h-4 w-4" aria-hidden />
-      </span>
-    </span>
-  );
-}
+        <div className="relative h-full max-h-[75vh] w-full max-w-5xl">
+          <Image
+            src={images[index] ?? images[0] ?? ""}
+            alt={`${title} photo ${index + 1}`}
+            fill
+            sizes="100vw"
+            className="object-contain"
+            priority
+          />
+        </div>
 
-function GalleryLightbox({ images, title, index, onClose, onChange }: { images: string[]; title: string; index: number; onClose: () => void; onChange: (index: number) => void }) {
-  const current = images[index] ?? images[0];
-  return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-950/90 p-4" role="dialog" aria-modal="true" aria-label={`${title} gallery`}>
-      <button type="button" onClick={onClose} className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20" aria-label="Close gallery">
-        <X className="h-5 w-5" />
-      </button>
-      <div className="relative h-[72vh] w-full max-w-5xl">
-        <Image src={current} alt={`${title} photo ${index + 1}`} fill sizes="95vw" className="object-contain" />
+        {total > 1 && (
+          <button
+            type="button"
+            onClick={goNext}
+            className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white transition-colors hover:bg-white/20 sm:right-4 sm:p-3"
+            aria-label="Next photo"
+          >
+            <ArrowLeft className="h-5 w-5 rotate-180 sm:h-6 sm:w-6" aria-hidden />
+          </button>
+        )}
       </div>
-      {images.length > 1 && (
-        <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-white/10 p-1.5 backdrop-blur-sm">
-          {images.map((_, i) => (
-            <button key={i} type="button" onClick={() => onChange(i)} className={cn("h-2 w-2 rounded-full", i === index ? "bg-white" : "bg-white/40")} aria-label={`Show photo ${i + 1}`} />
+
+      {total > 1 && (
+        <div className="flex gap-1.5 overflow-x-auto px-4 pb-4 pt-2 sm:justify-center sm:px-6">
+          {images.map((src, i) => (
+            <button
+              type="button"
+              key={`${src}-${i}`}
+              onClick={() => onIndexChange(i)}
+              className={cn(
+                "relative h-14 w-20 shrink-0 overflow-hidden rounded-md border-2 transition-colors",
+                i === index ? "border-white" : "border-transparent opacity-60 hover:opacity-100",
+              )}
+            >
+              <Image src={src} alt={`${title} thumbnail ${i + 1}`} fill sizes="80px" className="object-cover" />
+            </button>
           ))}
         </div>
       )}

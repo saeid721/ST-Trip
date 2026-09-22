@@ -74,7 +74,7 @@ export function PackageGridWithTabs({
             : "No packages found in this category yet — check back soon."}
         </p>
       ) : (
-        <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-6 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-5 grid grid-cols-1 gap-4 sm:mt-6 sm:gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((pkg, i) => (
             <Reveal key={pkg.id} delay={(i % 8) * 0.05}>
               <PackageCard

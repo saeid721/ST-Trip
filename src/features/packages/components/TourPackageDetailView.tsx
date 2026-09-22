@@ -646,7 +646,7 @@ function ItineraryTimeline({ days }: { days: { day: number; title: string; descr
       // Check if line starts with a time (e.g., "07:00 AM")
       const timeMatch = line.match(/^(\d{1,2}:\d{2}\s*(?:AM|PM))/i);
       if (timeMatch) {
-        const time = timeMatch[1].trim();
+        const time = (timeMatch[1] ?? '').trim();
         // Remove the time and any leading dashes/spaces from the rest of the text
         const text = line.substring(timeMatch[0].length).replace(/^[\s-–]+/, '').trim();
         items.push({ time, text });

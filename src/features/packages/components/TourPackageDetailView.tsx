@@ -393,41 +393,44 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
                   <div className="space-y-6">
                     {detail.travelTips.onCruise && detail.travelTips.onCruise.length > 0 && (
                       <div>
-                        <h3 className="text-sm font-bold text-neutral-900">Guidelines While on the Cruise</h3>
-                        <ul className="mt-3 space-y-2">
+                        <h3 className="text-sm font-bold text-neutral-900">Guidelines While on the Cruise:</h3>
+                        <ol className="mt-3 space-y-2">
                           {detail.travelTips.onCruise.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2.5 text-xs leading-6 text-neutral-600 sm:text-[13px]">
-                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
-                              <span>{item}</span>
+                            <li key={idx} className="text-xs leading-6 text-neutral-600 sm:text-[13px]">
+                              <span className="font-semibold text-neutral-800">{idx + 1}.</span> {item}
                             </li>
                           ))}
-                        </ul>
+                        </ol>
                       </div>
                     )}
                     {detail.travelTips.inJungle && detail.travelTips.inJungle.length > 0 && (
                       <div className="border-t border-neutral-100 pt-5">
-                        <h3 className="text-sm font-bold text-neutral-900">Guidelines While in the Jungle</h3>
-                        <ul className="mt-3 space-y-2">
+                        <h3 className="text-sm font-bold text-neutral-900">Guidelines While in the Jungle:</h3>
+                        <ol className="mt-3 space-y-2">
                           {detail.travelTips.inJungle.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2.5 text-xs leading-6 text-neutral-600 sm:text-[13px]">
-                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-green-500" />
-                              <span>{item}</span>
+                            <li key={idx} className="text-xs leading-6 text-neutral-600 sm:text-[13px]">
+                              <span className="font-semibold text-neutral-800">{idx + 1}.</span> {item}
                             </li>
                           ))}
-                        </ul>
+                        </ol>
                       </div>
                     )}
                     {detail.travelTips.packingList && Object.keys(detail.travelTips.packingList).length > 0 && (
                       <div className="border-t border-neutral-100 pt-5">
-                        <h3 className="text-sm font-bold text-neutral-900">Packing List</h3>
-                        <div className="mt-3 grid gap-4 sm:grid-cols-2">
+                        <p className="text-xs leading-6 text-neutral-600 sm:text-[13px] mb-4">
+                          By adhering to these guidelines, you'll contribute to the safety of all passengers, the preservation of the environment, and the enjoyment of an enriching experience in the mesmerizing Sundarbans.
+                        </p>
+                        <p className="text-xs leading-6 text-neutral-600 sm:text-[13px] mb-4">
+                          Preparing for a 3-day tour in the Sundarbans requires packing thoughtfully to ensure your comfort, safety, and enjoyment. Here's a list of essentials you should consider taking:
+                        </p>
+                        <div className="space-y-4">
                           {Object.entries(detail.travelTips.packingList).map(([category, items]) => (
-                            <div key={category} className="rounded-md bg-neutral-50 p-4">
-                              <h4 className="text-xs font-bold capitalize text-neutral-800">{category.replace(/([A-Z])/g, ' $1').trim()}</h4>
+                            <div key={category}>
+                              <h4 className="text-sm font-bold text-neutral-900 capitalize">{category}:</h4>
                               <ul className="mt-2 space-y-1.5">
                                 {items.map((item, idx) => (
-                                  <li key={idx} className="flex items-start gap-2 text-xs text-neutral-600">
-                                    <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-neutral-400" />
+                                  <li key={idx} className="flex items-start gap-2 text-xs text-neutral-600 sm:text-[13px]">
+                                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-neutral-400" />
                                     <span>{item}</span>
                                   </li>
                                 ))}
@@ -435,6 +438,9 @@ export function TourPackageDetailView({ detail, backHref, backLabel }: TourPacka
                             </div>
                           ))}
                         </div>
+                        <p className="text-xs leading-6 text-neutral-600 sm:text-[13px] mt-4">
+                          Remember to tailor the list to your specific needs and the time of year you'll be visiting the Sundarbans.
+                        </p>
                       </div>
                     )}
                   </div>

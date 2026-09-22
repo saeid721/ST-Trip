@@ -25,10 +25,6 @@ import {
   Compass,
   FileText,
   Layers,
-  Timer,
-  Navigation,
-  Utensils,
-  Binoculars,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { cn, formatCurrency } from "@/lib/utils";
@@ -518,56 +514,38 @@ function ListItem({ text, positive }: { text: string; positive: boolean }) {
   );
 }
 
-interface ItineraryItem {
-  time?: string;
-  title: string;
-  location?: string;
-  duration?: string;
-  description: string[];
-  icon?: LucideIcon;
-}
-
+// ============================================================================
+// FIXED ITINERARY TIMELINE COMPONENT
+// ============================================================================
 function ItineraryTimeline({ days }: { days: { day: number; title: string; description: string }[] }) {
-  const [activeDay, setActiveDay] = useState(1);
+  // 1. Initialize activeDay to the first day's number (e.g., 1)
+  const [activeDay, setActiveDay] = useState(days[0]?.day || 1);
 
-  // Parse the description into structured items
-  const parseDayItems = (dayData: { day: number; title: string; description: string }): ItineraryItem[] => {
-    const lines = dayData.description.split('\n').filter(line => line.trim());
-    const items: ItineraryItem[] = [];
+  // 2. Strictly filter to get ONLY the data for the currently selected day
+  const currentDay = days.find((d) => d.day === activeDay);
+
+  // 3. Parse the description string into structured timeline items
+  const parseItems = (desc: string) => {
+    const lines = desc.split('\n').filter((line) => line.trim());
+    const items: { time: string; text: string }[] = [];
     
     lines.forEach((line) => {
-      const timeMatch = line.match(/(\d{1,2}:\d{2}\s*(?:AM|PM))/i);
-      const time = timeMatch ? timeMatch[1] : undefined;
-      
-      const titleMatch = line.match(/-\s*(.+)/);
-      const title = titleMatch ? titleMatch[1].trim() : line.replace(time || '', '').replace('-', '').trim();
-      
-      if (title) {
-        items.push({
-          time,
-          title,
-          description: [title],
-          icon: getIconForTitle(title),
-        });
+      // Check if line starts with a time (e.g., "07:00 AM")
+      const timeMatch = line.match(/^(\d{1,2}:\d{2}\s*(?:AM|PM))/i);
+      if (timeMatch) {
+        const time = timeMatch[1].trim();
+        // Remove the time and any leading dashes/spaces from the rest of the text
+        const text = line.substring(timeMatch[0].length).replace(/^[\s-–]+/, '').trim();
+        items.push({ time, text });
+      } else {
+        // For lines without explicit time (e.g., general paragraph descriptions for Day 2/3)
+        items.push({ time: '', text: line.trim() });
       }
     });
-
     return items;
   };
 
-  const getIconForTitle = (title: string): LucideIcon => {
-    const lowerTitle = title.toLowerCase();
-    if (lowerTitle.includes('reporting') || lowerTitle.includes('meet')) return Clock3;
-    if (lowerTitle.includes('tour starts') || lowerTitle.includes('check in')) return Navigation;
-    if (lowerTitle.includes('breakfast')) return Utensils;
-    if (lowerTitle.includes('snacks')) return Utensils;
-    if (lowerTitle.includes('explore') || lowerTitle.includes('visit')) return Binoculars;
-    if (lowerTitle.includes('lunch') || lowerTitle.includes('dinner')) return Utensils;
-    return Clock3;
-  };
-
-  const currentDay = days.find(d => d.day === activeDay);
-  const dayItems = currentDay ? parseDayItems(currentDay) : [];
+  const items = currentDay ? parseItems(currentDay.description) : [];
 
   return (
     <div className="mt-5">
@@ -590,42 +568,44 @@ function ItineraryTimeline({ days }: { days: { day: number; title: string; descr
         ))}
       </div>
 
-      {/* Day Content */}
+      {/* Timeline Content */}
       <div className="space-y-0">
-        {dayItems.map((item, index) => {
-          const Icon = item.icon || Clock3;
-          const isLast = index === dayItems.length - 1;
-          
-          return (
-            <article key={index} className="relative flex gap-4 pb-6 last:pb-0">
-              {!isLast && (
-                <div className="absolute left-[19px] top-10 h-[calc(100%-12px)] w-px bg-neutral-200" />
-              )}
-              
-              {/* Time & Icon */}
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-700 text-white shadow-sm">
-                  <Icon className="h-4 w-4" aria-hidden />
-                </div>
-                {item.time && (
-                  <span className="mt-2 text-[10px] font-semibold text-neutral-600">
-                    {item.time}
-                  </span>
+        {items.length > 0 ? (
+          items.map((item, index) => {
+            const isLast = index === items.length - 1;
+            return (
+              <article key={index} className="relative flex gap-4 pb-6 last:pb-0">
+                {/* Vertical connecting line */}
+                {!isLast && (
+                  <div className="absolute left-[19px] top-10 h-[calc(100%-12px)] w-px bg-neutral-200" />
                 )}
-              </div>
+                
+                {/* Time / Icon Circle */}
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-700 text-white shadow-sm">
+                    {item.time ? <Clock3 className="h-4 w-4" /> : <CalendarDays className="h-4 w-4" />}
+                  </div>
+                  {item.time && (
+                    <span className="mt-2 text-[10px] font-semibold text-neutral-600">
+                      {item.time}
+                    </span>
+                  )}
+                </div>
 
-              {/* Content */}
-              <div className="min-w-0 flex-1 border-b border-neutral-100 pb-6 last:border-0 last:pb-0">
-                <h3 className="text-sm font-bold text-neutral-900">{item.title}</h3>
-                {item.description.map((desc, idx) => (
-                  <p key={idx} className="mt-1.5 text-xs leading-6 text-neutral-600 sm:text-[13px]">
-                    {desc}
+                {/* Text Content */}
+                <div className="min-w-0 flex-1 border-b border-neutral-100 pb-6 last:border-0 last:pb-0">
+                  <p className="text-sm leading-6 text-neutral-700 sm:text-[13px] whitespace-pre-line">
+                    {item.text}
                   </p>
-                ))}
-              </div>
-            </article>
-          );
-        })}
+                </div>
+              </article>
+            );
+          })
+        ) : (
+          <p className="py-8 text-center text-sm text-neutral-500">
+            No itinerary details available for Day {activeDay}.
+          </p>
+        )}
       </div>
     </div>
   );

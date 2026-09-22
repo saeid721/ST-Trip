@@ -54,23 +54,33 @@ export const tourPackageDetails: Record<string, PackageDetail> = {
     itinerary: [
       {
         day: 1,
-        title: "Arrival",
-        description: "Arrive and transfer to your hotel. Evening at leisure to settle in.",
+        title: "Journey to Sundarbans - Explore Andharmanik",
+        description:
+          "07:00 AM - Reporting at Khulna/Jashore Ghat (Meet & greet with the tour representative).\n08:00 AM - Tour starts from Jashore/Khulna Ghat. Check in at the ship and begin the 5-6 hour scenic journey towards Andharmanik Eco Tourism.\n09:00 AM - Breakfast on board while cruising towards Andharmanik.\n11:00 AM - Morning snacks on board.\n01:00 PM - Explore Andharmanik Eco Tourism (2 hours).\n02:30 PM - Lunch served on the ship while cruising through the river to Katka.\n06:00 PM - Katka overnight stay anchored at the Katka Forest office.\n08:00 PM - Dinner served on board. Experience the eerie beauty of the forest at night.",
+      },
+      {
+        day: 2,
+        title: "Full Day Sundarbans Exploration",
+        description:
+          "07:10 AM - Reporting at Khulna/Jashore Ghat (Meet & greet with the tour representative).\n08:00 AM - Tour starts from Jashore/Khulna Ghat. Check in at the ship and begin the 5-6 hour scenic journey towards Andharmanik Eco Tourism.\n09:00 AM - Breakfast on board while cruising towards Andharmanik.\n11:00 AM - Morning snacks on board.\n01:00 PM - Explore Andharmanik Eco Tourism (2 hours).\n02:30 PM - Lunch served on the ship while cruising through the river to Katka.\n06:00 PM - Katka overnight stay anchored at the Katka Forest office.\n08:00 PM - Dinner served on board. Experience the eerie beauty of the forest at night.",
       },
       {
         day: 3,
-        title: "City Tour & Landmarks",
-        description: "Guided walking tour covering major historical landmarks and city centers.",
+        title: "Final Exploration & Return Journey",
+        description:
+          "07:10 AM - Reporting at Khulna/Jashore Ghat (Meet & greet with the tour representative).\n08:00 AM - Tour starts from Jashore/Khulna Ghat. Check in at the ship and begin the 5-6 hour scenic journey towards Andharmanik Eco Tourism.\n09:00 AM - Breakfast on board while cruising towards Andharmanik.\n11:00 AM - Morning snacks on board.\n01:00 PM - Explore Andharmanik Eco Tourism (2 hours).\n02:30 PM - Lunch served on the ship while cruising through the river to Katka.\n06:00 PM - Katka overnight stay anchored at the Katka Forest office.\n08:00 PM - Dinner served on board. Experience the eerie beauty of the forest at night.",
       },
       {
-        day: 6,
-        title: "Inter-city Travel",
-        description: "Scenic coach transfer to the next destination with a scheduled rest stop.",
+        day: 4,
+        title: "Final Exploration & Return Journey",
+        description:
+          "07:20 AM - Reporting at Khulna/Jashore Ghat (Meet & greet with the tour representative).\n08:00 AM - Tour starts from Jashore/Khulna Ghat. Check in at the ship and begin the 5-6 hour scenic journey towards Andharmanik Eco Tourism.\n09:00 AM - Breakfast on board while cruising towards Andharmanik.\n11:00 AM - Morning snacks on board.\n01:00 PM - Explore Andharmanik Eco Tourism (2 hours).\n02:30 PM - Lunch served on the ship while cruising through the river to Katka.\n06:00 PM - Katka overnight stay anchored at the Katka Forest office.\n08:00 PM - Dinner served on board. Experience the eerie beauty of the forest at night.",
       },
       {
-        day: 10,
-        title: "Departure",
-        description: "Free morning for last-minute shopping, then transfer to the airport for your return flight.",
+        day: 5,
+        title: "Final Exploration & Return Journey",
+        description:
+          "07:00 AM - Reporting at Khulna/Jashore Ghat (Meet & greet with the tour representative).\n08:00 AM - Tour starts from Jashore/Khulna Ghat. Check in at the ship and begin the 5-6 hour scenic journey towards Andharmanik Eco Tourism.\n09:00 AM - Breakfast on board while cruising towards Andharmanik.\n11:00 AM - Morning snacks on board.\n01:00 PM - Explore Andharmanik Eco Tourism (2 hours).\n02:30 PM - Lunch served on the ship while cruising through the river to Katka.\n06:00 PM - Katka overnight stay anchored at the Katka Forest office.\n08:00 PM - Dinner served on board. Experience the eerie beauty of the forest at night.",
       },
     ],
     additionalInfo: [
@@ -224,18 +234,21 @@ export const tourPackageDetails: Record<string, PackageDetail> = {
     itinerary: [
       {
         day: 1,
-        title: "Arrival in Kuala Lumpur",
-        description: "Arrive at Kuala Lumpur International Airport and transfer to your hotel.",
+        title: "Journey to Sundarbans - Explore Andharmanik",
+        description:
+          "07:00 AM - Reporting at Khulna/Jashore Ghat (Meet & greet with the tour representative).\n08:00 AM - Tour starts from Jashore/Khulna Ghat. Check in at the ship and begin the 5-6 hour scenic journey towards Andharmanik Eco Tourism.\n09:00 AM - Breakfast on board while cruising towards Andharmanik.\n11:00 AM - Morning snacks on board.\n01:00 PM - Explore Andharmanik Eco Tourism (2 hours).\n02:30 PM - Lunch served on the ship while cruising through the river to Katka.\n06:00 PM - Katka overnight stay anchored at the Katka Forest office.\n08:00 PM - Dinner served on board. Experience the eerie beauty of the forest at night.",
       },
       {
         day: 2,
-        title: "City Tour",
-        description: "Half-day city tour including Batu Caves and major landmarks.",
+        title: "Full Day Sundarbans Exploration",
+        description:
+          "07:10 AM - Reporting at Khulna/Jashore Ghat (Meet & greet with the tour representative).\n08:00 AM - Tour starts from Jashore/Khulna Ghat. Check in at the ship and begin the 5-6 hour scenic journey towards Andharmanik Eco Tourism.\n09:00 AM - Breakfast on board while cruising towards Andharmanik.\n11:00 AM - Morning snacks on board.\n01:00 PM - Explore Andharmanik Eco Tourism (2 hours).\n02:30 PM - Lunch served on the ship while cruising through the river to Katka.\n06:00 PM - Katka overnight stay anchored at the Katka Forest office.\n08:00 PM - Dinner served on board. Experience the eerie beauty of the forest at night.",
       },
       {
-        day: 5,
-        title: "Departure",
-        description: "Transfer to the airport for your return flight.",
+        day: 3,
+        title: "Final Exploration & Return Journey",
+        description:
+          "07:30 AM - Reporting at Khulna/Jashore Ghat (Meet & greet with the tour representative).\n08:00 AM - Tour starts from Jashore/Khulna Ghat. Check in at the ship and begin the 5-6 hour scenic journey towards Andharmanik Eco Tourism.\n09:00 AM - Breakfast on board while cruising towards Andharmanik.\n11:00 AM - Morning snacks on board.\n01:00 PM - Explore Andharmanik Eco Tourism (2 hours).\n02:30 PM - Lunch served on the ship while cruising through the river to Katka.\n06:00 PM - Katka overnight stay anchored at the Katka Forest office.\n08:00 PM - Dinner served on board. Experience the eerie beauty of the forest at night.",
       },
     ],
     additionalInfo: [
@@ -408,13 +421,13 @@ export const tourPackageDetails: Record<string, PackageDetail> = {
         day: 2,
         title: "Full Day Sundarbans Exploration",
         description:
-          "Full day exploring the Sundarbans mangrove forest. Visit key spots like Kochikhali and Dimer Char. Wildlife spotting for Royal Bengal Tigers, crocodiles, and dolphins. All meals (Breakfast, Lunch, Dinner) included on board.",
+          "07:10 AM - Reporting at Khulna/Jashore Ghat (Meet & greet with the tour representative).\n08:00 AM - Tour starts from Jashore/Khulna Ghat. Check in at the ship and begin the 5-6 hour scenic journey towards Andharmanik Eco Tourism.\n09:00 AM - Breakfast on board while cruising towards Andharmanik.\n11:00 AM - Morning snacks on board.\n01:00 PM - Explore Andharmanik Eco Tourism (2 hours).\n02:30 PM - Lunch served on the ship while cruising through the river to Katka.\n06:00 PM - Katka overnight stay anchored at the Katka Forest office.\n08:00 PM - Dinner served on board. Experience the eerie beauty of the forest at night.",
       },
       {
         day: 3,
         title: "Final Exploration & Return Journey",
         description:
-          "Morning visit to Karamjol and final exploration of the Sundarbans. After breakfast, begin the return journey to Khulna/Jashore with lunch on board. Arrival at the ghat in the evening.",
+          "07:30 AM - Reporting at Khulna/Jashore Ghat (Meet & greet with the tour representative).\n08:00 AM - Tour starts from Jashore/Khulna Ghat. Check in at the ship and begin the 5-6 hour scenic journey towards Andharmanik Eco Tourism.\n09:00 AM - Breakfast on board while cruising towards Andharmanik.\n11:00 AM - Morning snacks on board.\n01:00 PM - Explore Andharmanik Eco Tourism (2 hours).\n02:30 PM - Lunch served on the ship while cruising through the river to Katka.\n06:00 PM - Katka overnight stay anchored at the Katka Forest office.\n08:00 PM - Dinner served on board. Experience the eerie beauty of the forest at night.",
       },
     ],
     packagePrice: {

@@ -20,7 +20,7 @@ const whyIcons: Partial<Record<IconKey, typeof ShieldCheck>> = {
 
 export function WhyChooseSection() {
   return (
-    <section className="bg-neutral-50 py-14 sm:py-20" aria-labelledby="about-why-title">
+    <section className="bg-neutral-50 py-10 md:py-20" aria-labelledby="about-why-title">
       <div className="container-app">
         <Reveal>
           <h2
@@ -31,12 +31,12 @@ export function WhyChooseSection() {
           </h2>
         </Reveal>
 
-        <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-2 md:mt-10 md:grid-cols-2 md:gap-3 lg:grid-cols-3">
           {whyChooseItems.map((item, i) => {
             const Icon = whyIcons[item.icon] ?? ShieldCheck;
             return (
               <Reveal key={item.id} delay={i * 0.05}>
-                <div className="flex gap-4 rounded-md p-5 transition-colors duration-300 hover:bg-white">
+                <div className="flex gap-3 rounded-sm p-4 transition-colors duration-300 hover:bg-white md:gap-4 md:p-5">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-50 text-accent-700">
                     <Icon className="h-5 w-5" aria-hidden />
                   </span>

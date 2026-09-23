@@ -32,7 +32,7 @@ export default function AboutPage() {
 
 
       {/* Who We Are */}
-      <section className="py-14 sm:py-20">
+      <section className="py-10 md:py-20">
         <div className="container-app grid gap-10 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <h2 className="font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
@@ -52,11 +52,11 @@ export default function AboutPage() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
               {companyValues.map((value) => {
                 const Icon = icons[value.icon as keyof typeof icons] ?? Sparkles;
                 return (
-                  <div key={value.id} className="rounded-md bg-primary-50 p-6">
+                  <div key={value.id} className="rounded-md bg-primary-50 p-5 md:p-6">
                     <Icon className="h-5 w-5 text-primary-700" aria-hidden />
                     <p className="mt-3 font-heading text-sm font-semibold text-neutral-900">
                       {value.title}
@@ -79,7 +79,7 @@ export default function AboutPage() {
       <MissionVision />
 
       {/* Our Journey */}
-      <section className="py-14 sm:py-20">
+      <section className="py-10 md:py-20">
         <div className="container-app">
           <h2 className="text-center font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
             Our Journey
@@ -106,12 +106,12 @@ export default function AboutPage() {
       <TrustSection />
 
       {/* Visit Us */}
-      <section className="bg-neutral-50 py-14 sm:py-20">
+      <section className="bg-neutral-50 py-10 md:py-20">
         <div className="container-app">
           <h2 className="text-center font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
             Visit Us
           </h2>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-4 md:mt-10 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
             {siteConfig.offices.map((office, i) => (
               <Reveal key={office.name} delay={i * 0.06}>
                 <div className="h-full rounded-md border border-neutral-200 bg-white p-5">

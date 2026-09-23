@@ -4,17 +4,17 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function AboutCTA() {
   return (
-    <section className="pb-16 sm:pb-24">
+    <section className="pb-12 md:pb-24">
       <div className="container-app">
         <Reveal>
-          <div className="relative overflow-hidden rounded-md bg-gradient-to-br from-accent-600 via-primary-800 to-primary-900 px-6 py-12 text-center text-white sm:px-10 sm:py-16">
+          <div className="relative overflow-hidden rounded-sm bg-gradient-to-br from-accent-600 via-primary-800 to-primary-900 px-5 py-10 text-center text-white md:px-10 md:py-16">
             <h2 className="font-heading text-3xl font-bold sm:text-4xl">
               Your next journey starts here.
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm text-white/85 sm:text-base">
               Search flights, browse tours, or start a hotel stay — all in one place.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 md:mt-8 md:gap-3.5">
               <Link
                 href="/tour"
                 className="inline-flex h-[52px] items-center gap-2 whitespace-nowrap rounded-sm bg-white px-7 text-base font-semibold text-primary-700 shadow-md transition-colors hover:bg-neutral-50"

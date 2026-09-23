@@ -97,11 +97,11 @@ export function StatsBand() {
   ];
 
   return (
-    <section className="py-14 sm:py-20">
+    <section className="py-10 md:py-20">
       <div className="container-app">
         <div
           ref={sectionRef}
-          className="rounded-md bg-gradient-to-r from-primary-700 to-primary-600 px-6 py-10 text-white sm:px-10 sm:py-12"
+          className="rounded-sm bg-gradient-to-r from-primary-700 to-primary-600 px-5 py-8 text-white md:px-10 md:py-12"
         >
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {stats.map((stat) => (

@@ -4,10 +4,10 @@ import { missionVision } from "@/features/about/data/about";
 
 export function MissionVision() {
   return (
-    <section className="bg-neutral-50 py-14 sm:py-20">
-      <div className="container-app grid gap-5 md:grid-cols-2">
+    <section className="bg-neutral-50 py-10 md:py-20">
+      <div className="container-app grid gap-4 md:grid-cols-2 md:gap-5">
         <Reveal>
-          <div className="h-full rounded-md bg-gradient-to-br from-primary-900 to-primary-700 p-8 text-white">
+          <div className="h-full rounded-sm bg-gradient-to-br from-primary-900 to-primary-700 p-6 text-white md:p-8">
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10">
               <Target className="h-5 w-5" aria-hidden />
             </span>
@@ -21,7 +21,7 @@ export function MissionVision() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <div className="h-full rounded-md border border-neutral-200 bg-white p-8">
+          <div className="h-full rounded-sm border border-neutral-200 bg-white p-6 md:p-8">
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-50 text-primary-700">
               <Eye className="h-5 w-5" aria-hidden />
             </span>

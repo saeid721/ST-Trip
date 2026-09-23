@@ -12,7 +12,7 @@ const serviceIcons: Partial<Record<IconKey, typeof Plane>> = {
 
 export function ServicesSection() {
   return (
-    <section className="py-14 sm:py-20" aria-labelledby="about-services-title">
+    <section className="py-10 md:py-20" aria-labelledby="about-services-title">
       <div className="container-app">
         <Reveal>
           <h2
@@ -26,14 +26,14 @@ export function ServicesSection() {
           </p>
         </Reveal>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-4 md:mt-10 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
           {services.map((service, i) => {
             const Icon = serviceIcons[service.icon] ?? Plane;
             return (
               <Reveal key={service.id} delay={i * 0.06}>
                 <Link
                   href={service.href}
-                  className="group block h-full rounded-md border border-neutral-200 bg-white p-6 transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:border-primary-200 hover:shadow-md focus-visible:outline-none"
+                  className="group block h-full rounded-sm border border-neutral-200 bg-white p-5 transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:border-primary-200 hover:shadow-md focus-visible:outline-none md:p-6"
                 >
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-50 text-primary-700">
                     <Icon className="h-5 w-5" aria-hidden />

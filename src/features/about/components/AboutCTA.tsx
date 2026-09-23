@@ -4,10 +4,10 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function AboutCTA() {
   return (
-    <section className="pb-12 md:pb-24">
+    <section className="pb-8 md:pb-14">
       <div className="container-app">
         <Reveal>
-          <div className="relative overflow-hidden rounded-sm bg-gradient-to-br from-accent-600 via-primary-800 to-primary-900 px-5 py-10 text-center text-white md:px-10 md:py-16">
+          <div className="relative overflow-hidden rounded-sm bg-gradient-to-br from-accent-600 via-primary-800 to-primary-900 px-5 py-8 text-center text-white md:px-10 md:py-12">
             <h2 className="font-heading text-3xl font-bold sm:text-4xl">
               Your next journey starts here.
             </h2>

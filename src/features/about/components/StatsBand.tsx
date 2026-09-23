@@ -97,7 +97,7 @@ export function StatsBand() {
   ];
 
   return (
-    <section className="py-10 md:py-20">
+    <section className="py-6 md:py-10">
       <div className="container-app">
         <div
           ref={sectionRef}

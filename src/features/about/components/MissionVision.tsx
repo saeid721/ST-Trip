@@ -4,7 +4,7 @@ import { missionVision } from "@/features/about/data/about";
 
 export function MissionVision() {
   return (
-    <section className="bg-neutral-50 py-10 md:py-20">
+    <section className="bg-neutral-50 py-8 md:py-14">
       <div className="container-app grid gap-4 md:grid-cols-2 md:gap-5">
         <Reveal>
           <div className="h-full rounded-sm bg-gradient-to-br from-primary-900 to-primary-700 p-6 text-white md:p-8">

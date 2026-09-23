@@ -11,7 +11,7 @@ const journeyIcons: Partial<Record<IconKey, typeof Compass>> = {
 
 export function JourneyTimeline() {
   return (
-    <section className="py-10 md:py-20" aria-labelledby="about-journey-title">
+    <section className="py-8 md:py-14" aria-labelledby="about-journey-title">
       <div className="container-app">
         <Reveal>
           <h2
@@ -25,7 +25,7 @@ export function JourneyTimeline() {
           </p>
         </Reveal>
 
-        <div className="relative mt-8 grid gap-0 md:mt-12 md:grid-cols-4 md:gap-6 md:before:absolute md:before:left-[12.5%] md:before:right-[12.5%] md:before:top-6 md:before:h-px md:before:border-t md:before:border-dashed md:before:border-primary-200 md:before:content-['']">
+        <div className="relative mt-6 grid gap-0 md:mt-9 md:grid-cols-4 md:gap-6 md:before:absolute md:before:left-[12.5%] md:before:right-[12.5%] md:before:top-6 md:before:h-px md:before:border-t md:before:border-dashed md:before:border-primary-200 md:before:content-['']">
           {journeySteps.map((step, i) => {
             const Icon = journeyIcons[step.icon] ?? Compass;
             const isLast = i === journeySteps.length - 1;

@@ -32,8 +32,8 @@ export default function AboutPage() {
 
 
       {/* Who We Are */}
-      <section className="py-10 md:py-20">
-        <div className="container-app grid gap-10 lg:grid-cols-2 lg:items-center">
+      <section className="py-8 md:py-14">
+        <div className="container-app grid gap-8 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <h2 className="font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
               Who We Are
@@ -79,12 +79,12 @@ export default function AboutPage() {
       <MissionVision />
 
       {/* Our Journey */}
-      <section className="py-10 md:py-20">
+      <section className="py-8 md:py-14">
         <div className="container-app">
           <h2 className="text-center font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
             Our Journey
           </h2>
-          <div className="mx-auto mt-10 max-w-2xl space-y-8 border-l border-neutral-200 pl-6">
+          <div className="mx-auto mt-8 max-w-2xl space-y-6 border-l border-neutral-200 pl-6">
             {milestones.map((milestone, i) => (
               <Reveal key={milestone.title} delay={i * 0.08}>
                 <div className="relative">
@@ -106,12 +106,12 @@ export default function AboutPage() {
       <TrustSection />
 
       {/* Visit Us */}
-      <section className="bg-neutral-50 py-10 md:py-20">
+      <section className="bg-neutral-50 py-8 md:py-14">
         <div className="container-app">
           <h2 className="text-center font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
             Visit Us
           </h2>
-          <div className="mt-8 grid grid-cols-1 gap-4 md:mt-10 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
+          <div className="mt-6 grid grid-cols-1 gap-4 md:mt-8 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
             {siteConfig.offices.map((office, i) => (
               <Reveal key={office.name} delay={i * 0.06}>
                 <div className="h-full rounded-md border border-neutral-200 bg-white p-5">

@@ -12,7 +12,7 @@ const serviceIcons: Partial<Record<IconKey, typeof Plane>> = {
 
 export function ServicesSection() {
   return (
-    <section className="py-10 md:py-20" aria-labelledby="about-services-title">
+    <section className="py-8 md:py-14" aria-labelledby="about-services-title">
       <div className="container-app">
         <Reveal>
           <h2
@@ -26,7 +26,7 @@ export function ServicesSection() {
           </p>
         </Reveal>
 
-        <div className="mt-8 grid grid-cols-1 gap-4 md:mt-10 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-1 gap-4 md:mt-8 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
           {services.map((service, i) => {
             const Icon = serviceIcons[service.icon] ?? Plane;
             return (

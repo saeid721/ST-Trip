@@ -35,12 +35,14 @@ export function ServicesSection() {
                   href={service.href}
                   className="group block h-full rounded-sm border border-neutral-200 bg-white p-5 transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:border-primary-200 hover:shadow-md focus-visible:outline-none md:p-6"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-50 text-primary-700">
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </span>
-                  <h3 className="mt-4 font-heading text-base font-semibold text-neutral-900">
-                    {service.title}
-                  </h3>
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-700">
+                      <Icon className="h-5 w-5" aria-hidden />
+                    </span>
+                    <h3 className="font-heading text-base font-semibold text-neutral-900">
+                      {service.title}
+                    </h3>
+                  </div>
                   <p className="mt-1.5 text-sm leading-relaxed text-neutral-500">
                     {service.description}
                   </p>

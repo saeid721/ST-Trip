@@ -28,6 +28,7 @@ import Image from "next/image";
 interface MobileNavProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onLoginClick: () => void;
 }
 
 const iconMap: Record<string, React.ElementType> = {
@@ -41,9 +42,14 @@ const iconMap: Record<string, React.ElementType> = {
   "/others": MoreHorizontal,
 };
 
-export function MobileNav({ open, onOpenChange }: MobileNavProps) {
+export function MobileNav({ open, onOpenChange, onLoginClick }: MobileNavProps) {
   const pathname = usePathname() || "/";
   const [othersOpen, setOthersOpen] = useState(false);
+
+  const handleLoginClick = () => {
+    onOpenChange(false);
+    onLoginClick();
+  };
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -159,7 +165,7 @@ export function MobileNav({ open, onOpenChange }: MobileNavProps) {
             </div>
           </nav>
 
-          <div className="flex flex-col gap-2 border-t border-neutral-100 bg-neutral-50 px-4 py-3">
+          <div className="flex flex-col gap-2 border-t border-neutral-100 bg-neutral-50 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))]">
             
             <a href={`tel:${siteConfig.contact.supportPhone}`}
               className="flex items-center gap-2 rounded-sm border border-neutral-200 bg-white px-3 py-2 text-[13px] font-semibold text-neutral-700 shadow-sm transition-colors hover:border-primary-300 hover:text-primary-700"
@@ -169,7 +175,13 @@ export function MobileNav({ open, onOpenChange }: MobileNavProps) {
               </span>
               {siteConfig.contact.supportPhoneDisplay}
             </a>
-            <Button variant="primary" size="sm" className="w-full gap-1.5 shadow-sm">
+            <Button
+              type="button"
+              variant="primary"
+              size="sm"
+              className="w-full gap-1.5 shadow-sm"
+              onClick={handleLoginClick}
+            >
               <User className="h-3.5 w-3.5" aria-hidden />
               Login / Sign Up
             </Button>

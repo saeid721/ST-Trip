@@ -127,7 +127,11 @@ export function Header() {
         </button>
       </div>
 
-      <MobileNav open={mobileNavOpen} onOpenChange={setMobileNavOpen} />
+      <MobileNav
+        open={mobileNavOpen}
+        onOpenChange={setMobileNavOpen}
+        onLoginClick={() => setLoginModalOpen(true)}
+      />
     </header>
   );
 }

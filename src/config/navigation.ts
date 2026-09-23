@@ -7,10 +7,10 @@ export type NavLink = {
 export const primaryNav: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Hotels", href: "/hotels" },
-  { label: "Tour", href: "/tour-packages" },
+  { label: "Tours", href: "/tour" },
   { label: "Visa", href: "/visa" },
-  { label: "Umrah", href: "/umrah-packages" },
-  { label: "Hajj", href: "/hajj-packages" },
+  { label: "Umrah", href: "/umrah" },
+  { label: "Hajj", href: "/hajj" },
   { label: "eSIM", href: "/esim" },
   {
     label: "Others",
@@ -41,10 +41,11 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
   {
     title: "Services",
     links: [
-      { label: "Flights", href: "/flights" },
       { label: "Hotels", href: "/hotels" },
       { label: "Tour Packages", href: "/tours" },
       { label: "Visa Assistance", href: "/visa" },
+      { label: "Umrah Packages", href: "/umrah" },
+      { label: "Hajj Packages", href: "/hajj" },
     ],
   },
   {

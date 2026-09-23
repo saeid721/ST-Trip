@@ -2,9 +2,19 @@ import type { Metadata } from "next";
 import { Shield, Heart, Compass, Sparkles } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
-import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
-import { companyValues, milestones } from "@/features/content/data/about";
+import { companyValues, milestones } from "@/features/about/data/about";
+
+import { AboutHero } from "@/features/about/components/AboutHero";
+import { ServicesSection } from "@/features/about/components/ServicesSection";
+import { WhyChooseSection } from "@/features/about/components/WhyChooseSection";
+import { StatsBand } from "@/features/about/components/StatsBand";
+import { JourneyTimeline } from "@/features/about/components/JourneyTimeline";
+import { MissionVision } from "@/features/about/components/MissionVision";
+import { TrustSection } from "@/features/about/components/TrustSection";
+import { AboutCTA } from "@/features/about/components/AboutCTA";
+
+import "./about.css";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us",
@@ -15,86 +25,57 @@ const icons = { shield: Shield, heart: Heart, compass: Compass, sparkles: Sparkl
 
 export default function AboutPage() {
   return (
-    <>
-      <PageHero
-        eyebrow="About Us"
-        title={`The Story Behind ${siteConfig.name}`}
-        description="We started with a simple belief — booking travel should be honest, fast, and stress-free."
-      />
+    <div className="about-page">
+      <AboutHero />
 
+      {/* Who We Are */}
       <section className="py-14 sm:py-20">
         <div className="container-app grid gap-10 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <h2 className="font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
-              Our Mission
+              Who We Are
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-neutral-600 sm:text-base">
-              {siteConfig.description} Since {siteConfig.founded}, we've helped hundreds of
-              thousands of travellers across Bangladesh book flights, hotels, tours and visas —
-              always with transparent pricing and a real person on the other end of the line when
-              things get complicated.
+              {siteConfig.description} Since {siteConfig.founded}, {siteConfig.name} has helped
+              travellers across Bangladesh book flights, hotels, tours and visas — always with
+              transparent pricing and a real person on the other end when things get
+              complicated.
             </p>
             <p className="mt-4 text-sm leading-relaxed text-neutral-600 sm:text-base">
-              Whether it's a domestic weekend escape, an international holiday, or a once-in-a-
-              lifetime Hajj journey, our team combines local expertise with modern technology to
-              make sure every trip starts smoothly.
+              Whether it&apos;s a weekend escape or a once-in-a-lifetime trip abroad, the goal
+              stays the same: combine local expertise with modern technology so every journey
+              starts smoothly.
             </p>
           </Reveal>
+
           <Reveal delay={0.1}>
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-md bg-primary-50 p-6 text-center">
-                <p className="font-heading text-3xl font-bold text-primary-700">
-                  {new Date().getFullYear() - siteConfig.founded}+
-                </p>
-                <p className="mt-1 text-xs font-medium text-neutral-600">Years of Excellence</p>
-              </div>
-              <div className="rounded-md bg-primary-50 p-6 text-center">
-                <p className="font-heading text-3xl font-bold text-primary-700">300K+</p>
-                <p className="mt-1 text-xs font-medium text-neutral-600">Happy Travellers</p>
-              </div>
-              <div className="rounded-md bg-primary-50 p-6 text-center">
-                <p className="font-heading text-3xl font-bold text-primary-700">
-                  {siteConfig.offices.length}
-                </p>
-                <p className="mt-1 text-xs font-medium text-neutral-600">Offices Nationwide</p>
-              </div>
-              <div className="rounded-md bg-primary-50 p-6 text-center">
-                <p className="font-heading text-3xl font-bold text-primary-700">24/7</p>
-                <p className="mt-1 text-xs font-medium text-neutral-600">Support Availability</p>
-              </div>
+              {companyValues.map((value) => {
+                const Icon = icons[value.icon as keyof typeof icons] ?? Sparkles;
+                return (
+                  <div key={value.id} className="rounded-md bg-primary-50 p-6">
+                    <Icon className="h-5 w-5 text-primary-700" aria-hidden />
+                    <p className="mt-3 font-heading text-sm font-semibold text-neutral-900">
+                      {value.title}
+                    </p>
+                    <p className="mt-1 text-xs leading-relaxed text-neutral-600">
+                      {value.description}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="bg-neutral-50 py-14 sm:py-20">
-        <div className="container-app">
-          <h2 className="text-center font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
-            What We Stand For
-          </h2>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {companyValues.map((value, i) => {
-              const Icon = icons[value.icon];
-              return (
-                <Reveal key={value.id} delay={i * 0.06}>
-                  <div className="h-full rounded-md border border-neutral-200 bg-white p-6">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-50 text-primary-700">
-                      <Icon className="h-5 w-5" aria-hidden />
-                    </span>
-                    <h3 className="mt-4 font-heading text-base font-semibold text-neutral-900">
-                      {value.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-neutral-500">
-                      {value.description}
-                    </p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <ServicesSection />
+      <WhyChooseSection />
+      <StatsBand />
+      <JourneyTimeline />
+      <MissionVision />
 
+      {/* Our Journey */}
       <section className="py-14 sm:py-20">
         <div className="container-app">
           <h2 className="text-center font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
@@ -119,6 +100,9 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <TrustSection />
+
+      {/* Visit Us */}
       <section className="bg-neutral-50 py-14 sm:py-20">
         <div className="container-app">
           <h2 className="text-center font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
@@ -139,6 +123,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </>
+
+      <AboutCTA />
+    </div>
   );
 }

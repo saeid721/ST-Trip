@@ -57,11 +57,13 @@ export default function AboutPage() {
                 const Icon = icons[value.icon as keyof typeof icons] ?? Sparkles;
                 return (
                   <div key={value.id} className="rounded-md bg-primary-50 p-5 md:p-6">
-                    <Icon className="h-5 w-5 text-primary-700" aria-hidden />
-                    <p className="mt-3 font-heading text-sm font-semibold text-neutral-900">
-                      {value.title}
-                    </p>
-                    <p className="mt-1 text-xs leading-relaxed text-neutral-600">
+                    <div className="flex items-center gap-2.5">
+                      <Icon className="h-5 w-5 shrink-0 text-primary-700" aria-hidden />
+                      <p className="font-heading text-sm font-semibold text-neutral-900">
+                        {value.title}
+                      </p>
+                    </div>
+                    <p className="mt-2 text-xs leading-relaxed text-neutral-600">
                       {value.description}
                     </p>
                   </div>

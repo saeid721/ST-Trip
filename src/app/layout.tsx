@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           suppress mismatches in children or content. This is Next.js's
           documented fix for exactly this class of false-positive warning:
           https://nextjs.org/docs/messages/react-hydration-error */}
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className="overflow-x-hidden">
         {/* WCAG 2.4.1 — first focusable element on every page */}
         <a href="#main-content" className="skip-link">
           Skip to content

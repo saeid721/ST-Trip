@@ -33,10 +33,10 @@ export function ServicesSection() {
               <Reveal key={service.id} delay={i * 0.06}>
                 <Link
                   href={service.href}
-                  className="about-service-card group block focus-visible:outline-none"
+                  className="group block h-full rounded-md border border-neutral-200 bg-white p-6 transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:border-primary-200 hover:shadow-md focus-visible:outline-none"
                 >
-                  <span className="about-service-card__icon">
-                    <Icon className="h-6 w-6" aria-hidden />
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-50 text-primary-700">
+                    <Icon className="h-5 w-5" aria-hidden />
                   </span>
                   <h3 className="mt-4 font-heading text-base font-semibold text-neutral-900">
                     {service.title}

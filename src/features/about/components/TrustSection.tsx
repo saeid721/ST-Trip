@@ -7,7 +7,7 @@ export function TrustSection() {
     <section className="py-14 sm:py-20" aria-labelledby="about-trust-title">
       <div className="container-app">
         <Reveal>
-          <div className="about-trust">
+          <div className="rounded-md bg-neutral-50 p-8">
             <h2
               id="about-trust-title"
               className="font-heading text-xl font-bold text-neutral-900 sm:text-2xl"
@@ -20,18 +20,12 @@ export function TrustSection() {
 
             <ul className="mt-6 grid gap-4 sm:grid-cols-3">
               {trustPoints.map((point) => (
-                <li key={point} className="about-trust__item">
-                  <CheckCircle2 className="h-5 w-5" aria-hidden />
+                <li key={point} className="flex items-start gap-3 text-sm text-neutral-600">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent-600" aria-hidden />
                   <span>{point}</span>
                 </li>
               ))}
             </ul>
-
-            {/*
-              Ready to extend: map real customer reviews / partner logos
-              here once available — intentionally left out rather than
-              filled with placeholder testimonials or awards.
-            */}
           </div>
         </Reveal>
       </div>

@@ -11,7 +11,7 @@ const journeyIcons: Partial<Record<IconKey, typeof Compass>> = {
 
 export function JourneyTimeline() {
   return (
-    <section className="about-journey py-14 sm:py-20" aria-labelledby="about-journey-title">
+    <section className="py-14 sm:py-20" aria-labelledby="about-journey-title">
       <div className="container-app">
         <Reveal>
           <h2
@@ -25,15 +25,17 @@ export function JourneyTimeline() {
           </p>
         </Reveal>
 
-        <div className="about-journey__track mt-12">
+        <div className="relative mt-12 grid gap-10 md:grid-cols-4 md:gap-6 md:before:absolute md:before:left-[12.5%] md:before:right-[12.5%] md:before:top-6 md:before:h-px md:before:border-t md:before:border-dashed md:before:border-primary-200 md:before:content-['']">
           {journeySteps.map((step, i) => {
             const Icon = journeyIcons[step.icon] ?? Compass;
             return (
               <Reveal key={step.id} delay={i * 0.08}>
-                <div className="about-journey__step">
-                  <span className="about-journey__marker relative">
+                <div className="relative z-10 text-left">
+                  <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-primary-500 bg-white text-primary-600 shadow-sm">
                     <Icon className="h-5 w-5" aria-hidden />
-                    <span className="about-journey__index">{step.label}</span>
+                    <span className="absolute -right-1 -top-2 font-heading text-[11px] font-bold text-neutral-300">
+                      {step.label}
+                    </span>
                   </span>
                   <h3 className="mt-4 font-heading text-base font-semibold text-neutral-900">
                     {step.title}

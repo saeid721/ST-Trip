@@ -7,6 +7,7 @@ interface TravelSearchHeroProps {
   description: string;
   imageSrc?: string;
   imageAlt?: string;
+  showSearchWidget?: boolean;
 }
 
 export function TravelSearchHero({
@@ -15,6 +16,7 @@ export function TravelSearchHero({
   description,
   imageSrc = "/images/hero-banner.jpg",
   imageAlt = "Travel destinations available on ST Trip",
+  showSearchWidget = true,
 }: TravelSearchHeroProps) {
   return (
     <section className="relative" aria-labelledby="travel-search-heading">
@@ -43,9 +45,11 @@ export function TravelSearchHero({
         </div>
       </div>
 
-      <div className="container-app container-search relative z-30 -mt-16 md:-mt-24">
-        <SearchWidget />
-      </div>
+      {showSearchWidget ? (
+        <div className="container-app container-search relative z-30 -mt-16 md:-mt-24">
+          <SearchWidget />
+        </div>
+      ) : null}
     </section>
   );
 }

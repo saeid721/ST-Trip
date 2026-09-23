@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 import { Reveal } from "@/components/ui/Reveal";
 import { companyValues, milestones } from "@/features/about/data/about";
 
-import { AboutHero } from "@/features/about/components/AboutHero";
+import { PageHero } from "@/components/ui/PageHero";
 import { ServicesSection } from "@/features/about/components/ServicesSection";
 import { WhyChooseSection } from "@/features/about/components/WhyChooseSection";
 import { StatsBand } from "@/features/about/components/StatsBand";
@@ -13,8 +13,6 @@ import { JourneyTimeline } from "@/features/about/components/JourneyTimeline";
 import { MissionVision } from "@/features/about/components/MissionVision";
 import { TrustSection } from "@/features/about/components/TrustSection";
 import { AboutCTA } from "@/features/about/components/AboutCTA";
-
-import "./about.css";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Us",
@@ -25,8 +23,13 @@ const icons = { shield: Shield, heart: Heart, compass: Compass, sparkles: Sparkl
 
 export default function AboutPage() {
   return (
-    <div className="about-page">
-      <AboutHero />
+    <>
+      <PageHero
+        eyebrow="About ST Trip"
+        title={`Travel planned around you, not the other way around.`}
+        description="ST Trip brings flights, hotels, tours and visa support into one place — with transparent pricing and a real team behind every booking."
+      />
+
 
       {/* Who We Are */}
       <section className="py-14 sm:py-20">
@@ -125,6 +128,6 @@ export default function AboutPage() {
       </section>
 
       <AboutCTA />
-    </div>
+    </>
   );
 }

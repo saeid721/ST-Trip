@@ -49,11 +49,11 @@ function StatValue({ stat, active }: { stat: StatDef; active: boolean }) {
   const count = useCountUp(stat.value ?? 0, active);
 
   if (stat.staticValue) {
-    return <p className="about-stats__value">{stat.staticValue}</p>;
+    return <p className="font-heading text-3xl font-bold sm:text-4xl">{stat.staticValue}</p>;
   }
 
   return (
-    <p className="about-stats__value">
+    <p className="font-heading text-3xl font-bold sm:text-4xl">
       {count}
       {stat.suffix}
     </p>
@@ -99,12 +99,15 @@ export function StatsBand() {
   return (
     <section className="py-14 sm:py-20">
       <div className="container-app">
-        <div ref={sectionRef} className="about-stats px-6 py-10 sm:px-10 sm:py-12">
-          <div className="about-stats__grid">
+        <div
+          ref={sectionRef}
+          className="rounded-md bg-gradient-to-r from-primary-700 to-primary-600 px-6 py-10 text-white sm:px-10 sm:py-12"
+        >
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.id} className="text-center sm:text-left">
                 <StatValue stat={stat} active={active} />
-                <p className="about-stats__label">{stat.label}</p>
+                <p className="mt-1 text-xs text-white/80">{stat.label}</p>
               </div>
             ))}
           </div>

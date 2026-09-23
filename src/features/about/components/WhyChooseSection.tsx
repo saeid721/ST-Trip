@@ -27,7 +27,7 @@ export function WhyChooseSection() {
             id="about-why-title"
             className="text-center font-heading text-2xl font-bold text-neutral-900 sm:text-3xl"
           >
-            Why Choose {"ST Trip"}
+            Why Choose ST Trip
           </h2>
         </Reveal>
 
@@ -36,8 +36,8 @@ export function WhyChooseSection() {
             const Icon = whyIcons[item.icon] ?? ShieldCheck;
             return (
               <Reveal key={item.id} delay={i * 0.05}>
-                <div className="about-why-item">
-                  <span className="about-why-item__icon">
+                <div className="flex gap-4 rounded-md p-5 transition-colors duration-300 hover:bg-white">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-50 text-accent-700">
                     <Icon className="h-5 w-5" aria-hidden />
                   </span>
                   <div>

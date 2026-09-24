@@ -17,27 +17,29 @@ export function SectionHeading({
   viewAllHref,
 }: SectionHeadingProps) {
   return (
-    <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
-      <div>
-        {eyebrow && (
-          <p className="mb-1.5 text-sm font-semibold uppercase tracking-wide text-accent-600">
-            {eyebrow}
-          </p>
+    <div className="mb-5 sm:mb-8">
+      <div className="flex flex-nowrap items-start justify-between gap-2">
+        <div className="min-w-0 flex-1">
+          {eyebrow && (
+            <p className="mb-0.5 text-xs font-semibold uppercase tracking-wide text-accent-600 sm:text-sm">
+              {eyebrow}
+            </p>
+          )}
+          <h2 id={id} className="font-heading text-base font-bold text-neutral-900 sm:text-xl lg:text-3xl">
+            {title}
+          </h2>
+        </div>
+        {viewAllHref && (
+          <Link
+            href={viewAllHref}
+            className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap text-xs font-semibold text-primary-700 hover:text-primary-800 sm:text-sm"
+          >
+            View All
+            <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden />
+          </Link>
         )}
-        <h2 id={id} className="font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">
-          {title}
-        </h2>
-        {description && <p className="mt-2 max-w-xl text-sm text-neutral-500">{description}</p>}
       </div>
-      {viewAllHref && (
-        <Link
-          href={viewAllHref}
-          className="inline-flex items-center gap-1 text-sm font-semibold text-primary-700 hover:text-primary-800"
-        >
-          View All
-          <ArrowRight className="h-4 w-4" aria-hidden />
-        </Link>
-      )}
+      {description && <p className="mt-0.5 w-full text-xs text-neutral-500 sm:text-sm">{description}</p>}
     </div>
   );
 }

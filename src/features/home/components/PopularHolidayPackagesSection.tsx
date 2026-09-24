@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Carousel } from "@/components/ui/Carousel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { formatCurrency } from "@/lib/utils";
-import type { HolidayPackage } from "@/features/holiday-packages/types";
+import type { HolidayPackage } from "@/features/holiday/types";
 
 export function PopularHolidayPackagesSection({ packages }: { packages: HolidayPackage[] }) {
   return (
@@ -13,7 +13,9 @@ export function PopularHolidayPackagesSection({ packages }: { packages: HolidayP
       <div className="container-app">
         <SectionHeading
           id="holiday-packages-heading"
+          eyebrow="Plan your getaway"
           title="Popular Holiday Packages"
+          description="All-inclusive packages with flights, hotels and tours bundled together."
           viewAllHref="/holiday-packages"
         />
 

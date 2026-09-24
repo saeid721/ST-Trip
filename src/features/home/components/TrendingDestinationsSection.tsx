@@ -25,12 +25,13 @@ export function TrendingDestinationsSection({
       <div className="container-app">
         <SectionHeading
           id="trending-destinations-heading"
+          eyebrow="Hot right now"
           title="Trending Destinations"
           description="Most popular choices for travellers from Bangladesh."
           viewAllHref="/destinations"
         />
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
+        <div className="grid grid-cols-1 gap-4 min-[640px]:grid-cols-2 lg:grid-cols-6">
           {featured.map((destination, i) => (
             <Reveal key={destination.id} delay={i * 0.06} className="lg:col-span-3">
               <TrendingCard destination={destination} aspect="aspect-[5/2]" priority={i === 0} />

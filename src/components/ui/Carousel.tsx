@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 
 export interface CarouselProps {
   children: ReactNode[];
-  /** Tailwind basis classes per breakpoint, e.g. "basis-full sm:basis-1/2 lg:basis-1/4" */
   slideClassName?: string;
   autoplay?: boolean;
   autoplayDelayMs?: number;
@@ -18,15 +17,6 @@ export interface CarouselProps {
   className?: string;
 }
 
-/**
- * One generic carousel used by PromoBannerCarousel, HotDealsSection,
- * TopDestinationsSection and TravelBlogSection instead of four bespoke
- * slider implementations.
- *
- * Accessibility: arrow buttons are real <button>s with aria-labels, dot
- * navigation exposes aria-current, and autoplay is skipped entirely when
- * prefers-reduced-motion is set. Autoplay also pauses on pointer hover/focus.
- */
 export function Carousel({
   children,
   slideClassName = "basis-full sm:basis-1/2 lg:basis-1/3",

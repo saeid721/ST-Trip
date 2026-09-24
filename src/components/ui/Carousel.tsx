@@ -79,7 +79,7 @@ export function Carousel({
             type="button"
             aria-label="Previous slide"
             onClick={() => emblaApi?.scrollPrev()}
-            className="absolute -left-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-200 bg-white shadow-md hover:bg-neutral-50 sm:flex"
+            className="absolute left-2 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-200 bg-white shadow-md hover:bg-neutral-50 md:flex"
           >
             <ChevronLeft className="h-5 w-5 text-neutral-700" aria-hidden />
           </button>
@@ -87,7 +87,7 @@ export function Carousel({
             type="button"
             aria-label="Next slide"
             onClick={() => emblaApi?.scrollNext()}
-            className="absolute -right-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-200 bg-white shadow-md hover:bg-neutral-50 sm:flex"
+            className="absolute right-2 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-200 bg-white shadow-md hover:bg-neutral-50 md:flex"
           >
             <ChevronRight className="h-5 w-5 text-neutral-700" aria-hidden />
           </button>

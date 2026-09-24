@@ -7,10 +7,6 @@ import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { trackEvent } from "@/lib/analytics";
 
-/**
- * Fixed bottom-right support bubble, inspired by Amy's chat launcher.
- * Isolated client island — does not affect server-rendered LCP content.
- */
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
 
@@ -25,7 +21,7 @@ export function ChatWidget() {
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             role="dialog"
             aria-label="Support chat"
-            className="mb-4 w-[320px] overflow-hidden rounded-md border border-neutral-200 bg-white shadow-xl"
+            className="mb-4 w-[min(320px,calc(100vw-2.5rem))] overflow-hidden rounded-md border border-neutral-200 bg-white shadow-xl"
           >
             <div className="flex items-center justify-between bg-primary-700 px-4 py-3.5 text-white">
               <p className="font-heading text-sm font-semibold">{siteConfig.name} Support</p>

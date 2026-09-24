@@ -76,6 +76,24 @@ export const helpTiles: HelpTile[] = [
     href: "https://www.youtube.com/watch?v=OUQsNsrm0a0",
     videoId: "OUQsNsrm0a0",
   },
+  {
+    id: "help-lounge",
+    title: "How to get into 1,706+ Airport Lounges",
+    href: "https://www.youtube.com/watch?v=A9QcxWEP-Lo",
+    videoId: "A9QcxWEP-Lo",
+  },
+  {
+    id: "help-umrah",
+    title: "Umrah Guide",
+    href: "https://www.youtube.com/watch?v=yR6alICQR5E",
+    videoId: "yR6alICQR5E",
+  },
+  {
+    id: "hajj-guide",
+    title: "Complete Hajj Guide",
+    href: "https://www.youtube.com/watch?v=4sl0Bm4wf9g",
+    videoId: "4sl0Bm4wf9g",
+  },
 ];
 
 export const hotDeals: HotDeal[] = [

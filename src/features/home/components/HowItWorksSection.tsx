@@ -11,9 +11,10 @@ export function HowItWorksSection({ tiles }: { tiles: HelpTile[] }) {
           eyebrow="Getting started"
           title="How It Works"
           description="Short guides to help you book faster and save more."
+          viewAllHref="/how-it-works"
         />
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {tiles.map((tile) => (
+          {tiles.slice(0, 3).map((tile) => (
             <CustomYouTubePlayer
               key={tile.id}
               videoId={tile.videoId}

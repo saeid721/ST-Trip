@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 // ২০টি এয়ারলাইনের লোগোর তালিকা
 const AIRLINE_PARTNERS = [
   { name: 'Emirates', logo: '/images/airlines/emirates.png' },
@@ -41,11 +43,12 @@ export default function PartnersMarquee() {
               key={`${partner.name}-${idx}`}
               className="flex items-center justify-center h-16 w-36 px-4 bg-white rounded-md shadow-sm border border-slate-100 transition-all duration-300 hover:shadow-md hover:scale-105 group shrink-0"
             >
-              <img
+              <Image
                 src={partner.logo}
                 alt={`${partner.name} logo`}
+                width={100}
+                height={40}
                 className="max-h-10 max-w-[100px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
-                loading="lazy"
               />
             </div>
           ))}

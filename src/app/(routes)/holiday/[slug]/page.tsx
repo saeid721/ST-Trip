@@ -4,8 +4,8 @@ import { siteConfig } from "@/config/site";
 import {
   getHolidayPackageDetail,
   holidayPackages,
-} from "@/features/holiday-packages/data/holiday-packages";
-import { HolidayPackageDetailView } from "@/features/holiday-packages/components/HolidayPackageDetailView";
+} from "@/features/holiday/data/holiday-packages";
+import { HolidayPackageDetailView } from "@/features/holiday/components/HolidayPackageDetailView";
 
 interface HolidayPackagePageProps {
   params: Promise<{ slug: string }>;

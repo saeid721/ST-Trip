@@ -7,7 +7,7 @@ import { travelGuides } from "@/features/content/data/travel-guides";
 import { umrahPackages } from "@/features/packages/data/umrah-packages";
 import { hajjPackages } from "@/features/packages/data/hajj-packages";
 import { tourPackages } from "@/features/packages/data/tour-packages";
-import { holidayPackages } from "@/features/holiday-packages/data/holiday-packages";
+import { holidayPackages } from "@/features/holiday/data/holiday-packages";
 import { allHotels } from "@/features/hotels/data/hotels";
 
 export default function sitemap(): MetadataRoute.Sitemap {

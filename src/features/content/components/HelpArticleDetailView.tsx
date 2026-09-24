@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import type { HelpTile } from "@/features/home/types";
@@ -8,7 +7,6 @@ export function HelpArticleDetailView({ article }: { article: HelpTile }) {
     <article>
       <section className="relative">
         <div className="relative h-[280px] w-full overflow-hidden sm:h-[400px]">
-          <Image src={article.thumbnail} alt={article.title} fill priority sizes="100vw" className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/35 to-neutral-950/10" />
         </div>
         <div className="container-app relative -mt-20 pb-8 sm:-mt-28 sm:pb-12">

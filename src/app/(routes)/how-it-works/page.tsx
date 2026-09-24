@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/ui/PageHero";
 import { CustomYouTubePlayer } from "@/components/ui/CustomYouTubePlayer";
 import { helpTiles } from "@/features/home/data";

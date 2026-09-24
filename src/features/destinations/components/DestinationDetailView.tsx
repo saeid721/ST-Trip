@@ -10,7 +10,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContentCard } from "@/components/ui/ContentCard";
 import type { DestinationDetail } from "../types";
 import { allHotels } from "@/features/hotels/data/hotels";
-import { holidayPackages } from "@/features/holiday-packages/data/holiday-packages";
+import { holidayPackages } from "@/features/holiday/data/holiday-packages";
 
 interface DestinationDetailViewProps {
   detail: DestinationDetail;
@@ -267,8 +267,8 @@ export function DestinationDetailView({
   const matchedHotels = allHotels.filter(
     (h) => h.location.toLowerCase() === detail.city.toLowerCase()
   );
-  const displayHotels = matchedHotels.length > 0 
-    ? matchedHotels 
+  const displayHotels = matchedHotels.length > 0
+    ? matchedHotels
     : (localMockHotels[detail.slug] || []);
 
   // 2. Get packages for this destination

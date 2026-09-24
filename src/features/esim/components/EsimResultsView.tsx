@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
-import { ArrowLeft, CalendarDays, Check, Database, Filter, Search, ShoppingCart, Signal, Wifi } from "lucide-react";
+
+import { CalendarDays, Check, Database, Filter, Search, ShoppingCart, Signal, Wifi } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { TravelSearchHero } from "@/features/home/components/TravelSearchHero";

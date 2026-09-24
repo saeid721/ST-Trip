@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, CalendarDays, Check, ChevronDown, MapPin, MessageCircle, Phone, X as XIcon } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { cn, formatCurrency } from "@/lib/utils";
-import type { HolidayPackageDetail } from "@/features/holiday-packages/types";
+import type { HolidayPackageDetail } from "@/features/holiday/types";
 
 interface HolidayPackageDetailViewProps {
   detail: HolidayPackageDetail;

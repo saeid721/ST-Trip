@@ -5,7 +5,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { formatCurrency } from "@/lib/utils";
-import { holidayPackages } from "@/features/holiday-packages/data/holiday-packages";
+import { holidayPackages } from "@/features/holiday/data/holiday-packages";
 
 export const metadata: Metadata = {
   title: "All Holiday Packages",

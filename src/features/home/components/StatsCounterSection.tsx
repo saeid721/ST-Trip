@@ -8,7 +8,7 @@ import { prefersReducedMotion } from "@/lib/utils";
 function Counter({ value, suffix }: { value: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [display, setDisplay] = useState(prefersReducedMotion() ? value : 0);
+  const [display, setDisplay] = useState(0);
 
   useEffect(() => {
     if (!inView) return;

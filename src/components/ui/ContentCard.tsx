@@ -21,14 +21,10 @@ export interface ContentCardProps {
 const aspectClasses = {
   square: "aspect-square",
   portrait: "aspect-[4/5]",
-  landscape: "aspect-[4/3]",
+  landscape: "aspect-[5/2]",
 };
 
-/**
- * One generic card used by PopularHotels, TopDestinations, TravelBlog and
- * TopAirlines sections — avoids reimplementing image + overlay + hover-zoom
- * logic four times.
- */
+
 export function ContentCard({
   href,
   image,

@@ -5,11 +5,6 @@ import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
 import type { TrendingDestination } from "@/features/home/types";
 
-/**
- * Converts a flag emoji (e.g. "🇲🇾") into a Twemoji SVG URL, since flag
- * emoji don't render on Windows/many Linux browsers — this keeps the
- * flag visually consistent across all platforms.
- */
 function getTwemojiUrl(flagEmoji: string): string {
   const codepoints = Array.from(flagEmoji)
     .map((char) => char.codePointAt(0)!.toString(16))
@@ -17,11 +12,6 @@ function getTwemojiUrl(flagEmoji: string): string {
   return `https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/${codepoints}.svg`;
 }
 
-/**
- * Server-rendered bento grid. Featured cards (row 1) span 3 of 6 columns
- * each on desktop; the rest split 2 columns each — no client JS needed,
- * this is pure layout + Reveal's scroll-entrance.
- */
 export function TrendingDestinationsSection({
   destinations,
 }: {
@@ -43,7 +33,7 @@ export function TrendingDestinationsSection({
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
           {featured.map((destination, i) => (
             <Reveal key={destination.id} delay={i * 0.06} className="lg:col-span-3">
-              <TrendingCard destination={destination} aspect="aspect-[16/8]" priority={i === 0} />
+              <TrendingCard destination={destination} aspect="aspect-[5/2]" priority={i === 0} />
             </Reveal>
           ))}
 
@@ -53,7 +43,7 @@ export function TrendingDestinationsSection({
               delay={(featured.length + i) * 0.06}
               className="lg:col-span-2"
             >
-              <TrendingCard destination={destination} aspect="aspect-[4/3]" />
+              <TrendingCard destination={destination} aspect="aspect-[5/2]" />
             </Reveal>
           ))}
         </div>

@@ -1,8 +1,3 @@
-/**
- * Types are written as if they come from an API response, so swapping
- * features/home/data/*.ts for real `fetch()` calls later requires no
- * changes to the section components themselves.
- */
 
 export interface PromoBanner {
   id: string;
@@ -47,11 +42,9 @@ export interface Destination {
 export interface TrendingDestination {
   id: string;
   city: string;
-  /** Flag emoji, e.g. "🇧🇩" — rendered next to the city name. */
   countryFlag: string;
   image: string;
   href: string;
-  /** Marks the two large bento cells (top row); the rest render smaller. */
   featured?: boolean;
 }
 

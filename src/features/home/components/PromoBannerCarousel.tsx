@@ -21,7 +21,7 @@ export function PromoBannerCarousel({ banners }: { banners: PromoBanner[] }) {
             <Link
               key={banner.id}
               href={banner.href}
-              className="group relative block aspect-[16/9] overflow-hidden rounded-md"
+              className="group relative block aspect-[5/2] overflow-hidden rounded-md"
             >
               <Image
                 src={banner.image}

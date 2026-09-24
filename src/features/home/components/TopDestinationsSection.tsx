@@ -53,11 +53,6 @@ export function TopDestinationsSection({
             {destinations.map((dest, i) => {
               const length = destinations.length;
               let offset = i - activeIndex;
-              // Wrap the offset around the array so cards near the start/end
-              // of the list still get a symmetric left/right neighbor set.
-              // Without this, activeIndex values near 0 or length-1 show one
-              // card on one side and two on the other — exactly the
-              // left/right imbalance visible in the screenshot.
               if (offset > length / 2) offset -= length;
               if (offset < -length / 2) offset += length;
               const absOffset = Math.abs(offset);

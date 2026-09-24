@@ -16,7 +16,7 @@ export function PromoBannerCarousel({ banners }: { banners: PromoBanner[] }) {
           ariaLabel="Promotional offers"
           autoplay
           autoplayDelayMs={3000}
-          slideClassName="basis-full sm:basis-1/2 lg:basis-1/3"
+          slideClassName="basis-full md:basis-1/2 lg:basis-1/3"
         >
           {banners.map((banner) => (
             <Link

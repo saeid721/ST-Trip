@@ -101,8 +101,8 @@ export interface BlogPost {
 export interface HelpTile {
   id: string;
   title: string;
-  thumbnail: string;
   href: string;
+  videoId: string;
 }
 
 export interface TrustBadgeItem {

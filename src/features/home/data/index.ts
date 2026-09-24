@@ -61,20 +61,20 @@ export const helpTiles: HelpTile[] = [
   {
     id: "help-flight",
     title: "How to book a flight",
-    thumbnail: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80",
-    href: "/help/how-to-book-flight",
+    href: "https://www.youtube.com/watch?v=GpojdHm8RzI",
+    videoId: "GpojdHm8RzI",
   },
   {
     id: "help-hotel",
     title: "How to book a hotel",
-    thumbnail: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-    href: "/help/how-to-book-hotel",
+    href: "https://www.youtube.com/watch?v=AWgL5EHCi3E",
+    videoId: "AWgL5EHCi3E",
   },
   {
     id: "help-discount",
     title: "How to get the best discounts",
-    thumbnail: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=800&q=80",
-    href: "/help/how-to-get-discounts",
+    href: "https://www.youtube.com/watch?v=OUQsNsrm0a0",
+    videoId: "OUQsNsrm0a0",
   },
 ];
 

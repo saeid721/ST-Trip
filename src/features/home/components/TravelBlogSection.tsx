@@ -17,7 +17,7 @@ export function TravelBlogSection({ posts }: { posts: BlogPost[] }) {
           description="Travel tips, destination guides and booking advice from our team."
           viewAllHref="/blog"
         />
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {visiblePosts.map((post, i) => (
             <Reveal key={post.id} delay={i * 0.06}>
               <ContentCard

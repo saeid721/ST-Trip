@@ -16,7 +16,7 @@ export const tourPackages: PackageItem[] = [
     image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80",
     durationDays: 10,
     priceFrom: 299000,
-    href: "/tour-packages/central-europe-classic",
+    href: "/tour/central-europe-classic",
     badge: "Best Of",
   },
   {
@@ -26,7 +26,7 @@ export const tourPackages: PackageItem[] = [
     image: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=800&q=80",
     durationDays: 12,
     priceFrom: 269000,
-    href: "/tour-packages/europe-5-countries",
+    href: "/tour/europe-5-countries",
   },
   {
     id: "tour-malaysia",
@@ -35,7 +35,7 @@ export const tourPackages: PackageItem[] = [
     image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80",
     durationDays: 5,
     priceFrom: 11999,
-    href: "/tour-packages/kuala-lumpur",
+    href: "/tour/kuala-lumpur",
   },
   {
     id: "tour-thailand",
@@ -44,7 +44,7 @@ export const tourPackages: PackageItem[] = [
     image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80",
     durationDays: 5,
     priceFrom: 9000,
-    href: "/tour-packages/bangkok",
+    href: "/tour/bangkok",
   },
   {
     id: "tour-egypt",
@@ -53,7 +53,7 @@ export const tourPackages: PackageItem[] = [
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
     durationDays: 7,
     priceFrom: 160000,
-    href: "/tour-packages/egypt",
+    href: "/tour/egypt",
   },
   {
     id: "tour-vietnam-cambodia",
@@ -62,7 +62,7 @@ export const tourPackages: PackageItem[] = [
     image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
     durationDays: 5,
     priceFrom: 45000,
-    href: "/tour-packages/vietnam-cambodia",
+    href: "/tour/vietnam-cambodia",
   },
   {
     id: "tour-turkey-uk",
@@ -71,7 +71,7 @@ export const tourPackages: PackageItem[] = [
     image: "https://images.unsplash.com/photo-1590523278191-995cbcda646b?w=800&q=80",
     durationDays: 8,
     priceFrom: 289999,
-    href: "/tour-packages/london-turkey",
+    href: "/tour/london-turkey",
   },
   {
     id: "mv-sher-khan-2-0",
@@ -80,6 +80,6 @@ export const tourPackages: PackageItem[] = [
     image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
     durationDays: 3,
     priceFrom: 12500,
-    href: "/tour-packages/mv-sher-khan-2-0",
+    href: "/tour/mv-sher-khan-2-0",
   },
 ];

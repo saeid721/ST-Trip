@@ -30,10 +30,10 @@ type SearchTab = "flights" | "hotels" | "tours" | "visa" | "umrah" | "hajj" | "e
 
 function getTabFromPathname(pathname: string): SearchTab {
   if (pathname === "/hotels" || pathname.startsWith("/hotels/")) return "hotels";
-  if (pathname === "/tour-packages" || pathname.startsWith("/tour-packages/")) return "tours";
+  if (pathname === "/tour" || pathname.startsWith("/tour/")) return "tours";
   if (pathname === "/visa" || pathname.startsWith("/visa/")) return "visa";
-  if (pathname === "/umrah-packages" || pathname.startsWith("/umrah-packages/")) return "umrah";
-  if (pathname === "/hajj-packages" || pathname.startsWith("/hajj-packages/")) return "hajj";
+  if (pathname === "/umrah" || pathname.startsWith("/umrah/")) return "umrah";
+  if (pathname === "/hajj" || pathname.startsWith("/hajj/")) return "hajj";
   if (pathname === "/esim" || pathname.startsWith("/esim/")) return "esim";
   return "flights";
 }

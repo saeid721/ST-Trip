@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const detail = getTourPackageDetail(slug);
   if (!detail) return buildMetadata({ title: "Tour Package" });
-  return buildMetadata({ title: detail.title, description: detail.overview, alternates: { canonical: `${siteConfig.url}/tour-packages/${slug}` } });
+  return buildMetadata({ title: detail.title, description: detail.overview, alternates: { canonical: `${siteConfig.url}/tour/${slug}` } });
 }
 
 export default async function TourPackageDetailPage({ params }: PageProps) {
@@ -26,5 +26,5 @@ export default async function TourPackageDetailPage({ params }: PageProps) {
   const detail = getTourPackageDetail(slug);
   if (!detail) notFound();
 
-  return <TourPackageDetailView detail={detail} backHref="/tour-packages" backLabel="All Tour Packages" />;
+  return <TourPackageDetailView detail={detail} backHref="/tour" backLabel="All Tour Packages" />;
 }

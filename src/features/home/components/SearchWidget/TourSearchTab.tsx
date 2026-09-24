@@ -43,7 +43,7 @@ export function TourSearchTab() {
     const params = new URLSearchParams({ searchType, destination: trimmedDestination });
     if (month) params.set("month", month);
 
-    router.push(`/tour-packages?${params.toString()}`);
+    router.push(`/tour?${params.toString()}`);
   }
 
   return (

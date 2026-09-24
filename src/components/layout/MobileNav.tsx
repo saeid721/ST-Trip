@@ -34,10 +34,10 @@ interface MobileNavProps {
 const iconMap: Record<string, React.ElementType> = {
   "/": Home,
   "/hotels": Building2,
-  "/tour-packages": Compass,
+  "/tour": Compass,
   "/visa": Globe2,
-  "/umrah-packages": Package,
-  "/hajj-packages": PackageCheck,
+  "/umrah": Package,
+  "/hajj": PackageCheck,
   "/esim": Wifi,
   "/others": MoreHorizontal,
 };

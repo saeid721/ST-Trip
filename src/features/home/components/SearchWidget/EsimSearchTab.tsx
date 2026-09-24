@@ -53,6 +53,26 @@ export function EsimSearchTab() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Restore the current selection from the URL (e.g. /esim?country=AF&dataType=Unlimited%20Data)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const country = params.get("country");
+    const region = params.get("region");
+    const type = params.get("dataType");
+
+    if (region && esimRegions.some((r) => r.id === region)) {
+      setMode("region");
+      setSelectedCode(region);
+    } else if (country && esimCountries.some((c) => c.code === country)) {
+      setMode("country");
+      setSelectedCode(country);
+    }
+
+    if (type && dataTypes.includes(type as DataType)) {
+      setDataType(type as DataType);
+    }
+  }, []);
+
   function switchMode(next: EsimSearchMode) {
     setMode(next);
     setQuery("");

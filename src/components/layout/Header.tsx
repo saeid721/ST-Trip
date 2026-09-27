@@ -30,16 +30,16 @@ export function Header() {
         "fixed inset-x-0 top-0 z-50 transition-colors duration-250",
         scrolled ? "bg-white shadow-sm" : "bg-transparent",
       )}
-      style={{ height: "var(--header-height)" }}
+      style={{ height: "var(--header-height-mobile)" }}
     >
       <div className="container-app flex h-full items-center justify-between">
-        <Link href="/" className="flex items-center py-1" aria-label={`${siteConfig.name} home`}>
+        <Link href="/" className="flex items-center py-0" aria-label={`${siteConfig.name} home`}>
           <Image
             src="/images/logo.png"
             alt={siteConfig.name}
             width={200}
             height={60}
-            className="h-12 sm:h-14 w-auto max-h-[58px] object-contain drop-shadow-sm"
+            className="h-8 sm:h-14 w-auto max-h-[58px] object-contain drop-shadow-sm"
             priority
           />
         </Link>

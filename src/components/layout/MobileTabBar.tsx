@@ -55,7 +55,7 @@ export function MobileTabBar() {
                   <Icon className={isActive ? "h-5 w-5" : "h-[18px] w-[18px]"} aria-hidden="true" strokeWidth={isActive ? 2.4 : 2} />
                 </span>
                 <span
-                  className={`line-clamp-1 px-0.5 text-center text-[9px] leading-tight ${
+                  className={`line-clamp-1 w-full px-0.5 text-center text-[10px] leading-tight ${
                     isActive ? "mt-0.5 font-bold text-neutral-900" : "font-medium text-neutral-400"
                   }`}
                 >
@@ -76,7 +76,7 @@ export function MobileTabBar() {
             <span className="flex h-8 w-8 items-center justify-center rounded-full text-neutral-400">
               <loginItem.icon className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
             </span>
-            <span className="px-0.5 text-center text-[9px] font-medium leading-tight text-neutral-400">
+            <span className="w-full px-0.5 text-center text-[10px] font-medium leading-tight text-neutral-400">
               {loginItem.label}
             </span>
           </button>

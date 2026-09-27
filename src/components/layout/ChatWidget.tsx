@@ -11,7 +11,7 @@ export function ChatWidget() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-5 right-5 z-40">
+    <div className="fixed bottom-[5.5rem] md:bottom-5 right-5 z-40">
       <AnimatePresence>
         {open && (
           <motion.div

@@ -36,22 +36,22 @@ export function MobileTabBar() {
         aria-label="Mobile bottom navigation"
         className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-neutral-200 bg-white/95 pb-[env(safe-area-inset-bottom,0px)] shadow-[0_-4px_16px_rgba(0,0,0,0.06)] backdrop-blur-md"
       >
-        <div className="grid h-16 grid-cols-6 px-1">
+        <div className="grid h-16 grid-cols-7 px-0.5">
           {navItems.map(({ label, href, icon: Icon }) => {
             const isActive = pathname === href || pathname.startsWith(href + "/");
             return (
               <Link
                 key={href}
                 href={href}
-                className={`relative mx-0.5 flex flex-col items-center justify-center gap-0.5 rounded-sm transition-colors duration-150 ease-out active:bg-neutral-100 ${
+                className={`relative mx-px flex flex-col items-center justify-center gap-0.5 rounded-sm transition-colors duration-150 ease-out active:bg-neutral-100 ${
                   isActive ? "text-primary-700" : "text-neutral-500 hover:text-neutral-700"
                 }`}
               >
                 {isActive && (
-                  <span className="absolute top-0 h-0.5 w-8 rounded-b-full bg-primary-700" />
+                  <span className="absolute top-0 h-0.5 w-6 rounded-b-full bg-primary-700" />
                 )}
-                <Icon className="h-5 w-5 shrink-0" aria-hidden="true" strokeWidth={isActive ? 2.4 : 2} />
-                <span className="line-clamp-1 px-0.5 text-center text-[10px] font-medium leading-tight">
+                <Icon className="h-[18px] w-[18px] shrink-0" aria-hidden="true" strokeWidth={isActive ? 2.4 : 2} />
+                <span className="line-clamp-1 px-0 text-center text-[9px] font-medium leading-tight">
                   {label}
                 </span>
               </Link>
@@ -62,11 +62,11 @@ export function MobileTabBar() {
           <button
             type="button"
             onClick={handleLoginClick}
-            className="relative mx-0.5 flex flex-col items-center justify-center gap-0.5 rounded-sm text-neutral-500 transition-colors duration-150 ease-out hover:text-neutral-700 active:bg-neutral-100"
+            className="relative mx-px flex flex-col items-center justify-center gap-0.5 rounded-sm text-neutral-500 transition-colors duration-150 ease-out hover:text-neutral-700 active:bg-neutral-100"
             aria-label="Open login modal"
           >
-            <loginItem.icon className="h-5 w-5 shrink-0" aria-hidden="true" />
-            <span className="px-0.5 text-center text-[10px] font-medium leading-tight">
+            <loginItem.icon className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
+            <span className="px-0 text-center text-[9px] font-medium leading-tight">
               {loginItem.label}
             </span>
           </button>

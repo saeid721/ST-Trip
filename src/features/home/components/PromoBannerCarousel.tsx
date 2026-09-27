@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Carousel } from "@/components/ui/Carousel";
 import type { PromoBanner } from "@/features/home/types";
 
@@ -31,15 +32,12 @@ export function PromoBannerCarousel({ banners }: { banners: PromoBanner[] }) {
                 sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-primary-700 shadow-sm sm:hidden">
-                Offer
-              </span>
-              <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
-                <p className="font-heading text-sm font-bold text-white sm:text-base sm:font-semibold">{banner.title}</p>
-                {banner.subtitle && (
-                  <p className="mt-0.5 text-[11px] text-white/85 sm:mt-1 sm:text-xs sm:text-white/80">{banner.subtitle}</p>
-                )}
+              <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/40" />
+              <div className="pointer-events-none absolute bottom-3 right-3 opacity-0 transition-all duration-300 translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 sm:bottom-4 sm:right-4">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-semibold text-primary-700 shadow-lg sm:text-sm">
+                  View Details
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                </span>
               </div>
             </Link>
           ))}

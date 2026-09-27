@@ -34,7 +34,7 @@ export function SectionHeading({
             href={viewAllHref}
             className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap text-xs font-semibold text-primary-700 hover:text-primary-800 sm:text-sm"
           >
-            View All
+            Explore
             <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden />
           </Link>
         )}

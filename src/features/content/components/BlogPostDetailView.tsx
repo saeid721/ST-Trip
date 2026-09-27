@@ -239,7 +239,7 @@ export function BlogPostDetailView({ post, relatedPosts }: BlogPostDetailViewPro
               <h2 className="mt-1 font-heading text-2xl font-bold text-neutral-900">More from the ST Trip Blog</h2>
             </div>
             <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-700 hover:text-primary-800">
-              View all posts <ArrowRight className="h-4 w-4" aria-hidden />
+              Explore posts <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">

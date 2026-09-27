@@ -16,6 +16,8 @@ import { TopAirlinesGrid } from "@/features/home/components/TopAirlinesGrid";
 import { PopularRoutesSection } from "@/features/home/components/PopularRoutesSection";
 import { StatsCounterSection } from "@/features/home/components/StatsCounterSection";
 import { PartnerCtaBanner } from "@/features/home/components/PartnerCtaBanner";
+import { WhyStTripSection } from "@/features/home/components/WhyStTripSection";
+import { VisaSpotlightSection } from "@/features/home/components/VisaSpotlightSection";
 
 import {
   trustBadges,
@@ -87,6 +89,8 @@ export default function HomePage() {
       <HotDealsSection deals={hotDeals} />
       <PopularHotelsSection hotels={popularHotels} />
       <PopularHolidayPackagesSection packages={holidayPackages} />
+      <VisaSpotlightSection />
+      <WhyStTripSection />
       <TopDestinationsSection destinations={topDestinations} />
       <TopAirlinesGrid airlines={topAirlines} />
       <PopularRoutesSection routes={popularRoutes} />

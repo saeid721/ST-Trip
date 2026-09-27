@@ -37,7 +37,7 @@ export default function PartnersMarquee() {
 
       {/* Marquee Wrapper with Edge Fades */}
       <div className="relative w-full overflow-hidden flex [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-        <div className="flex min-w-full shrink-0 gap-8 py-4 animate-marquee items-center justify-around hover:[animation-play-state:paused]">
+        <div className="flex min-w-full shrink-0 gap-8 py-4 animate-marquee items-center justify-around">
           {marqueeItems.map((partner, idx) => (
             <div
               key={`${partner.name}-${idx}`}
@@ -48,7 +48,7 @@ export default function PartnersMarquee() {
                 alt={`${partner.name} logo`}
                 width={100}
                 height={40}
-                className="max-h-10 max-w-[100px] object-contain filter grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                className="max-h-10 max-w-[100px] object-contain transition-transform duration-300 group-hover:scale-110"
               />
             </div>
           ))}

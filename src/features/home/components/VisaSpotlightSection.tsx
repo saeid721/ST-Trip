@@ -10,14 +10,13 @@ const points = [
 
 export function VisaSpotlightSection() {
   return (
-    <section aria-labelledby="visa-spotlight-heading" className="py-16 sm:py-20 lg:py-24">
+    <section aria-labelledby="visa-spotlight-heading" className="bg-neutral-50 py-16 sm:py-20 lg:py-24">
       <div className="container-app">
         <SectionHeading
           id="visa-spotlight-heading"
           eyebrow="Visa assistance"
           title="Make the visa part of your journey easier"
           description="Explore visa support alongside your flights, hotels and holiday plans."
-          viewAllHref="/visa"
         />
 
         <div className="relative overflow-hidden rounded-[28px] bg-neutral-950 px-6 py-8 text-white shadow-xl sm:px-10 sm:py-10 lg:px-14 lg:py-12">

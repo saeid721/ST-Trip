@@ -4,7 +4,7 @@ import type { HelpTile } from "@/features/home/types";
 
 export function HowItWorksSection({ tiles }: { tiles: HelpTile[] }) {
   return (
-    <section aria-labelledby="how-it-works-heading" className="bg-neutral-50 py-14 sm:py-20">
+    <section aria-labelledby="how-it-works-heading" className=" py-14 sm:py-20">
       <div className="container-app">
         <SectionHeading
           id="how-it-works-heading"

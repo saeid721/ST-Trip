@@ -21,7 +21,7 @@ export function TrendingDestinationsSection({
   const rest = destinations.filter((d) => !d.featured);
 
   return (
-    <section aria-labelledby="trending-destinations-heading" className="py-14 sm:py-20">
+    <section aria-labelledby="trending-destinations-heading" className="bg-neutral-50 py-14 sm:py-20">
       <div className="container-app">
         <SectionHeading
           id="trending-destinations-heading"

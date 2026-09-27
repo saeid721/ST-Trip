@@ -11,7 +11,7 @@ export function PopularRoutesSection({ routes }: { routes: Route[] }) {
   const international = routes.filter((r) => r.type === "international");
 
   return (
-    <section aria-labelledby="popular-routes-heading" className="py-14 sm:py-20">
+    <section aria-labelledby="popular-routes-heading" className="bg-neutral-50 py-14 sm:py-20">
       <div className="container-app">
         <SectionHeading
           id="popular-routes-heading"

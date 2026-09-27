@@ -27,19 +27,30 @@ export function Carousel({
   ariaLabel,
   className,
 }: CarouselProps) {
-  const reducedMotionRef = useRef(
-    typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  );
-
   const autoplayPlugin = useRef(
-    Autoplay({ delay: autoplayDelayMs, stopOnInteraction: false, stopOnMouseEnter: true }),
+    Autoplay({
+      delay: autoplayDelayMs,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+      playOnInit: true,
+    }),
   );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "start" },
-    autoplay && !reducedMotionRef.current ? [autoplayPlugin.current] : [],
+    autoplay ? [autoplayPlugin.current] : [],
   );
+
+  useEffect(() => {
+    if (!emblaApi || !autoplay) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const autoplayApi = emblaApi.plugins().autoplay;
+    if (reducedMotion) {
+      autoplayApi?.stop();
+    } else {
+      autoplayApi?.play();
+    }
+  }, [emblaApi, autoplay]);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
@@ -64,9 +75,9 @@ export function Carousel({
   return (
     <div className={cn("relative", className)} aria-label={ariaLabel} role="region">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="-ml-4 flex">
+        <div className="-ml-4 flex sm:-ml-5">
           {children.map((child, i) => (
-            <div key={i} className={cn("min-w-0 shrink-0 grow-0 pl-4", slideClassName)}>
+            <div key={i} className={cn("min-w-0 shrink-0 grow-0 pl-4 sm:pl-5", slideClassName)}>
               {child}
             </div>
           ))}
@@ -95,7 +106,7 @@ export function Carousel({
       )}
 
       {showDots && scrollSnaps.length > 1 && (
-        <div className="mt-4 flex justify-center gap-2">
+        <div className="mt-5 flex justify-center gap-2">
           {scrollSnaps.map((_, i) => (
             <button
               key={i}
@@ -104,8 +115,8 @@ export function Carousel({
               aria-current={i === selectedIndex}
               onClick={() => emblaApi?.scrollTo(i)}
               className={cn(
-                "h-2 rounded-full transition-all duration-200",
-                i === selectedIndex ? "w-6 bg-primary-700" : "w-2 bg-neutral-300",
+                "h-2 rounded-full transition-all duration-300 hover:bg-primary-400",
+                i === selectedIndex ? "w-7 bg-primary-700" : "w-2 bg-neutral-300",
               )}
             />
           ))}

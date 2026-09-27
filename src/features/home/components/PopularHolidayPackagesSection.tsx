@@ -9,7 +9,7 @@ import type { HolidayPackage } from "@/features/holiday/types";
 
 export function PopularHolidayPackagesSection({ packages }: { packages: HolidayPackage[] }) {
   return (
-    <section aria-labelledby="holiday-packages-heading" className="bg-neutral-50 py-14 sm:py-20">
+    <section aria-labelledby="holiday-packages-heading" className="py-14 sm:py-20">
       <div className="container-app">
         <SectionHeading
           id="holiday-packages-heading"

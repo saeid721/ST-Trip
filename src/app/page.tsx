@@ -8,7 +8,7 @@ import { TrustBadgesBar } from "@/features/home/components/TrustBadgesBar";
 import { PromoBannerCarousel } from "@/features/home/components/PromoBannerCarousel";
 import { TrendingDestinationsSection } from "@/features/home/components/TrendingDestinationsSection";
 import { HowItWorksSection } from "@/features/home/components/HowItWorksSection";
-import { HotDealsSection } from "@/features/home/components/HotDealsSection";
+// import { HotDealsSection } from "@/features/home/components/HotDealsSection";
 import { PopularHotelsSection } from "@/features/home/components/PopularHotelsSection";
 import { PopularHolidayPackagesSection } from "@/features/home/components/PopularHolidayPackagesSection";
 import { TopDestinationsSection } from "@/features/home/components/TopDestinationsSection";
@@ -86,7 +86,7 @@ export default function HomePage() {
       <PromoBannerCarousel banners={promoBanners} />
       <TrendingDestinationsSection destinations={trendingDestinations} />
       <HowItWorksSection tiles={helpTiles} />
-      <HotDealsSection deals={hotDeals} />
+      {/* <HotDealsSection deals={hotDeals} /> */}
       <PopularHotelsSection hotels={popularHotels} />
       <PopularHolidayPackagesSection packages={holidayPackages} />
       <VisaSpotlightSection />

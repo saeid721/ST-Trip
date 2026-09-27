@@ -6,7 +6,7 @@ import type { Airline } from "@/features/home/types";
 
 export function TopAirlinesGrid({ airlines }: { airlines: Airline[] }) {
   return (
-    <section aria-labelledby="top-airlines-heading" className="bg-neutral-50 py-14 sm:py-20">
+    <section aria-labelledby="top-airlines-heading" className=" py-14 sm:py-20">
       <div className="container-app">
         <SectionHeading
           id="top-airlines-heading"

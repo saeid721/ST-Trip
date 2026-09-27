@@ -33,13 +33,13 @@ export function TopDestinationsSection({
   };
 
   return (
-    <section aria-labelledby="top-destinations-heading" className="py-14 sm:py-20 overflow-hidden">
+    <section aria-labelledby="top-destinations-heading" className="bg-neutral-50 py-14 sm:py-20 overflow-hidden">
       <div className="container-app">
         {/* Section Heading aligned cleanly with Logo & App Grid */}
         <SectionHeading
           id="top-destinations-heading"
           eyebrow="Where to next"
-          title="Top Destinations"
+          title="Most Popular Destinations"
           description="Explore Bangladesh's most popular getaway destinations."
         />
 

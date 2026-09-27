@@ -35,7 +35,6 @@ export function WhyStTripSection() {
           eyebrow="Travel with confidence"
           title="A simpler way to plan your journey"
           description="ST Trip brings the essentials of modern travel booking into one focused experience."
-          viewAllHref="/why-sttrip"
         />
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

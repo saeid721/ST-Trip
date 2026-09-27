@@ -30,7 +30,7 @@ export function WhyStTripSection() {
   return (
     <section
       aria-labelledby="why-sttrip-heading"
-      className="home-section home-section-muted relative overflow-hidden py-16 sm:py-20 lg:py-24"
+      className="home-section home-section-muted relative overflow-hidden py-10 sm:py-20 lg:py-24"
     >
       <div
         aria-hidden
@@ -48,11 +48,11 @@ export function WhyStTripSection() {
           description="ST Trip brings the essentials of modern travel booking into one focused experience."
         />
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+        <div className="mt-5 grid grid-cols-1 gap-3 md:mt-0 md:grid-cols-2 md:gap-4 lg:grid-cols-4 lg:gap-5">
           {items.map(({ icon: Icon, title, description }, i) => (
             <article
               key={title}
-              className="group relative overflow-hidden rounded-2xl border border-neutral-200/80 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1.5 hover:border-primary-300 hover:shadow-[0_20px_36px_-14px_rgba(37,99,235,0.22)]"
+              className="group relative overflow-hidden rounded-2xl border border-neutral-200/80 bg-white p-4 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1.5 hover:border-primary-300 hover:shadow-[0_20px_36px_-14px_rgba(37,99,235,0.22)] md:p-6"
             >
               <span
                 aria-hidden
@@ -61,14 +61,15 @@ export function WhyStTripSection() {
                 {String(i + 1).padStart(2, "0")}
               </span>
 
-              <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-accent-600 text-white shadow-md shadow-primary-600/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                <Icon className="h-5 w-5" aria-hidden />
-              </span>
-
-              <h3 className="relative mt-5 font-heading text-base font-semibold text-neutral-950 sm:text-lg">
-                {title}
-              </h3>
-              <p className="relative mt-2 text-sm leading-6 text-neutral-600">{description}</p>
+              <div className="relative flex items-center gap-3 md:block">
+                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-accent-600 text-white shadow-md shadow-primary-600/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 md:h-12 md:w-12">
+                  <Icon className="h-4 w-4 md:h-5 md:w-5" aria-hidden />
+                </span>
+                <h3 className="font-heading text-sm font-semibold text-neutral-950 md:mt-5 md:text-base lg:text-lg">
+                  {title}
+                </h3>
+              </div>
+              <p className="relative mt-2 text-xs leading-5 text-neutral-600 md:text-sm md:leading-6">{description}</p>
 
               <span
                 aria-hidden
@@ -78,7 +79,7 @@ export function WhyStTripSection() {
           ))}
         </div>
 
-        <div className="mt-8 flex justify-center sm:justify-start">
+        <div className="mt-5 flex justify-center">
           <Link href="/about" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-neutral-300 bg-white px-5 text-sm font-semibold text-neutral-900 transition hover:border-primary-300 hover:text-primary-700">
             Learn more about ST Trip
             <ArrowRight className="h-4 w-4" aria-hidden />

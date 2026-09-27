@@ -6,7 +6,7 @@ export function PartnerCtaBanner() {
   return (
     <section aria-labelledby="partner-cta-heading" className="py-14 sm:py-16">
       <div className="container-app">
-        <div className="relative flex flex-col items-center justify-between gap-6 overflow-hidden rounded-2xl bg-neutral-950 px-6 py-10 text-center sm:flex-row sm:text-left sm:px-10">
+        <div className="relative flex flex-col items-center justify-between gap-6 overflow-hidden rounded-2xl bg-neutral-950 px-5 py-8 text-center md:flex-row md:text-left md:px-10 md:py-10">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:repeating-linear-gradient(135deg,white_0px,white_1px,transparent_1px,transparent_14px)]"
@@ -14,8 +14,8 @@ export function PartnerCtaBanner() {
           <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-primary-500/25 blur-3xl" />
           <div aria-hidden className="pointer-events-none absolute -bottom-20 left-1/4 h-56 w-56 rounded-full bg-accent-500/15 blur-3xl" />
 
-          <div className="relative flex flex-col items-center gap-4 sm:flex-row sm:items-center">
-            <span className="hidden h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 text-white shadow-lg shadow-primary-600/20 sm:flex">
+          <div className="relative flex flex-col items-center gap-4 text-center md:flex-row md:items-center md:text-left">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 text-white shadow-lg shadow-primary-600/20 md:h-14 md:w-14">
               <Handshake className="h-6 w-6" aria-hidden />
             </span>
             <div>
@@ -31,7 +31,7 @@ export function PartnerCtaBanner() {
 
           <Link
             href="/partner"
-            className="group relative inline-flex h-[52px] shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white px-7 text-base font-semibold text-neutral-950 shadow-md transition-colors hover:bg-primary-50"
+            className="group relative inline-flex h-12 w-full shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-white px-6 text-sm font-semibold text-neutral-950 shadow-md transition-colors hover:bg-primary-50 md:h-[52px] md:w-auto md:px-7 md:text-base"
           >
             Become a Partner
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />

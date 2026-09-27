@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image';
 
 // ২০টি এয়ারলাইনের লোগোর তালিকা
@@ -37,7 +39,7 @@ export default function PartnersMarquee() {
 
       {/* Marquee Wrapper with Edge Fades */}
       <div className="relative w-full overflow-hidden flex [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-        <div className="flex min-w-full shrink-0 gap-8 py-4 animate-marquee items-center justify-around">
+        <div className="marquee-track flex w-max shrink-0 items-center gap-8 py-4">
           {marqueeItems.map((partner, idx) => (
             <div
               key={`${partner.name}-${idx}`}
@@ -55,6 +57,26 @@ export default function PartnersMarquee() {
         </div>
       </div>
 
+      <style jsx>{`
+        .marquee-track {
+          animation: partners-marquee 28s linear infinite;
+          will-change: transform;
+        }
+        @keyframes partners-marquee {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track {
+            animation-duration: 0.01ms;
+            animation-iteration-count: 1;
+          }
+        }
+      `}</style>
     </section>
   );
 }

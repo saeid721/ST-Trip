@@ -28,8 +28,19 @@ const items = [
 
 export function WhyStTripSection() {
   return (
-    <section aria-labelledby="why-sttrip-heading" className="home-section home-section-muted py-16 sm:py-20 lg:py-24">
-      <div className="container-app">
+    <section
+      aria-labelledby="why-sttrip-heading"
+      className="home-section home-section-muted relative overflow-hidden py-16 sm:py-20 lg:py-24"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-primary-100/60 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-accent-100/50 blur-3xl"
+      />
+      <div className="container-app relative">
         <SectionHeading
           id="why-sttrip-heading"
           eyebrow="Travel with confidence"
@@ -37,14 +48,32 @@ export function WhyStTripSection() {
           description="ST Trip brings the essentials of modern travel booking into one focused experience."
         />
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map(({ icon: Icon, title, description }) => (
-            <article key={title} className="premium-feature-card group">
-              <span className="premium-feature-icon">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+          {items.map(({ icon: Icon, title, description }, i) => (
+            <article
+              key={title}
+              className="group relative overflow-hidden rounded-2xl border border-neutral-200/80 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1.5 hover:border-primary-300 hover:shadow-[0_20px_36px_-14px_rgba(37,99,235,0.22)]"
+            >
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -right-3 -top-3 font-heading text-6xl font-black text-neutral-50 transition-colors duration-300 group-hover:text-primary-50"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+
+              <span className="relative inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-accent-600 text-white shadow-md shadow-primary-600/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                 <Icon className="h-5 w-5" aria-hidden />
               </span>
-              <h3 className="mt-5 font-heading text-base font-semibold text-neutral-950 sm:text-lg">{title}</h3>
-              <p className="mt-2 text-sm leading-6 text-neutral-600">{description}</p>
+
+              <h3 className="relative mt-5 font-heading text-base font-semibold text-neutral-950 sm:text-lg">
+                {title}
+              </h3>
+              <p className="relative mt-2 text-sm leading-6 text-neutral-600">{description}</p>
+
+              <span
+                aria-hidden
+                className="absolute inset-x-0 bottom-0 h-0.5 w-0 bg-gradient-to-r from-primary-500 to-accent-500 transition-all duration-300 group-hover:w-full"
+              />
             </article>
           ))}
         </div>

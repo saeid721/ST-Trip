@@ -22,6 +22,9 @@ export function PopularHolidayPackagesSection({ packages }: { packages: HolidayP
         <Carousel
           ariaLabel="Popular holiday packages"
           slideClassName="basis-[70%] sm:basis-1/2 lg:basis-1/4"
+          autoplay
+          autoplayDelayMs={4000}
+          showArrows={false}
         >
           {packages.map((pkg, i) => (
             <Link

@@ -2,17 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Heart, Star, Globe, LogIn } from "lucide-react";
+import { Home, Building2, Compass, Globe2, Package, PackageCheck, LogIn } from "lucide-react";
 import { useCallback, useState } from "react";
 import { LoginModal } from "@/components/layout/LoginModal";
 
 const navItems = [
-  { label: "Hotels", href: "/hotels", icon: Heart },
-  { label: "Tours", href: "/tour", icon: Globe },
-  { label: "Visa", href: "/visa", icon: Globe },
+  { label: "Hotels", href: "/hotels", icon: Building2 },
+  { label: "Tours", href: "/tour", icon: Compass },
+  { label: "Visa", href: "/visa", icon: Globe2 },
   { label: "Home", href: "/", icon: Home },
-  { label: "Umrah", href: "/umrah", icon: Heart },
-  { label: "Hajj", href: "/hajj", icon: Star },
+  { label: "Umrah", href: "/umrah", icon: Package },
+  { label: "Hajj", href: "/hajj", icon: PackageCheck },
 ];
 
 const loginItem = { label: "Login", href: "#login", icon: LogIn };

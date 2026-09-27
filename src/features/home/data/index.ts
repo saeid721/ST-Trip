@@ -456,16 +456,26 @@ export const topDestinations: Destination[] = [
 ];
 
 export const topAirlines: Airline[] = [
-  { id: "biman", name: "Biman Bangladesh Airlines", logo: "Biman", href: "/flights?airline=biman" },
-  { id: "usbangla", name: "US-Bangla Airlines", logo: "US-Bangla", href: "/flights?airline=usbangla" },
-  { id: "novoair", name: "NOVOAIR", logo: "NOVOAIR", href: "/flights?airline=novoair" },
-  { id: "airastra", name: "Air Astra", logo: "Air Astra", href: "/flights?airline=airastra" },
-  { id: "emirates", name: "Emirates", logo: "Emirates", href: "/flights?airline=emirates" },
-  { id: "qatar", name: "Qatar Airways", logo: "Qatar Airways", href: "/flights?airline=qatar" },
-  { id: "singapore", name: "Singapore Airlines", logo: "Singapore Airlines", href: "/flights?airline=singapore" },
-  { id: "malaysia", name: "Malaysia Airlines", logo: "Malaysia Airlines", href: "/flights?airline=malaysia" },
-  { id: "airindia", name: "Air India", logo: "Air India", href: "/flights?airline=airindia" },
-  { id: "turkish", name: "Turkish Airlines", logo: "Turkish Airlines", href: "/flights?airline=turkish" },
+  { id: "biman", name: "Biman Bangladesh Airlines", logo: "/images/airlines/biman.png", href: "/flights?airline=biman" },
+  { id: "usbangla", name: "US-Bangla Airlines", logo: "/images/airlines/us-bangla.png", href: "/flights?airline=usbangla" },
+  { id: "novoair", name: "NOVOAIR", logo: "/images/airlines/novoair.png", href: "/flights?airline=novoair" },
+  { id: "emirates", name: "Emirates", logo: "/images/airlines/emirates.png", href: "/flights?airline=emirates" },
+  { id: "qatar", name: "Qatar Airways", logo: "/images/airlines/qatar.png", href: "/flights?airline=qatar" },
+  { id: "singapore", name: "Singapore Airlines", logo: "/images/airlines/singapore.png", href: "/flights?airline=singapore" },
+  { id: "malaysia", name: "Malaysia Airlines", logo: "/images/airlines/malaysia.png", href: "/flights?airline=malaysia" },
+  { id: "turkish", name: "Turkish Airlines", logo: "/images/airlines/turkish.png", href: "/flights?airline=turkish" },
+  { id: "airarabia", name: "Air Arabia", logo: "/images/airlines/air-arabia.png", href: "/flights?airline=airarabia" },
+  { id: "airasia", name: "AirAsia", logo: "/images/airlines/airasia.png", href: "/flights?airline=airasia" },
+  { id: "cathay", name: "Cathay Pacific", logo: "/images/airlines/cathay.png", href: "/flights?airline=cathay" },
+  { id: "etihad", name: "Etihad Airways", logo: "/images/airlines/etihad.png", href: "/flights?airline=etihad" },
+  { id: "flydubai", name: "Flydubai", logo: "/images/airlines/flydubai.png", href: "/flights?airline=flydubai" },
+  { id: "gulf", name: "Gulf Air", logo: "/images/airlines/gulf.png", href: "/flights?airline=gulf" },
+  { id: "indigo", name: "IndiGo", logo: "/images/airlines/indigo.png", href: "/flights?airline=indigo" },
+  { id: "jazeera", name: "Jazeera Airways", logo: "/images/airlines/jazeera.png", href: "/flights?airline=jazeera" },
+  { id: "kuwait", name: "Kuwait Airways", logo: "/images/airlines/kuwait.png", href: "/flights?airline=kuwait" },
+  { id: "saudia", name: "Saudia", logo: "/images/airlines/saudi.png", href: "/flights?airline=saudia" },
+  { id: "srilankan", name: "SriLankan Airlines", logo: "/images/airlines/srilankan.png", href: "/flights?airline=srilankan" },
+  { id: "thai", name: "Thai Airways", logo: "/images/airlines/thai.png", href: "/flights?airline=thai" },
 ];
 
 export const popularRoutes: Route[] = [

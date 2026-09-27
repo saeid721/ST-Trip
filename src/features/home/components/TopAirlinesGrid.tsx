@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Plane } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import type { Airline } from "@/features/home/types";
@@ -14,16 +15,30 @@ export function TopAirlinesGrid({ airlines }: { airlines: Airline[] }) {
           title="Search Top Airlines"
           description="Book instantly across all major domestic and international carriers."
         />
-        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
           {airlines.map((airline, i) => (
             <li key={airline.id}>
-              <Reveal delay={i * 0.04}>
+              <Reveal delay={i * 0.03}>
                 <Link
                   href={airline.href}
-                  className="flex h-24 flex-col items-center justify-center gap-2 rounded-md border border-neutral-200 bg-white px-3 text-center shadow-sm transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-1 hover:border-primary-200 hover:shadow-md"
+                  className="group flex h-16 items-center gap-3 rounded-md border border-neutral-200 bg-white px-3 shadow-sm transition-[transform,box-shadow,border-color] duration-300 [transition-timing-function:var(--ease-out-soft)] hover:-translate-y-0.5 hover:border-primary-200 hover:shadow-md sm:h-[68px] sm:px-4"
                 >
-                  <Plane className="h-5 w-5 text-primary-600" aria-hidden />
-                  <span className="text-xs font-medium text-neutral-700">{airline.name}</span>
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-sm bg-neutral-50 sm:h-10 sm:w-10">
+                    <Image
+                      src={airline.logo}
+                      alt={`${airline.name} logo`}
+                      width={40}
+                      height={40}
+                      className="h-full w-full object-contain p-1"
+                    />
+                  </span>
+                  <span className="min-w-0 flex-1 truncate text-xs font-semibold text-neutral-800 sm:text-sm">
+                    {airline.name}
+                  </span>
+                  <ChevronRight
+                    className="h-4 w-4 shrink-0 text-neutral-300 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-primary-600"
+                    aria-hidden
+                  />
                 </Link>
               </Reveal>
             </li>

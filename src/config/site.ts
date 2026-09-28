@@ -8,7 +8,7 @@ export const siteConfig = {
   name: "ST Trip",
   nameLocal: "এসটি ট্রিপ",
   tagline: "আপনার পরবর্তী যাত্রা শুরু হোক এখান থেকে",
-  taglineEn: "Your next journey starts here",
+  taglineEn: "Your journey starts with ST Trip",
   description:
     "Book flights, hotels, tours, and visas across Bangladesh and beyond — transparent pricing, 24/7 support, and secure payments.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.sttrip.com.bd",

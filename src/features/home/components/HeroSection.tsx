@@ -6,7 +6,7 @@ export function HeroSection() {
     <TravelSearchHero
       eyebrow={siteConfig.tagline}
       title={siteConfig.taglineEn}
-      description="One platform, transparent pricing, 24/7 support — book in minutes."
+      description="Flights, hotels, tours, visa assistance and more — planned in one place."
       imageAlt="Aerial view of a tropical coastline, representing destinations bookable on ST Trip"
     />
   );

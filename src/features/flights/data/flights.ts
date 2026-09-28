@@ -212,6 +212,7 @@ export function getFlightOffers(from: string, to: string, date: string): FlightO
 
   for (const [airlineId, hubs] of route.carriers) {
     const a = AIRLINES[airlineId];
+    if (!a) continue;
     const r = rng(`${from}${to}${date}${airlineId}`);
     const count = domestic ? 2 + Math.floor(r() * 3) : 1 + Math.floor(r() * 2);
 
@@ -254,8 +255,8 @@ export function getFlightOffers(from: string, to: string, date: string): FlightO
         };
       });
 
-      const first = segments[0];
-      const last = segments[segments.length - 1];
+      const first = segments[0]!;
+      const last = segments[segments.length - 1]!;
       const timeFactor = hour >= 22 || hour < 5 ? 0.94 : hour >= 17 && hour < 21 ? 1.05 : 1;
       const price = Math.round(route.baseFare * a.fare * (hub ? 0.9 : 1) * dayFactor * timeFactor * (0.92 + r() * 0.26));
 
@@ -276,7 +277,7 @@ export function getFlightOffers(from: string, to: string, date: string): FlightO
         layoverAt: hub,
         layoverLabel: hub ? `${Math.floor(layover / 60)}h ${pad(layover % 60)}m` : undefined,
         price,
-        baggageKg: domestic ? 20 : a.bag[Math.floor(r() * a.bag.length)],
+        baggageKg: domestic ? 20 : (a.bag[Math.floor(r() * a.bag.length)] ?? 20),
         refundable: r() < a.refund,
         seats: Math.min(...segments.map((s) => s.seats ?? 9)),
         segments,

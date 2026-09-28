@@ -420,7 +420,7 @@ function FlightCard({ f, onDetails }: { f: FlightOffer; onDetails: () => void })
         <div className="flex items-center gap-3">
           <span className="grid h-10 w-16 shrink-0 place-items-center">
             {airlineLogos[f.airline] ? (
-              <Image src={airlineLogos[f.airline]} alt={f.airline} width={64} height={32} className="h-8 w-auto max-w-full object-contain" />
+              <Image src={airlineLogos[f.airline]!} alt={f.airline} width={64} height={32} className="h-8 w-auto max-w-full object-contain" />
             ) : (
               <span className="grid size-10 place-items-center rounded-lg bg-primary-50 text-sm font-bold text-primary-700">{f.airlineCode}</span>
             )}
@@ -522,7 +522,7 @@ function FlightDetailsDrawer({ f, onClose }: { f: FlightOffer | null; onClose: (
         <header className="flex items-start gap-3 border-b border-neutral-200 p-4">
           <span className="grid h-10 w-16 shrink-0 place-items-center">
             {airlineLogos[f.airline] ? (
-              <Image src={airlineLogos[f.airline]} alt={f.airline} width={64} height={32} className="h-8 w-auto max-w-full object-contain" />
+              <Image src={airlineLogos[f.airline]!} alt={f.airline} width={64} height={32} className="h-8 w-auto max-w-full object-contain" />
             ) : (
               <span className="grid size-10 place-items-center rounded-lg bg-primary-50 text-sm font-bold text-primary-700">{f.airlineCode}</span>
             )}

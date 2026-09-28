@@ -3,113 +3,260 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { ArrowRight, FileText, Luggage, Plane, PlaneTakeoff, RotateCcw, SlidersHorizontal, X } from "lucide-react";
-import { flightDates, flightOffers, type FlightOffer, type FlightSegment } from "@/features/flights/data/flights";
+import {
+  addDays,
+  airlineLogos,
+  airports,
+  dateChip,
+  getFlightOffers,
+  type FlightOffer,
+  type FlightSegment,
+} from "@/features/flights/data/flights";
 
 type Sort = "earliest" | "fastest" | "cheapest";
 
 const bdt = (n: number) => `${n.toLocaleString("en-US")} BDT`;
 const dur = (m: number) => `${Math.floor(m / 60)}h ${String(m % 60).padStart(2, "0")}m`;
 
-const prices = flightOffers.map((f) => f.price);
-const MIN_PRICE = Math.min(...prices);
-const MAX_PRICE = Math.max(...prices);
-const airlines = Array.from(new Set(flightOffers.map((f) => f.airline)));
+const TIME_SLOTS = [
+  { id: "night", label: "Night", hint: "00:00–05:59", to: 6 },
+  { id: "morning", label: "Morning", hint: "06:00–11:59", to: 12 },
+  { id: "afternoon", label: "Afternoon", hint: "12:00–17:59", to: 18 },
+  { id: "evening", label: "Evening", hint: "18:00–23:59", to: 24 },
+] as const;
 
-const airlineLogos: Record<string, string> = {
-  IndiGo: "/images/airlines/indigo.png",
-  "Qatar Airways": "/images/airlines/qatar.png",
-  Emirates: "/images/airlines/emirates.png",
-  Saudia: "/images/airlines/saudi.png",
-  "Biman Bangladesh Airlines": "/images/airlines/biman.png",
-  "US-Bangla Airlines": "/images/airlines/us-bangla.png",
-  "Turkish Airlines": "/images/airlines/turkish.png",
-};
+const slotOf = (f: FlightOffer) => TIME_SLOTS.find((s) => Number(f.departTime.slice(0, 2)) < s.to)!.id;
 
-export function FlightsResults() {
-  const [date, setDate] = useState("2026-10-01");
+interface FlightsResultsProps {
+  from: string;
+  to: string;
+  initialDate: string;
+  minDate: string;
+}
+
+export function FlightsResults({ from, to, initialDate, minDate }: FlightsResultsProps) {
+  const [date, setDate] = useState(initialDate);
   const [sort, setSort] = useState<Sort>("cheapest");
   const [selAirlines, setSelAirlines] = useState<string[]>([]);
   const [selStops, setSelStops] = useState<number[]>([]);
-  const [maxPrice, setMaxPrice] = useState(MAX_PRICE);
+  const [selBaggage, setSelBaggage] = useState<number[]>([]);
+  const [selTimes, setSelTimes] = useState<string[]>([]);
+  const [selLayovers, setSelLayovers] = useState<string[]>([]);
+  const [maxPrice, setMaxPrice] = useState<number | null>(null);
   const [refundableOnly, setRefundableOnly] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const [detail, setDetail] = useState<FlightOffer | null>(null);
 
+  const offers = useMemo(() => getFlightOffers(from, to, date), [from, to, date]);
+  const fromCity = airports[from]?.city ?? from;
+  const toCity = airports[to]?.city ?? to;
+
+  const strip = useMemo(() => {
+    const earliest = addDays(initialDate, -2);
+    const start = earliest < minDate ? minDate : earliest;
+    return Array.from({ length: 6 }, (_, i) => {
+      const id = addDays(start, i);
+      const prices = getFlightOffers(from, to, id).map((f) => f.price);
+      return { id, ...dateChip(id), price: prices.length ? Math.min(...prices) : 0 };
+    });
+  }, [initialDate, minDate, from, to]);
+
   const toggle = <T,>(list: T[], v: T, set: (x: T[]) => void) =>
     set(list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
+
+  const facets = useMemo(() => {
+    const airlineMap = new Map<string, { name: string; code: string; logo?: string; price: number; count: number }>();
+    const stops = new Map<number, number>();
+    const baggage = new Map<number, number>();
+    const layovers = new Map<string, number>();
+    const times = new Map<string, number>();
+    for (const f of offers) {
+      const a = airlineMap.get(f.airline);
+      if (a) {
+        a.price = Math.min(a.price, f.price);
+        a.count += 1;
+      } else {
+        airlineMap.set(f.airline, { name: f.airline, code: f.airlineCode, logo: airlineLogos[f.airline], price: f.price, count: 1 });
+      }
+      const s = Math.min(f.stops, 2);
+      stops.set(s, (stops.get(s) ?? 0) + 1);
+      baggage.set(f.baggageKg, (baggage.get(f.baggageKg) ?? 0) + 1);
+      if (f.layoverAt) layovers.set(f.layoverAt, (layovers.get(f.layoverAt) ?? 0) + 1);
+      const t = slotOf(f);
+      times.set(t, (times.get(t) ?? 0) + 1);
+    }
+    const prices = offers.map((f) => f.price);
+    return {
+      airlines: [...airlineMap.values()].sort((x, y) => x.price - y.price),
+      stops: [...stops.entries()].sort((x, y) => x[0] - y[0]),
+      baggage: [...baggage.entries()].sort((x, y) => x[0] - y[0]),
+      layovers: [...layovers.entries()].sort((x, y) => y[1] - x[1]),
+      times,
+      refundable: offers.filter((f) => f.refundable).length,
+      min: prices.length ? Math.min(...prices) : 0,
+      max: prices.length ? Math.max(...prices) : 0,
+    };
+  }, [offers]);
+
+  const activeCount =
+    selAirlines.length +
+    selStops.length +
+    selBaggage.length +
+    selTimes.length +
+    selLayovers.length +
+    (refundableOnly ? 1 : 0) +
+    (maxPrice !== null && maxPrice < facets.max ? 1 : 0);
 
   const reset = () => {
     setSelAirlines([]);
     setSelStops([]);
-    setMaxPrice(MAX_PRICE);
+    setSelBaggage([]);
+    setSelTimes([]);
+    setSelLayovers([]);
+    setMaxPrice(null);
     setRefundableOnly(false);
   };
 
+  const changeDate = (id: string) => {
+    setDate(id);
+    setDetail(null);
+    const url = new URL(window.location.href);
+    url.searchParams.set("date", id);
+    window.history.replaceState(null, "", url);
+  };
+
   const results = useMemo(() => {
-    const list = flightOffers.filter(
+    const cap = maxPrice ?? Infinity;
+    const list = offers.filter(
       (f) =>
         (!selAirlines.length || selAirlines.includes(f.airline)) &&
         (!selStops.length || selStops.includes(Math.min(f.stops, 2))) &&
-        f.price <= maxPrice &&
+        (!selBaggage.length || selBaggage.includes(f.baggageKg)) &&
+        (!selTimes.length || selTimes.includes(slotOf(f))) &&
+        (!selLayovers.length || (f.layoverAt !== undefined && selLayovers.includes(f.layoverAt))) &&
+        f.price <= cap &&
         (!refundableOnly || f.refundable),
     );
-    return [...list].sort((a, b) =>
-      sort === "earliest" ? a.departTime.localeCompare(b.departTime) : sort === "fastest" ? a.durationMin - b.durationMin : a.price - b.price,
+    return list.sort((a, b) =>
+      sort === "earliest"
+        ? a.departTime.localeCompare(b.departTime) || a.price - b.price
+        : sort === "fastest"
+          ? a.durationMin - b.durationMin || a.price - b.price
+          : a.price - b.price || a.durationMin - b.durationMin,
     );
-  }, [selAirlines, selStops, maxPrice, refundableOnly, sort]);
+  }, [offers, selAirlines, selStops, selBaggage, selTimes, selLayovers, maxPrice, refundableOnly, sort]);
 
-  const cheapestByAirline = airlines.map((name) => {
-    const list = flightOffers.filter((f) => f.airline === name);
-    return { name, code: list[0].airlineCode, logo: airlineLogos[name], price: Math.min(...list.map((f) => f.price)) };
-  });
+  const hints = useMemo<Record<Sort, string>>(() => {
+    if (!results.length) return { earliest: "—", fastest: "—", cheapest: "—" };
+    return {
+      earliest: results.reduce((m, f) => (f.departTime < m ? f.departTime : m), "99:99"),
+      fastest: dur(Math.min(...results.map((f) => f.durationMin))),
+      cheapest: bdt(Math.min(...results.map((f) => f.price))),
+    };
+  }, [results]);
 
   const filters = (
     <div className="space-y-5">
-      <FilterGroup title="Airlines">
-        {airlines.map((a) => (
-          <Check key={a} label={a} checked={selAirlines.includes(a)} onChange={() => toggle(selAirlines, a, setSelAirlines)} />
+      <FilterGroup title="Airlines" scroll>
+        {facets.airlines.map((a) => (
+          <Check
+            key={a.name}
+            label={a.name}
+            hint={bdt(a.price)}
+            checked={selAirlines.includes(a.name)}
+            onChange={() => toggle(selAirlines, a.name, setSelAirlines)}
+          />
         ))}
       </FilterGroup>
       <FilterGroup title="Stops">
-        {[
-          { v: 0, l: "Direct" },
-          { v: 1, l: "1 Stop" },
-          { v: 2, l: "2+ Stops" },
-        ].map((s) => (
-          <Check key={s.v} label={s.l} checked={selStops.includes(s.v)} onChange={() => toggle(selStops, s.v, setSelStops)} />
+        {facets.stops.map(([v, n]) => (
+          <Check
+            key={v}
+            label={v === 0 ? "Direct" : v === 1 ? "1 Stop" : "2+ Stops"}
+            hint={String(n)}
+            checked={selStops.includes(v)}
+            onChange={() => toggle(selStops, v, setSelStops)}
+          />
         ))}
       </FilterGroup>
       <FilterGroup title="Price Range">
         <input
           type="range"
-          min={MIN_PRICE}
-          max={MAX_PRICE}
-          value={maxPrice}
+          min={facets.min}
+          max={facets.max}
+          step={1}
+          value={maxPrice ?? facets.max}
+          disabled={facets.min === facets.max}
           onChange={(e) => setMaxPrice(Number(e.target.value))}
           className="w-full accent-primary-600"
           aria-label="Maximum price"
         />
         <div className="flex justify-between text-xs font-medium text-primary-700">
-          <span>{bdt(MIN_PRICE)}</span>
-          <span>{bdt(maxPrice)}</span>
+          <span>{bdt(facets.min)}</span>
+          <span>{bdt(maxPrice ?? facets.max)}</span>
         </div>
       </FilterGroup>
+      <FilterGroup title="Departure Time">
+        {TIME_SLOTS.map((s) => (
+          <Check
+            key={s.id}
+            label={`${s.label} (${s.hint})`}
+            hint={String(facets.times.get(s.id) ?? 0)}
+            checked={selTimes.includes(s.id)}
+            onChange={() => toggle(selTimes, s.id, setSelTimes)}
+          />
+        ))}
+      </FilterGroup>
+      <FilterGroup title="Baggage Allowance">
+        {facets.baggage.map(([kg, n]) => (
+          <Check
+            key={kg}
+            label={`${kg} Kg`}
+            hint={String(n)}
+            checked={selBaggage.includes(kg)}
+            onChange={() => toggle(selBaggage, kg, setSelBaggage)}
+          />
+        ))}
+      </FilterGroup>
+      {facets.layovers.length > 0 && (
+        <FilterGroup title="Transit / Layover" scroll>
+          {facets.layovers.map(([code, n]) => (
+            <Check
+              key={code}
+              label={`${code} · ${airports[code]?.city ?? code}`}
+              hint={String(n)}
+              checked={selLayovers.includes(code)}
+              onChange={() => toggle(selLayovers, code, setSelLayovers)}
+            />
+          ))}
+        </FilterGroup>
+      )}
       <FilterGroup title="Fare Type">
-        <Check label="Refundable only" checked={refundableOnly} onChange={() => setRefundableOnly((v) => !v)} />
+        <Check label="Refundable only" hint={String(facets.refundable)} checked={refundableOnly} onChange={() => setRefundableOnly((v) => !v)} />
       </FilterGroup>
     </div>
   );
 
   return (
     <div className="space-y-5">
+      {/* Route summary */}
+      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <h2 className="font-heading text-lg font-semibold text-neutral-900">
+          {from} → {to}
+        </h2>
+        <p className="text-sm text-neutral-600">
+          {fromCity} to {toCity}
+        </p>
+      </div>
+
       {/* Date strip */}
       <div className="-mx-5 overflow-x-auto px-5 lg:mx-0 lg:px-0 [scrollbar-width:none]">
         <div className="flex min-w-max gap-2 rounded-xl border border-primary-200 bg-white p-2 lg:min-w-0 lg:grid lg:grid-cols-6">
-          {flightDates.map((d) => (
+          {strip.map((d) => (
             <button
               key={d.id}
               type="button"
-              onClick={() => setDate(d.id)}
+              onClick={() => changeDate(d.id)}
               aria-pressed={date === d.id}
               className={`min-w-[92px] rounded-lg border px-3 py-2 text-center text-xs transition lg:min-w-0 ${
                 date === d.id ? "border-primary-600 bg-primary-600 text-white" : "border-neutral-200 bg-white text-neutral-700 hover:border-primary-300"
@@ -117,7 +264,7 @@ export function FlightsResults() {
             >
               <span className="block font-semibold">{d.day}</span>
               <span className="block">{d.label}</span>
-              <span className={`mt-1 block font-semibold ${date === d.id ? "text-white" : "text-primary-700"}`}>{d.price.toLocaleString("en-US")}</span>
+              <span className={`mt-1 block font-semibold ${date === d.id ? "text-white" : "text-primary-700"}`}>{d.price ? d.price.toLocaleString("en-US") : "—"}</span>
             </button>
           ))}
         </div>
@@ -143,12 +290,15 @@ export function FlightsResults() {
               <p className="text-[11px] text-neutral-500">*Price includes VAT &amp; Tax</p>
             </div>
             <div className="mt-3 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
-              {cheapestByAirline.map((a) => (
+              {facets.airlines.map((a) => (
                 <button
                   key={a.name}
                   type="button"
-                  onClick={() => setSelAirlines([a.name])}
-                  className="flex w-[116px] shrink-0 flex-col gap-1 rounded-lg border border-neutral-200 bg-white px-2.5 py-2 text-left transition hover:border-primary-300 hover:shadow-sm"
+                  onClick={() => toggle(selAirlines, a.name, setSelAirlines)}
+                  aria-pressed={selAirlines.includes(a.name)}
+                  className={`flex w-[116px] shrink-0 flex-col gap-1 rounded-lg border bg-white px-2.5 py-2 text-left transition hover:shadow-sm ${
+                    selAirlines.includes(a.name) ? "border-primary-600 ring-1 ring-primary-600" : "border-neutral-200 hover:border-primary-300"
+                  }`}
                 >
                   {a.logo ? (
                     <Image src={a.logo} alt={a.name} width={96} height={28} className="h-7 w-auto max-w-full object-contain object-left" />
@@ -170,6 +320,9 @@ export function FlightsResults() {
               className="flex shrink-0 items-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 text-sm font-medium text-neutral-800 lg:hidden"
             >
               <SlidersHorizontal className="size-4" /> Filter
+              {activeCount > 0 && (
+                <span className="grid size-5 place-items-center rounded-full bg-primary-600 text-[11px] text-white">{activeCount}</span>
+              )}
             </button>
             <div className="grid flex-1 grid-cols-3 gap-1 rounded-lg bg-neutral-100 p-1">
               {(["earliest", "fastest", "cheapest"] as Sort[]).map((s) => (
@@ -177,9 +330,10 @@ export function FlightsResults() {
                   key={s}
                   type="button"
                   onClick={() => setSort(s)}
-                  className={`rounded-md py-2 text-xs font-semibold capitalize transition sm:text-sm ${sort === s ? "bg-primary-600 text-white shadow-sm" : "text-neutral-700"}`}
+                  className={`rounded-md py-1.5 text-xs font-semibold transition sm:text-sm ${sort === s ? "bg-primary-600 text-white shadow-sm" : "text-neutral-700"}`}
                 >
-                  {s}
+                  <span className="block capitalize">{s}</span>
+                  <span className="block text-[10px] font-medium opacity-80 sm:text-[11px]">{hints[s]}</span>
                 </button>
               ))}
             </div>
@@ -190,10 +344,21 @@ export function FlightsResults() {
             results.map((f) => <FlightCard key={f.id} f={f} onDetails={() => setDetail(f)} />)
           ) : (
             <div className="rounded-xl border border-dashed border-neutral-300 bg-white p-10 text-center">
-              <p className="font-heading font-semibold text-neutral-900">No flights match your filters</p>
-              <button type="button" onClick={reset} className="mt-3 text-sm font-medium text-primary-700">
-                Reset filters
-              </button>
+              {offers.length === 0 ? (
+                <>
+                  <p className="font-heading font-semibold text-neutral-900">
+                    No flights found for {from} → {to}
+                  </p>
+                  <p className="mt-1 text-sm text-neutral-500">Try another route or date.</p>
+                </>
+              ) : (
+                <>
+                  <p className="font-heading font-semibold text-neutral-900">No flights match your filters</p>
+                  <button type="button" onClick={reset} className="mt-3 text-sm font-medium text-primary-700">
+                    Reset filters
+                  </button>
+                </>
+              )}
             </div>
           )}
         </section>
@@ -228,20 +393,21 @@ export function FlightsResults() {
   );
 }
 
-function FilterGroup({ title, children }: { title: string; children: React.ReactNode }) {
+function FilterGroup({ title, scroll, children }: { title: string; scroll?: boolean; children: React.ReactNode }) {
   return (
     <div className="space-y-2 border-t border-neutral-100 pt-4 first:border-t-0 first:pt-0">
       <h3 className="text-sm font-semibold text-neutral-900">{title}</h3>
-      {children}
+      <div className={scroll ? "max-h-56 space-y-0.5 overflow-y-auto pr-1" : "space-y-0.5"}>{children}</div>
     </div>
   );
 }
 
-function Check({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) {
+function Check({ label, hint, checked, onChange }: { label: string; hint?: string; checked: boolean; onChange: () => void }) {
   return (
     <label className="flex min-h-9 cursor-pointer items-center gap-2 text-sm text-neutral-700">
-      <input type="checkbox" checked={checked} onChange={onChange} className="size-4 accent-primary-600" />
-      {label}
+      <input type="checkbox" checked={checked} onChange={onChange} className="size-4 shrink-0 accent-primary-600" />
+      <span className="min-w-0 flex-1 truncate">{label}</span>
+      {hint && <span className="shrink-0 text-xs text-neutral-500">{hint}</span>}
     </label>
   );
 }

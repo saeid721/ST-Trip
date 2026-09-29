@@ -11,7 +11,7 @@ interface PageHeroProps {
  */
 export function PageHero({ eyebrow, title, description }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-700 to-primary-600 pt-[calc(var(--header-height)+1.5rem)] pb-8 text-center sm:pt-[calc(var(--header-height)+2.5rem)] sm:pb-14 md:pt-[calc(var(--header-height)+3.5rem)] md:pb-20">
+    <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-700 to-primary-600 pt-[calc(var(--header-height-mobile)+1rem)] pb-6 text-center sm:pt-[calc(var(--header-height)+2.5rem)] sm:pb-14 md:pt-[calc(var(--header-height)+3.5rem)] md:pb-20">
       {/* Decorative glow orbs — adds depth without competing with the text */}
       <div
         aria-hidden
@@ -32,13 +32,13 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
       />
 
       <div className="container-app relative px-4">
-        <span className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-primary-50 backdrop-blur-sm sm:px-3 sm:text-[11px] sm:tracking-[0.2em] md:text-xs md:tracking-[0.25em]">
+        <span className="inline-flex items-center rounded-full border border-white/15 bg-white/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-primary-50 backdrop-blur-sm sm:px-3 sm:py-1 sm:text-[11px] sm:tracking-[0.2em] md:text-xs md:tracking-[0.25em]">
           {eyebrow}
         </span>
-        <h1 className="mt-3 font-heading text-xl font-bold leading-tight text-white sm:mt-4 sm:text-[26px] md:mt-5 md:text-4xl lg:text-[42px]">
+        <h1 className="mt-2 font-heading text-lg font-bold leading-snug text-white sm:mt-4 sm:text-[26px] sm:leading-tight md:mt-5 md:text-4xl lg:text-[42px]">
           {title}
         </h1>
-        <p className="mx-auto mt-2 max-w-2xl text-xs leading-relaxed text-primary-50/90 sm:mt-3 sm:text-[13px] md:mt-4 md:text-base">
+        <p className="mx-auto mt-1.5 max-w-2xl text-[11px] leading-relaxed text-primary-50/90 sm:mt-3 sm:text-[13px] md:mt-4 md:text-base">
           {description}
         </p>
       </div>

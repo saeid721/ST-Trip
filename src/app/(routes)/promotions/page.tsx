@@ -33,19 +33,19 @@ export default function OffersPage() {
       {/* Featured promotions */}
       <section className="pt-10 sm:pt-14" aria-labelledby="promo-title">
         <div className="container-app">
-          <div className="mb-6 sm:mb-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary-600 sm:text-sm">
+          <div className="mb-5 sm:mb-8">
+            <p className="mb-0.5 text-xs font-semibold uppercase tracking-wide text-primary-600 sm:text-sm">
               Featured promotions
             </p>
             <h2
               id="promo-title"
-              className="mt-2 font-heading text-2xl font-bold text-neutral-900 sm:text-3xl"
+              className="font-heading text-base font-bold text-neutral-900 sm:text-xl lg:text-2xl"
             >
               Book more, pay less
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
             {promoBanners.map((banner, i) => (
               <Link
                 key={banner.id}
@@ -85,15 +85,15 @@ export default function OffersPage() {
 
       <section className="py-10 sm:py-14">
         <div className="container-app">
-          <div className="mb-8 flex flex-col gap-2 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+          <div className="mb-5 flex flex-col gap-2 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary-600">Handpicked for you</p>
-              <h2 className="mt-2 font-heading text-2xl font-bold text-neutral-900 sm:text-3xl">Latest deals and promo codes</h2>
+              <p className="mb-0.5 text-xs font-semibold uppercase tracking-wide text-primary-600 sm:text-sm">Handpicked for you</p>
+              <h2 className="font-heading text-base font-bold text-neutral-900 sm:text-xl lg:text-2xl">Latest deals and promo codes</h2>
             </div>
-            <p className="max-w-sm text-sm leading-6 text-neutral-500">Use the code at checkout and review the offer terms before you pay.</p>
+            <p className="max-w-sm text-xs leading-5 text-neutral-500 sm:text-sm sm:leading-6">Use the code at checkout and review the offer terms before you pay.</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3">
             {hotDeals.map((deal) => {
               const daysLeft = getDaysLeft(deal.expiresAt);
               const expired = daysLeft < 0;
@@ -125,10 +125,10 @@ export default function OffersPage() {
                       <CopyCodeButton code={deal.promoCode} disabled={expired} />
                       <span
                         className={`inline-flex items-center gap-1.5 text-xs ${expired
-                            ? "font-semibold text-red-600"
-                            : endingSoon
-                              ? "font-semibold text-amber-600"
-                              : "text-neutral-500"
+                          ? "font-semibold text-red-600"
+                          : endingSoon
+                            ? "font-semibold text-amber-600"
+                            : "text-neutral-500"
                           }`}
                       >
                         <CalendarDays className="h-3.5 w-3.5" aria-hidden />

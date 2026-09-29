@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, CheckCircle2, Headphones, ShieldCheck } from "lucide-react";
 import type { PromoBanner } from "@/features/home/types";
+import { PageHero } from "@/components/ui/PageHero";
 
 type PromoDetail = { eyebrow: string; intro: string; points: string[]; ctaHref: string; ctaLabel: string };
 
@@ -70,32 +71,22 @@ export function PromoDetailView({ banner }: { banner: PromoBanner }) {
 
   return (
     <article>
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-700 to-primary-600 pt-[calc(var(--header-height)+1.5rem)] pb-8 sm:pt-[calc(var(--header-height)+2.5rem)] sm:pb-14">
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
-            backgroundSize: "20px 20px",
-          }}
-        />
-        <div className="container-app relative">
-          <Link
-            href="/promotions"
-            className="mb-5 inline-flex min-h-10 items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3.5 text-xs font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
-          >
-            <ArrowLeft className="h-4 w-4" aria-hidden />
-            Back to Promotions
-          </Link>
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary-100 sm:text-xs">{detail.eyebrow}</p>
-          <h1 className="mt-2 max-w-4xl font-heading text-2xl font-bold leading-tight text-white sm:mt-3 sm:text-4xl lg:text-5xl">{banner.title}</h1>
-          {banner.subtitle && (
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/85 sm:mt-4 sm:text-base sm:leading-7">{banner.subtitle}</p>
-          )}
-        </div>
-      </section>
+      <PageHero
+        eyebrow={detail.eyebrow}
+        title={banner.title}
+        description={banner.subtitle ?? detail.intro}
+      />
 
       <section className="py-10 sm:py-16">
+        <div className="container-app">
+          <Link
+            href="/promotions"
+            className="mb-5 inline-flex min-h-10 items-center gap-1.5 text-xs font-semibold text-primary-700 hover:text-primary-800"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
+            Back to Promotions
+          </Link>
+        </div>
         <div className="container-app grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start lg:gap-12">
           <div>
             <div className="relative aspect-[5/2] overflow-hidden rounded-2xl bg-neutral-100 shadow-md ring-1 ring-black/5 sm:rounded-lg">

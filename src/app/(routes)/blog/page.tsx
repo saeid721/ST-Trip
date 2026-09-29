@@ -17,7 +17,7 @@ export default function BlogPage() {
         title="The ST Trip Blog"
         description="Guides, deals and tips to help you travel smarter and spend less."
       />
-      <section className="py-12 sm:py-16">
+      <section className="py-6 md:py-12 lg:py-16">
         <div className="container-app">
           <BlogGrid categories={blogCategories} posts={blogPosts} />
         </div>

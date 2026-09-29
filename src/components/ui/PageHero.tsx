@@ -38,7 +38,7 @@ export function PageHero({ eyebrow, title, description }: PageHeroProps) {
         <h1 className="mt-2 font-heading text-lg font-bold leading-snug text-white sm:mt-4 sm:text-[26px] sm:leading-tight md:mt-5 md:text-4xl lg:text-[42px]">
           {title}
         </h1>
-        <p className="mx-auto mt-1.5 max-w-2xl text-[11px] leading-relaxed text-primary-50/90 sm:mt-3 sm:text-[13px] md:mt-4 md:text-base">
+        <p className="mx-auto mt-1.5 text-[11px] leading-relaxed text-primary-50/90 sm:mt-3 sm:text-[13px] md:mt-4 md:text-base">
           {description}
         </p>
       </div>

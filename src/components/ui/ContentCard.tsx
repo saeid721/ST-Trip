@@ -14,7 +14,7 @@ export interface ContentCardProps {
   reviewCount?: number;
   eyebrow?: string;
   priority?: boolean;
-  aspect?: "square" | "portrait" | "landscape";
+  aspect?: "square" | "portrait" | "landscape" | "video";
   className?: string;
 }
 
@@ -22,6 +22,7 @@ const aspectClasses = {
   square: "aspect-square",
   portrait: "aspect-[4/5]",
   landscape: "aspect-[5/2]",
+  video: "aspect-[16/9]",
 };
 
 
@@ -65,14 +66,14 @@ export function ContentCard({
         )}
         <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-250 group-hover:opacity-100" />
       </div>
-      <div className="p-4">
+      <div className="p-3 md:p-4">
         {eyebrow && (
           <p className="mb-1 text-xs font-medium uppercase tracking-wide text-primary-600">
             {eyebrow}
           </p>
         )}
-        <h3 className="font-heading text-base font-semibold text-neutral-900">{title}</h3>
-        {subtitle && <p className="mt-1 text-sm text-neutral-500">{subtitle}</p>}
+        <h3 className="font-heading text-sm font-semibold leading-snug text-neutral-900 md:text-base">{title}</h3>
+        {subtitle && <p className="mt-1 text-xs text-neutral-500 md:text-sm">{subtitle}</p>}
         {typeof rating === "number" && (
           <div className="mt-2 flex items-center gap-1 text-sm text-neutral-600">
             <Star className="h-4 w-4 fill-warning text-warning" aria-hidden />

@@ -17,8 +17,8 @@ export default function NewsPage() {
         title="News & Announcements"
         description="What's new at ST Trip — product launches, partnerships and company updates."
       />
-      <section className="py-12 sm:py-16">
-        <div className="container-app mx-auto max-w-3xl">
+      <section className="py-6 md:py-12 lg:py-16">
+        <div className="container-app">
           <NewsList items={newsItems} />
         </div>
       </section>

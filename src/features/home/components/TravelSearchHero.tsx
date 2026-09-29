@@ -41,7 +41,7 @@ export function TravelSearchHero({
           >
             {title}
           </h1>
-          <p className="mt-3 max-w-xl text-xs text-white/85 md:mt-4 md:text-base">{description}</p>
+          <p className="mt-3 text-xs text-white/85 md:mt-4 md:text-base">{description}</p>
         </div>
       </div>
 

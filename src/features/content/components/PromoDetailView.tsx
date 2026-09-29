@@ -15,32 +15,53 @@ const defaultPromoDetail: PromoDetail = {
 
 const promoDetails: Record<string, PromoDetail> = {
   "promo-1": {
-    eyebrow: "Flight savings",
-    intro: "Make your next international journey more affordable with an exclusive City Bank American Express offer.",
-    points: ["Save up to 18% on eligible international flight bookings", "Available for City Bank American Express Platinum and Gold cards", "Review fare rules and eligibility before completing payment"],
-    ctaHref: "/flights",
-    ctaLabel: "Search international flights",
+    eyebrow: "Hotels & resorts",
+    intro: "Book domestic hotels and resorts across Bangladesh and pay with bKash to get the offer rate.",
+    points: ["Choose from hotels and resorts in popular destinations", "Pay with bKash at checkout to claim the offer rate", "Check availability, dates and offer terms before you pay"],
+    ctaHref: "/hotels",
+    ctaLabel: "Browse hotels",
   },
   "promo-2": {
-    eyebrow: "Bank partner offer",
-    intro: "Get BDT 4,000 off your next international booking when you pay with an eligible Eastern Bank card.",
-    points: ["Save up to BDT 4,000 on qualifying bookings", "Minimum purchase value of BDT 40,000 applies", "Offer availability and fare conditions may vary by route"],
+    eyebrow: "Flight fares",
+    intro: "Book your flight at the best rate, with great fares for the whole family.",
+    points: ["Compare fares and schedules for every traveller", "Pick dates that suit the whole family", "Review fare rules and baggage allowance before payment"],
     ctaHref: "/flights",
-    ctaLabel: "Find your flight",
+    ctaLabel: "Search flights",
   },
   "promo-3": {
-    eyebrow: "Bangladesh getaway",
-    intro: "Swap the busy week for a refreshing Sylhet escape with fares starting from BDT 2,499.",
-    points: ["Explore tea gardens, waterfalls and peaceful hill views", "Starting fare is subject to availability and travel dates", "Reserve early for the best choice of seats and schedules"],
+    eyebrow: "Student fare",
+    intro: "Affordable flights for students, with extra baggage allowance included.",
+    points: ["Special student fares with extra baggage", "Eligibility and required documents may apply", "Fare and baggage details vary by airline and route"],
     ctaHref: "/flights",
-    ctaLabel: "Search Sylhet flights",
+    ctaLabel: "Find student fares",
   },
   "promo-4": {
-    eyebrow: "Visa assistance",
-    intro: "Planning to study abroad? Speak with a visa specialist and get practical guidance for your next step.",
-    points: ["Discuss your destination, course and application timeline", "Get help understanding the required documents", "Receive clear guidance from an experienced travel team"],
-    ctaHref: "/visa",
-    ctaLabel: "Explore visa assistance",
+    eyebrow: "Domestic flights",
+    intro: "Fly within Bangladesh and save more when you pay with Nagad.",
+    points: ["Attractive savings on eligible domestic flights", "Pay with Nagad at checkout to claim the offer", "Review offer terms and fare conditions before payment"],
+    ctaHref: "/flights",
+    ctaLabel: "Search domestic flights",
+  },
+  "promo-5": {
+    eyebrow: "Curated packages",
+    intro: "Explore Bangladesh with tour packages planned around real destinations.",
+    points: ["Hand-picked packages for popular destinations", "Flexible options to match your dates and budget", "Talk to our team to customise your trip"],
+    ctaHref: "/tours",
+    ctaLabel: "Explore tours",
+  },
+  "promo-6": {
+    eyebrow: "Domestic flights",
+    intro: "Book domestic flights at the best rate and pay with bKash for exclusive savings.",
+    points: ["Competitive fares on domestic routes", "Pay with bKash at checkout for extra savings", "Check offer terms and fare rules before you pay"],
+    ctaHref: "/flights",
+    ctaLabel: "Search domestic flights",
+  },
+  "promo-7": {
+    eyebrow: "Hotels & resorts",
+    intro: "Book domestic hotels and resorts with best rates guaranteed.",
+    points: ["Verified stays across Bangladesh", "Compare rooms, prices and locations in one place", "Review cancellation and offer terms before you pay"],
+    ctaHref: "/hotels",
+    ctaLabel: "Browse hotels",
   },
 };
 
@@ -49,26 +70,45 @@ export function PromoDetailView({ banner }: { banner: PromoBanner }) {
 
   return (
     <article>
-      <section className="relative overflow-hidden bg-neutral-950">
-        <div className="relative h-[320px] sm:h-[440px] lg:h-[520px]">
-          <Image src={banner.image} alt={banner.title} fill priority sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/45 to-neutral-950/10" />
-          <div className="container-app absolute inset-x-0 bottom-0 pb-10 sm:pb-14">
-            <Link href="/" className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/20 px-3.5 py-2 text-xs font-semibold text-white backdrop-blur-md transition hover:bg-white/15">
-              <ArrowLeft className="h-4 w-4" aria-hidden />
-              Back to Home
-            </Link>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary-200">{detail.eyebrow}</p>
-            <h1 className="mt-3 max-w-4xl font-heading text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">{banner.title}</h1>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-white/80 sm:text-base">{banner.subtitle}</p>
-          </div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-700 to-primary-600 pt-[calc(var(--header-height)+1.5rem)] pb-8 sm:pt-[calc(var(--header-height)+2.5rem)] sm:pb-14">
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
+            backgroundSize: "20px 20px",
+          }}
+        />
+        <div className="container-app relative">
+          <Link
+            href="/promotions"
+            className="mb-5 inline-flex min-h-10 items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3.5 text-xs font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
+          >
+            <ArrowLeft className="h-4 w-4" aria-hidden />
+            Back to Promotions
+          </Link>
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary-100 sm:text-xs">{detail.eyebrow}</p>
+          <h1 className="mt-2 max-w-4xl font-heading text-2xl font-bold leading-tight text-white sm:mt-3 sm:text-4xl lg:text-5xl">{banner.title}</h1>
+          {banner.subtitle && (
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/85 sm:mt-4 sm:text-base sm:leading-7">{banner.subtitle}</p>
+          )}
         </div>
       </section>
 
       <section className="py-10 sm:py-16">
         <div className="container-app grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start lg:gap-12">
           <div>
-            <p className="text-lg leading-8 text-neutral-700 sm:text-xl">{detail.intro}</p>
+            <div className="relative aspect-[5/2] overflow-hidden rounded-2xl bg-neutral-100 shadow-md ring-1 ring-black/5 sm:rounded-lg">
+              <Image
+                src={banner.image}
+                alt={banner.title}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 720px"
+                className="object-cover"
+              />
+            </div>
+            <p className="mt-6 text-base leading-7 text-neutral-700 sm:mt-8 sm:text-xl sm:leading-8">{detail.intro}</p>
             <div className="mt-8 border-t border-neutral-200 pt-8">
               <h2 className="font-heading text-2xl font-bold text-neutral-900">What you need to know</h2>
               <ul className="mt-5 space-y-4">
@@ -82,7 +122,7 @@ export function PromoDetailView({ banner }: { banner: PromoBanner }) {
             </div>
           </div>
 
-          <aside className="rounded-md border border-neutral-200 bg-white p-6 shadow-sm lg:sticky lg:top-24">
+          <aside className="rounded-md border border-neutral-200 bg-white p-5 shadow-sm sm:p-6 lg:sticky lg:top-24">
             <h2 className="font-heading text-xl font-bold text-neutral-900">Ready to get started?</h2>
             <p className="mt-2 text-sm leading-6 text-neutral-600">Our team is here to help you choose the right option and complete your booking with confidence.</p>
             <Link href={detail.ctaHref} className="mt-6 flex h-12 items-center justify-center gap-2 rounded-md bg-primary-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-primary-700">

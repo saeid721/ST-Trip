@@ -4,8 +4,9 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 import { OfferDetailView } from "@/features/content/components/OfferDetailView";
 import { PromoDetailView } from "@/features/content/components/PromoDetailView";
-import { hotDeals } from "@/features/home/data";
-import { promoBanners } from "@/features/home/data";
+import { promoBanners, hotDeals } from "@/features/home/data";
+
+export const revalidate = 3600; // keep expiry status fresh
 
 interface PageProps {
   params: Promise<{ slug: string }>;

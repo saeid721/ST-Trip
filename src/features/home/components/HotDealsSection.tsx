@@ -18,7 +18,7 @@ export function HotDealsSection({ deals }: { deals: HotDeal[] }) {
           eyebrow="Limited time"
           title="Hot Deals"
           description="Bank offers and promo codes updated daily."
-          viewAllHref="/offers"
+          viewAllHref="/promotions"
         />
 
         <Carousel

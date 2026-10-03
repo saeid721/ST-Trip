@@ -9,6 +9,7 @@ import { hajjPackages } from "@/features/packages/data/hajj-packages";
 import { tourPackages } from "@/features/packages/data/tour-packages";
 import { holidayPackages } from "@/features/holiday/data/holiday-packages";
 import { allHotels } from "@/features/hotels/data/hotels";
+import { visaDestinations } from "@/features/visa/data/visa-destinations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = ["", "/flights", "/hotels", "/destinations", "/visa", "/promotions", "/blog", "/about", "/news", "/travel-guide", "/umrah-packages", "/hajj-packages", "/tour-packages", "/holiday-packages"];
@@ -20,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...umrahPackages.map((item) => item.href),
     ...hajjPackages.map((item) => item.href),
     ...tourPackages.map((item) => item.href),
+    ...visaDestinations.map((item) => `/visa/${item.slug}`),
     ...travelGuides.map((item) => item.href),
     ...blogPosts.map((item) => item.href),
     ...newsItems.map((item) => item.href),

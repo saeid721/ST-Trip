@@ -77,36 +77,36 @@ function GuideLayout({ destination, guide }: { destination: VisaDestination; gui
     <>
       <VisaSectionNav sections={sections} />
 
-      <main className="container-app py-8 sm:py-12">
-        <div className="empty:hidden">
+      <main className="container-app py-2.5 max-md:px-2.5 md:py-12">
+        <div className="mb-2.5 empty:hidden">
           <Suspense fallback={null}>
             <VisaPurposeNotice destination={destination} supported={guide.purposes} />
           </Suspense>
         </div>
 
-        <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(300px,0.8fr)] lg:gap-8">
-          <div className="min-w-0 space-y-5 sm:space-y-7">
+        <div className="grid gap-2.5 md:gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(300px,0.8fr)] lg:gap-8">
+          <div className="min-w-0 space-y-2.5 md:space-y-7">
             <section
               id="overview"
               className={`${SCROLL_OFFSET} overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm`}
             >
-              <div className="border-b border-neutral-200 bg-primary-50 px-4 py-4 sm:px-7">
-                <p className="text-xs font-bold uppercase tracking-[0.12em] text-primary-700">Visa guide</p>
-                <div className="mt-1 flex flex-wrap items-center justify-between gap-3">
-                  <h2 className="flex items-center gap-2.5 font-heading text-xl font-bold text-neutral-900 sm:text-2xl">
-                    <VisaFlag code={destination.code} name={destination.name} className="h-6 w-9" />
+              <div className="border-b border-neutral-200 bg-primary-50 px-3 py-2 md:px-7 md:py-4">
+                <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-primary-700 md:text-xs">Visa guide</p>
+                <div className="mt-0.5 flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 md:mt-1">
+                  <h2 className="flex items-center gap-2 font-heading text-lg font-bold text-neutral-900 md:gap-2.5 md:text-2xl">
+                    <VisaFlag code={destination.code} name={destination.name} className="h-5 w-7 md:h-6 md:w-9" />
                     {destination.name} {purposeLabel.toLowerCase()}
                   </h2>
                   {isPopular && (
-                    <span className="rounded-full bg-accent-50 px-3 py-1 text-xs font-semibold text-accent-700">
+                    <span className="rounded-full bg-accent-50 px-2.5 py-0.5 text-[11px] font-semibold text-accent-700 md:px-3 md:py-1 md:text-xs">
                       Popular choice
                     </span>
                   )}
                 </div>
               </div>
-              <div className="px-4 py-5 sm:px-7 sm:py-6">
-                <p className="max-w-3xl text-sm leading-6 text-neutral-600">{guide.overview.intro}</p>
-                <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
+              <div className="px-3 py-2.5 md:px-7 md:py-6">
+                <p className="max-w-3xl text-[13px] leading-5 text-neutral-600 md:text-sm md:leading-6">{guide.overview.intro}</p>
+                <div className="mt-2.5 grid grid-cols-2 gap-1.5 md:mt-5 md:gap-3 lg:grid-cols-4">
                   {guide.facts.map((fact) => (
                     <Fact key={fact.label} label={fact.label} value={fact.value} />
                   ))}
@@ -116,7 +116,7 @@ function GuideLayout({ destination, guide }: { destination: VisaDestination; gui
             </section>
 
             <GuideSection title="Eligibility to apply" eyebrow="Before you begin">
-              <ul className="grid gap-3 sm:grid-cols-2">
+              <ul className="grid gap-2 md:grid-cols-2 md:gap-3">
                 {guide.eligibility.map((item) => (
                   <ChecklistItem key={item}>{item}</ChecklistItem>
                 ))}
@@ -129,36 +129,36 @@ function GuideLayout({ destination, guide }: { destination: VisaDestination; gui
             <VisaExtraSections guide={guide} countryName={destination.name} />
           </div>
 
-          <aside className="space-y-6">
+          <aside className="space-y-3 md:space-y-6">
             <section className="overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm">
-              <div className="bg-primary-700 px-5 py-4 text-white">
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/70">Country information</p>
-                <h2 className="mt-1 font-heading text-xl font-semibold">{destination.name}</h2>
+              <div className="bg-primary-700 px-3 py-2.5 text-white md:px-5 md:py-4">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/70 md:text-xs">Country information</p>
+                <h2 className="mt-0.5 font-heading text-base font-semibold md:mt-1 md:text-xl">{destination.name}</h2>
               </div>
-              <div className="divide-y divide-neutral-200">
+              <div className="grid grid-cols-2 gap-px bg-neutral-200 max-md:[&>*:last-child:nth-child(odd)]:col-span-2 md:block md:divide-y md:divide-neutral-200 md:bg-transparent">
                 {guide.countryInfo.map((row) => (
                   <InfoRow key={row.label} label={row.label} value={row.value} />
                 ))}
               </div>
-              <div className="border-t border-neutral-200 px-5 py-5">
-                <h3 className="font-semibold text-neutral-900">Need help with your case?</h3>
-                <p className="mt-1 text-sm leading-5 text-neutral-500">
+              <div className="border-t border-neutral-200 px-3 py-3 md:px-5 md:py-5">
+                <h3 className="text-sm font-semibold text-neutral-900 md:text-base">Need help with your case?</h3>
+                <p className="mt-0.5 text-[13px] leading-5 text-neutral-500 md:mt-1 md:text-sm">
                   Talk to a visa specialist about your documents and travel plan.
                 </p>
                 <ContactActions message={`Hello ${siteConfig.name}, I need help with my ${destination.name} visa documents.`} />
               </div>
             </section>
 
-            <section className="rounded-md border border-accent-200 bg-accent-50 p-5 lg:sticky lg:top-[calc(var(--header-height-mobile)+4.5rem)]">
-              <h2 className="font-heading text-lg font-semibold text-neutral-900">Ready to apply?</h2>
-              <p className="mt-2 text-sm leading-6 text-neutral-600">
+            <section className="rounded-md border border-accent-200 bg-accent-50 p-3 md:p-5 lg:sticky lg:top-[calc(var(--header-height-mobile)+4.5rem)]">
+              <h2 className="font-heading text-base font-semibold text-neutral-900 md:text-lg">Ready to apply?</h2>
+              <p className="mt-0.5 text-[13px] leading-5 text-neutral-600 md:mt-2 md:text-sm md:leading-6">
                 Send us your travel dates and we will guide you to the right visa option.
               </p>
               <a
                 href={visaWhatsAppHref(`Hello ${siteConfig.name}, I want to start a ${destination.name} visa enquiry. My travel dates: `)}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md border border-accent-300 bg-white text-sm font-semibold text-accent-700 transition hover:border-accent-500 hover:text-accent-800"
+                className="mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md border border-accent-300 bg-white text-sm font-semibold text-accent-700 transition active:scale-[0.98] hover:border-accent-500 hover:text-accent-800 md:mt-4"
               >
                 Start an enquiry <ArrowRight className="h-4 w-4" aria-hidden />
               </a>
@@ -181,15 +181,15 @@ function SummaryLayout({ destination }: { destination: VisaDestination }) {
   const message = `Hello ${siteConfig.name}, I need ${destination.name} visa requirements and application support.`;
 
   return (
-    <main className="container-app py-8 sm:py-12">
-      <div className="empty:hidden">
+    <main className="container-app py-3 max-md:px-3 md:py-12">
+      <div className="mb-3 empty:hidden">
         <Suspense fallback={null}>
           <VisaPurposeNotice destination={destination} supported={["tourist"]} />
         </Suspense>
       </div>
 
-      <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(300px,0.8fr)] lg:gap-8">
-        <div className="min-w-0 space-y-5 sm:space-y-7">
+      <div className="grid gap-3 md:gap-6 lg:grid-cols-[minmax(0,1.45fr)_minmax(300px,0.8fr)] lg:gap-8">
+        <div className="min-w-0 space-y-3 md:space-y-7">
           <section className="overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm">
             <div className="border-b border-neutral-200 bg-primary-50 px-4 py-4 sm:px-7">
               <p className="text-xs font-bold uppercase tracking-[0.12em] text-primary-700">Visa for Bangladeshi passport holders</p>
@@ -207,7 +207,7 @@ function SummaryLayout({ destination }: { destination: VisaDestination }) {
           </section>
 
           <GuideSection title="Basic requirements" eyebrow="Prepare your documents">
-            <ul className="grid gap-3 sm:grid-cols-2">
+            <ul className="grid gap-2 md:grid-cols-2 md:gap-3">
               {docs.map((doc) => (
                 <ChecklistItem key={doc}>{doc}</ChecklistItem>
               ))}
@@ -271,20 +271,24 @@ function SummaryLayout({ destination }: { destination: VisaDestination }) {
 
 function ContactActions({ message }: { message: string }) {
   return (
-    <div className="mt-4 grid gap-2">
+    <div className="mt-2.5 grid grid-cols-2 gap-2 md:mt-4 md:grid-cols-1">
       <a
         href={visaWhatsAppHref(message)}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-primary-600 text-sm font-semibold text-white transition hover:bg-primary-700"
+        className="inline-flex h-11 items-center justify-center gap-1.5 rounded-md bg-primary-600 text-sm font-semibold text-white transition active:scale-[0.98] hover:bg-primary-700 md:gap-2"
       >
-        <MessageCircle className="h-4 w-4" aria-hidden /> Chat on WhatsApp
+        <MessageCircle className="h-4 w-4" aria-hidden />
+        <span className="md:hidden">WhatsApp</span>
+        <span className="hidden md:inline">Chat on WhatsApp</span>
       </a>
       <a
         href={visaPhoneHref}
-        className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-neutral-200 bg-white text-sm font-semibold text-neutral-700 transition hover:border-primary-300 hover:text-primary-700"
+        className="inline-flex h-11 items-center justify-center gap-1.5 rounded-md border border-neutral-200 bg-white text-sm font-semibold text-neutral-700 transition active:scale-[0.98] hover:border-primary-300 hover:text-primary-700 md:gap-2"
       >
-        <Phone className="h-4 w-4" aria-hidden /> Call {siteConfig.contact.supportPhone}
+        <Phone className="h-4 w-4" aria-hidden />
+        <span className="md:hidden">Call now</span>
+        <span className="hidden md:inline">Call {siteConfig.contact.supportPhone}</span>
       </a>
     </div>
   );
@@ -292,27 +296,27 @@ function ContactActions({ message }: { message: string }) {
 
 function Fact({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-md bg-neutral-50 p-3">
-      <p className="text-xs text-neutral-500">{label}</p>
-      <p className="mt-1 text-sm font-semibold text-neutral-800">{value}</p>
+    <div className="rounded-md border border-neutral-100 bg-neutral-50 px-2.5 py-2 md:p-3">
+      <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-500 md:text-xs md:normal-case md:tracking-normal">{label}</p>
+      <p className="mt-0.5 text-[13px] font-semibold leading-snug text-neutral-800 md:mt-1 md:text-sm">{value}</p>
     </div>
   );
 }
 
 function GuideSection({ eyebrow, title, children }: { eyebrow: string; title: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-md border border-neutral-200 bg-white p-4 shadow-sm sm:p-6">
-      <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-primary-600 sm:text-xs">{eyebrow}</p>
-      <h2 className="mt-1 font-heading text-lg font-semibold text-neutral-900 sm:text-xl">{title}</h2>
-      <div className="mt-4 sm:mt-5">{children}</div>
+    <section className="rounded-md border border-neutral-200 bg-white p-3 shadow-sm md:p-6">
+      <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-primary-600 md:text-xs">{eyebrow}</p>
+      <h2 className="mt-0.5 font-heading text-base font-semibold text-neutral-900 md:mt-1 md:text-xl">{title}</h2>
+      <div className="mt-3 md:mt-5">{children}</div>
     </section>
   );
 }
 
 function ChecklistItem({ children }: { children: React.ReactNode }) {
   return (
-    <li className="flex gap-2 text-sm leading-6 text-neutral-600">
-      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-accent-500" aria-hidden />
+    <li className="flex gap-2 text-[13px] leading-5 text-neutral-600 md:text-sm md:leading-6">
+      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-500 md:mt-1" aria-hidden />
       {children}
     </li>
   );
@@ -320,9 +324,13 @@ function ChecklistItem({ children }: { children: React.ReactNode }) {
 
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="grid grid-cols-[minmax(92px,0.8fr)_1.2fr] gap-3 px-5 py-3 text-sm">
-      <span className="text-neutral-500">{label}</span>
-      <span className="font-medium text-neutral-800">{value}</span>
+    <div
+      className={`flex flex-col gap-0.5 bg-white px-3 py-2 text-[13px] md:grid md:grid-cols-[minmax(84px,0.7fr)_1.3fr] md:gap-3 md:px-5 md:py-3 md:text-sm ${
+        value.length > 26 ? "max-md:col-span-2" : ""
+      }`}
+    >
+      <span className="text-[11px] text-neutral-500 md:text-sm">{label}</span>
+      <span className="font-medium leading-snug text-neutral-800">{value}</span>
     </div>
   );
 }

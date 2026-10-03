@@ -104,20 +104,24 @@ function CountryCard({ destination, showCategory }: { destination: VisaDestinati
 function PopularDestinations() {
   const popular = useMemo(() => getPopularDestinations(), []);
   return (
-    <section className="rounded-md border border-neutral-200 bg-white p-4 shadow-sm sm:p-6">
+    <section className="rounded-md border border-neutral-200 bg-white p-3.5 shadow-sm sm:p-6">
       <SectionHead title="Popular destinations" text="Most-requested visas from Bangladesh" />
-      <div className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-6">
+      <div className="mt-3.5 grid grid-cols-2 gap-2.5 sm:mt-5 sm:gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
         {popular.map((item) => (
           <Link
             key={item.slug}
             href={`/visa/${item.slug}`}
-            className="group flex flex-col rounded-md border border-neutral-200 bg-neutral-50/50 p-3.5 transition hover:-translate-y-0.5 hover:border-primary-300 hover:bg-white hover:shadow-md sm:p-4"
+            className="group flex min-h-[84px] flex-col rounded-lg border border-neutral-200 bg-neutral-50/60 p-3 transition active:scale-[0.98] hover:-translate-y-0.5 hover:border-primary-300 hover:bg-white hover:shadow-md sm:p-4"
           >
-            <VisaFlag code={item.code} name={item.name} className="h-6 w-9" />
-            <span className="mt-3 text-sm font-bold leading-snug text-neutral-900">{item.name}</span>
-            <span className="mt-auto inline-flex items-center gap-1 pt-2 text-xs font-semibold text-primary-700">
+            <span className="flex items-center gap-2 md:gap-2.5">
+              <VisaFlag code={item.code} name={item.name} className="h-5 w-7 md:h-6 md:w-9" />
+              <span className="line-clamp-2 min-w-0 flex-1 text-[13px] font-bold leading-snug text-neutral-900 group-hover:text-primary-700 md:text-sm">
+                {item.name}
+              </span>
+            </span>
+            <span className="mt-auto flex items-center justify-between gap-1 whitespace-nowrap pt-2.5 text-xs font-semibold text-primary-700">
               View guide
-              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
+              <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden />
             </span>
           </Link>
         ))}
@@ -190,16 +194,16 @@ function VisaTypes({ initialQuery, initialFilter }: { initialQuery: string; init
                 setExpanded(false);
               }}
               className={cn(
-                "flex min-h-12 flex-col items-center justify-center gap-0.5 rounded-md px-1 py-2 text-center text-[11px] font-semibold leading-tight transition sm:flex-row sm:gap-2 sm:px-3 sm:text-sm",
+                "flex min-h-12 flex-col items-center justify-center gap-0.5 rounded-md px-1 py-2 text-center text-[11px] font-semibold leading-tight transition md:flex-row md:gap-2 md:px-3 md:text-sm",
                 isActive ? "bg-white text-primary-700 shadow-sm" : "text-neutral-500 hover:text-neutral-800",
               )}
             >
               <span className="flex items-center gap-1.5">
-                <Icon className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
-                <span className="sm:hidden">{f.short}</span>
-                <span className="hidden sm:inline">{f.label}</span>
+                <Icon className="hidden h-4 w-4 shrink-0 md:block" aria-hidden />
+                <span className="md:hidden">{f.short}</span>
+                <span className="hidden md:inline">{f.label}</span>
               </span>
-              <span className="rounded-full bg-primary-100 px-2 py-0.5 text-[10px] font-bold text-primary-700 sm:text-xs">
+              <span className="rounded-full bg-primary-100 px-2 py-0.5 text-[10px] font-bold text-primary-700 md:text-xs">
                 {counts[f.id]}
               </span>
             </button>
@@ -213,7 +217,7 @@ function VisaTypes({ initialQuery, initialFilter }: { initialQuery: string; init
       </p>
 
       {results.length > 0 ? (
-        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {visible.map((item) => (
             <CountryCard key={`${filter}-${item.slug}`} destination={item} showCategory={filter === "all"} />
           ))}
@@ -283,25 +287,30 @@ function HowItWorks() {
     <section>
       <SectionHead title="How we handle your visa" text="Apply online; our visa team takes it from there" />
 
-      <div className="mt-4 grid gap-3 sm:mt-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-4 grid grid-cols-1 gap-3 sm:mt-5 md:grid-cols-2 lg:grid-cols-4">
         {STEPS.map((step, i) => {
           const Icon = step.icon;
           return (
-            <div key={step.title} className="relative overflow-hidden rounded-md border border-neutral-200 bg-white p-4 shadow-sm sm:p-5">
-              <span className="absolute right-3 top-1 font-heading text-4xl font-bold text-primary-100/80" aria-hidden>
+            <div
+              key={step.title}
+              className="relative flex items-start gap-3 overflow-hidden rounded-md border border-neutral-200 bg-white p-3.5 shadow-sm md:block md:p-5"
+            >
+              <span className="absolute right-3 top-1 font-heading text-3xl font-bold text-primary-100/80 md:text-4xl" aria-hidden>
                 {i + 1}
               </span>
-              <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-primary-50 text-primary-700">
+              <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-50 text-primary-700">
                 <Icon className="h-5 w-5" aria-hidden />
               </span>
-              <h3 className="relative mt-3 text-sm font-bold text-neutral-900">{step.title}</h3>
-              <p className="relative mt-1 text-xs leading-5 text-neutral-500 sm:text-[13px]">{step.text}</p>
+              <div className="relative min-w-0 flex-1 pr-7 md:pr-0">
+                <h3 className="text-sm font-bold text-neutral-900 md:mt-3">{step.title}</h3>
+                <p className="mt-0.5 text-xs leading-5 text-neutral-500 md:mt-1 md:text-[13px]">{step.text}</p>
+              </div>
             </div>
           );
         })}
       </div>
 
-      <div className="mt-5 flex flex-col gap-2 sm:flex-row">
+      <div className="mt-4 flex flex-col gap-2 md:mt-5 md:flex-row">
         <a
           href={visaWhatsAppHref(`Hello ${siteConfig.name}, I would like to start a visa application.`)}
           target="_blank"
